@@ -23,11 +23,11 @@
 </table>
 <h2>Công Nghệ Sử Dụng</h2>
             <ul>
-                <li>C#</li>
-                <li>ASP.NET WebForms</li>
-                <li>WinForms</li>
-                <li>SQL Server</li>
-                <li>HTML/CSS</li>
+                <li>🌐WebForm: C#, HTML, CSS</li>
+                <li>📑WinForms: C#</li>
+                <li>![image](https://github.com/user-attachments/assets/d5418fae-e0c0-4421-bd76-52754ccc1e48)
+ Cơ sở dữ liệu: SQL Server</li>
+                <li>Framework: .Net Framework 4.8, Bootstrap</li>
             </ul>
 <h2>Các Nghiệp Vụ</h2>
             <h3>WebForm</h3>
@@ -42,4 +42,3 @@
                 <li>Quản lý đơn hàng</li>
                 <li>Quản lý khách hàng</li>
             </ul>
-<h2>Phân Công</h2>
