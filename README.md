@@ -36,6 +36,7 @@ Với các tính năng thông minh và giao diện trực quan, phần mềm s�
 |  2  | Xem thông tin sản phẩm |  |
 |  3  | Xem giỏ hàng |  |
 |  4  | Thanh toán |  |
+|  5  | Chatbox(AI) |  |
 | **Quản Lý** |  |  |
 |  5  | Quản lý danh mục sản phẩm (Thêm, xóa, sửa) |  |
 |  6  | Quản lý sản phẩm (Thêm, xóa, sửa) |  |
