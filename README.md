@@ -18,7 +18,7 @@
 
 ## 📜 Mô tả
 
-<p>Phần mềm quản lý shop quần áo là một giải pháp toàn diện giúp các cửa hàng thời trang quản lý hiệu quả tất cả các hoạt động kinh doanh của mình. Từ quản lý hàng hóa, khách hàng, đến xử lý đơn hàng và thanh toán, phần mềm mang đến một trải nghiệm mượt mà, tiết kiệm thời gian và tăng năng suất cho người dùng. Với giao diện thân thiện, dễ sử dụng cùng những tính năng mạnh mẽ, đây là công cụ lý tưởng cho các chủ cửa hàng muốn tối ưu hóa quy trình kinh doanh.</p>
+<p style="text-indent: 30px;">Phần mềm quản lý shop quần áo là một giải pháp toàn diện giúp các cửa hàng thời trang quản lý hiệu quả tất cả các hoạt động kinh doanh của mình. Từ quản lý hàng hóa, khách hàng, đến xử lý đơn hàng và thanh toán, phần mềm mang đến một trải nghiệm mượt mà, tiết kiệm thời gian và tăng năng suất cho người dùng. Với giao diện thân thiện, dễ sử dụng cùng những tính năng mạnh mẽ, đây là công cụ lý tưởng cho các chủ cửa hàng muốn tối ưu hóa quy trình kinh doanh.</p>
 
 
 
