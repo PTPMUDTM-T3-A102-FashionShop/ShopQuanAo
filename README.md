@@ -41,13 +41,6 @@ Với các tính năng thông minh và giao diện trực quan, phần mềm s�
 |  3  | Xem giỏ hàng |  |
 |  4  | Thanh toán |  |
 |  5  | Chatbox(AI) |  |
-| **Quản Lý** |  |  |
-|  1  | Quản lý danh mục sản phẩm (Thêm, xóa, sửa) |  |
-|  2  | Quản lý sản phẩm (Thêm, xóa, sửa) |  |
-|  3  | Quản lý ca làm việc (Thêm, xóa) |  |
-|  4  | Quản lý lịch làm việc (Thêm, xóa) |  |
-|  5  | Quản lý bảng tính lương (Thêm, xóa, in bảng lương) |  |
-
 
 <h3>🖥️ App: Winform </h3>
 
