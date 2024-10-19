@@ -91,3 +91,38 @@ CREATE TABLE PhanHoi (
     FOREIGN KEY (SanPhamID) REFERENCES SanPham(SanPhamID),
     FOREIGN KEY (NguoiDungID) REFERENCES NguoiDung(NguoiDungID)
 );
+-- Thêm dữ liệu vào bảng DanhMuc
+INSERT INTO DanhMuc (TenDanhMuc)
+VALUES 
+    (N'Áo Thun'),
+    (N'Quần Jean');
+
+-- Thêm dữ liệu vào bảng NhaCungCap
+INSERT INTO NhaCungCap (TenNhaCungCap, DiaChi, SoDienThoai, Email, MoTa)
+VALUES
+    (N'Công ty ABC', N'123 Đường A, Quận 1, TP.HCM', N'0901234567', N'abc@company.com', N'Nhà cung cấp quần áo thời trang'),
+    (N'Công ty XYZ', N'456 Đường B, Quận 2, TP.HCM', N'0902345678', N'xyz@company.com', N'Nhà cung cấp phụ kiện thời trang');
+
+-- Thêm dữ liệu vào bảng SanPham
+INSERT INTO SanPham (TenSanPham, MoTa, Gia, SoLuongTonKho, DanhMucID, NhaCungCapID, HinhAnhUrl, KichHoat)
+VALUES
+    (N'Áo thun trắng', N'Áo thun trắng cổ tròn', 150000, 100, 1, 1, N'hinh1.jpg', 1),
+    (N'Áo thun đen', N'Áo thun đen cổ tim', 160000, 80, 1, 1, N'hinh2.jpg', 1),
+    (N'Áo thun xanh', N'Áo thun xanh cổ chữ V', 170000, 120, 1, 1, N'hinh3.jpg', 1),
+    (N'Áo thun đỏ', N'Áo thun đỏ cổ tròn', 155000, 90, 1, 2, N'hinh4.jpg', 1),
+    (N'Áo thun vàng', N'Áo thun vàng cổ tròn', 165000, 110, 1, 2, N'hinh5.jpg', 1),
+    (N'Quần jean xanh', N'Quần jean xanh nam', 300000, 50, 2, 1, N'hinh6.jpg', 1),
+    (N'Quần jean đen', N'Quần jean đen nữ', 320000, 60, 2, 1, N'hinh7.jpg', 1),
+    (N'Quần jean xám', N'Quần jean xám nam', 310000, 40, 2, 2, N'hinh8.jpg', 1),
+    (N'Quần jean rách', N'Quần jean rách nữ', 350000, 30, 2, 2, N'hinh9.jpg', 1),
+    (N'Quần jean skinny', N'Quần jean skinny nam', 360000, 25, 2, 2, N'hinh10.jpg', 1),
+    (N'Áo thun cam', N'Áo thun cam cổ tròn', 150000, 85, 1, 1, N'hinh11.jpg', 1),
+    (N'Áo thun tím', N'Áo thun tím cổ tim', 160000, 95, 1, 1, N'hinh12.jpg', 1),
+    (N'Áo thun nâu', N'Áo thun nâu cổ chữ V', 170000, 75, 1, 2, N'hinh13.jpg', 1),
+    (N'Áo thun hồng', N'Áo thun hồng cổ tròn', 155000, 65, 1, 2, N'hinh14.jpg', 1),
+    (N'Áo thun xám', N'Áo thun xám cổ tròn', 165000, 70, 1, 2, N'hinh15.jpg', 1),
+    (N'Quần jean trắng', N'Quần jean trắng nam', 300000, 45, 2, 1, N'hinh16.jpg', 1),
+    (N'Quần jean xanh đậm', N'Quần jean xanh đậm nữ', 320000, 35, 2, 1, N'hinh17.jpg', 1),
+    (N'Quần jean bạc', N'Quần jean bạc nam', 310000, 55, 2, 2, N'hinh18.jpg', 1),
+    (N'Quần jean lửng', N'Quần jean lửng nữ', 350000, 40, 2, 2, N'hinh19.jpg', 1),
+    (N'Quần jean baggy', N'Quần jean baggy nam', 360000, 50, 2, 2, N'hinh20.jpg', 1);
