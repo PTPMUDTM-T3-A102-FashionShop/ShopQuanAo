@@ -32,34 +32,67 @@ Với các tính năng thông minh và giao diện trực quan, phần mềm s�
 ## 🛠️Yêu cầu 
 <h3>🌐Web: ASP.Net MVC</h3>
 
+<table>
+  <tr>
+    <th>STT</th>
+    <th>Công việc</th>
+    <th>Phân công</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Đăng ký, đăng nhập</td>
+    <td>Thắng</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Hiển thị danh sách sản phẩm, chi tiết sản phẩm</td>
+    <td>Thắng</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Sắp xếp, lọc sản phẩm</td>
+    <td>Thắng</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Thêm vào giỏ hàng, xem giỏ hàng</td>
+    <td>Thắng</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Xem lịch sử mua hàng</td>
+    <td>Duy</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>Thanh toán</td>
+    <td>Duy</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>Chatbox(AI)</td>
+    <td>Thắng, Duy</td>
+  </tr>
+</table>
 
-| STT | Nghiệp vụ | Phân công  |
-|-----|------------------------|--------------------|
-| **Khách Hàng** |  |  |
-|  1  | Đăng ký, đăng nhập |  |
-|  2  | Xem thông tin sản phẩm |  |
-|  3  | Xem giỏ hàng |  |
-|  4  | Thanh toán |  |
-|  5  | Chatbox(AI) |  |
 
 <h3>🖥️ App: Winform </h3>
 
-| STT | Nghiệp vụ | Phân công  |
+| STT | Công việc | Phân công  |
 |----------------|--------------------|--------------------|
-|  1  |  Đăng nhập/đăng xuất |   |
-|  2  |  Quản lý danh mục sản phẩm(Thêm xóa sửa) |  |
-|  3  |  Quản lý sản phẩm (Thêm xóa sửa) |  |
-|  4  |  Quản lý nhà cung cấp (Thêm xóa sửa)  |  |
-|  5  |  Quản lý đơn hàng (Thêm xóa sửa)  |  |
-|  6  |  Quản lý khách hàng (Thêm xóa sửa)  |  |
-|  7  |  Quản lý nhân viên(Thêm xóa sửa, phân quyền)  |  |
-|  8  |  Thống kê, in thống kê  |  |
+|  1  |  Đăng nhập/đăng xuất | Thắng |
+|  2  |  Quản lý danh mục sản phẩm(Thêm xóa sửa) | Duy |
+|  3  |  Quản lý sản phẩm (Thêm xóa sửa) | Duy |
+|  4  |  Quản lý nhà cung cấp (Thêm xóa sửa)  | Duy |
+|  5  |  Quản lý đơn hàng (Thêm xóa sửa)  | Duy |
+|  6  |  Quản lý hóa đơn (Thêm xóa sửa)  | Long |
+|  7  |  Quản lý nhân viên(Thêm xóa sửa, phân quyền)  | Long |
+|  8  |  Thống kê, in thống kê  | Long |
 
 ## 🚀Mô Tả Chi Tiết Chức Năng Của Hệ Thống
 
-### WebSite
-
-#### **Khách Hàng**  
+### 🌐 WebSite (Dành cho khách hàng)
+ 
 1. **🔐 Đăng ký, đăng nhập**  
    - Cho phép người dùng tạo tài khoản và đăng nhập vào hệ thống. Hỗ trợ tính năng đăng nhập qua email hoặc tài khoản mạng xã hội.  
 
@@ -69,32 +102,16 @@ Với các tính năng thông minh và giao diện trực quan, phần mềm s�
 3. **🛒 Xem giỏ hàng**  
    - Hiển thị danh sách sản phẩm khách hàng đã chọn mua, bao gồm tên sản phẩm, số lượng, giá tiền. Khách hàng có thể thêm, xóa, hoặc điều chỉnh số lượng sản phẩm trong giỏ hàng.
 
+3. **📃 Xem lịch sử mua hàng**  
+   - Hiển thị danh sách các đơn hàng khách hàng đã mua trong quá khứ.
+
 4. **💳 Thanh toán**  
    - Cung cấp nhiều phương thức thanh toán như tiền mặt, thẻ tín dụng, hoặc ví điện tử. Khách hàng có thể chọn địa chỉ giao hàng và theo dõi trạng thái đơn hàng.
 
 5. **🤖 Chatbox (AI)**  
    - Hỗ trợ khách hàng qua tính năng chat với hệ thống AI. Người dùng có thể hỏi thông tin về sản phẩm, tình trạng đơn hàng hoặc yêu cầu hỗ trợ khác một cách nhanh chóng.
 
-
-#### **Quản Lý**  
-1. **📂 Quản lý danh mục sản phẩm (Thêm, xóa, sửa)**  
-   - Quản trị viên có thể tạo, cập nhật, hoặc xóa các danh mục sản phẩm (ví dụ: quần áo nam, quần áo nữ, phụ kiện) để sắp xếp sản phẩm theo nhóm cho dễ tìm kiếm.
-
-2. **🛍️ Quản lý sản phẩm (Thêm, xóa, sửa)**  
-   - Quản trị viên có thể thêm mới, cập nhật thông tin hoặc xóa sản phẩm khỏi hệ thống. Các thông tin bao gồm tên sản phẩm, giá cả, mô tả, và hình ảnh.
-
-3. **🕒 Quản lý ca làm việc (Thêm, xóa)**  
-   - Quản lý phân công ca làm việc cho nhân viên. Quản trị viên có thể thêm ca làm việc mới, sửa hoặc xóa ca làm việc cũ.
-
-4. **📅 Quản lý lịch làm việc (Thêm, xóa)**  
-   - Hỗ trợ quản trị viên quản lý lịch làm việc chi tiết của từng nhân viên. Cho phép lên lịch, điều chỉnh lịch làm việc và theo dõi thời gian làm việc của nhân viên.
-
-5. **💵 Quản lý bảng tính lương (Thêm, xóa, in bảng lương)**  
-   - Quản lý thông tin về bảng tính lương của nhân viên, cho phép thêm mới, sửa hoặc xóa bảng lương. Hỗ trợ tính năng in bảng lương cho nhân viên.
-
-
-
-### 🖥️ Chức Năng Của Ứng Dụng Desktop
+### 🖥️ Chức Năng Của Ứng Dụng Desktop (Dành cho nhân viên)
 
 1. **🔐 Đăng nhập**  
    - Hệ thống bảo mật với tính năng đăng nhập. Người dùng phải nhập tài khoản và mật khẩu để truy cập vào hệ thống.
@@ -109,18 +126,15 @@ Với các tính năng thông minh và giao diện trực quan, phần mềm s�
    - Quản lý thông tin về nhà cung cấp, cho phép thêm mới, sửa đổi hoặc xóa thông tin của các nhà cung cấp.
 
 5. **📦 Quản lý đơn hàng (Thêm, xóa, sửa)**  
-   - Hỗ trợ việc thêm mới, chỉnh sửa hoặc hủy bỏ các đơn hàng, theo dõi tình trạng đơn hàng theo thời gian thực.
+   - Quản lý việc theo dõi các đơn hàng đặt của khách hàng qua website và tạo đơn hàng đối với khách hàng mua tại chỗ.
 
 6. **🧾 Quản lý hóa đơn (Thêm, xóa, in hóa đơn)**  
    - Quản lý hóa đơn của khách hàng, cho phép tạo mới, xóa hoặc in hóa đơn sau khi thanh toán.
 
-7. **👤 Quản lý khách hàng (Thêm, xóa, sửa)**  
-   - Lưu trữ và quản lý thông tin khách hàng. Cho phép thêm mới, chỉnh sửa thông tin cá nhân hoặc xóa khách hàng.
-
-8. **👨‍💼 Quản lý nhân viên (Thêm, xóa, sửa, phân quyền)**  
+7. **👨‍💼 Quản lý nhân viên (Thêm, xóa, sửa, phân quyền)**  
    - Quản trị viên có thể thêm mới nhân viên, chỉnh sửa thông tin cá nhân, phân quyền và xóa nhân viên khỏi hệ thống.
 
-9. **📊 Thống kê, in thống kê**  
+8. **📊 Thống kê, in thống kê**  
    - Hệ thống cung cấp các báo cáo thống kê chi tiết về doanh thu, sản phẩm bán chạy, tình trạng kho hàng và cho phép in báo cáo phục vụ việc quản lý và ra quyết định.
    
 ---
