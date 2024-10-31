@@ -3,10 +3,10 @@ D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\FormShopQu
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\FormShopQuanAo.pdb
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\Guna.UI2.dll
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.csproj.AssemblyReference.cache
-D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.Form1.resources
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.Properties.Resources.resources
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.csproj.GenerateResource.cache
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.csproj.CoreCompileInputs.cache
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShop.05E6FF01.Up2Date
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.exe
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.pdb
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.Login.resources
