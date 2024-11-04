@@ -17,3 +17,13 @@ D:\HK7\PhatTrienUngDungThongMinh\New folder (2)\ShopQuanAo\ShopQuanAo\FormShopQu
 D:\HK7\PhatTrienUngDungThongMinh\New folder (2)\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.csproj.CoreCompileInputs.cache
 D:\HK7\PhatTrienUngDungThongMinh\New folder (2)\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.exe
 D:\HK7\PhatTrienUngDungThongMinh\New folder (2)\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.pdb
+D:\HK7\PhatTrienUngDungThongMinh\New folder (3)\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\FormShopQuanAo.exe.config
+D:\HK7\PhatTrienUngDungThongMinh\New folder (3)\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\FormShopQuanAo.exe
+D:\HK7\PhatTrienUngDungThongMinh\New folder (3)\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\FormShopQuanAo.pdb
+D:\HK7\PhatTrienUngDungThongMinh\New folder (3)\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.csproj.AssemblyReference.cache
+D:\HK7\PhatTrienUngDungThongMinh\New folder (3)\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.Login.resources
+D:\HK7\PhatTrienUngDungThongMinh\New folder (3)\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.Properties.Resources.resources
+D:\HK7\PhatTrienUngDungThongMinh\New folder (3)\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.csproj.GenerateResource.cache
+D:\HK7\PhatTrienUngDungThongMinh\New folder (3)\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.csproj.CoreCompileInputs.cache
+D:\HK7\PhatTrienUngDungThongMinh\New folder (3)\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.exe
+D:\HK7\PhatTrienUngDungThongMinh\New folder (3)\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.pdb
