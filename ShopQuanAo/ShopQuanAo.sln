@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.11.35303.130
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.35229.62
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormShopQuanAo", "FormShopQuanAo\FormShopQuanAo.csproj", "{7EEB472F-339C-4F5F-90A3-852982E63103}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebsiteBanQuanAo", "..\WebsiteBanQuanAo\WebsiteBanQuanAo\WebsiteBanQuanAo.csproj", "{796196CF-D735-438A-9C37-6CB1B6D6316A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebsiteBanQuanAo", "WebsiteBanQuanAo\WebsiteBanQuanAo.csproj", "{796196CF-D735-438A-9C37-6CB1B6D6316A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
