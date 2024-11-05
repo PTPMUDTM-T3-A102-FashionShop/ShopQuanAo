@@ -16,54 +16,57 @@ namespace WebsiteBanQuanAo.Controllers
         {
             return View();
         }
+
         public ActionResult Register()
         {
             return View();
         }
+
         [HttpPost]
-        public ActionResult Register([Bind(Include = "HoTen,TenDangNhap,MatKhau,Email,GioiTinh")] NguoiDung a)
+        public ActionResult Register([Bind(Include = "HoTen,TenDangNhap,MatKhau,Email,GioiTinh")] NguoiDung newUser)
         {
-            if (a != null)
+            if (ModelState.IsValid)
             {
+                if (db.NguoiDungs.Any(u => u.TenDangNhap == newUser.TenDangNhap))
+                {
+                    ModelState.AddModelError("TenDangNhap", "Tên đăng nhập đã tồn tại.");
+                    return View(newUser);
+                }
+                // Khởi tạo đối tượng người dùng mới
                 NguoiDung myUser = new NguoiDung
                 {
-                    TenDangNhap = a.TenDangNhap,
-                    MatKhau = BCrypt.Net.BCrypt.HashPassword(a.MatKhau),
-                    Email = a.Email,
-                    HoTen = a.HoTen,
-                    GioiTinh = a.GioiTinh,
+                    HoTen = newUser.HoTen,
+                    TenDangNhap = newUser.TenDangNhap,
+                    MatKhau = BCrypt.Net.BCrypt.HashPassword(newUser.MatKhau),
+                    Email = newUser.Email,
+                    GioiTinh = newUser.GioiTinh,
                     VaiTro = "user",
                     NgayTao = DateTime.Now,
                     KichHoat = true,
-                };
+                };     
                 db.NguoiDungs.Add(myUser);
                 db.SaveChanges();
+                return RedirectToAction("Login", "User");
             }
-            return RedirectToAction("Login", "User");
+            return View(newUser);
         }
 
         public ActionResult Login()
         {
             return View();
         }
+
         [HttpPost]
-        public ActionResult Login(NguoiDung a)
+        public ActionResult Login(NguoiDung loginUser)
         {
-            if (a != null)
+            if (ModelState.IsValid)
             {
-                NguoiDung myUser = db.NguoiDungs.Where(u => u.TenDangNhap == a.TenDangNhap).FirstOrDefault();
+                NguoiDung myUser = db.NguoiDungs.FirstOrDefault(u => u.TenDangNhap == loginUser.TenDangNhap);
                 if (myUser != null)
                 {
-                    if (BCrypt.Net.BCrypt.Verify(a.MatKhau, myUser.MatKhau) && myUser.VaiTro == "admin")
+                    if (BCrypt.Net.BCrypt.Verify(loginUser.MatKhau, myUser.MatKhau))
                     {
-                        HttpCookie authCookie = new HttpCookie("auth", myUser.TenDangNhap);
-                        HttpCookie roleCookie = new HttpCookie("role", myUser.VaiTro);
-                        Response.Cookies.Add(authCookie);
-                        Response.Cookies.Add(roleCookie);
-                        return RedirectToAction("Index", "Home", new { area = "admin" });
-                    }
-                    else if (BCrypt.Net.BCrypt.Verify(a.MatKhau, myUser.MatKhau) && myUser.VaiTro == "user")
-                    {
+                        Session["UserID"] = myUser.NguoiDungID;
                         HttpCookie authCookie = new HttpCookie("auth", myUser.TenDangNhap)
                         {
                             Expires = DateTime.Now.AddDays(1),
@@ -73,12 +76,29 @@ namespace WebsiteBanQuanAo.Controllers
                         HttpCookie roleCookie = new HttpCookie("role", myUser.VaiTro);
                         Response.Cookies.Add(authCookie);
                         Response.Cookies.Add(roleCookie);
+
+                        return myUser.VaiTro == "admin"
+                            ? RedirectToAction("Index", "Home", new { area = "admin" })
+                            : RedirectToAction("Index", "Home");
                     }
-                    return RedirectToAction("Index", "Home");
                 }
-                ModelState.AddModelError("Password", "Invalid username or password !!!");
+                ModelState.AddModelError("", "Tên đăng nhập hoặc mật khẩu không hợp lệ.");
             }
-            return View();
+            return View(loginUser);
+        }
+
+        public ActionResult Logout()
+        {
+            if (Request.Cookies["auth"] != null)
+            {
+                var cookie = new HttpCookie("auth")
+                {
+                    Expires = DateTime.Now.AddDays(-1)
+                };
+                Response.Cookies.Add(cookie);
+            }
+            Session.Clear(); // Xóa tất cả Session
+            return RedirectToAction("Index", "Home");
         }
     }
 }

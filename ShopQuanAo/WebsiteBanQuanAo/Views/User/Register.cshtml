@@ -66,14 +66,14 @@
 }
 <div class="form-register">
     <h2>Đăng Ký Tài Khoản</h2>
-    @using(Html.BeginForm("Register", "User", FormMethod.Post))
+    @using (Html.BeginForm("Register", "User", FormMethod.Post))
     {
         <input type="hidden" name="role" value="user" />
 
         @* Các trường trong form *@
         <div class="form-group">
             @Html.LabelFor(model => model.HoTen, "Họ Tên")
-            @Html.TextBoxFor(model => model.HoTen, new { @class = "form-control", placeholder = "Nhập Họ Tên" })
+            @Html.TextBoxFor(model => model.HoTen, new { @class = "form-control", placeholder = "Nhập họ tên" })
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.TenDangNhap, "Tên Đăng Nhập")
@@ -93,9 +93,10 @@
             @Html.Label("Giới Tính")
             <select name="GioiTinh" class="form-control">
                 <option value="Nam">Nam</option>
-                <option value="Nu">Nữ</option>
+                <option value="Nữ">Nữ</option>
             </select>
         </div>
+
         <div class="form-group text-center">
             <button type="submit" class="btn btn-primary">Đăng Ký</button>
         </div>
