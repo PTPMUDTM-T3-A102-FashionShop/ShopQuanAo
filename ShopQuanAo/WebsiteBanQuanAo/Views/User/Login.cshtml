@@ -6,31 +6,29 @@
 @section css {
     <style>
         body {
-            padding-top: 100px; /* Giảm padding trên cùng để form gần hơn với header */
+            padding-top: 200px;
         }
 
         .form-login {
-            max-width: 500px; /* Thu nhỏ chiều rộng form để hợp lý với nội dung */
-            margin: 0 auto;
-            padding: 20px; /* Giảm padding để không gian trong form gọn gàng hơn */
+            max-width: 600px;
+            margin: 5px auto 5px;
+            padding: 40px;
             border-radius: 10px;
             background-color: #ffffff;
-            border: 1px solid #ddd; /* Tạo viền xám nhạt để form có độ rõ ràng */
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Giảm shadow để không quá nổi bật */
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
         }
 
             .form-login h2 {
-                padding: 0;
+                padding: 40px;
                 text-align: center;
-                margin-bottom: 15px; /* Giảm khoảng cách dưới tiêu đề */
+                margin-bottom: 50px;
                 color: #333;
             }
 
         .form-control {
             border-radius: 5px;
             border: 1px solid #ced4da;
-            margin-bottom: 15px; /* Thêm khoảng cách giữa các ô input */
-            padding: 10px; /* Tăng padding để input dễ nhập hơn */
+            transition: border-color 0.3s;
         }
 
             .form-control:focus {
@@ -39,9 +37,9 @@
             }
 
         .btn-primary {
-            width: 100%;
+            width: 30%;
             padding: 12px;
-            background-color: #28a745; /* Sử dụng màu xanh lá cây nhạt hơn */
+            background-color: #007bff;
             border: none;
             border-radius: 5px;
             color: #fff;
@@ -50,7 +48,7 @@
         }
 
             .btn-primary:hover {
-                background-color: #218838; /* Màu đậm hơn khi hover */
+                background-color: #0056b3;
             }
 
         .text-muted {
@@ -67,10 +65,8 @@
         }
     </style>
 }
-<div style="height:100px"></div>
-
 <div class="form-login">
-    <h2>Đăng Nhập Tài Khoản</h2> 
+    <h2>Đăng Nhập Tài Khoản</h2>
     @using (Html.BeginForm("Login", "User", FormMethod.Post))
     {
         <div class="form-group">
@@ -90,4 +86,3 @@
         </div>
     }
 </div>
-

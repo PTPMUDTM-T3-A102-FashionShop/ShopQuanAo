@@ -1,4 +1,5 @@
-﻿use DoAnKetMon_UDTM
+﻿Create database DoAnKetMon_UDTM
+use DoAnKetMon_UDTM
 CREATE TABLE NguoiDung (
     NguoiDungID INT PRIMARY KEY IDENTITY(1,1),
     TenDangNhap NVARCHAR(50) UNIQUE NOT NULL,
@@ -7,7 +8,7 @@ CREATE TABLE NguoiDung (
     Email NVARCHAR(100) UNIQUE NOT NULL,
     SoDienThoai NVARCHAR(15),
     DiaChi NVARCHAR(255),
-    VaiTro NVARCHAR(50) DEFAULT 'KhachHang',
+    VaiTro NVARCHAR(50) DEFAULT 'user',
     NgayTao DATETIME DEFAULT GETDATE(),
 	GioiTinh NVARCHAR(10) NULL,              
     KichHoat BIT DEFAULT 1
@@ -42,7 +43,28 @@ CREATE TABLE SanPham (
     FOREIGN KEY (DanhMucID) REFERENCES DanhMuc(DanhMucID),
     FOREIGN KEY (NhaCungCapID) REFERENCES NhaCungCap(NhaCungCapID)
 );
-
+CREATE TABLE Mau (
+    MauID INT PRIMARY KEY IDENTITY(1,1),
+    TenMau NVARCHAR(50) NOT NULL
+);
+CREATE TABLE SanPhamMau (
+    SanPhamID INT,
+    MauID INT,
+    PRIMARY KEY (SanPhamID, MauID),
+    FOREIGN KEY (SanPhamID) REFERENCES SanPham(SanPhamID),
+    FOREIGN KEY (MauID) REFERENCES Mau(MauID)
+);
+CREATE TABLE Size (
+    SizeID INT PRIMARY KEY IDENTITY(1,1),
+    TenSize NVARCHAR(50) NOT NULL
+);
+CREATE TABLE SanPhamSize (
+    SanPhamID INT,
+    SizeID INT,
+    PRIMARY KEY (SanPhamID, SizeID),
+    FOREIGN KEY (SanPhamID) REFERENCES SanPham(SanPhamID),
+    FOREIGN KEY (SizeID) REFERENCES Size(SizeID)
+);
 CREATE TABLE DonHang (
     DonHangID INT PRIMARY KEY IDENTITY(1,1),
     NguoiDungID INT NOT NULL,
@@ -80,7 +102,6 @@ CREATE TABLE ThanhToan (
     NgayThanhToan DATETIME DEFAULT GETDATE(),
     FOREIGN KEY (DonHangID) REFERENCES DonHang(DonHangID)
 );
-
 CREATE TABLE PhanHoi (
     PhanHoiID INT PRIMARY KEY IDENTITY(1,1),
     SanPhamID INT NOT NULL,
@@ -89,6 +110,15 @@ CREATE TABLE PhanHoi (
     DanhGia INT CHECK(DanhGia BETWEEN 1 AND 5),
     NgayPhanHoi DATETIME DEFAULT GETDATE(),
     FOREIGN KEY (SanPhamID) REFERENCES SanPham(SanPhamID),
+    FOREIGN KEY (NguoiDungID) REFERENCES NguoiDung(NguoiDungID)
+);
+CREATE TABLE ThongTinGiaoHang (
+    DiaChiID INT PRIMARY KEY IDENTITY(1,1),
+    NguoiDungID INT NOT NULL,
+    TenNguoiNhan NVARCHAR(100) NOT NULL,
+    SoDienThoai NVARCHAR(15) NOT NULL,
+    DiaChiGiaoHang NVARCHAR(255) NOT NULL,
+    DiaChiMacDinh BIT DEFAULT 0, -- Địa chỉ mặc định
     FOREIGN KEY (NguoiDungID) REFERENCES NguoiDung(NguoiDungID)
 );
 -- Thêm dữ liệu vào bảng DanhMuc
