@@ -8,12 +8,20 @@ CREATE TABLE NguoiDung (
     Email NVARCHAR(100) UNIQUE NOT NULL,
     SoDienThoai NVARCHAR(15),
     DiaChi NVARCHAR(255),
-    VaiTro NVARCHAR(50) DEFAULT 'user',
+    VaiTro NVARCHAR(50) DEFAULT 'customer',
     NgayTao DATETIME DEFAULT GETDATE(),
 	GioiTinh NVARCHAR(10) NULL,              
     KichHoat BIT DEFAULT 1
 );                   
-
+CREATE TABLE ThongTinGiaoHang (
+    DiaChiID INT PRIMARY KEY IDENTITY(1,1),
+    NguoiDungID INT NOT NULL,
+    TenNguoiNhan NVARCHAR(100) NOT NULL,
+    SoDienThoai NVARCHAR(15) NOT NULL,
+    DiaChiGiaoHang NVARCHAR(255) NOT NULL,
+	DiaChiMacDinh BIT DEFAULT 0, -- Địa chỉ mặc định
+    FOREIGN KEY (NguoiDungID) REFERENCES NguoiDung(NguoiDungID)
+);
 CREATE TABLE DanhMuc (
     DanhMucID INT PRIMARY KEY IDENTITY(1,1),
     TenDanhMuc NVARCHAR(100) NOT NULL
@@ -28,7 +36,6 @@ CREATE TABLE NhaCungCap (
     MoTa NVARCHAR(MAX),
     NgayHopTac DATETIME DEFAULT GETDATE()
 );
-
 CREATE TABLE SanPham (
     SanPhamID INT PRIMARY KEY IDENTITY(1,1),
     TenSanPham NVARCHAR(100) NOT NULL,
@@ -43,6 +50,12 @@ CREATE TABLE SanPham (
     FOREIGN KEY (DanhMucID) REFERENCES DanhMuc(DanhMucID),
     FOREIGN KEY (NhaCungCapID) REFERENCES NhaCungCap(NhaCungCapID)
 );
+CREATE TABLE NhaCungCapSanPham(
+	NhaCungCapID INT,
+	SanPhamID INT,
+    FOREIGN KEY (NhaCungCapID) REFERENCES NhaCungCap(NhaCungCapID),
+    FOREIGN KEY (SanPhamID) REFERENCES SanPham(SanPhamID)
+);
 CREATE TABLE Mau (
     MauID INT PRIMARY KEY IDENTITY(1,1),
     TenMau NVARCHAR(50) NOT NULL
@@ -52,6 +65,7 @@ CREATE TABLE Size (
     TenSize NVARCHAR(50) NOT NULL
 );
 CREATE TABLE ChiTietSanPham (
+	ChiTietID INT PRIMARY KEY IDENTITY(1,1),
     SanPhamID INT NOT NULL,
     MauID INT NOT NULL,
     SizeID INT NOT NULL,
@@ -63,26 +77,6 @@ CREATE TABLE ChiTietSanPham (
     FOREIGN KEY (SizeID) REFERENCES Size(SizeID),
     UNIQUE (SanPhamID, MauID, SizeID)
 );
-CREATE TABLE DonHang (
-    DonHangID INT PRIMARY KEY IDENTITY(1,1),
-    NguoiDungID INT NOT NULL,
-    TongTien DECIMAL(18, 2) NOT NULL,
-    TinhTrangDonHang NVARCHAR(50) NOT NULL,
-    NgayDatHang DATETIME DEFAULT GETDATE(),
-    DiaChiGiaoHang NVARCHAR(255),
-    FOREIGN KEY (NguoiDungID) REFERENCES NguoiDung(NguoiDungID)
-);
-
-CREATE TABLE ChiTietDonHang (
-    ChiTietDonHangID INT PRIMARY KEY IDENTITY(1,1),
-    DonHangID INT NOT NULL,
-    SanPhamID INT NOT NULL,
-    SoLuong INT NOT NULL,
-    DonGia DECIMAL(18, 2) NOT NULL,
-    FOREIGN KEY (DonHangID) REFERENCES DonHang(DonHangID),
-    FOREIGN KEY (SanPhamID) REFERENCES SanPham(SanPhamID)
-);
-
 CREATE TABLE GioHang (
     GioHangID INT PRIMARY KEY IDENTITY(1,1),
     NguoiDungID INT NOT NULL,
@@ -91,14 +85,34 @@ CREATE TABLE GioHang (
     FOREIGN KEY (NguoiDungID) REFERENCES NguoiDung(NguoiDungID),
     FOREIGN KEY (SanPhamID) REFERENCES SanPham(SanPhamID)
 );
-
-CREATE TABLE ThanhToan (
-    ThanhToanID INT PRIMARY KEY IDENTITY(1,1),
-    DonHangID INT NOT NULL,
-    HinhThucThanhToan NVARCHAR(50) NOT NULL,
+CREATE TABLE NhanVien (
+    NhanVienID INT PRIMARY KEY IDENTITY(1,1),
+    NguoiDungID INT NOT NULL UNIQUE,
+    VaiTro NVARCHAR(50) CHECK (VaiTro IN ('Manager', 'Staff')) NOT NULL,
+    FOREIGN KEY (NguoiDungID) REFERENCES NguoiDung(NguoiDungID)
+);
+CREATE TABLE DonHang (
+    DonHangID INT PRIMARY KEY IDENTITY(1,1),
+	DiaChiID INT,
+	NhanVienID INT,
+    NguoiDungID INT NOT NULL,
+    TongTien DECIMAL(18, 2) NOT NULL,
+    TinhTrangDonHang NVARCHAR(50) NOT NULL,
+    NgayDatHang DATETIME DEFAULT GETDATE(),
+	HinhThucThanhToan NVARCHAR(50) NOT NULL,
     TinhTrangThanhToan NVARCHAR(50) NOT NULL,
     NgayThanhToan DATETIME DEFAULT GETDATE(),
-    FOREIGN KEY (DonHangID) REFERENCES DonHang(DonHangID)
+    FOREIGN KEY (NguoiDungID) REFERENCES NguoiDung(NguoiDungID),
+    FOREIGN KEY (DiaChiID) REFERENCES ThongTinGiaoHang(DiaChiID),
+	FOREIGN KEY (NhanVienID) REFERENCES NhanVien(NhanVienID)
+);
+CREATE TABLE ChiTietDonHang (
+    DonHangID INT NOT NULL,
+    ChiTietID INT NOT NULL,
+    SoLuong INT NOT NULL,
+    DonGia DECIMAL(18, 2) NOT NULL,
+    FOREIGN KEY (DonHangID) REFERENCES DonHang(DonHangID),
+    FOREIGN KEY (ChiTietID) REFERENCES ChiTietSanPham(ChiTietID)
 );
 CREATE TABLE PhanHoi (
     PhanHoiID INT PRIMARY KEY IDENTITY(1,1),
@@ -110,14 +124,21 @@ CREATE TABLE PhanHoi (
     FOREIGN KEY (SanPhamID) REFERENCES SanPham(SanPhamID),
     FOREIGN KEY (NguoiDungID) REFERENCES NguoiDung(NguoiDungID)
 );
-CREATE TABLE ThongTinGiaoHang (
-    DiaChiID INT PRIMARY KEY IDENTITY(1,1),
-    NguoiDungID INT NOT NULL,
-    TenNguoiNhan NVARCHAR(100) NOT NULL,
-    SoDienThoai NVARCHAR(15) NOT NULL,
-    DiaChiGiaoHang NVARCHAR(255) NOT NULL,
-    DiaChiMacDinh BIT DEFAULT 0, -- Địa chỉ mặc định
+CREATE TABLE KhachHang (
+    KhachHangID INT PRIMARY KEY IDENTITY(1,1),
+    NguoiDungID INT NOT NULL UNIQUE,
     FOREIGN KEY (NguoiDungID) REFERENCES NguoiDung(NguoiDungID)
+);
+CREATE TABLE ManHinh (
+    ManHinhID INT PRIMARY KEY IDENTITY(1,1),
+    MaManHinh NVARCHAR(50) UNIQUE NOT NULL, -- Mã màn hình để dùng trong ứng dụng
+    TenManHinh NVARCHAR(100) NOT NULL
+);
+CREATE TABLE PhanQuyen (
+    VaiTro NVARCHAR(50) NOT NULL, -- 'Manager' hoặc 'Staff'
+    ManHinhID INT NOT NULL,
+    FOREIGN KEY (ManHinhID) REFERENCES ManHinh(ManHinhID),
+    PRIMARY KEY (VaiTro, ManHinhID)
 );
 -- Thêm dữ liệu vào bảng DanhMuc
 INSERT INTO DanhMuc (TenDanhMuc)
