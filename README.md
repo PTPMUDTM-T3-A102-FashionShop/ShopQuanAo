@@ -87,7 +87,7 @@ Với các tính năng thông minh và giao diện trực quan, phần mềm s�
 |  5  |  Quản lý đơn hàng (Thêm xóa sửa)  | Duy |
 |  6  |  Quản lý hóa đơn (Thêm xóa sửa)  | Long |
 |  7  |  Quản lý nhân viên(Thêm xóa sửa, phân quyền)  | Long |
-|  8  |  Thống kê, in thống kê  | Long |
+|  8  |  Thống kê, in thống kê, xuất hóa đơn  | Long |
 
 ## 🚀Mô Tả Chi Tiết Chức Năng Của Hệ Thống
 
