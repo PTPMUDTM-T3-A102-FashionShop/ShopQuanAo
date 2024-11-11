@@ -1,5 +1,9 @@
 ﻿Create database DoAnKetMon_UDTM
 use DoAnKetMon_UDTM
+CREATE TABLE NhomNguoiDung (
+	MaNhomNguoiDung INT PRIMARY KEY IDENTITY(1,1),
+	TenNhomNguoiDung NVARCHAR(255) NOT NULL,
+)
 CREATE TABLE NguoiDung (
     NguoiDungID INT PRIMARY KEY IDENTITY(1,1),
     TenDangNhap NVARCHAR(50) UNIQUE NOT NULL,
@@ -8,11 +12,14 @@ CREATE TABLE NguoiDung (
     Email NVARCHAR(100) UNIQUE NOT NULL,
     SoDienThoai NVARCHAR(15),
     DiaChi NVARCHAR(255),
-    VaiTro NVARCHAR(50) DEFAULT 'customer',
+	NgaySinh Date,
+    MaNhomNguoiDung INT,
     NgayTao DATETIME DEFAULT GETDATE(),
 	GioiTinh NVARCHAR(10) NULL,              
     KichHoat BIT DEFAULT 1
-);                   
+    FOREIGN KEY (MaNhomNguoiDung) REFERENCES NhomNguoiDung(MaNhomNguoiDung)
+);    
+
 CREATE TABLE ThongTinGiaoHang (
     DiaChiID INT PRIMARY KEY IDENTITY(1,1),
     NguoiDungID INT NOT NULL,
@@ -77,20 +84,6 @@ CREATE TABLE ChiTietSanPham (
     FOREIGN KEY (SizeID) REFERENCES Size(SizeID),
     UNIQUE (SanPhamID, MauID, SizeID)
 );
-CREATE TABLE GioHang (
-    GioHangID INT PRIMARY KEY IDENTITY(1,1),
-    NguoiDungID INT NOT NULL,
-    SanPhamID INT NOT NULL,
-    SoLuong INT NOT NULL,
-    FOREIGN KEY (NguoiDungID) REFERENCES NguoiDung(NguoiDungID),
-    FOREIGN KEY (SanPhamID) REFERENCES SanPham(SanPhamID)
-);
-CREATE TABLE NhanVien (
-    NhanVienID INT PRIMARY KEY IDENTITY(1,1),
-    NguoiDungID INT NOT NULL UNIQUE,
-    VaiTro NVARCHAR(50) CHECK (VaiTro IN ('Manager', 'Staff')) NOT NULL,
-    FOREIGN KEY (NguoiDungID) REFERENCES NguoiDung(NguoiDungID)
-);
 CREATE TABLE DonHang (
     DonHangID INT PRIMARY KEY IDENTITY(1,1),
 	DiaChiID INT,
@@ -103,8 +96,8 @@ CREATE TABLE DonHang (
     TinhTrangThanhToan NVARCHAR(50) NOT NULL,
     NgayThanhToan DATETIME DEFAULT GETDATE(),
     FOREIGN KEY (NguoiDungID) REFERENCES NguoiDung(NguoiDungID),
+    FOREIGN KEY (NhanVienID) REFERENCES NguoiDung(NguoiDungID),
     FOREIGN KEY (DiaChiID) REFERENCES ThongTinGiaoHang(DiaChiID),
-	FOREIGN KEY (NhanVienID) REFERENCES NhanVien(NhanVienID)
 );
 CREATE TABLE ChiTietDonHang (
     DonHangID INT NOT NULL,
@@ -127,6 +120,8 @@ CREATE TABLE PhanHoi (
 CREATE TABLE KhachHang (
     KhachHangID INT PRIMARY KEY IDENTITY(1,1),
     NguoiDungID INT NOT NULL UNIQUE,
+	Email NVARCHAR(MAX),
+
     FOREIGN KEY (NguoiDungID) REFERENCES NguoiDung(NguoiDungID)
 );
 CREATE TABLE ManHinh (
