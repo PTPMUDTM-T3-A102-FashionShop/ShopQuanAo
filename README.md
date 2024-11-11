@@ -60,16 +60,21 @@ Với các tính năng thông minh và giao diện trực quan, phần mềm s�
   </tr>
   <tr>
     <td>5</td>
+    <td>Đánh giá sản phẩm</td>
+    <td>Thắng</td>
+  </tr>
+  <tr>
+    <td>6</td>
     <td>Xem lịch sử mua hàng</td>
     <td>Duy</td>
   </tr>
   <tr>
-    <td>6</td>
+    <td>7</td>
     <td>Thanh toán</td>
     <td>Duy</td>
   </tr>
   <tr>
-    <td>7</td>
+    <td>8</td>
     <td>Chatbox(AI)</td>
     <td>Thắng, Duy</td>
   </tr>
@@ -84,9 +89,9 @@ Với các tính năng thông minh và giao diện trực quan, phần mềm s�
 |  2  |  Quản lý danh mục sản phẩm(Thêm xóa sửa) | Duy |
 |  3  |  Quản lý sản phẩm (Thêm xóa sửa) | Duy |
 |  4  |  Quản lý nhà cung cấp (Thêm xóa sửa)  | Duy |
-|  5  |  Quản lý đơn hàng (Thêm xóa sửa)  | Long |
-|  7  |  Quản lý hóa đơn (Thêm xóa sửa)  | Long |
-|  8  |  Quản lý nhân viên(Thêm xóa sửa, phân quyền)  | Long |
+|  5  |  Quản lý đơn hàng (Kiểm tra và duyệt)  | Long |
+|  7  |  Quản lý nhân viên(Thêm xóa sửa, phân quyền)  | Long |
+|  8  |  Lập báo cáo, thống kê, xuất file  | Long |
 
 ## 🚀Mô Tả Chi Tiết Chức Năng Của Hệ Thống
 
