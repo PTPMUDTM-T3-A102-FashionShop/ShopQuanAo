@@ -85,7 +85,7 @@ Với các tính năng thông minh và giao diện trực quan, phần mềm s�
 
 | STT | Công việc | Phân công  |
 |----------------|--------------------|--------------------|
-|  1  |  Đăng nhập/đăng xuất | Thắng |
+|  1  |  Đăng nhập/đăng xuất | Duy |
 |  2  |  Quản lý danh mục sản phẩm(Thêm xóa sửa) | Duy |
 |  3  |  Quản lý sản phẩm (Thêm xóa sửa) | Duy |
 |  4  |  Quản lý nhà cung cấp (Thêm xóa sửa)  | Duy |
