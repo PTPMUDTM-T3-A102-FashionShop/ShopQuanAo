@@ -7,7 +7,7 @@ CREATE TABLE NhomNguoiDung (
 CREATE TABLE NguoiDung (
     NguoiDungID INT PRIMARY KEY IDENTITY(1,1),
     TenDangNhap NVARCHAR(50) UNIQUE NOT NULL,
-    MatKhau NVARCHAR(255) NOT NULL,
+    MatKhau NVARCHAR(20) NOT NULL,
     HoTen NVARCHAR(100) NOT NULL,
     Email NVARCHAR(100) UNIQUE NOT NULL,
     SoDienThoai NVARCHAR(15),
@@ -170,3 +170,47 @@ VALUES
     (N'Quần jean bạc', N'Quần jean bạc nam', 310000, 55, 2, 2, N'hinh18.jpg', 1),
     (N'Quần jean lửng', N'Quần jean lửng nữ', 350000, 40, 2, 2, N'hinh19.jpg', 1),
     (N'Quần jean baggy', N'Quần jean baggy nam', 360000, 50, 2, 2, N'hinh20.jpg', 1);
+
+INSERT INTO NhomNguoiDung (TenNhomNguoiDung)
+VALUES 
+    (N'Khách hàng'),
+    (N'Nhân viên'),
+    (N'Quản lý');
+
+INSERT INTO Mau (TenMau)
+VALUES 
+    (N'Đỏ'),
+    (N'Xanh dương'),
+    (N'Xanh lá'),
+    (N'Vàng'),
+    (N'Tím'),
+    (N'Cam'),
+    (N'Hồng'),
+    (N'Nâu'),
+    (N'Xám'),
+    (N'Trắng'),
+    (N'Đen');
+
+INSERT INTO Size (TenSize)
+VALUES 
+    (N'S'),
+    (N'M'),
+    (N'L'),
+    (N'XL'),
+    (N'XXL');
+
+INSERT INTO ManHinh (MaManHinh, TenManHinh)
+VALUES 
+    (N'MH001', N'Màn hình chính'),
+    (N'MH002', N'Màn hình quản lý sản phẩm'),
+    (N'MH003', N'Màn hình quản lý đơn hàng'),
+    (N'MH004', N'Màn hình quản lý người dùng');
+
+INSERT INTO PhanQuyen (VaiTro, ManHinhID)
+VALUES 
+    (N'Quản lý', 1),
+    (N'Quản lý', 2),
+    (N'Quản lý', 3),
+    (N'Quản lý', 4),
+    (N'Nhân viên', 2),
+    (N'Nhân viên', 3);

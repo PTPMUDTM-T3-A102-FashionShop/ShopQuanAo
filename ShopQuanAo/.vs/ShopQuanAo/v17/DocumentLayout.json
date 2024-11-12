@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7EEB472F-339C-4F5F-90A3-852982E63103}|FormShopQuanAo\\FormShopQuanAo.csproj|d:\\pmemudungtminh\\doan\\shopquanao\\shopquanao\\formshopquanao\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{7EEB472F-339C-4F5F-90A3-852982E63103}|FormShopQuanAo\\FormShopQuanAo.csproj|solutionrelative:formshopquanao\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|d:\\pmemudungtminh\\doan\\shopquanao\\shopquanao\\usercontrol\\uclogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|solutionrelative:usercontrol\\uclogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7EEB472F-339C-4F5F-90A3-852982E63103}|FormShopQuanAo\\FormShopQuanAo.csproj|D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\formshopquanao\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -13,6 +13,14 @@
     {
       "AbsoluteMoniker": "D:0:0:{7EEB472F-339C-4F5F-90A3-852982E63103}|FormShopQuanAo\\FormShopQuanAo.csproj|D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\formshopquanao\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7EEB472F-339C-4F5F-90A3-852982E63103}|FormShopQuanAo\\FormShopQuanAo.csproj|solutionrelative:formshopquanao\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|d:\\pmemudungtminh\\doan\\shopquanao\\shopquanao\\usercontrol\\uclogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|solutionrelative:usercontrol\\uclogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EEB472F-339C-4F5F-90A3-852982E63103}|FormShopQuanAo\\FormShopQuanAo.csproj|d:\\pmemudungtminh\\doan\\shopquanao\\shopquanao\\formshopquanao\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7EEB472F-339C-4F5F-90A3-852982E63103}|FormShopQuanAo\\FormShopQuanAo.csproj|solutionrelative:formshopquanao\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,13 +34,50 @@
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Login.cs [Design]",
+              "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\FormShopQuanAo\\Login.cs",
+              "RelativeDocumentMoniker": "FormShopQuanAo\\Login.cs",
+              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\FormShopQuanAo\\Login.cs [Design]",
+              "RelativeToolTip": "FormShopQuanAo\\Login.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T17:18:04.838Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ucLogin.cs",
+              "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\userControl\\ucLogin.cs",
+              "RelativeDocumentMoniker": "userControl\\ucLogin.cs",
+              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\userControl\\ucLogin.cs",
+              "RelativeToolTip": "userControl\\ucLogin.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAMwBIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T16:41:12.789Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ucLogin.cs [Design]",
+              "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\userControl\\ucLogin.cs",
+              "RelativeDocumentMoniker": "userControl\\ucLogin.cs",
+              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\userControl\\ucLogin.cs [Design]",
+              "RelativeToolTip": "userControl\\ucLogin.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T16:21:43.343Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Login.cs",
               "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\FormShopQuanAo\\Login.cs",
               "RelativeDocumentMoniker": "FormShopQuanAo\\Login.cs",
-              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\FormShopQuanAo\\Login.cs*",
-              "RelativeToolTip": "FormShopQuanAo\\Login.cs*",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAtwBIAAAAAAAAAAAAAAA==",
+              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\FormShopQuanAo\\Login.cs",
+              "RelativeToolTip": "FormShopQuanAo\\Login.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAIAwwBIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-31T17:34:20.531Z",
               "EditorCaption": ""
@@ -47,19 +92,8 @@
               "RelativeToolTip": "FormShopQuanAo\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-31T17:16:31.907Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Login.cs [Design]",
-              "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\FormShopQuanAo\\Login.cs",
-              "RelativeDocumentMoniker": "FormShopQuanAo\\Login.cs",
-              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\FormShopQuanAo\\Login.cs [Design]*",
-              "RelativeToolTip": "FormShopQuanAo\\Login.cs [Design]*",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T03:37:06.991Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-10-31T17:16:31.907Z",
+              "EditorCaption": ""
             }
           ]
         }
