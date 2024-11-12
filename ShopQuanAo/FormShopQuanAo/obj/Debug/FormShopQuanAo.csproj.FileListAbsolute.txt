@@ -37,3 +37,5 @@ D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\FormShopQuan
 D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.csproj.CoreCompileInputs.cache
 D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.exe
 D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.pdb
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\userControl.dll
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\userControl.pdb
