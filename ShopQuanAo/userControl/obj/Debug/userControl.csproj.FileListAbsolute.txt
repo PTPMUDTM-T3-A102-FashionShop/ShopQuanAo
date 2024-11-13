@@ -26,3 +26,13 @@ C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\userContr
 C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\DTO.pdb
 C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\DAL.pdb
 C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\UserControl.csprojResolveAssemblyReference.cache
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\FormShopQuanAo.exe
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\FormShopQuanAo.pdb
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\FormShopQuanAo.exe.config
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\BLL.dll
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\DTO.dll
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\DAL.dll
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\BLL.pdb
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\DTO.pdb
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\DTO.dll.config
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\DAL.pdb
