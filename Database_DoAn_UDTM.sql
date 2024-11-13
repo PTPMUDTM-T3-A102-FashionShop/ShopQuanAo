@@ -16,7 +16,7 @@ CREATE TABLE NguoiDung (
     MaNhomNguoiDung INT,
     NgayTao DATETIME DEFAULT GETDATE(),
 	GioiTinh NVARCHAR(10) NULL,              
-    KichHoat BIT DEFAULT 1
+    KichHoat BIT DEFAULT 1,
     FOREIGN KEY (MaNhomNguoiDung) REFERENCES NhomNguoiDung(MaNhomNguoiDung)
 );    
 
@@ -47,12 +47,9 @@ CREATE TABLE SanPham (
     SanPhamID INT PRIMARY KEY IDENTITY(1,1),
     TenSanPham NVARCHAR(100) NOT NULL,
     MoTa NVARCHAR(MAX),
-    Gia DECIMAL(18, 2) NOT NULL,
-    SoLuongTonKho INT NOT NULL,
     DanhMucID INT,
     NhaCungCapID INT,
-    HinhAnhUrl NVARCHAR(255),
-    NgayTao DATETIME DEFAULT GETDATE(),
+	SoLuongDaBan INT DEFAULT 0,
     KichHoat BIT DEFAULT 1,
     FOREIGN KEY (DanhMucID) REFERENCES DanhMuc(DanhMucID),
     FOREIGN KEY (NhaCungCapID) REFERENCES NhaCungCap(NhaCungCapID)
@@ -76,9 +73,10 @@ CREATE TABLE ChiTietSanPham (
     SanPhamID INT NOT NULL,
     MauID INT NOT NULL,
     SizeID INT NOT NULL,
+	Gia DECIMAL(18, 2) NOT NULL,
+	HinhAnhUrl NVARCHAR(255),
     SoLuongTonKho INT NOT NULL,
     NgayTao DATETIME DEFAULT GETDATE(),
-    KichHoat BIT DEFAULT 1,
     FOREIGN KEY (SanPhamID) REFERENCES SanPham(SanPhamID),
     FOREIGN KEY (MauID) REFERENCES Mau(MauID),
     FOREIGN KEY (SizeID) REFERENCES Size(SizeID),
@@ -117,24 +115,24 @@ CREATE TABLE PhanHoi (
     FOREIGN KEY (SanPhamID) REFERENCES SanPham(SanPhamID),
     FOREIGN KEY (NguoiDungID) REFERENCES NguoiDung(NguoiDungID)
 );
-CREATE TABLE KhachHang (
-    KhachHangID INT PRIMARY KEY IDENTITY(1,1),
-    NguoiDungID INT NOT NULL UNIQUE,
-	Email NVARCHAR(MAX),
-
-    FOREIGN KEY (NguoiDungID) REFERENCES NguoiDung(NguoiDungID)
-);
 CREATE TABLE ManHinh (
     ManHinhID INT PRIMARY KEY IDENTITY(1,1),
     MaManHinh NVARCHAR(50) UNIQUE NOT NULL, -- Mã màn hình để dùng trong ứng dụng
     TenManHinh NVARCHAR(100) NOT NULL
 );
 CREATE TABLE PhanQuyen (
-    VaiTro NVARCHAR(50) NOT NULL, -- 'Manager' hoặc 'Staff'
+    MaNhomNguoiDung INT NOT NULL,
     ManHinhID INT NOT NULL,
     FOREIGN KEY (ManHinhID) REFERENCES ManHinh(ManHinhID),
-    PRIMARY KEY (VaiTro, ManHinhID)
+	FOREIGN KEY (MaNhomNguoiDung) REFERENCES NhomNguoiDung(MaNhomNguoiDung),
+    PRIMARY KEY (MaNhomNguoiDung, ManHinhID)
 );
+-- Thêm dữ liệu vào bảng DanhMuc
+INSERT INTO DanhMuc (TenDanhMuc)
+VALUES 
+    (N'Áo Thun'),
+    (N'Quần Jean');
+
 -- Thêm dữ liệu vào bảng DanhMuc
 INSERT INTO DanhMuc (TenDanhMuc)
 VALUES 
@@ -148,35 +146,27 @@ VALUES
     (N'Công ty XYZ', N'456 Đường B, Quận 2, TP.HCM', N'0902345678', N'xyz@company.com', N'Nhà cung cấp phụ kiện thời trang');
 
 -- Thêm dữ liệu vào bảng SanPham
-INSERT INTO SanPham (TenSanPham, MoTa, Gia, SoLuongTonKho, DanhMucID, NhaCungCapID, HinhAnhUrl, KichHoat)
+INSERT INTO SanPham (TenSanPham, MoTa, DanhMucID, NhaCungCapID, KichHoat)
 VALUES
-    (N'Áo thun trắng', N'Áo thun trắng cổ tròn', 150000, 100, 1, 1, N'hinh1.jpg', 1),
-    (N'Áo thun đen', N'Áo thun đen cổ tim', 160000, 80, 1, 1, N'hinh2.jpg', 1),
-    (N'Áo thun xanh', N'Áo thun xanh cổ chữ V', 170000, 120, 1, 1, N'hinh3.jpg', 1),
-    (N'Áo thun đỏ', N'Áo thun đỏ cổ tròn', 155000, 90, 1, 2, N'hinh4.jpg', 1),
-    (N'Áo thun vàng', N'Áo thun vàng cổ tròn', 165000, 110, 1, 2, N'hinh5.jpg', 1),
-    (N'Quần jean xanh', N'Quần jean xanh nam', 300000, 50, 2, 1, N'hinh6.jpg', 1),
-    (N'Quần jean đen', N'Quần jean đen nữ', 320000, 60, 2, 1, N'hinh7.jpg', 1),
-    (N'Quần jean xám', N'Quần jean xám nam', 310000, 40, 2, 2, N'hinh8.jpg', 1),
-    (N'Quần jean rách', N'Quần jean rách nữ', 350000, 30, 2, 2, N'hinh9.jpg', 1),
-    (N'Quần jean skinny', N'Quần jean skinny nam', 360000, 25, 2, 2, N'hinh10.jpg', 1),
-    (N'Áo thun cam', N'Áo thun cam cổ tròn', 150000, 85, 1, 1, N'hinh11.jpg', 1),
-    (N'Áo thun tím', N'Áo thun tím cổ tim', 160000, 95, 1, 1, N'hinh12.jpg', 1),
-    (N'Áo thun nâu', N'Áo thun nâu cổ chữ V', 170000, 75, 1, 2, N'hinh13.jpg', 1),
-    (N'Áo thun hồng', N'Áo thun hồng cổ tròn', 155000, 65, 1, 2, N'hinh14.jpg', 1),
-    (N'Áo thun xám', N'Áo thun xám cổ tròn', 165000, 70, 1, 2, N'hinh15.jpg', 1),
-    (N'Quần jean trắng', N'Quần jean trắng nam', 300000, 45, 2, 1, N'hinh16.jpg', 1),
-    (N'Quần jean xanh đậm', N'Quần jean xanh đậm nữ', 320000, 35, 2, 1, N'hinh17.jpg', 1),
-    (N'Quần jean bạc', N'Quần jean bạc nam', 310000, 55, 2, 2, N'hinh18.jpg', 1),
-    (N'Quần jean lửng', N'Quần jean lửng nữ', 350000, 40, 2, 2, N'hinh19.jpg', 1),
-    (N'Quần jean baggy', N'Quần jean baggy nam', 360000, 50, 2, 2, N'hinh20.jpg', 1);
+    (N'Áo thun trắng', N'Áo thun trắng cổ tròn', 1, 1, 1),
+    (N'Áo thun đen', N'Áo thun đen cổ tim', 1, 1, 1),
+    (N'Áo thun xanh', N'Áo thun xanh cổ chữ V', 1, 1, 1),
+    (N'Áo thun đỏ', N'Áo thun đỏ cổ tròn', 1, 2, 1),
+    (N'Áo thun vàng', N'Áo thun vàng cổ tròn', 1, 2, 1),
+    (N'Quần jean xanh', N'Quần jean xanh nam', 2, 1, 1),
+    (N'Quần jean đen', N'Quần jean đen nữ', 2, 1, 1),
+    (N'Quần jean xám', N'Quần jean xám nam', 2, 2, 1),
+    (N'Quần jean rách', N'Quần jean rách nữ', 2, 2, 1),
+    (N'Quần jean skinny', N'Quần jean skinny nam', 2, 2, 1);
 
+-- Thêm dữ liệu vào bảng NhomNguoiDung
 INSERT INTO NhomNguoiDung (TenNhomNguoiDung)
 VALUES 
     (N'Khách hàng'),
     (N'Nhân viên'),
     (N'Quản lý');
 
+-- Thêm dữ liệu vào bảng Mau
 INSERT INTO Mau (TenMau)
 VALUES 
     (N'Đỏ'),
@@ -191,6 +181,7 @@ VALUES
     (N'Trắng'),
     (N'Đen');
 
+-- Thêm dữ liệu vào bảng Size
 INSERT INTO Size (TenSize)
 VALUES 
     (N'S'),
@@ -199,6 +190,7 @@ VALUES
     (N'XL'),
     (N'XXL');
 
+-- Thêm dữ liệu vào bảng ManHinh
 INSERT INTO ManHinh (MaManHinh, TenManHinh)
 VALUES 
     (N'MH001', N'Màn hình chính'),
@@ -206,11 +198,12 @@ VALUES
     (N'MH003', N'Màn hình quản lý đơn hàng'),
     (N'MH004', N'Màn hình quản lý người dùng');
 
-INSERT INTO PhanQuyen (VaiTro, ManHinhID)
+-- Thêm dữ liệu vào bảng PhanQuyen
+INSERT INTO PhanQuyen (MaNhomNguoiDung, ManHinhID)
 VALUES 
-    (N'Quản lý', 1),
-    (N'Quản lý', 2),
-    (N'Quản lý', 3),
-    (N'Quản lý', 4),
-    (N'Nhân viên', 2),
-    (N'Nhân viên', 3);
+    (3, 1), -- Quản lý có quyền trên màn hình chính
+    (3, 2), -- Quản lý có quyền trên màn hình quản lý sản phẩm
+    (3, 3), -- Quản lý có quyền trên màn hình quản lý đơn hàng
+    (3, 4), -- Quản lý có quyền trên màn hình quản lý người dùng
+    (2, 2), -- Nhân viên có quyền trên màn hình quản lý sản phẩm
+    (2, 3); -- Nhân viên có quyền trên màn hình quản lý đơn hàng
