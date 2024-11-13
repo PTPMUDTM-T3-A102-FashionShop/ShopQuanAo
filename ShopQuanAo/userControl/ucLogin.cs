@@ -61,9 +61,9 @@ namespace userControl
                 if (count > 0)
                 {
                     // Đóng form hiện tại và mở Form1
-                    FormShopQuanAo.Form1 form1 = new FormShopQuanAo.Form1();
-                    form1.Show();
-                    this.ParentForm.Hide(); // Đóng form hiện tại
+                    //FormShopQuanAo.Form1 form1 = new FormShopQuanAo.Form1();
+                    //form1.Show();
+                    //this.ParentForm.Hide(); // Đóng form hiện tại
                 }
                 else
                 {

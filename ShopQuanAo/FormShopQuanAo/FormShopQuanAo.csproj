@@ -75,42 +75,42 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBConnection.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Image\loginbg.webp" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -140,6 +140,63 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\whome.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\bhome.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\account.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\bana.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\bbrand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\bcat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\bpro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\lhome.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\wana.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\wbrand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\wcat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\wpro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\wuser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\bo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\wo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
