@@ -39,3 +39,17 @@ D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\FormShopQuan
 D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.pdb
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\userControl.dll
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\userControl.pdb
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\FormShopQuanAo.exe.config
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\FormShopQuanAo.exe
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\FormShopQuanAo.pdb
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\Guna.UI2.dll
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\userControl.dll
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\userControl.pdb
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.csproj.AssemblyReference.cache
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.Login.resources
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.Properties.Resources.resources
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.csproj.GenerateResource.cache
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.csproj.CoreCompileInputs.cache
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.csproj.CopyComplete
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.exe
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.pdb
