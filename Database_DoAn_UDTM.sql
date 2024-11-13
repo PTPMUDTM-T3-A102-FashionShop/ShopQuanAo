@@ -49,6 +49,7 @@ CREATE TABLE SanPham (
     MoTa NVARCHAR(MAX),
     DanhMucID INT,
     NhaCungCapID INT,
+	SoLuongDaBan INT DEFAULT 0,
     KichHoat BIT DEFAULT 1,
     FOREIGN KEY (DanhMucID) REFERENCES DanhMuc(DanhMucID),
     FOREIGN KEY (NhaCungCapID) REFERENCES NhaCungCap(NhaCungCapID)
