@@ -1,0 +1,5 @@
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\DTO\bin\Debug\DTO.dll
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\DTO\bin\Debug\DTO.pdb
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.dll
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.pdb
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\DTO\bin\Debug\DTO.dll.config
