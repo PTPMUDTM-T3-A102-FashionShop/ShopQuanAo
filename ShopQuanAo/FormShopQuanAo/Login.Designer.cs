@@ -34,10 +34,10 @@
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.ucLogin1 = new userControl.ucLogin();
             this.guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.ucLogin1 = new userControl.ucLogin();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
@@ -59,8 +59,9 @@
             this.guna2PictureBox1.Image = global::FormShopQuanAo.Properties.Resources.loginbg;
             this.guna2PictureBox1.ImageRotate = 0F;
             this.guna2PictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(678, 621);
+            this.guna2PictureBox1.Size = new System.Drawing.Size(603, 776);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.guna2PictureBox1.TabIndex = 0;
             this.guna2PictureBox1.TabStop = false;
@@ -73,27 +74,21 @@
             this.guna2Panel1.Controls.Add(this.guna2ControlBox3);
             this.guna2Panel1.Controls.Add(this.guna2ControlBox1);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.guna2Panel1.Location = new System.Drawing.Point(678, 0);
+            this.guna2Panel1.Location = new System.Drawing.Point(603, 0);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(340, 621);
+            this.guna2Panel1.Size = new System.Drawing.Size(542, 776);
             this.guna2Panel1.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 19.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(69, 147);
+            this.label1.Location = new System.Drawing.Point(78, 184);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(217, 45);
+            this.label1.Size = new System.Drawing.Size(261, 52);
             this.label1.TabIndex = 5;
             this.label1.Text = "ĐĂNG NHẬP";
-            // 
-            // ucLogin1
-            // 
-            this.ucLogin1.Location = new System.Drawing.Point(25, 219);
-            this.ucLogin1.Name = "ucLogin1";
-            this.ucLogin1.Size = new System.Drawing.Size(303, 229);
-            this.ucLogin1.TabIndex = 4;
             // 
             // guna2ControlBox3
             // 
@@ -104,9 +99,10 @@
             this.guna2ControlBox3.HoverState.FillColor = System.Drawing.Color.BurlyWood;
             this.guna2ControlBox3.HoverState.IconColor = System.Drawing.Color.Black;
             this.guna2ControlBox3.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox3.Location = new System.Drawing.Point(233, 12);
+            this.guna2ControlBox3.Location = new System.Drawing.Point(422, 15);
+            this.guna2ControlBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2ControlBox3.Name = "guna2ControlBox3";
-            this.guna2ControlBox3.Size = new System.Drawing.Size(40, 29);
+            this.guna2ControlBox3.Size = new System.Drawing.Size(45, 36);
             this.guna2ControlBox3.TabIndex = 2;
             // 
             // guna2ControlBox1
@@ -117,9 +113,10 @@
             this.guna2ControlBox1.HoverState.FillColor = System.Drawing.Color.Red;
             this.guna2ControlBox1.HoverState.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(288, 12);
+            this.guna2ControlBox1.Location = new System.Drawing.Point(484, 15);
+            this.guna2ControlBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
-            this.guna2ControlBox1.Size = new System.Drawing.Size(40, 29);
+            this.guna2ControlBox1.Size = new System.Drawing.Size(45, 36);
             this.guna2ControlBox1.TabIndex = 0;
             // 
             // guna2Panel2
@@ -127,20 +124,30 @@
             this.guna2Panel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel2.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Panel2.Location = new System.Drawing.Point(678, 0);
+            this.guna2Panel2.Location = new System.Drawing.Point(603, 0);
+            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(0, 41);
+            this.guna2Panel2.Size = new System.Drawing.Size(0, 51);
             this.guna2Panel2.TabIndex = 2;
+            // 
+            // ucLogin1
+            // 
+            this.ucLogin1.Location = new System.Drawing.Point(6, 275);
+            this.ucLogin1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.ucLogin1.Name = "ucLogin1";
+            this.ucLogin1.Size = new System.Drawing.Size(507, 326);
+            this.ucLogin1.TabIndex = 4;
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1018, 621);
+            this.ClientSize = new System.Drawing.Size(1145, 776);
             this.Controls.Add(this.guna2Panel2);
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.guna2PictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";

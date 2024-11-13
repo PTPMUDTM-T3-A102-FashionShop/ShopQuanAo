@@ -1,0 +1,7 @@
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\DAL\bin\Debug\DAL.dll
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\DAL\bin\Debug\DAL.pdb
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\DAL\bin\Debug\DTO.dll
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\DAL\bin\Debug\DTO.pdb
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.dll
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.pdb
+C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
