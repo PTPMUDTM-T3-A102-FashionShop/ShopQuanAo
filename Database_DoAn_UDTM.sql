@@ -207,3 +207,14 @@ VALUES
     (3, 4), -- Quản lý có quyền trên màn hình quản lý người dùng
     (2, 2), -- Nhân viên có quyền trên màn hình quản lý sản phẩm
     (2, 3); -- Nhân viên có quyền trên màn hình quản lý đơn hàng
+
+INSERT INTO NguoiDung (TenDangNhap, MatKhau, HoTen, Email, SoDienThoai, DiaChi, NgaySinh, MaNhomNguoiDung, GioiTinh, KichHoat)
+VALUES
+    (N'khachhang1', N'password1', N'Nguyen Van A', N'khachhang1@example.com', N'0912345678', N'123 Street A', '1990-01-01', 1, N'Nam', 1),
+    (N'khachhang2', N'password2', N'Le Thi B', N'khachhang2@example.com', N'0922345678', N'456 Street B', '1991-02-02', 1, N'Nữ', 1),
+    (N'nhanvien1', N'password3', N'Tran Van C', N'nhanvien1@example.com', N'0932345678', N'789 Street C', '1988-03-03', 2, N'Nam', 1),
+    (N'nhanvien2', N'password4', N'Pham Thi D', N'nhanvien2@example.com', N'0942345678', N'101 Street D', '1992-04-04', 2, N'Nữ', 1),
+    (N'nhanvien3', N'password5', N'Hoang Van E', N'nhanvien3@example.com', N'0952345678', N'202 Street E', '1993-05-05', 2, N'Nam', 1),
+    (N'quanly1', N'password6', N'Vo Thi F', N'quanly1@example.com', N'0962345678', N'303 Street F', '1985-06-06', 3, N'Nữ', 1),
+    (N'quanly2', N'password7', N'Dang Van G', N'quanly2@example.com', N'0972345678', N'404 Street G', '1987-07-07', 3, N'Nam', 1);
+
