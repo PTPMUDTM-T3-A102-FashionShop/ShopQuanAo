@@ -31,17 +31,17 @@
             this.components = new System.ComponentModel.Container();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.ucLogin1 = new userControl.ucLogin();
-            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Elipse1
@@ -55,12 +55,24 @@
             this.guna2DragControl1.TargetControl = this.guna2PictureBox1;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.guna2PictureBox1.Image = global::FormShopQuanAo.Properties.Resources.loginbg;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(595, 621);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.guna2PictureBox1.TabIndex = 0;
+            this.guna2PictureBox1.TabStop = false;
+            // 
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.guna2Panel1.Controls.Add(this.ucLogin1);
             this.guna2Panel1.Controls.Add(this.guna2PictureBox2);
             this.guna2Panel1.Controls.Add(this.label1);
-            this.guna2Panel1.Controls.Add(this.ucLogin1);
             this.guna2Panel1.Controls.Add(this.guna2ControlBox3);
             this.guna2Panel1.Controls.Add(this.guna2ControlBox1);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Right;
@@ -68,6 +80,17 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(423, 621);
             this.guna2Panel1.TabIndex = 1;
+            // 
+            // guna2PictureBox2
+            // 
+            this.guna2PictureBox2.Image = global::FormShopQuanAo.Properties.Resources.logo;
+            this.guna2PictureBox2.ImageRotate = 0F;
+            this.guna2PictureBox2.Location = new System.Drawing.Point(102, 67);
+            this.guna2PictureBox2.Name = "guna2PictureBox2";
+            this.guna2PictureBox2.Size = new System.Drawing.Size(220, 156);
+            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox2.TabIndex = 6;
+            this.guna2PictureBox2.TabStop = false;
             // 
             // label1
             // 
@@ -120,34 +143,10 @@
             // 
             // ucLogin1
             // 
-            this.ucLogin1.Location = new System.Drawing.Point(0, 297);
-            this.ucLogin1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ucLogin1.Location = new System.Drawing.Point(0, 284);
             this.ucLogin1.Name = "ucLogin1";
-            this.ucLogin1.Size = new System.Drawing.Size(417, 261);
-            this.ucLogin1.TabIndex = 4;
-            // 
-            // guna2PictureBox2
-            // 
-            this.guna2PictureBox2.Image = global::FormShopQuanAo.Properties.Resources.logo;
-            this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(102, 67);
-            this.guna2PictureBox2.Name = "guna2PictureBox2";
-            this.guna2PictureBox2.Size = new System.Drawing.Size(220, 156);
-            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox2.TabIndex = 6;
-            this.guna2PictureBox2.TabStop = false;
-            // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2PictureBox1.Image = global::FormShopQuanAo.Properties.Resources.loginbg;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(595, 621);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.guna2PictureBox1.TabIndex = 0;
-            this.guna2PictureBox1.TabStop = false;
+            this.ucLogin1.Size = new System.Drawing.Size(420, 258);
+            this.ucLogin1.TabIndex = 7;
             // 
             // Login
             // 
@@ -161,10 +160,10 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -178,8 +177,8 @@
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox3;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
-        private userControl.ucLogin ucLogin1;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
+        private userControl.ucLogin ucLogin1;
     }
 }

@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FormShopQuanAo">
-      <HintPath>..\FormShopQuanAo\bin\Debug\FormShopQuanAo.exe</HintPath>
+    <Reference Include="BLL">
+      <HintPath>..\BLL\bin\Debug\BLL.dll</HintPath>
     </Reference>
     <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.6\lib\net48\Guna.UI2.dll</HintPath>
@@ -57,6 +57,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ucCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucCategory.Designer.cs">
+      <DependentUpon>ucCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucLogin.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -69,6 +75,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucCategory.resx">
+      <DependentUpon>ucCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucLogin.resx">
       <DependentUpon>ucLogin.cs</DependentUpon>
@@ -85,6 +94,30 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{685fa2da-d8ab-4657-8fe0-06cee617e7bd}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\oadd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wadd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\od.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\oe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\we.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

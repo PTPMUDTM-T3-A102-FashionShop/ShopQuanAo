@@ -18,5 +18,20 @@ namespace BLL
         public List<DanhMuc> getAllDanhMucBLL() {
             return danhMucDAL.getAllDanhMucDAL();
         }
+        public bool AddDanhMuc(DanhMuc newCategory)
+        {
+            return danhMucDAL.AddDanhMuc(newCategory);
+        }
+
+        public bool UpdateDanhMuc(int danhMucID, string newTenDanhMuc)
+        {
+            return danhMucDAL.UpdateDanhMuc(danhMucID, newTenDanhMuc);
+        }
+
+        public bool DeleteDanhMuc(int danhMucID)
+        {
+            return danhMucDAL.DeleteDanhMuc(danhMucID);
+        }
+
     }
 }

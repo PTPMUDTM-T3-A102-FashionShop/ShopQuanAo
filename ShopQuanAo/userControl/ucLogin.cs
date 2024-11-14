@@ -7,29 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FormShopQuanAo;
+using DTO;
+using BLL;
 
 namespace userControl
 {
     public partial class ucLogin : UserControl
     {
-        public DBConnection DbConnection;
+        public event EventHandler LoginSuccess;
+        public NguoiDung User { get; private set; }
+        NguoiDungBLL nguoiDungBLL = new NguoiDungBLL();
         public ucLogin()
         {
             InitializeComponent();
-            DbConnection = new DBConnection();
-
             txtPassword.PasswordChar = '*';
-        }
-
-        private void txtUsername_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtPassword_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -44,41 +35,17 @@ namespace userControl
                 return;
             }
 
-            // Câu lệnh SQL kiểm tra tài khoản và mật khẩu
-            string query = "SELECT COUNT(*) FROM NguoiDung WHERE TenDangNhap = @username AND MatKhau = @password AND KichHoat = 1";
-
-            try
+            // Kiểm tra đăng nhập
+            NguoiDung user = nguoiDungBLL.ValidateUser(username, password);
+            if (user == null)
             {
-                DbConnection.conn.Open();
-                DbConnection.cmd.CommandText = query;
-                DbConnection.cmd.Parameters.Clear();
-                DbConnection.cmd.Parameters.AddWithValue("@username", username);
-                DbConnection.cmd.Parameters.AddWithValue("@password", password);
+                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-                int count = (int)DbConnection.cmd.ExecuteScalar();
-
-                // Nếu có tài khoản hợp lệ
-                if (count > 0)
-                {
-                    // Đóng form hiện tại và mở Form1
-                    //FormShopQuanAo.Form1 form1 = new FormShopQuanAo.Form1();
-                    //form1.Show();
-                    //this.ParentForm.Hide(); // Đóng form hiện tại
-                }
-                else
-                {
-                    // Thông báo lỗi nếu đăng nhập không thành công
-                    MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Có lỗi xảy ra: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                DbConnection.conn.Close();
-            }
+            User = user;
+            // Đăng nhập thành công, gọi sự kiện LoginSuccess
+            LoginSuccess?.Invoke(this, EventArgs.Empty);
         }
 
         private void btnExit_Click(object sender, EventArgs e)

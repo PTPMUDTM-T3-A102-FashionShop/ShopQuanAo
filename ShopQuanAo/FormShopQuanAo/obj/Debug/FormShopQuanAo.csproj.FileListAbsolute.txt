@@ -1,15 +1,3 @@
-D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\FormShopQuanAo.exe.config
-D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\FormShopQuanAo.exe
-D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\FormShopQuanAo.pdb
-D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\Guna.UI2.dll
-D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.csproj.AssemblyReference.cache
-D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.Properties.Resources.resources
-D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.csproj.GenerateResource.cache
-D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.csproj.CoreCompileInputs.cache
-D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShop.05E6FF01.Up2Date
-D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.exe
-D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.pdb
-D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.Login.resources
 D:\HK7\PhatTrienUngDungThongMinh\New folder (2)\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.csproj.AssemblyReference.cache
 D:\HK7\PhatTrienUngDungThongMinh\New folder (2)\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.Login.resources
 D:\HK7\PhatTrienUngDungThongMinh\New folder (2)\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.Properties.Resources.resources
@@ -37,8 +25,6 @@ D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\FormShopQuan
 D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.csproj.CoreCompileInputs.cache
 D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.exe
 D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.pdb
-D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\userControl.dll
-D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\userControl.pdb
 C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\FormShopQuanAo.exe.config
 C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\FormShopQuanAo.exe
 C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\FormShopQuanAo.pdb
@@ -58,11 +44,25 @@ C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\FormShopQ
 C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\DAL.dll
 C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\DAL.pdb
 C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.Form1.resources
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.csproj.AssemblyReference.cache
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.Login.resources
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.Menu.resources
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.Properties.Resources.resources
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.csproj.GenerateResource.cache
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.csproj.CoreCompileInputs.cache
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\FormShopQuanAo.exe.config
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\FormShopQuanAo.exe
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\FormShopQuanAo.pdb
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\BLL.dll
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\DTO.dll
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\Guna.UI2.dll
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\userControl.dll
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\DAL.dll
-D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\BLL.pdb
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\DTO.pdb
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\DTO.dll.config
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\BLL.pdb
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\userControl.pdb
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\bin\Debug\DAL.pdb
-D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.Menu.resources
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShop.05E6FF01.Up2Date
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.exe
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\FormShopQuanAo\obj\Debug\FormShopQuanAo.pdb

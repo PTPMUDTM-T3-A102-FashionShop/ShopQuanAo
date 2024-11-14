@@ -7,3 +7,15 @@ C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\BLL\bin\D
 C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\BLL\obj\Debug\BLL.dll
 C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\BLL\obj\Debug\BLL.pdb
 C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\BLL\bin\Debug\BLL.dll
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\BLL\bin\Debug\BLL.pdb
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\BLL\bin\Debug\DAL.dll
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\BLL\bin\Debug\DTO.dll
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\BLL\bin\Debug\DAL.pdb
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\BLL\bin\Debug\DTO.pdb
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\BLL\bin\Debug\DTO.dll.config
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\BLL\obj\Debug\BLL.csproj.Up2Date
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\BLL\obj\Debug\BLL.dll
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\BLL\obj\Debug\BLL.pdb
