@@ -1,5 +1,4 @@
-﻿Create database DoAnKetMon_UDTM
-use DoAnKetMon_UDTM
+﻿
 CREATE TABLE NhomNguoiDung (
 	MaNhomNguoiDung INT PRIMARY KEY IDENTITY(1,1),
 	TenNhomNguoiDung NVARCHAR(255) NOT NULL,
@@ -19,7 +18,17 @@ CREATE TABLE NguoiDung (
     KichHoat BIT DEFAULT 1,
     FOREIGN KEY (MaNhomNguoiDung) REFERENCES NhomNguoiDung(MaNhomNguoiDung)
 );    
-
+CREATE TABLE ManHinh (
+    MaManHinh NVARCHAR(50) PRIMARY KEY NOT NULL, -- Mã màn hình để dùng trong ứng dụng
+    TenManHinh NVARCHAR(100) NOT NULL
+);
+CREATE TABLE PhanQuyen (
+    MaNhomNguoiDung INT NOT NULL,
+    MaManHinh NVARCHAR(50) NOT NULL,
+    FOREIGN KEY (MaManHinh) REFERENCES ManHinh(MaManHinh),
+	FOREIGN KEY (MaNhomNguoiDung) REFERENCES NhomNguoiDung(MaNhomNguoiDung),
+    PRIMARY KEY (MaNhomNguoiDung, MaManHinh)
+);
 CREATE TABLE ThongTinGiaoHang (
     DiaChiID INT PRIMARY KEY IDENTITY(1,1),
     NguoiDungID INT NOT NULL,
@@ -115,23 +124,6 @@ CREATE TABLE PhanHoi (
     FOREIGN KEY (SanPhamID) REFERENCES SanPham(SanPhamID),
     FOREIGN KEY (NguoiDungID) REFERENCES NguoiDung(NguoiDungID)
 );
-CREATE TABLE ManHinh (
-    ManHinhID INT PRIMARY KEY IDENTITY(1,1),
-    MaManHinh NVARCHAR(50) UNIQUE NOT NULL, -- Mã màn hình để dùng trong ứng dụng
-    TenManHinh NVARCHAR(100) NOT NULL
-);
-CREATE TABLE PhanQuyen (
-    MaNhomNguoiDung INT NOT NULL,
-    ManHinhID INT NOT NULL,
-    FOREIGN KEY (ManHinhID) REFERENCES ManHinh(ManHinhID),
-	FOREIGN KEY (MaNhomNguoiDung) REFERENCES NhomNguoiDung(MaNhomNguoiDung),
-    PRIMARY KEY (MaNhomNguoiDung, ManHinhID)
-);
--- Thêm dữ liệu vào bảng DanhMuc
-INSERT INTO DanhMuc (TenDanhMuc)
-VALUES 
-    (N'Áo Thun'),
-    (N'Quần Jean');
 
 -- Thêm dữ liệu vào bảng DanhMuc
 INSERT INTO DanhMuc (TenDanhMuc)
@@ -194,19 +186,28 @@ VALUES
 INSERT INTO ManHinh (MaManHinh, TenManHinh)
 VALUES 
     (N'MH001', N'Màn hình chính'),
-    (N'MH002', N'Màn hình quản lý sản phẩm'),
-    (N'MH003', N'Màn hình quản lý đơn hàng'),
-    (N'MH004', N'Màn hình quản lý người dùng');
+    (N'MH002', N'Màn hình loại sản phẩm'),
+    (N'MH003', N'Màn hình sản phẩm'),
+    (N'MH004', N'Màn hình nhà cung cấp'),
+	(N'MH005', N'Màn hình đơn hàng'),
+    (N'MH006', N'Màn hình tài khoản'),
+    (N'MH007', N'Màn hình thống kê');
 
 -- Thêm dữ liệu vào bảng PhanQuyen
-INSERT INTO PhanQuyen (MaNhomNguoiDung, ManHinhID)
+INSERT INTO PhanQuyen (MaNhomNguoiDung, MaManHinh)
 VALUES 
-    (3, 1), -- Quản lý có quyền trên màn hình chính
-    (3, 2), -- Quản lý có quyền trên màn hình quản lý sản phẩm
-    (3, 3), -- Quản lý có quyền trên màn hình quản lý đơn hàng
-    (3, 4), -- Quản lý có quyền trên màn hình quản lý người dùng
-    (2, 2), -- Nhân viên có quyền trên màn hình quản lý sản phẩm
-    (2, 3); -- Nhân viên có quyền trên màn hình quản lý đơn hàng
+    (3, N'MH001'),
+    (3, N'MH002'),
+    (3, N'MH003'),
+    (3, N'MH004'),
+    (3, N'MH005'),
+    (3, N'MH006'),
+	(3, N'MH007'),
+    (2, N'MH001'),
+    (2, N'MH002'),
+	(2, N'MH003'),
+    (2, N'MH004'),
+    (2, N'MH005');
 
 INSERT INTO NguoiDung (TenDangNhap, MatKhau, HoTen, Email, SoDienThoai, DiaChi, NgaySinh, MaNhomNguoiDung, GioiTinh, KichHoat)
 VALUES

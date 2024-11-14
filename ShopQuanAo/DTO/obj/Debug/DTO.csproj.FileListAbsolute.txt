@@ -3,3 +3,10 @@ C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\DTO\bin\D
 C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.dll
 C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.pdb
 C:\Users\gialo\Desktop\save\doanongdanh\doancode\ShopQuanAo\ShopQuanAo\DTO\bin\Debug\DTO.dll.config
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\DTO\bin\Debug\DTO.dll.config
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\DTO\bin\Debug\DTO.dll
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\DTO\bin\Debug\DTO.pdb
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.csproj.AssemblyReference.cache
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.dll
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.pdb

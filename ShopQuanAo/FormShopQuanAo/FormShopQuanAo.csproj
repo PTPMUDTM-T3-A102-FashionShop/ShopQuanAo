@@ -52,9 +52,6 @@
     <Reference Include="BLL">
       <HintPath>..\BLL\bin\Debug\BLL.dll</HintPath>
     </Reference>
-    <Reference Include="DTO">
-      <HintPath>..\DTO\bin\Debug\DTO.dll</HintPath>
-    </Reference>
     <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.6\lib\net48\Guna.UI2.dll</HintPath>
     </Reference>
@@ -72,6 +69,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="userControl">
+      <HintPath>..\userControl\bin\Debug\userControl.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBConnection.cs" />
@@ -122,12 +122,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Image\loginbg.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\userControl\userControl.csproj">
-      <Project>{58f8b4cf-ec8b-4084-88c4-9bd28303cd01}</Project>
-      <Name>userControl</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -197,6 +191,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Image\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{685fa2da-d8ab-4657-8fe0-06cee617e7bd}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

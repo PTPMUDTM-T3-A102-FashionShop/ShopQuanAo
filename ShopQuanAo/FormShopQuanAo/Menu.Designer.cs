@@ -31,10 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.sideBar = new Guna.UI2.WinForms.Guna2Panel();
+            this.contentPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.btnLogout = new Guna.UI2.WinForms.Guna2Button();
             this.btnTK = new Guna.UI2.WinForms.Guna2Button();
             this.btnUser = new Guna.UI2.WinForms.Guna2Button();
@@ -43,9 +45,8 @@
             this.btnCate = new Guna.UI2.WinForms.Guna2Button();
             this.btnHome = new Guna.UI2.WinForms.Guna2Button();
             this.btnBrand = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2CustomGradientPanel1.SuspendLayout();
-            this.guna2Panel1.SuspendLayout();
+            this.sideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,14 +66,8 @@
             this.guna2CustomGradientPanel1.FillColor4 = System.Drawing.Color.SandyBrown;
             this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
-            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(1315, 45);
+            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(1312, 45);
             this.guna2CustomGradientPanel1.TabIndex = 0;
-            // 
-            // guna2DragControl1
-            // 
-            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2DragControl1.TargetControl = this.guna2CustomGradientPanel1;
-            this.guna2DragControl1.UseTransparentDrag = true;
             // 
             // guna2ControlBox3
             // 
@@ -84,7 +79,7 @@
             this.guna2ControlBox3.HoverState.FillColor = System.Drawing.Color.BurlyWood;
             this.guna2ControlBox3.HoverState.IconColor = System.Drawing.Color.Black;
             this.guna2ControlBox3.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox3.Location = new System.Drawing.Point(1195, 0);
+            this.guna2ControlBox3.Location = new System.Drawing.Point(1192, 0);
             this.guna2ControlBox3.Name = "guna2ControlBox3";
             this.guna2ControlBox3.Size = new System.Drawing.Size(45, 45);
             this.guna2ControlBox3.TabIndex = 4;
@@ -99,28 +94,54 @@
             this.guna2ControlBox1.HoverState.FillColor = System.Drawing.Color.Red;
             this.guna2ControlBox1.HoverState.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(1258, 0);
+            this.guna2ControlBox1.Location = new System.Drawing.Point(1255, 0);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
             this.guna2ControlBox1.Size = new System.Drawing.Size(45, 45);
             this.guna2ControlBox1.TabIndex = 3;
+            this.guna2ControlBox1.Click += new System.EventHandler(this.guna2ControlBox1_Click);
             // 
-            // guna2Panel1
+            // guna2DragControl1
             // 
-            this.guna2Panel1.BackColor = System.Drawing.Color.BlanchedAlmond;
-            this.guna2Panel1.Controls.Add(this.guna2PictureBox1);
-            this.guna2Panel1.Controls.Add(this.btnLogout);
-            this.guna2Panel1.Controls.Add(this.btnTK);
-            this.guna2Panel1.Controls.Add(this.btnUser);
-            this.guna2Panel1.Controls.Add(this.btnSP);
-            this.guna2Panel1.Controls.Add(this.btnOrder);
-            this.guna2Panel1.Controls.Add(this.btnCate);
-            this.guna2Panel1.Controls.Add(this.btnHome);
-            this.guna2Panel1.Controls.Add(this.btnBrand);
-            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2Panel1.Location = new System.Drawing.Point(0, 45);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(211, 706);
-            this.guna2Panel1.TabIndex = 1;
+            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.TargetControl = this.guna2CustomGradientPanel1;
+            this.guna2DragControl1.UseTransparentDrag = true;
+            // 
+            // sideBar
+            // 
+            this.sideBar.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.sideBar.Controls.Add(this.guna2PictureBox1);
+            this.sideBar.Controls.Add(this.btnLogout);
+            this.sideBar.Controls.Add(this.btnTK);
+            this.sideBar.Controls.Add(this.btnUser);
+            this.sideBar.Controls.Add(this.btnSP);
+            this.sideBar.Controls.Add(this.btnOrder);
+            this.sideBar.Controls.Add(this.btnCate);
+            this.sideBar.Controls.Add(this.btnHome);
+            this.sideBar.Controls.Add(this.btnBrand);
+            this.sideBar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.sideBar.Location = new System.Drawing.Point(0, 45);
+            this.sideBar.Name = "sideBar";
+            this.sideBar.Size = new System.Drawing.Size(211, 702);
+            this.sideBar.TabIndex = 1;
+            // 
+            // contentPanel
+            // 
+            this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.contentPanel.Location = new System.Drawing.Point(211, 45);
+            this.contentPanel.Name = "contentPanel";
+            this.contentPanel.Size = new System.Drawing.Size(1101, 702);
+            this.contentPanel.TabIndex = 2;
+            // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.Image = global::FormShopQuanAo.Properties.Resources.logo;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(3, 15);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(200, 179);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox1.TabIndex = 2;
+            this.guna2PictureBox1.TabStop = false;
             // 
             // btnLogout
             // 
@@ -138,10 +159,10 @@
             this.btnLogout.Image = global::FormShopQuanAo.Properties.Resources.logout;
             this.btnLogout.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnLogout.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnLogout.Location = new System.Drawing.Point(12, 592);
+            this.btnLogout.Location = new System.Drawing.Point(3, 592);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnLogout.Size = new System.Drawing.Size(191, 50);
+            this.btnLogout.Size = new System.Drawing.Size(200, 50);
             this.btnLogout.TabIndex = 13;
             this.btnLogout.Text = "Logout";
             this.btnLogout.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -162,10 +183,10 @@
             this.btnTK.Image = global::FormShopQuanAo.Properties.Resources.bana;
             this.btnTK.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnTK.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnTK.Location = new System.Drawing.Point(12, 536);
+            this.btnTK.Location = new System.Drawing.Point(3, 536);
             this.btnTK.Name = "btnTK";
             this.btnTK.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnTK.Size = new System.Drawing.Size(191, 50);
+            this.btnTK.Size = new System.Drawing.Size(200, 50);
             this.btnTK.TabIndex = 11;
             this.btnTK.Text = "Analytics";
             this.btnTK.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -186,10 +207,10 @@
             this.btnUser.Image = global::FormShopQuanAo.Properties.Resources.account;
             this.btnUser.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnUser.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnUser.Location = new System.Drawing.Point(12, 480);
+            this.btnUser.Location = new System.Drawing.Point(3, 480);
             this.btnUser.Name = "btnUser";
             this.btnUser.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnUser.Size = new System.Drawing.Size(191, 50);
+            this.btnUser.Size = new System.Drawing.Size(200, 50);
             this.btnUser.TabIndex = 9;
             this.btnUser.Text = "Users";
             this.btnUser.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -210,10 +231,10 @@
             this.btnSP.Image = global::FormShopQuanAo.Properties.Resources.bpro;
             this.btnSP.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnSP.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnSP.Location = new System.Drawing.Point(12, 312);
+            this.btnSP.Location = new System.Drawing.Point(3, 312);
             this.btnSP.Name = "btnSP";
             this.btnSP.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnSP.Size = new System.Drawing.Size(191, 50);
+            this.btnSP.Size = new System.Drawing.Size(200, 50);
             this.btnSP.TabIndex = 8;
             this.btnSP.Text = "Products";
             this.btnSP.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -234,10 +255,10 @@
             this.btnOrder.Image = global::FormShopQuanAo.Properties.Resources.bo;
             this.btnOrder.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnOrder.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnOrder.Location = new System.Drawing.Point(12, 424);
+            this.btnOrder.Location = new System.Drawing.Point(3, 424);
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnOrder.Size = new System.Drawing.Size(191, 50);
+            this.btnOrder.Size = new System.Drawing.Size(200, 50);
             this.btnOrder.TabIndex = 10;
             this.btnOrder.Text = "Orders";
             this.btnOrder.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -255,16 +276,19 @@
             this.btnCate.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCate.ForeColor = System.Drawing.Color.Black;
             this.btnCate.HoverState.FillColor = System.Drawing.Color.SandyBrown;
+            this.btnCate.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnCate.HoverState.Image = global::FormShopQuanAo.Properties.Resources.wcat;
             this.btnCate.Image = global::FormShopQuanAo.Properties.Resources.bcat;
             this.btnCate.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnCate.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnCate.Location = new System.Drawing.Point(12, 256);
+            this.btnCate.Location = new System.Drawing.Point(3, 256);
             this.btnCate.Name = "btnCate";
             this.btnCate.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnCate.Size = new System.Drawing.Size(191, 50);
+            this.btnCate.Size = new System.Drawing.Size(200, 50);
             this.btnCate.TabIndex = 7;
             this.btnCate.Text = "Categories";
             this.btnCate.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnCate.Click += new System.EventHandler(this.btnCate_Click);
             // 
             // btnHome
             // 
@@ -282,10 +306,10 @@
             this.btnHome.Image = global::FormShopQuanAo.Properties.Resources.whome;
             this.btnHome.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnHome.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnHome.Location = new System.Drawing.Point(12, 200);
+            this.btnHome.Location = new System.Drawing.Point(3, 200);
             this.btnHome.Name = "btnHome";
             this.btnHome.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnHome.Size = new System.Drawing.Size(191, 50);
+            this.btnHome.Size = new System.Drawing.Size(200, 50);
             this.btnHome.TabIndex = 2;
             this.btnHome.Text = "Home";
             this.btnHome.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -306,38 +330,28 @@
             this.btnBrand.Image = global::FormShopQuanAo.Properties.Resources.bbrand;
             this.btnBrand.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnBrand.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnBrand.Location = new System.Drawing.Point(12, 368);
+            this.btnBrand.Location = new System.Drawing.Point(3, 368);
             this.btnBrand.Name = "btnBrand";
             this.btnBrand.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnBrand.Size = new System.Drawing.Size(191, 50);
+            this.btnBrand.Size = new System.Drawing.Size(200, 50);
             this.btnBrand.TabIndex = 12;
             this.btnBrand.Text = "Brands";
             this.btnBrand.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.Image = global::FormShopQuanAo.Properties.Resources.logo;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(3, 15);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(200, 179);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 2;
-            this.guna2PictureBox1.TabStop = false;
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1315, 751);
-            this.Controls.Add(this.guna2Panel1);
+            this.ClientSize = new System.Drawing.Size(1312, 747);
+            this.Controls.Add(this.contentPanel);
+            this.Controls.Add(this.sideBar);
             this.Controls.Add(this.guna2CustomGradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
             this.guna2CustomGradientPanel1.ResumeLayout(false);
-            this.guna2Panel1.ResumeLayout(false);
+            this.sideBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -350,7 +364,7 @@
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox3;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2Panel sideBar;
         private Guna.UI2.WinForms.Guna2Button btnHome;
         private Guna.UI2.WinForms.Guna2Button btnCate;
         private Guna.UI2.WinForms.Guna2Button btnTK;
@@ -360,5 +374,6 @@
         private Guna.UI2.WinForms.Guna2Button btnBrand;
         private Guna.UI2.WinForms.Guna2Button btnLogout;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
+        private Guna.UI2.WinForms.Guna2Panel contentPanel;
     }
 }
