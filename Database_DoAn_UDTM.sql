@@ -1,4 +1,5 @@
-﻿
+﻿Create database DoAnKetMon_UDTM
+use DoAnKetMon_UDTM
 CREATE TABLE NhomNguoiDung (
 	MaNhomNguoiDung INT PRIMARY KEY IDENTITY(1,1),
 	TenNhomNguoiDung NVARCHAR(255) NOT NULL,

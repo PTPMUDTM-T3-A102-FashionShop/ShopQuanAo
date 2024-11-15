@@ -64,6 +64,7 @@ namespace userControl
             {
                 MessageBox.Show("Đã xảy ra lỗi khi thêm danh mục.");
             }
+            txtCate.Text = string.Empty;
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -90,6 +91,8 @@ namespace userControl
                     MessageBox.Show("Đã xảy ra lỗi khi xóa danh mục.");
                 }
             }
+            txtCate.Text = string.Empty;
+
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -118,9 +121,11 @@ namespace userControl
             {
                 MessageBox.Show("Đã xảy ra lỗi khi cập nhật danh mục.");
             }
+            txtCate.Text = string.Empty;
+
         }
 
-        
+
 
         private void dgvCate_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -132,6 +137,22 @@ namespace userControl
                 txtCate.Text = tenDanhMuc;
 
                 selectedCategoryId = int.Parse(selectedRow.Cells["DanhMucID"].Value.ToString());
+
+                DanhMucBLL danhMucBLL = new DanhMucBLL();
+                List<SanPham> productList = danhMucBLL.GetSanPhamByDanhMucIDBLL(selectedCategoryId);
+
+                dgvSP.DataSource = productList;
+
+                dgvSP.Columns["SanPhamID"].Visible = false;
+                dgvSP.Columns["DanhMuc"].Visible = false;
+                dgvSP.Columns["NhaCungCap"].Visible = false;
+                dgvSP.Columns["DanhMucID"].Visible = false;
+                dgvSP.Columns["NhaCungCapID"].Visible = false;
+
+                // Cập nhật tiêu đề các cột trong dgvSP
+                dgvSP.Columns["TenSanPham"].HeaderText = "Tên sản phẩm";
+                dgvSP.Columns["MoTa"].HeaderText = "Mô tả";
+                dgvSP.Columns["SoLuongDaBan"].HeaderText = "Số lượng đã bán";
             }
         }
     }

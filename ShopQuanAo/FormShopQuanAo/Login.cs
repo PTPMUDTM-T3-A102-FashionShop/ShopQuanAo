@@ -25,7 +25,7 @@ namespace FormShopQuanAo
             var user = (sender as ucLogin).User; // Truyền thông tin người dùng từ ucLogin
 
             this.Hide();
-            Menu menuForm = new Menu(user); // Truyền người dùng vào form Menu
+            Menu menuForm = new Menu(user);
             menuForm.Show();
         }
     }

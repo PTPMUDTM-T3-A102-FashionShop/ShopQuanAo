@@ -10,6 +10,8 @@ namespace BLL
     public class DanhMucBLL
     {
         DanhMucDAL danhMucDAL = new DanhMucDAL();
+        SanPhamDAL sanPhamDAL = new SanPhamDAL();
+
         public DanhMucBLL()
         { 
         
@@ -30,7 +32,17 @@ namespace BLL
 
         public bool DeleteDanhMuc(int danhMucID)
         {
+            if (danhMucDAL.HasProducts(danhMucID))
+            {
+                return false;
+            }
+
             return danhMucDAL.DeleteDanhMuc(danhMucID);
+        }
+
+        public List<SanPham> GetSanPhamByDanhMucIDBLL(int danhMucID)
+        {
+            return sanPhamDAL.GetSanPhamByDanhMucID(danhMucID);
         }
 
     }

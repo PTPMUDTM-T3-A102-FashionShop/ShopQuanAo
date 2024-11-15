@@ -233,6 +233,16 @@ namespace FormShopQuanAo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap wlogout {
+            get {
+                object obj = ResourceManager.GetObject("wlogout", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap wo {
             get {
                 object obj = ResourceManager.GetObject("wo", resourceCulture);
