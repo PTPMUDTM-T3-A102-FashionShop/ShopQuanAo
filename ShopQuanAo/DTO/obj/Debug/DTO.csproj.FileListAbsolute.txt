@@ -10,3 +10,9 @@ D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.csproj.AssemblyRe
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.dll
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.pdb
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\DTO\bin\Debug\DTO.dll.config
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\DTO\bin\Debug\DTO.dll
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\DTO\bin\Debug\DTO.pdb
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.dll
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.pdb

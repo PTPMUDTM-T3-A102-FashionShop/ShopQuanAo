@@ -19,3 +19,15 @@ D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\BLL\obj\Debug\BLL.csproj.CoreCompil
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\BLL\obj\Debug\BLL.csproj.Up2Date
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\BLL\obj\Debug\BLL.dll
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\BLL\obj\Debug\BLL.pdb
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\BLL\bin\Debug\BLL.dll
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\BLL\bin\Debug\BLL.pdb
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\BLL\bin\Debug\DAL.dll
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\BLL\bin\Debug\DTO.dll
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\BLL\bin\Debug\DAL.pdb
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\BLL\bin\Debug\DTO.pdb
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\BLL\obj\Debug\BLL.dll
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\BLL\obj\Debug\BLL.pdb
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\BLL\bin\Debug\DTO.dll.config
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\BLL\obj\Debug\BLL.csproj.CopyComplete

@@ -15,3 +15,13 @@ D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.csproj.CoreCompil
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.csproj.Up2Date
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.dll
 D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.pdb
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\DAL\bin\Debug\DAL.dll
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\DAL\bin\Debug\DAL.pdb
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\DAL\bin\Debug\DTO.dll
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\DAL\bin\Debug\DTO.pdb
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.dll
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.pdb
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\DAL\bin\Debug\DTO.dll.config
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.csproj.CopyComplete

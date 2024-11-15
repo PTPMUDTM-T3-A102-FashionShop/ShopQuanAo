@@ -31,6 +31,12 @@ namespace DAL
                                    select pq.MaManHinh).ToList();
             return userPermissions;
         }
+
+        public List<NguoiDung> getAllNguoiDungDAL()
+        {
+
+            return db.NguoiDungs.Select(nd => nd).ToList<NguoiDung>();
+        }
     }
 }
 
