@@ -22,6 +22,11 @@ namespace BLL
         {
             return nguoiDungDAL.GetUserPermissions(userId);
         }
+
+        public List<NguoiDung> getAllNguoiDungBLL()
+        {
+            return nguoiDungDAL.getAllNguoiDungDAL();
+        }
     }
 }
 

@@ -73,5 +73,10 @@ namespace FormShopQuanAo
             contentPanel.Controls.Add(ucCategory);
         }
 
+        private void btnUser_Click(object sender, EventArgs e)
+        {
+            ucUser ucUser= new ucUser();
+            contentPanel.Controls.Add(ucUser);
+        }
     }
 }
