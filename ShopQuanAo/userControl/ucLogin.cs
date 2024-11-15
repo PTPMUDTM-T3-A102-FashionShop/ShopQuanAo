@@ -44,7 +44,6 @@ namespace userControl
             }
 
             User = user;
-            // Đăng nhập thành công, gọi sự kiện LoginSuccess
             LoginSuccess?.Invoke(this, EventArgs.Empty);
         }
 

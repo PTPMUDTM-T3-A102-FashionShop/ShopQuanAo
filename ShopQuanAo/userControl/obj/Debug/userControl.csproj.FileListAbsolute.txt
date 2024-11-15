@@ -57,3 +57,8 @@ C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\user
 C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.csproj.CopyComplete
 C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.dll
 C:\Users\gialo\Desktop\codemain\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.pdb
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\FormShopQuanAo.exe
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\FormShopQuanAo.pdb
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\FormShopQuanAo.exe.config
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.ucUser.resources
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.ucBrand.resources

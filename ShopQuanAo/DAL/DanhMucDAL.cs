@@ -10,8 +10,8 @@ namespace DAL
     {
         DoAnKetMon_UDTMDataContext qldm = new DoAnKetMon_UDTMDataContext();
         public DanhMucDAL()
-        { 
-        
+        {
+
         }
 
         public List<DanhMuc> getAllDanhMucDAL()
@@ -72,6 +72,11 @@ namespace DAL
                 // Log lỗi nếu cần thiết
                 return false;
             }
+        }
+
+        public bool HasProducts(int danhMucID)
+        {
+            return qldm.SanPhams.Any(sp => sp.DanhMucID == danhMucID);
         }
 
     }
