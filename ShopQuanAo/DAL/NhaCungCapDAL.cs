@@ -78,7 +78,7 @@ namespace DAL
         {
             try
             {
-                var productsCount = doAnKetMon_UDTM.SanPhams.Count(sp => sp.NhaCungCapID == brandID);
+                var productsCount = doAnKetMon_UDTM.NhaCungCapSanPhams.Count(spnc => spnc.NhaCungCapID == brandID);
                 return productsCount > 0;
             }
             catch (Exception)
@@ -86,6 +86,7 @@ namespace DAL
                 return false;
             }
         }
+
 
     }
 }

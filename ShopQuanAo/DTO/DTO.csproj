@@ -65,6 +65,9 @@
       <LastGenOutput>DoAnKetMon_UDTM.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <None Include="DoAnKetMon_UDTM.dbml.layout">
+      <DependentUpon>DoAnKetMon_UDTM.dbml</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -72,11 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="DoAnKetMon_UDTM.dbml.layout">
-      <DependentUpon>DoAnKetMon_UDTM.dbml</DependentUpon>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -37,9 +37,9 @@ namespace BLL
         {
             return nhaCungCapDAL.HasProductsInSanPham(brandID);
         }
-        public List<SanPham> GetSanPhamByNhaCungCapIDBLL(int danhMucID)
+        public List<SanPham> GetSanPhamByNhaCungCapIDBLL(int nhaCungCapID)
         {
-            return sanPhamDAL.GetSanPhamByNhaCungCapID(danhMucID);
+            return sanPhamDAL.GetSanPhamByNhaCungCapID(nhaCungCapID);
         }
     }
 }
