@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DB">
+      <HintPath>..\DB\bin\Debug\DB.dll</HintPath>
+    </Reference>
     <Reference Include="DTO">
       <HintPath>..\DTO\bin\Debug\DTO.dll</HintPath>
     </Reference>
