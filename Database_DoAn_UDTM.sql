@@ -1,4 +1,4 @@
-﻿Create database DoAnKetMon_UDTM
+﻿﻿Create database DoAnKetMon_UDTM
 use DoAnKetMon_UDTM
 CREATE TABLE NhomNguoiDung (
 	MaNhomNguoiDung INT PRIMARY KEY IDENTITY(1,1),
@@ -58,11 +58,9 @@ CREATE TABLE SanPham (
     TenSanPham NVARCHAR(100) NOT NULL,
     MoTa NVARCHAR(MAX),
     DanhMucID INT,
-    NhaCungCapID INT,
 	SoLuongDaBan INT DEFAULT 0,
     KichHoat BIT DEFAULT 1,
-    FOREIGN KEY (DanhMucID) REFERENCES DanhMuc(DanhMucID),
-    FOREIGN KEY (NhaCungCapID) REFERENCES NhaCungCap(NhaCungCapID)
+    FOREIGN KEY (DanhMucID) REFERENCES DanhMuc(DanhMucID)
 );
 CREATE TABLE NhaCungCapSanPham(
 	NhaCungCapID INT,
@@ -139,18 +137,18 @@ VALUES
     (N'Công ty XYZ', N'456 Đường B, Quận 2, TP.HCM', N'0902345678', N'xyz@company.com', N'Nhà cung cấp phụ kiện thời trang');
 
 -- Thêm dữ liệu vào bảng SanPham
-INSERT INTO SanPham (TenSanPham, MoTa, DanhMucID, NhaCungCapID, KichHoat)
+INSERT INTO SanPham (TenSanPham, MoTa, DanhMucID, KichHoat)
 VALUES
-    (N'Áo thun trắng', N'Áo thun trắng cổ tròn', 1, 1, 1),
-    (N'Áo thun đen', N'Áo thun đen cổ tim', 1, 1, 1),
-    (N'Áo thun xanh', N'Áo thun xanh cổ chữ V', 1, 1, 1),
-    (N'Áo thun đỏ', N'Áo thun đỏ cổ tròn', 1, 2, 1),
-    (N'Áo thun vàng', N'Áo thun vàng cổ tròn', 1, 2, 1),
-    (N'Quần jean xanh', N'Quần jean xanh nam', 2, 1, 1),
-    (N'Quần jean đen', N'Quần jean đen nữ', 2, 1, 1),
-    (N'Quần jean xám', N'Quần jean xám nam', 2, 2, 1),
-    (N'Quần jean rách', N'Quần jean rách nữ', 2, 2, 1),
-    (N'Quần jean skinny', N'Quần jean skinny nam', 2, 2, 1);
+    (N'Áo thun trắng', N'Áo thun trắng cổ tròn', 1, 1),
+    (N'Áo thun đen', N'Áo thun đen cổ tim', 1, 1),
+    (N'Áo thun xanh', N'Áo thun xanh cổ chữ V', 1, 1),
+    (N'Áo thun đỏ', N'Áo thun đỏ cổ tròn', 1, 1),
+    (N'Áo thun vàng', N'Áo thun vàng cổ tròn', 1, 1),
+    (N'Quần jean xanh', N'Quần jean xanh nam', 2, 1),
+    (N'Quần jean đen', N'Quần jean đen nữ', 2, 1),
+    (N'Quần jean xám', N'Quần jean xám nam', 2, 1),
+    (N'Quần jean rách', N'Quần jean rách nữ', 2, 1),
+    (N'Quần jean skinny', N'Quần jean skinny nam', 2, 1);
 
 -- Thêm dữ liệu vào bảng NhomNguoiDung
 INSERT INTO NhomNguoiDung (TenNhomNguoiDung)
@@ -219,4 +217,3 @@ VALUES
     (N'nhanvien3', N'password5', N'Hoang Van E', N'nhanvien3@example.com', N'0952345678', N'202 Street E', '1993-05-05', 2, N'Nam', 1),
     (N'quanly1', N'password6', N'Vo Thi F', N'quanly1@example.com', N'0962345678', N'303 Street F', '1985-06-06', 3, N'Nữ', 1),
     (N'quanly2', N'password7', N'Dang Van G', N'quanly2@example.com', N'0972345678', N'404 Street G', '1987-07-07', 3, N'Nam', 1);
-

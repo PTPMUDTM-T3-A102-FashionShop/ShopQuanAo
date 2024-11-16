@@ -35,7 +35,6 @@
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.sideBar = new Guna.UI2.WinForms.Guna2Panel();
-            this.contentPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.btnLogout = new Guna.UI2.WinForms.Guna2Button();
             this.btnTK = new Guna.UI2.WinForms.Guna2Button();
@@ -45,6 +44,7 @@
             this.btnCate = new Guna.UI2.WinForms.Guna2Button();
             this.btnHome = new Guna.UI2.WinForms.Guna2Button();
             this.btnBrand = new Guna.UI2.WinForms.Guna2Button();
+            this.contentPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2CustomGradientPanel1.SuspendLayout();
             this.sideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
@@ -123,15 +123,6 @@
             this.sideBar.Name = "sideBar";
             this.sideBar.Size = new System.Drawing.Size(211, 702);
             this.sideBar.TabIndex = 1;
-            // 
-            // contentPanel
-            // 
-            this.contentPanel.AutoSize = true;
-            this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.contentPanel.Location = new System.Drawing.Point(211, 45);
-            this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(1101, 702);
-            this.contentPanel.TabIndex = 2;
             // 
             // guna2PictureBox1
             // 
@@ -248,6 +239,7 @@
             this.btnSP.TabIndex = 8;
             this.btnSP.Text = "Products";
             this.btnSP.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSP.Click += new System.EventHandler(this.btnSP_Click);
             // 
             // btnOrder
             // 
@@ -354,6 +346,15 @@
             this.btnBrand.Text = "Brands";
             this.btnBrand.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnBrand.Click += new System.EventHandler(this.btnBrand_Click);
+            // 
+            // contentPanel
+            // 
+            this.contentPanel.AutoSize = true;
+            this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.contentPanel.Location = new System.Drawing.Point(211, 45);
+            this.contentPanel.Name = "contentPanel";
+            this.contentPanel.Size = new System.Drawing.Size(1101, 702);
+            this.contentPanel.TabIndex = 2;
             // 
             // Menu
             // 

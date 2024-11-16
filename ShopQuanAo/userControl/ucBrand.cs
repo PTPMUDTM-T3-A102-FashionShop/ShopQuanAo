@@ -171,11 +171,11 @@ namespace userControl
 
                 dgvSP.DataSource = productList;
 
-                dgvSP.Columns["SanPhamID"].Visible = false;
-                dgvSP.Columns["NhaCungCap"].Visible = false;
-                dgvSP.Columns["DanhMuc"].Visible = false;
-                dgvSP.Columns["DanhMucID"].Visible = false;
-                dgvSP.Columns["NhaCungCapID"].Visible = false;
+                //dgvSP.Columns["SanPhamID"].Visible = false;
+                //dgvSP.Columns["NhaCungCap"].Visible = false;
+                //dgvSP.Columns["DanhMuc"].Visible = false;
+                //dgvSP.Columns["DanhMucID"].Visible = false;
+                //dgvSP.Columns["NhaCungCapID"].Visible = false;
 
                 dgvSP.Columns["TenSanPham"].HeaderText = "Tên sản phẩm";
                 dgvSP.Columns["MoTa"].HeaderText = "Mô tả";

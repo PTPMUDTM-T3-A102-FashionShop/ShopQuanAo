@@ -46,3 +46,6 @@ C:\Users\gialo\Desktop\codecodde\ShopQuanAo\ShopQuanAo\BLL\obj\Debug\BLL.pdb
 C:\Users\gialo\Desktop\codecodde\ShopQuanAo\ShopQuanAo\BLL\bin\Debug\DB.dll
 C:\Users\gialo\Desktop\codecodde\ShopQuanAo\ShopQuanAo\BLL\bin\Debug\DB.pdb
 C:\Users\gialo\Desktop\codecodde\ShopQuanAo\ShopQuanAo\BLL\bin\Debug\DB.dll.config
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\BLL\bin\Debug\DB.dll
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\BLL\bin\Debug\DB.pdb
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\BLL\bin\Debug\DB.dll.config

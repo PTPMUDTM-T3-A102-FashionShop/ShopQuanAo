@@ -205,5 +205,12 @@ namespace FormShopQuanAo
             ucBrand ucBrand = new ucBrand();
             contentPanel.Controls.Add(ucBrand);
         }
+
+        private void btnSP_Click(object sender, EventArgs e)
+        {
+            contentPanel.Controls.Clear();
+            ucProduct ucProduct = new ucProduct();
+            contentPanel.Controls.Add(ucProduct);
+        }
     }
 }

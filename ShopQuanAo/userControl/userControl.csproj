@@ -63,6 +63,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ucAddBrand.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucAddBrand.Designer.cs">
+      <DependentUpon>ucAddBrand.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucBrand.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -75,11 +81,23 @@
     <Compile Include="ucCategory.Designer.cs">
       <DependentUpon>ucCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDetail.Designer.cs">
+      <DependentUpon>ucDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucLogin.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ucLogin.Designer.cs">
       <DependentUpon>ucLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucProduct.Designer.cs">
+      <DependentUpon>ucProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="ucUser.cs">
       <SubType>UserControl</SubType>
@@ -94,14 +112,23 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="ucAddBrand.resx">
+      <DependentUpon>ucAddBrand.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucBrand.resx">
       <DependentUpon>ucBrand.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucCategory.resx">
       <DependentUpon>ucCategory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ucDetail.resx">
+      <DependentUpon>ucDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucLogin.resx">
       <DependentUpon>ucLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucProduct.resx">
+      <DependentUpon>ucProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucUser.resx">
       <DependentUpon>ucUser.cs</DependentUpon>
@@ -142,6 +169,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\we.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wde.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wbrand.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

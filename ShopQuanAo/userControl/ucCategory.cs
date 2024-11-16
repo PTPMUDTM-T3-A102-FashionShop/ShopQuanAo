@@ -20,23 +20,23 @@ namespace userControl
         {
             InitializeComponent();
         }
-
+        #region
         private void ucCategory_Load(object sender, EventArgs e)
         {
-            List<DanhMuc> danhMucList = danhMucBLL.getAllDanhMucBLL();
-
-            dgvCate.DataSource = danhMucList;
-
-            //dgvCate.Columns["DanhMucID"].HeaderText = "Mã danh mục";
-            dgvCate.Columns["DanhMucID"].Visible = false;
-            dgvCate.Columns["TenDanhMuc"].HeaderText = "Tên danh mục";
+            if (dgvCate.DataSource == null)
+            {
+                List<DanhMuc> danhMucList = danhMucBLL.getAllDanhMucBLL();
+                dgvCate.DataSource = danhMucList;
+                dgvCate.Columns["DanhMucID"].Visible = false;
+                dgvCate.Columns["TenDanhMuc"].HeaderText = "Tên danh mục";
+            }
         }
         private void LoadDanhMuc()
         {
             DanhMucBLL danhMucBLL = new DanhMucBLL();
             dgvCate.DataSource = danhMucBLL.getAllDanhMucBLL();
         }
-
+        #endregion
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtCate.Text))
@@ -137,23 +137,21 @@ namespace userControl
                 txtCate.Text = tenDanhMuc;
 
                 selectedCategoryId = int.Parse(selectedRow.Cells["DanhMucID"].Value.ToString());
-
-                DanhMucBLL danhMucBLL = new DanhMucBLL();
-                List<SanPham> productList = danhMucBLL.GetSanPhamByDanhMucIDBLL(selectedCategoryId);
-
-                dgvSP.DataSource = productList;
-
-                dgvSP.Columns["SanPhamID"].Visible = false;
-                dgvSP.Columns["DanhMuc"].Visible = false;
-                dgvSP.Columns["NhaCungCap"].Visible = false;
-                dgvSP.Columns["DanhMucID"].Visible = false;
-                dgvSP.Columns["NhaCungCapID"].Visible = false;
-
-                // Cập nhật tiêu đề các cột trong dgvSP
-                dgvSP.Columns["TenSanPham"].HeaderText = "Tên sản phẩm";
-                dgvSP.Columns["MoTa"].HeaderText = "Mô tả";
-                dgvSP.Columns["SoLuongDaBan"].HeaderText = "Số lượng đã bán";
+                LoadSanPhamByDanhMuc(selectedCategoryId);
             }
+        }
+        private void LoadSanPhamByDanhMuc(int danhMucID)
+        {
+            DanhMucBLL danhMucBLL = new DanhMucBLL();
+            List<SanPham> productList = danhMucBLL.GetSanPhamByDanhMucIDBLL(danhMucID);
+            dgvSP.DataSource = productList;
+
+            dgvSP.Columns["SanPhamID"].Visible = false;
+            dgvSP.Columns["DanhMuc"].Visible = false;
+            dgvSP.Columns["DanhMucID"].Visible = false;
+            dgvSP.Columns["TenSanPham"].HeaderText = "Tên sản phẩm";
+            dgvSP.Columns["MoTa"].HeaderText = "Mô tả";
+            dgvSP.Columns["SoLuongDaBan"].HeaderText = "Số lượng đã bán";
         }
     }
 }
