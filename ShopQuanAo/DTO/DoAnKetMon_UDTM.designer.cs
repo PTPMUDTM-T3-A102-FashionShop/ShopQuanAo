@@ -323,7 +323,7 @@ namespace DTO
 		
 		private int _SoLuongTonKho;
 		
-		private System.Nullable<System.DateTime> _NgayTao;
+		private System.Nullable<bool> _KichHoat;
 		
 		private EntityRef<Mau> _Mau;
 		
@@ -349,8 +349,8 @@ namespace DTO
     partial void OnHinhAnhUrlChanged();
     partial void OnSoLuongTonKhoChanging(int value);
     partial void OnSoLuongTonKhoChanged();
-    partial void OnNgayTaoChanging(System.Nullable<System.DateTime> value);
-    partial void OnNgayTaoChanged();
+    partial void OnKichHoatChanging(System.Nullable<bool> value);
+    partial void OnKichHoatChanged();
     #endregion
 		
 		public ChiTietSanPham()
@@ -513,22 +513,22 @@ namespace DTO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayTao", DbType="DateTime")]
-		public System.Nullable<System.DateTime> NgayTao
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KichHoat", DbType="Bit")]
+		public System.Nullable<bool> KichHoat
 		{
 			get
 			{
-				return this._NgayTao;
+				return this._KichHoat;
 			}
 			set
 			{
-				if ((this._NgayTao != value))
+				if ((this._KichHoat != value))
 				{
-					this.OnNgayTaoChanging(value);
+					this.OnKichHoatChanging(value);
 					this.SendPropertyChanging();
-					this._NgayTao = value;
-					this.SendPropertyChanged("NgayTao");
-					this.OnNgayTaoChanged();
+					this._KichHoat = value;
+					this.SendPropertyChanged("KichHoat");
+					this.OnKichHoatChanged();
 				}
 			}
 		}

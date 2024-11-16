@@ -10,21 +10,23 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
 using DTO;
-using FormShopQuanAo;
+using DB;
 
 namespace userControl
 {
     public partial class ucUser : UserControl
     {
         private int selectedUserId = -1;
-        private DBConnection dbConnection;  
+        private NguoiDungBLL bl;
+        private DBConnection dbConnection;
+
         public ucUser()
         {
             InitializeComponent();
             dbConnection = new DBConnection();
+            bl = new NguoiDungBLL();
             dgvNguoiDung.CellClick += DgvNguoiDung_CellClick;
 
-            dgvNguoiDung.ReadOnly = true; // Ngăn chặn chỉnh sửa trực tiếp
             // Đặt thuộc tính DropDownStyle cho ComboBox
             cbGioiTinh.DropDownStyle = ComboBoxStyle.DropDownList;
             cbKichHoat.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -36,32 +38,61 @@ namespace userControl
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvNguoiDung.Rows[e.RowIndex];
-                txtTenDangNhap.Text = row.Cells["TenDangNhap"].Value.ToString();
-                txtMatKhau.Text = row.Cells["MatKhau"].Value.ToString();
-                txtHoTen.Text = row.Cells["HoTen"].Value.ToString();
-                txtEmail.Text = row.Cells["Email"].Value.ToString();
-                txtSDT.Text = row.Cells["SoDienThoai"].Value.ToString();
-                txtDiaChi.Text = row.Cells["DiaChi"].Value.ToString();
 
-                // Kiểm tra giá trị của ô NgaySinh
-                if (row.Cells["NgaySinh"].Value != DBNull.Value)
+                if (row.Cells["TenDangNhap"].Value == DBNull.Value ||
+                    row.Cells["MatKhau"].Value == DBNull.Value ||
+                    row.Cells["HoTen"].Value == DBNull.Value ||
+                    row.Cells["Email"].Value == DBNull.Value ||
+                    row.Cells["SoDienThoai"].Value == DBNull.Value ||
+                    row.Cells["DiaChi"].Value == DBNull.Value ||
+                    row.Cells["NgaySinh"].Value == DBNull.Value ||
+                    row.Cells["MaNhomNguoiDung"].Value == DBNull.Value ||
+                    row.Cells["GioiTinh"].Value == DBNull.Value ||
+                    row.Cells["KichHoat"].Value == DBNull.Value)
                 {
-                    txtNgaySinh.Text = Convert.ToDateTime(row.Cells["NgaySinh"].Value).ToString("dd/MM/yyyy");
+                    ClearInputFields();
                 }
                 else
                 {
-                    txtNgaySinh.Text = string.Empty; // Hoặc đặt giá trị mặc định
+                    txtTenDangNhap.Text = row.Cells["TenDangNhap"].Value.ToString();
+                    txtMatKhau.Text = row.Cells["MatKhau"].Value.ToString();
+                    txtHoTen.Text = row.Cells["HoTen"].Value.ToString();
+                    txtEmail.Text = row.Cells["Email"].Value.ToString();
+                    txtSDT.Text = row.Cells["SoDienThoai"].Value.ToString();
+                    txtDiaChi.Text = row.Cells["DiaChi"].Value.ToString();
+
+                    // Kiểm tra giá trị của ô NgaySinh
+                    if (row.Cells["NgaySinh"].Value != DBNull.Value)
+                    {
+                        txtNgaySinh.Text = Convert.ToDateTime(row.Cells["NgaySinh"].Value).ToString("dd/MM/yyyy");
+                    }
+                    else
+                    {
+                        txtNgaySinh.Text = string.Empty; // Hoặc đặt giá trị mặc định
+                    }
+
+                    // Kiểm tra giá trị của ô MaNhomNguoiDung
+                    if (row.Cells["MaNhomNguoiDung"].Value != DBNull.Value)
+                    {
+                        int maNhomNguoiDung = Convert.ToInt32(row.Cells["MaNhomNguoiDung"].Value);
+                        cbNhomNguoiDung.SelectedValue = maNhomNguoiDung;
+                    }
+                    else
+                    {
+                        cbNhomNguoiDung.SelectedIndex = -1; // Hoặc đặt giá trị mặc định
+                    }
+
+                    cbGioiTinh.SelectedItem = row.Cells["GioiTinh"].Value.ToString();
+                    cbKichHoat.SelectedItem = (bool)row.Cells["KichHoat"].Value ? "Đã kích hoạt" : "Chưa kích hoạt";
                 }
-                cbNhomNguoiDung.SelectedValue = row.Cells["MaNhomNguoiDung"].Value;
-                cbGioiTinh.SelectedItem = row.Cells["GioiTinh"].Value.ToString();
-                cbKichHoat.SelectedItem = row.Cells["KichHoatDisplay"].Value.ToString();
             }
         }
 
         private void ucUser_Load(object sender, EventArgs e)
         {
-            LoadNguoiDung();
+            LoadData();
             LoadNhomNguoiDung();
+
             cbGioiTinh.Items.AddRange(new string[] { "Nam", "Nữ" });
             cbKichHoat.Items.AddRange(new string[] { "Đã kích hoạt", "Chưa kích hoạt" });
 
@@ -82,65 +113,16 @@ namespace userControl
             cbKichHoat.SelectedIndex = -1;
         }
 
-        private void EnsureConnectionClosed()
+        private void LoadData()
         {
-            if (dbConnection.conn.State == ConnectionState.Open)
-            {
-                dbConnection.conn.Close();
-            }
+            dgvNguoiDung.DataSource = bl.GetAllNguoiDung();
+            dgvNguoiDung.ReadOnly = true; // Ngăn người dùng chỉnh sửa dữ liệu trực tiếp trên DataGridView
         }
-
-        private void LoadNguoiDung()
-        {
-            try
-            {
-                EnsureConnectionClosed(); // Đảm bảo kết nối đã đóng
-                dbConnection.conn.Open();
-                string query = "SELECT TenDangNhap, MatKhau, HoTen, Email, SoDienThoai, DiaChi, NgaySinh, MaNhomNguoiDung, GioiTinh, KichHoat FROM NguoiDung";
-                SqlDataAdapter da = new SqlDataAdapter(query, dbConnection.conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                // Thêm cột hiển thị KichHoat dưới dạng chuỗi
-                dt.Columns.Add("KichHoatDisplay", typeof(string));
-                foreach (DataRow row in dt.Rows)
-                {
-                    row["KichHoatDisplay"] = (bool)row["KichHoat"] ? "Đã kích hoạt" : "Chưa kích hoạt";
-                }
-
-                dgvNguoiDung.DataSource = dt;
-                dgvNguoiDung.Columns["KichHoat"].Visible = false; // Ẩn cột KichHoat gốc
-                dgvNguoiDung.Columns["KichHoatDisplay"].HeaderText = "Kích Hoạt"; // Đặt tên cho cột hiển thị
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
-
         private void LoadNhomNguoiDung()
         {
-            try
-            {
-                EnsureConnectionClosed(); // Đảm bảo kết nối đã đóng
-                dbConnection.conn.Open();
-                string query = "SELECT MaNhomNguoiDung, TenNhomNguoiDung FROM NhomNguoiDung";
-                SqlDataAdapter da = new SqlDataAdapter(query, dbConnection.conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                cbNhomNguoiDung.DataSource = dt;
-                cbNhomNguoiDung.DisplayMember = "TenNhomNguoiDung";
-                cbNhomNguoiDung.ValueMember = "MaNhomNguoiDung";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-            finally
-            {
-                dbConnection.conn.Close();
-            }
+            cbNhomNguoiDung.DataSource = bl.GetAllNhomNguoiDung();
+            cbNhomNguoiDung.DisplayMember = "TenNhomNguoiDung";
+            cbNhomNguoiDung.ValueMember = "MaNhomNguoiDung";
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -162,29 +144,10 @@ namespace userControl
             }
 
             // Kiểm tra tính duy nhất của TenDangNhap và Email
-            try
+            if (!bl.CheckUnique(txtTenDangNhap.Text, txtEmail.Text))
             {
-                EnsureConnectionClosed(); // Đảm bảo kết nối đã đóng
-                dbConnection.conn.Open();
-                string checkQuery = "SELECT COUNT(*) FROM NguoiDung WHERE TenDangNhap = @TenDangNhap OR Email = @Email";
-                SqlCommand checkCmd = new SqlCommand(checkQuery, dbConnection.conn);
-                checkCmd.Parameters.AddWithValue("@TenDangNhap", txtTenDangNhap.Text);
-                checkCmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-                int count = (int)checkCmd.ExecuteScalar();
-                if (count > 0)
-                {
-                    MessageBox.Show("Tên đăng nhập hoặc Email đã tồn tại.");
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Tên đăng nhập hoặc Email đã tồn tại.");
                 return;
-            }
-            finally
-            {
-                dbConnection.conn.Close();
             }
 
             // Kiểm tra định dạng số điện thoại
@@ -214,36 +177,31 @@ namespace userControl
             // Hỏi người dùng xem có đồng ý thêm không
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thêm người dùng này?", "Xác nhận", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
-            {
-                // Thực hiện chèn dữ liệu vào cơ sở dữ liệu
+            {// Thực hiện chèn dữ liệu vào cơ sở dữ liệu
                 try
                 {
-                    dbConnection.conn.Open();
-                    string insertQuery = "INSERT INTO NguoiDung (TenDangNhap, MatKhau, HoTen, Email, SoDienThoai, DiaChi, NgaySinh, MaNhomNguoiDung, GioiTinh, KichHoat) " +
-                                         "VALUES (@TenDangNhap, @MatKhau, @HoTen, @Email, @SoDienThoai, @DiaChi, @NgaySinh, @MaNhomNguoiDung, @GioiTinh, @KichHoat)";
-                    SqlCommand insertCmd = new SqlCommand(insertQuery, dbConnection.conn);
-                    insertCmd.Parameters.AddWithValue("@TenDangNhap", txtTenDangNhap.Text);
-                    insertCmd.Parameters.AddWithValue("@MatKhau", txtMatKhau.Text);
-                    insertCmd.Parameters.AddWithValue("@HoTen", txtHoTen.Text);
-                    insertCmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-                    insertCmd.Parameters.AddWithValue("@SoDienThoai", txtSDT.Text);
-                    insertCmd.Parameters.AddWithValue("@DiaChi", txtDiaChi.Text);
-                    insertCmd.Parameters.AddWithValue("@NgaySinh", ngaySinh);
-                    insertCmd.Parameters.AddWithValue("@MaNhomNguoiDung", maNhomNguoiDung);
-                    insertCmd.Parameters.AddWithValue("@GioiTinh", gioiTinh);
-                    insertCmd.Parameters.AddWithValue("@KichHoat", kichHoat);
-                    insertCmd.ExecuteNonQuery();
+                    DTO.NguoiDung nguoiDung = new DTO.NguoiDung
+                    {
+                        TenDangNhap = txtTenDangNhap.Text,
+                        MatKhau = txtMatKhau.Text,
+                        HoTen = txtHoTen.Text,
+                        Email = txtEmail.Text,
+                        SoDienThoai = txtSDT.Text,
+                        DiaChi = txtDiaChi.Text,
+                        NgaySinh = ngaySinh,
+                        MaNhomNguoiDung = maNhomNguoiDung,
+                        GioiTinh = gioiTinh,
+                        KichHoat = kichHoat
+                    };
+
+                    bl.InsertNguoiDung(nguoiDung);
                     MessageBox.Show("Thêm người dùng thành công.");
-                    LoadNguoiDung(); // Tải lại dữ liệu sau khi thêm
+                    LoadData(); // Tải lại dữ liệu sau khi thêm
                     ClearInputFields();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: " + ex.Message);
-                }
-                finally
-                {
-                    dbConnection.conn.Close();
                 }
             }
         }
@@ -271,18 +229,8 @@ namespace userControl
             // Lấy NguoiDungID dựa vào TenDangNhap hoặc Email
             try
             {
-                EnsureConnectionClosed(); // Đảm bảo kết nối đã đóng
-                dbConnection.conn.Open();
-                string getIdQuery = "SELECT NguoiDungID FROM NguoiDung WHERE TenDangNhap = @TenDangNhap OR Email = @Email";
-                SqlCommand getIdCmd = new SqlCommand(getIdQuery, dbConnection.conn);
-                getIdCmd.Parameters.AddWithValue("@TenDangNhap", txtTenDangNhap.Text);
-                getIdCmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-                object resultID = getIdCmd.ExecuteScalar();
-                if (resultID != null)
-                {
-                    nguoiDungID = (int)resultID;
-                }
-                else
+                nguoiDungID = GetNguoiDungID(txtTenDangNhap.Text, txtEmail.Text);
+                if (nguoiDungID == -1)
                 {
                     MessageBox.Show("Không tìm thấy người dùng.");
                     return;
@@ -293,36 +241,12 @@ namespace userControl
                 MessageBox.Show("Error: " + ex.Message);
                 return;
             }
-            finally
-            {
-                dbConnection.conn.Close();
-            }
 
             // Kiểm tra tính duy nhất của TenDangNhap và Email (trừ trường hợp không thay đổi)
-            try
+            if (!bl.CheckUnique(txtTenDangNhap.Text, txtEmail.Text, nguoiDungID))
             {
-                EnsureConnectionClosed(); // Đảm bảo kết nối đã đóng
-                dbConnection.conn.Open();
-                string checkQuery = "SELECT COUNT(*) FROM NguoiDung WHERE (TenDangNhap = @TenDangNhap OR Email = @Email) AND NguoiDungID != @NguoiDungID";
-                SqlCommand checkCmd = new SqlCommand(checkQuery, dbConnection.conn);
-                checkCmd.Parameters.AddWithValue("@TenDangNhap", txtTenDangNhap.Text);
-                checkCmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-                checkCmd.Parameters.AddWithValue("@NguoiDungID", nguoiDungID);
-                int count = (int)checkCmd.ExecuteScalar();
-                if (count > 0)
-                {
-                    MessageBox.Show("Tên đăng nhập hoặc Email đã tồn tại.");
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Tên đăng nhập hoặc Email đã tồn tại.");
                 return;
-            }
-            finally
-            {
-                dbConnection.conn.Close();
             }
 
             // Kiểm tra định dạng số điện thoại
@@ -356,35 +280,58 @@ namespace userControl
                 // Thực hiện cập nhật dữ liệu vào cơ sở dữ liệu
                 try
                 {
-                    EnsureConnectionClosed(); // Đảm bảo kết nối đã đóng
-                    dbConnection.conn.Open();
-                    string updateQuery = "UPDATE NguoiDung SET TenDangNhap = @TenDangNhap, MatKhau = @MatKhau, HoTen = @HoTen, Email = @Email, SoDienThoai = @SoDienThoai, DiaChi = @DiaChi, NgaySinh = @NgaySinh, MaNhomNguoiDung = @MaNhomNguoiDung, GioiTinh = @GioiTinh, KichHoat = @KichHoat WHERE NguoiDungID = @NguoiDungID";
-                    SqlCommand updateCmd = new SqlCommand(updateQuery, dbConnection.conn);
-                    updateCmd.Parameters.AddWithValue("@TenDangNhap", txtTenDangNhap.Text);
-                    updateCmd.Parameters.AddWithValue("@MatKhau", txtMatKhau.Text);
-                    updateCmd.Parameters.AddWithValue("@HoTen", txtHoTen.Text);
-                    updateCmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-                    updateCmd.Parameters.AddWithValue("@SoDienThoai", txtSDT.Text);
-                    updateCmd.Parameters.AddWithValue("@DiaChi", txtDiaChi.Text);
-                    updateCmd.Parameters.AddWithValue("@NgaySinh", ngaySinh);
-                    updateCmd.Parameters.AddWithValue("@MaNhomNguoiDung", maNhomNguoiDung);
-                    updateCmd.Parameters.AddWithValue("@GioiTinh", gioiTinh);
-                    updateCmd.Parameters.AddWithValue("@KichHoat", kichHoat);
-                    updateCmd.Parameters.AddWithValue("@NguoiDungID", nguoiDungID);
-                    updateCmd.ExecuteNonQuery();
+                    DTO.NguoiDung nguoiDung = new DTO.NguoiDung
+                    {
+                        NguoiDungID = nguoiDungID,
+                        TenDangNhap = txtTenDangNhap.Text,
+                        MatKhau = txtMatKhau.Text,
+                        HoTen = txtHoTen.Text,
+                        Email = txtEmail.Text,
+                        SoDienThoai = txtSDT.Text,
+                        DiaChi = txtDiaChi.Text,
+                        NgaySinh = ngaySinh,
+                        MaNhomNguoiDung = maNhomNguoiDung,
+                        GioiTinh = gioiTinh,
+                        KichHoat = kichHoat
+                    };
+
+                    bl.UpdateNguoiDung(nguoiDung);
                     MessageBox.Show("Sửa thông tin người dùng thành công.");
-                    LoadNguoiDung(); // Tải lại dữ liệu sau khi sửa
+                    LoadData(); // Tải lại dữ liệu sau khi sửa
                     ClearInputFields();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: " + ex.Message);
                 }
-                finally
+            }
+        }
+
+        private int GetNguoiDungID(string tenDangNhap, string email)
+        {
+            int nguoiDungID = -1;
+            try
+            {
+                dbConnection.conn.Open();
+                string getIdQuery = "SELECT NguoiDungID FROM NguoiDung WHERE TenDangNhap = @TenDangNhap OR Email = @Email";
+                SqlCommand getIdCmd = new SqlCommand(getIdQuery, dbConnection.conn);
+                getIdCmd.Parameters.AddWithValue("@TenDangNhap", tenDangNhap);
+                getIdCmd.Parameters.AddWithValue("@Email", email);
+                object resultID = getIdCmd.ExecuteScalar();
+                if (resultID != null)
                 {
-                    dbConnection.conn.Close();
+                    nguoiDungID = (int)resultID;
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                dbConnection.conn.Close();
+            }
+            return nguoiDungID;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -401,18 +348,8 @@ namespace userControl
             // Lấy NguoiDungID dựa vào TenDangNhap hoặc Email
             try
             {
-                EnsureConnectionClosed(); // Đảm bảo kết nối đã đóng
-                dbConnection.conn.Open();
-                string getIdQuery = "SELECT NguoiDungID FROM NguoiDung WHERE TenDangNhap = @TenDangNhap OR Email = @Email";
-                SqlCommand getIdCmd = new SqlCommand(getIdQuery, dbConnection.conn);
-                getIdCmd.Parameters.AddWithValue("@TenDangNhap", txtTenDangNhap.Text);
-                getIdCmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-                object result = getIdCmd.ExecuteScalar();
-                if (result != null)
-                {
-                    nguoiDungID = (int)result;
-                }
-                else
+                nguoiDungID = GetNguoiDungID(txtTenDangNhap.Text, txtEmail.Text);
+                if (nguoiDungID == -1)
                 {
                     MessageBox.Show("Không tìm thấy người dùng.");
                     return;
@@ -423,10 +360,6 @@ namespace userControl
                 MessageBox.Show("Error: " + ex.Message);
                 return;
             }
-            finally
-            {
-                dbConnection.conn.Close();
-            }
 
             // Hỏi người dùng xem có đồng ý xóa không
             DialogResult resultDialog = MessageBox.Show("Bạn có chắc chắn muốn xóa (vô hiệu hóa) người dùng này?", "Xác nhận", MessageBoxButtons.YesNo);
@@ -435,26 +368,20 @@ namespace userControl
                 // Thực hiện cập nhật giá trị KichHoat thành 0 (Không kích hoạt)
                 try
                 {
-                    EnsureConnectionClosed(); // Đảm bảo kết nối đã đóng
-                    dbConnection.conn.Open();
-                    string updateQuery = "UPDATE NguoiDung SET KichHoat = 0 WHERE NguoiDungID = @NguoiDungID";
-                    SqlCommand updateCmd = new SqlCommand(updateQuery, dbConnection.conn);
-                    updateCmd.Parameters.AddWithValue("@NguoiDungID", nguoiDungID);
-                    updateCmd.ExecuteNonQuery();
+                    bl.DisableNguoiDung(nguoiDungID);
                     MessageBox.Show("Người dùng đã được vô hiệu hóa.");
-                    LoadNguoiDung(); // Tải lại dữ liệu sau khi vô hiệu hóa
+                    LoadData(); // Tải lại dữ liệu sau khi vô hiệu hóa
                     ClearInputFields();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: " + ex.Message);
                 }
-                finally
-                {
-                    dbConnection.conn.Close();
-                }
             }
         }
+
+
+
         private void dgvNguoiDung_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
