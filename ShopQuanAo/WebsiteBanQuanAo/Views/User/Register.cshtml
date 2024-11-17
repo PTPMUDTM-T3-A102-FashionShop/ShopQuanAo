@@ -69,8 +69,6 @@
     @using (Html.BeginForm("Register", "User", FormMethod.Post))
     {
         <input type="hidden" name="role" value="user" />
-
-        @* Các trường trong form *@
         <div class="form-group">
             @Html.LabelFor(model => model.HoTen, "Họ Tên")
             @Html.TextBoxFor(model => model.HoTen, new { @class = "form-control", placeholder = "Nhập họ tên" })

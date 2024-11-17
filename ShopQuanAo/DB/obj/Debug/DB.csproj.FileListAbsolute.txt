@@ -4,3 +4,10 @@ C:\Users\gialo\Desktop\codecodde\ShopQuanAo\ShopQuanAo\DB\bin\Debug\DB.pdb
 C:\Users\gialo\Desktop\codecodde\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.csproj.CoreCompileInputs.cache
 C:\Users\gialo\Desktop\codecodde\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.dll
 C:\Users\gialo\Desktop\codecodde\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.pdb
+D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\DB\bin\Debug\DB.dll.config
+D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\DB\bin\Debug\DB.dll
+D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\DB\bin\Debug\DB.pdb
+D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.csproj.AssemblyReference.cache
+D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.csproj.CoreCompileInputs.cache
+D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.dll
+D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.pdb

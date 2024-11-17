@@ -14,12 +14,6 @@ namespace WebsiteBanQuanAo.Models
     
     public partial class NhaCungCap
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NhaCungCap()
-        {
-            this.SanPhams = new HashSet<SanPham>();
-        }
-    
         public int NhaCungCapID { get; set; }
         public string TenNhaCungCap { get; set; }
         public string DiaChi { get; set; }
@@ -27,8 +21,5 @@ namespace WebsiteBanQuanAo.Models
         public string Email { get; set; }
         public string MoTa { get; set; }
         public Nullable<System.DateTime> NgayHopTac { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SanPham> SanPhams { get; set; }
     }
 }
