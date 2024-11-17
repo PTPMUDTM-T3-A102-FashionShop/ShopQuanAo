@@ -87,6 +87,62 @@ namespace DAL
             }
         }
 
+        public List<NhaCungCap> GetSuppliersByProductID(int sanPhamID)
+        {
+            return (from ncc in doAnKetMon_UDTM.NhaCungCaps
+                    join nccsp in doAnKetMon_UDTM.NhaCungCapSanPhams
+                    on ncc.NhaCungCapID equals nccsp.NhaCungCapID
+                    where nccsp.SanPhamID == sanPhamID
+                    select ncc).ToList();
+        }
+
+        public bool AddSupplierForProduct(int sanPhamID, int nhaCungCapID)
+        {
+            try
+            {
+                // Kiểm tra xem đã tồn tại hay chưa
+                var exists = doAnKetMon_UDTM.NhaCungCapSanPhams
+                                            .Any(nccsp => nccsp.SanPhamID == sanPhamID && nccsp.NhaCungCapID == nhaCungCapID);
+
+                if (exists) return false;
+
+                // Thêm mới
+                var newRelation = new NhaCungCapSanPham
+                {
+                    SanPhamID = sanPhamID,
+                    NhaCungCapID = nhaCungCapID
+                };
+
+                doAnKetMon_UDTM.NhaCungCapSanPhams.InsertOnSubmit(newRelation);
+                doAnKetMon_UDTM.SubmitChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool RemoveSupplierFromProduct(int sanPhamID, int nhaCungCapID)
+        {
+            try
+            {
+                var relation = doAnKetMon_UDTM.NhaCungCapSanPhams
+                                              .SingleOrDefault(nccsp => nccsp.SanPhamID == sanPhamID && nccsp.NhaCungCapID == nhaCungCapID);
+
+                if (relation != null)
+                {
+                    doAnKetMon_UDTM.NhaCungCapSanPhams.DeleteOnSubmit(relation);
+                    doAnKetMon_UDTM.SubmitChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
 
     }
 }

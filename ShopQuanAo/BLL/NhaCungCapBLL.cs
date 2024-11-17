@@ -41,5 +41,22 @@ namespace BLL
         {
             return sanPhamDAL.GetSanPhamByNhaCungCapID(nhaCungCapID);
         }
+
+        public List<NhaCungCap> GetSuppliersByProductIDBLL(int sanPhamID)
+        {
+            return nhaCungCapDAL.GetSuppliersByProductID(sanPhamID);
+        }
+
+        public bool AddSupplierForProductBLL(int sanPhamID, int nhaCungCapID)
+        {
+            return nhaCungCapDAL.AddSupplierForProduct(sanPhamID, nhaCungCapID);
+        }
+
+        public bool RemoveSupplierFromProductBLL(int sanPhamID, int nhaCungCapID)
+        {
+            return nhaCungCapDAL.RemoveSupplierFromProduct(sanPhamID, nhaCungCapID);
+        }
+
+
     }
 }
