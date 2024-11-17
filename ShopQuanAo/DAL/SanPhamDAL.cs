@@ -15,7 +15,7 @@ namespace DAL
         public SanPhamDAL() { }
         public List<SanPham> GetAllSanPham()
         {
-            return doAnKetMon_UDTM.SanPhams.ToList();
+            return doAnKetMon_UDTM.SanPhams.Select(sp => sp).ToList<SanPham>();
         }
         public List<SanPham> GetSanPhamByDanhMucID(int danhMucID)
         {

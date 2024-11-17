@@ -17,6 +17,8 @@ namespace userControl
         DanhMucBLL danhMucBLL = new DanhMucBLL();
         NhaCungCapBLL nhaCungCapBLL = new NhaCungCapBLL();
         SanPhamBLL sanPhamBLL = new SanPhamBLL();
+        public event Action<int> EditBrandRequested;
+        public event Action<int> EditDetailRequested;
         public ucProduct()
         {
             InitializeComponent();
@@ -36,13 +38,17 @@ namespace userControl
             List<SanPham> sanphams = sanPhamBLL.GetAllSanPham();
             dgvSP.DataSource = sanphams;
             dgvSP.Columns["SanPhamID"].Visible = false;
-            dgvSP.Columns["DanhMucID"].Visible = false;
             dgvSP.Columns["DanhMuc"].Visible = false;
+            dgvSP.Columns["DanhMucID"].Visible = false;
+            dgvSP.Columns["TenSanPham"].HeaderText = "Tên sản phẩm";
+            dgvSP.Columns["MoTa"].HeaderText = "Mô tả";
+            dgvSP.Columns["SoLuongDaBan"].HeaderText = "Số lượng đã bán";
         }
 
         private void ucProduct_Load(object sender, EventArgs e)
         {
             loadDanhMuc();
+            loadSanPham();
         }
         #endregion
         private void btnAdd_Click(object sender, EventArgs e)
@@ -148,6 +154,33 @@ namespace userControl
                 rdbOn.Checked = kichHoat;
                 rdbOff.Checked = !kichHoat;
             }
+        }
+
+        private void btnEditBrand_Click(object sender, EventArgs e)
+        {
+            if (dgvSP.SelectedRows.Count > 0)
+            {
+                int sanPhamID = Convert.ToInt32(dgvSP.SelectedRows[0].Cells["SanPhamID"].Value);
+                EditBrandRequested?.Invoke(sanPhamID);
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một sản phẩm để chỉnh sửa thương hiệu!");
+            }
+        }
+
+        private void btnEditDetail_Click(object sender, EventArgs e)
+        {
+            if (dgvSP.SelectedRows.Count > 0)
+            {
+                int sanPhamID = Convert.ToInt32(dgvSP.SelectedRows[0].Cells["SanPhamID"].Value);
+                EditDetailRequested?.Invoke(sanPhamID); // Gửi mã sản phẩm
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một sản phẩm để xem chi tiết!");
+            }
+
         }
     }
 }

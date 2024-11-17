@@ -40,8 +40,8 @@
             this.rdbOff = new System.Windows.Forms.RadioButton();
             this.rdbOn = new System.Windows.Forms.RadioButton();
             this.cbbDanhMuc = new System.Windows.Forms.ComboBox();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.btnAddDetail = new Guna.UI2.WinForms.Guna2Button();
+            this.btnEditBrand = new Guna.UI2.WinForms.Guna2Button();
+            this.btnEditDetail = new Guna.UI2.WinForms.Guna2Button();
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
             this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
             this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
@@ -110,6 +110,7 @@
             this.dgvSP.RowHeadersVisible = false;
             this.dgvSP.RowHeadersWidth = 51;
             this.dgvSP.RowTemplate.Height = 24;
+            this.dgvSP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSP.Size = new System.Drawing.Size(889, 270);
             this.dgvSP.TabIndex = 28;
             this.dgvSP.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSP_CellClick);
@@ -175,47 +176,49 @@
             this.cbbDanhMuc.Size = new System.Drawing.Size(148, 24);
             this.cbbDanhMuc.TabIndex = 49;
             // 
-            // guna2Button1
+            // btnEditBrand
             // 
-            this.guna2Button1.BorderRadius = 10;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.SandyBrown;
-            this.guna2Button1.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Image = global::userControl.Properties.Resources.wbrand;
-            this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button1.ImageOffset = new System.Drawing.Point(5, 0);
-            this.guna2Button1.ImageSize = new System.Drawing.Size(23, 23);
-            this.guna2Button1.Location = new System.Drawing.Point(803, 335);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(192, 45);
-            this.guna2Button1.TabIndex = 51;
-            this.guna2Button1.Text = "Add Brands";
-            this.guna2Button1.TextOffset = new System.Drawing.Point(15, 0);
+            this.btnEditBrand.BorderRadius = 10;
+            this.btnEditBrand.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnEditBrand.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnEditBrand.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnEditBrand.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnEditBrand.FillColor = System.Drawing.Color.SandyBrown;
+            this.btnEditBrand.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditBrand.ForeColor = System.Drawing.Color.White;
+            this.btnEditBrand.Image = global::userControl.Properties.Resources.wbrand;
+            this.btnEditBrand.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnEditBrand.ImageOffset = new System.Drawing.Point(2, 0);
+            this.btnEditBrand.ImageSize = new System.Drawing.Size(23, 23);
+            this.btnEditBrand.Location = new System.Drawing.Point(791, 335);
+            this.btnEditBrand.Name = "btnEditBrand";
+            this.btnEditBrand.Size = new System.Drawing.Size(204, 45);
+            this.btnEditBrand.TabIndex = 51;
+            this.btnEditBrand.Text = "Edit Brands";
+            this.btnEditBrand.TextOffset = new System.Drawing.Point(15, 0);
+            this.btnEditBrand.Click += new System.EventHandler(this.btnEditBrand_Click);
             // 
-            // btnAddDetail
+            // btnEditDetail
             // 
-            this.btnAddDetail.BorderRadius = 10;
-            this.btnAddDetail.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnAddDetail.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnAddDetail.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnAddDetail.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnAddDetail.FillColor = System.Drawing.Color.SandyBrown;
-            this.btnAddDetail.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddDetail.ForeColor = System.Drawing.Color.White;
-            this.btnAddDetail.Image = global::userControl.Properties.Resources.wde;
-            this.btnAddDetail.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnAddDetail.ImageOffset = new System.Drawing.Point(5, 0);
-            this.btnAddDetail.ImageSize = new System.Drawing.Size(23, 23);
-            this.btnAddDetail.Location = new System.Drawing.Point(593, 335);
-            this.btnAddDetail.Name = "btnAddDetail";
-            this.btnAddDetail.Size = new System.Drawing.Size(192, 45);
-            this.btnAddDetail.TabIndex = 42;
-            this.btnAddDetail.Text = "Add Details";
-            this.btnAddDetail.TextOffset = new System.Drawing.Point(15, 0);
+            this.btnEditDetail.BorderRadius = 10;
+            this.btnEditDetail.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnEditDetail.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnEditDetail.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnEditDetail.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnEditDetail.FillColor = System.Drawing.Color.SandyBrown;
+            this.btnEditDetail.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditDetail.ForeColor = System.Drawing.Color.White;
+            this.btnEditDetail.Image = global::userControl.Properties.Resources.wde;
+            this.btnEditDetail.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnEditDetail.ImageOffset = new System.Drawing.Point(2, 0);
+            this.btnEditDetail.ImageSize = new System.Drawing.Size(23, 23);
+            this.btnEditDetail.Location = new System.Drawing.Point(583, 335);
+            this.btnEditDetail.Name = "btnEditDetail";
+            this.btnEditDetail.Size = new System.Drawing.Size(202, 45);
+            this.btnEditDetail.TabIndex = 42;
+            this.btnEditDetail.Text = "Edit Details";
+            this.btnEditDetail.TextOffset = new System.Drawing.Point(15, 0);
+            this.btnEditDetail.Click += new System.EventHandler(this.btnEditDetail_Click);
             // 
             // btnDelete
             // 
@@ -231,7 +234,7 @@
             this.btnDelete.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnDelete.ImageOffset = new System.Drawing.Point(5, 0);
             this.btnDelete.ImageSize = new System.Drawing.Size(23, 23);
-            this.btnDelete.Location = new System.Drawing.Point(267, 335);
+            this.btnDelete.Location = new System.Drawing.Point(260, 335);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(146, 45);
             this.btnDelete.TabIndex = 31;
@@ -253,7 +256,7 @@
             this.btnEdit.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnEdit.ImageOffset = new System.Drawing.Point(5, 0);
             this.btnEdit.ImageSize = new System.Drawing.Size(23, 23);
-            this.btnEdit.Location = new System.Drawing.Point(432, 335);
+            this.btnEdit.Location = new System.Drawing.Point(422, 335);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(146, 45);
             this.btnEdit.TabIndex = 30;
@@ -287,11 +290,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.guna2Button1);
+            this.Controls.Add(this.btnEditBrand);
             this.Controls.Add(this.cbbDanhMuc);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.btnAddDetail);
+            this.Controls.Add(this.btnEditDetail);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtDes);
             this.Controls.Add(this.label6);
@@ -325,12 +328,12 @@
         private Guna.UI2.WinForms.Guna2Button btnAdd;
         private System.Windows.Forms.DataGridView dgvSP;
         private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2Button btnAddDetail;
+        private Guna.UI2.WinForms.Guna2Button btnEditDetail;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rdbOn;
         private System.Windows.Forms.RadioButton rdbOff;
         private System.Windows.Forms.ComboBox cbbDanhMuc;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button btnEditBrand;
     }
 }

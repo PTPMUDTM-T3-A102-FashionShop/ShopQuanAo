@@ -210,7 +210,46 @@ namespace FormShopQuanAo
         {
             contentPanel.Controls.Clear();
             ucProduct ucProduct = new ucProduct();
+
+            ucProduct.EditBrandRequested += UcProduct_EditBrandRequested1; ;
+            ucProduct.EditDetailRequested += UcProduct_EditDetailRequested1; ;
+
             contentPanel.Controls.Add(ucProduct);
         }
+
+        private void ShowProduct()
+        {
+            contentPanel.Controls.Clear();
+
+            ucProduct ucProduct = new ucProduct();
+            ucProduct.EditBrandRequested += UcProduct_EditBrandRequested1;
+            ucProduct.EditDetailRequested += UcProduct_EditDetailRequested1;
+
+            contentPanel.Controls.Add(ucProduct);
+            ucProduct.Dock = DockStyle.Fill;
+        }
+
+        private void UcProduct_EditDetailRequested1(int sanPhamID)
+        {
+            contentPanel.Controls.Clear();
+
+            ucDetail detailControl = new ucDetail(sanPhamID);
+
+            //detailControl.BackToProductRequested += ShowProduct;
+
+            contentPanel.Controls.Add(detailControl);
+        }
+
+        private void UcProduct_EditBrandRequested1(int sanPhamID)
+        {
+            contentPanel.Controls.Clear();
+
+            ucEditBrand editBrandControl = new ucEditBrand(sanPhamID);
+
+            editBrandControl.BackToProductRequested += ShowProduct;
+
+            contentPanel.Controls.Add(editBrandControl);
+        }
+
     }
 }

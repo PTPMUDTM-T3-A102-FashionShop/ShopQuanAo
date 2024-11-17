@@ -11,3 +11,10 @@ D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\DB\obj\Debug
 D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.csproj.CoreCompileInputs.cache
 D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.dll
 D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.pdb
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\DB\bin\Debug\DB.dll.config
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\DB\bin\Debug\DB.dll
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\DB\bin\Debug\DB.pdb
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.csproj.AssemblyReference.cache
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.csproj.CoreCompileInputs.cache
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.dll
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.pdb

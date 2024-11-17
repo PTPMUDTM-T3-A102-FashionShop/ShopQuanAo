@@ -12,9 +12,11 @@ namespace userControl
 {
     public partial class ucDetail : UserControl
     {
-        public ucDetail()
+        private int sanPhamID;
+        public ucDetail(int sanPhamID)
         {
             InitializeComponent();
+            this.sanPhamID = sanPhamID;
         }
     }
 }

@@ -68,6 +68,7 @@ CREATE TABLE SanPham ( --1 Sản Phẩm Khi Vừa Được Tạo ra bắc buột
 CREATE TABLE NhaCungCapSanPham(
 	NhaCungCapID INT,
 	SanPhamID INT,
+	Primary key (NhaCungCapID,SanPhamID),
     FOREIGN KEY (NhaCungCapID) REFERENCES NhaCungCap(NhaCungCapID),
     FOREIGN KEY (SanPhamID) REFERENCES SanPham(SanPhamID)
 );
