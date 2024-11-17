@@ -8,10 +8,7 @@ namespace WebsiteBanQuanAo.Controllers
 {
     public class CartController : Controller
     {
-        // GET: Cart
-        DoAnKetMon_UDTMEntities db = new DoAnKetMon_UDTMEntities();
-
-        // Lấy ID người dùng hiện tại từ Session
+        DoAnKetMon_UDTMEntities2 db = new DoAnKetMon_UDTMEntities2();
         private int GetCurrentUserId()
         {
             var authCookie = Request.Cookies["auth"];
@@ -26,7 +23,6 @@ namespace WebsiteBanQuanAo.Controllers
             }
             return 0;
         }
-
         private ActionResult CheckUserLoggedIn()
         {
             if (Session["UserID"] == null)
@@ -35,8 +31,6 @@ namespace WebsiteBanQuanAo.Controllers
             }
             return null;
         }
-
-        // GET: Giỏ hàng
         public ActionResult Index()
         {
             CheckUserLoggedIn();
@@ -53,7 +47,7 @@ namespace WebsiteBanQuanAo.Controllers
             {
                 foreach (var item in cart)
                 {
-                    totalPrice += item.SanPham.Gia * item.SoLuong;
+                    totalPrice += item.ChiTietSanPham.Gia * item.SoLuong;
                     totalQuantity += item.SoLuong;
                 }
             }
@@ -62,27 +56,27 @@ namespace WebsiteBanQuanAo.Controllers
             ViewBag.TotalPrice = totalPrice;
             return View(cart);
         }
-
-        // Thêm sản phẩm vào giỏ hàng
-        public ActionResult Add(int? id, string returnUrl)
+        public ActionResult Add(int? id, int? sizeID, int? colorID, string returnUrl)
         {
             var checkLoginResult = CheckUserLoggedIn();
             if (checkLoginResult != null)
             {
                 return checkLoginResult;
             }
-
-            if (id.HasValue)
+            if (id.HasValue && sizeID.HasValue && colorID.HasValue)
             {
-                var product = db.SanPhams.FirstOrDefault(p => p.SanPhamID == id);
-                if (product == null)
+                var productDetail = db.ChiTietSanPhams
+                    .FirstOrDefault(p => p.SanPhamID == id && p.SizeID == sizeID && p.MauID == colorID);
+                if (productDetail == null)
                 {
-                    ModelState.AddModelError("", "Sản phẩm không tồn tại.");
+                    ModelState.AddModelError("", "Sản phẩm với kích thước và màu sắc này không tồn tại.");
                     return RedirectToAction("Index", "Product");
                 }
-
                 int userId = GetCurrentUserId();
-                GioHang cartItem = db.GioHangs.FirstOrDefault(row => row.GioHangID == id && row.NguoiDungID == userId);
+                var cartItem = db.GioHangs.FirstOrDefault(row =>
+                    row.ChiTietSanPham.ChiTietID == productDetail.ChiTietID &&
+                    row.NguoiDungID == userId);
+
                 if (cartItem != null)
                 {
                     cartItem.SoLuong += 1;
@@ -91,7 +85,7 @@ namespace WebsiteBanQuanAo.Controllers
                 {
                     GioHang newCartItem = new GioHang
                     {
-                        SanPhamID = (int)id,
+                        SanPhamID = productDetail.ChiTietID, 
                         SoLuong = 1,
                         NguoiDungID = userId
                     };
@@ -100,15 +94,18 @@ namespace WebsiteBanQuanAo.Controllers
 
                 db.SaveChanges();
             }
+            else
+            {
+                ModelState.AddModelError("", "Vui lòng chọn kích thước và màu sắc.");
+                return RedirectToAction("Details", "Product", new { id = id }); 
+            }
+
             if (!string.IsNullOrEmpty(returnUrl))
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Product");
         }
-
-
-        // Cập nhật số lượng sản phẩm trong giỏ hàng
         public ActionResult UpdateQuantity(int quan, int proid)
         {
             CheckUserLoggedIn();
@@ -126,8 +123,6 @@ namespace WebsiteBanQuanAo.Controllers
             }
             return RedirectToAction("Index");
         }
-
-        // Xóa sản phẩm khỏi giỏ hàng
         public ActionResult DeleteQuantity(int proid)
         {
             CheckUserLoggedIn();
@@ -141,14 +136,6 @@ namespace WebsiteBanQuanAo.Controllers
                 db.SaveChanges();
             }
             return RedirectToAction("Index");
-        }
-
-
-
-
-        public ActionResult ThanhToan()
-        {
-            return View();
         }
     }
 }

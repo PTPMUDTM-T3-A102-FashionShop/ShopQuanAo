@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebsiteBanQuanAo.Models;
-using System.Web.Helpers;
 using BCrypt.Net;
+using WebsiteBanQuanAo.Filters;
+
 namespace WebsiteBanQuanAo.Controllers
 {
     public class UserController : Controller
     {
-        DoAnKetMon_UDTMEntities db = new DoAnKetMon_UDTMEntities();
-        // GET: User
+        DoAnKetMon_UDTMEntities2 db = new DoAnKetMon_UDTMEntities2();
         public ActionResult Index()
         {
             return View();
@@ -23,7 +22,7 @@ namespace WebsiteBanQuanAo.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register([Bind(Include = "HoTen,TenDangNhap,MatKhau,Email,GioiTinh")] NguoiDung newUser)
+        public ActionResult Register([Bind(Include = "HoTen,TenDangNhap,MatKhau,Email,GioiTinh,")] NguoiDung newUser)
         {
             if (ModelState.IsValid)
             {
@@ -32,7 +31,6 @@ namespace WebsiteBanQuanAo.Controllers
                     ModelState.AddModelError("TenDangNhap", "Tên đăng nhập đã tồn tại.");
                     return View(newUser);
                 }
-                // Khởi tạo đối tượng người dùng mới
                 NguoiDung myUser = new NguoiDung
                 {
                     HoTen = newUser.HoTen,
@@ -40,10 +38,10 @@ namespace WebsiteBanQuanAo.Controllers
                     MatKhau = BCrypt.Net.BCrypt.HashPassword(newUser.MatKhau),
                     Email = newUser.Email,
                     GioiTinh = newUser.GioiTinh,
-                    VaiTro = "user",
+                    MaNhomNguoiDung = 1,
                     NgayTao = DateTime.Now,
                     KichHoat = true,
-                };     
+                };
                 db.NguoiDungs.Add(myUser);
                 db.SaveChanges();
                 return RedirectToAction("Login", "User");
@@ -73,13 +71,13 @@ namespace WebsiteBanQuanAo.Controllers
                             Path = "/",
                             HttpOnly = true
                         };
-                        HttpCookie roleCookie = new HttpCookie("role", myUser.VaiTro);
+                        HttpCookie roleCookie = new HttpCookie("role", myUser.NhomNguoiDung.TenNhomNguoiDung);
                         Response.Cookies.Add(authCookie);
                         Response.Cookies.Add(roleCookie);
 
-                        return myUser.VaiTro == "admin"
+                        return myUser.NhomNguoiDung.TenNhomNguoiDung == "Quản lý"
                             ? RedirectToAction("Index", "Home", new { area = "admin" })
-                            : RedirectToAction("Index", "Home");
+                            : RedirectToAction("Index", "Product");
                     }
                 }
                 ModelState.AddModelError("", "Tên đăng nhập hoặc mật khẩu không hợp lệ.");
@@ -97,7 +95,7 @@ namespace WebsiteBanQuanAo.Controllers
                 };
                 Response.Cookies.Add(cookie);
             }
-            Session.Clear(); // Xóa tất cả Session
+            Session.Clear();
             return RedirectToAction("Index", "Home");
         }
     }

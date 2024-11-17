@@ -4,17 +4,21 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebsiteBanQuanAo.Models;
+using WebsiteBanQuanAo.Filters;
 namespace WebsiteBanQuanAo.Controllers
 {
     public class ProductController : Controller
     {
-        // GET: Product
-        DoAnKetMon_UDTMEntities db = new DoAnKetMon_UDTMEntities();
+        DoAnKetMon_UDTMEntities2 db = new DoAnKetMon_UDTMEntities2();
         public ActionResult Index(string search = "", string SortColumn = "Price", string IconClass = "fa-sort-asc", int page = 1)
         {
             var authCookie = Request.Cookies["auth"];
             string tenDangNhap = authCookie != null ? authCookie.Value : null;
-            List<SanPham> lstsp = db.SanPhams.Where(row => row.TenSanPham.Contains(search)).ToList();
+            List<ChiTietSanPham> lstsp = db.ChiTietSanPhams
+             .Where(row => row.SanPham.TenSanPham.Contains(search))
+             .GroupBy(row => row.SanPham.SanPhamID)
+             .Select(group => group.OrderBy(row => row.Gia).FirstOrDefault())
+             .ToList();
             List<DanhMuc> lstdm = db.DanhMucs.ToList();
             List<SanPham> lstsp2 = db.SanPhams.ToList();
             ViewBag.sp = lstsp2;
@@ -28,9 +32,9 @@ namespace WebsiteBanQuanAo.Controllers
             }
             else if (SortColumn == "Name")
             {
-                lstsp = IconClass == "asc" ? lstsp.OrderBy(row => row.TenSanPham).ToList() : lstsp.OrderByDescending(row => row.TenSanPham).ToList();
+                lstsp = IconClass == "asc" ? lstsp.OrderBy(row => row.SanPham.TenSanPham).ToList() : lstsp.OrderByDescending(row => row.SanPham.TenSanPham).ToList();
             }
-            // Phân trang
+         
             int NoOfRecordPerPage = 9;
             int NoOfPages = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(lstsp.Count) / Convert.ToDouble(NoOfRecordPerPage)));
             int NoOfRecordToSkip = (page - 1) * NoOfRecordPerPage;
@@ -56,7 +60,7 @@ namespace WebsiteBanQuanAo.Controllers
 
         public ActionResult Details(int id)
         {
-            SanPham pro = db.SanPhams.Where(x => x.SanPhamID == id).FirstOrDefault();
+            List<ChiTietSanPham> pro = db.ChiTietSanPhams.Where(x => x.SanPhamID == id).ToList();
             int temp = 0;
             if (db.GioHangs != null)
             {
@@ -66,7 +70,62 @@ namespace WebsiteBanQuanAo.Controllers
                 }
             }
             ViewBag.SLSP = temp;
+            ViewBag.sanpham = pro.OrderBy(x => x.Gia).FirstOrDefault();
+            ViewBag.phanhoi = db.PhanHois.Where(x => x.SanPhamID == id).ToList();
             return View(pro);
         }
+        [HttpPost]
+        public ActionResult UpdateOptions(int? sizeID, int? mauID, int sanPhamID)
+        {
+            var db = new DoAnKetMon_UDTMEntities2();
+
+        
+            var gia = db.ChiTietSanPhams
+                        .Where(x => x.SanPhamID == sanPhamID &&
+                                    (sizeID == null || x.SizeID == sizeID) &&
+                                    (mauID == null || x.MauID == mauID))
+                        .Select(x => x.Gia)
+                        .FirstOrDefault();
+
+          
+            var availableColors = db.ChiTietSanPhams
+                                    .Where(x => x.SanPhamID == sanPhamID && (sizeID == null || x.SizeID == sizeID))
+                                    .Select(x => x.Mau)
+                                    .Distinct()
+                                    .ToList();
+
+          
+            var availableSizes = db.ChiTietSanPhams
+                                   .Where(x => x.SanPhamID == sanPhamID && (mauID == null || x.MauID == mauID))
+                                   .Select(x => x.Size)
+                                   .Distinct()
+                                   .ToList();
+
+          
+            ViewBag.Gia = gia;
+            ViewBag.AvailableColors = availableColors;
+            ViewBag.AvailableSizes = availableSizes;
+
+        
+            return View("ChiTiet", db.ChiTietSanPhams.Where(x => x.SanPhamID == sanPhamID).ToList());
+        }
+        public JsonResult GetPrice(int sizeID, int colorID, int productID)
+        {
+            var chiTietSanPham = db.ChiTietSanPhams
+                .Where(c => c.SizeID == sizeID && c.MauID == colorID && c.SanPhamID == productID)
+                .FirstOrDefault();
+
+            if (chiTietSanPham != null)
+            {
+                return Json(new { gia = chiTietSanPham.Gia }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new { gia = 0 }, JsonRequestBehavior.AllowGet); 
+            }
+        }
+
+
+
     }
 }

@@ -1,10 +1,19 @@
-﻿@model List<WebsiteBanQuanAo.Models.SanPham>
+﻿@model List<WebsiteBanQuanAo.Models.ChiTietSanPham>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 @section css{
     <style>
+        .rating {
+            font-size: 1.2em; 
+            color: gold;
+        }
+
+            .rating i {
+                margin-right: 2px; 
+            }
+
         .product-img {
             height: 300px;
             overflow: hidden;
@@ -30,12 +39,12 @@
         }
 
             .smart-suggestion-button:hover {
-                background-color: #0056b3; /* Màu nền khi hover */
-                transform: scale(1.05); /* Phóng to một chút khi hover */
+                background-color: #0056b3; 
+                transform: scale(1.05); 
             }
 
             .smart-suggestion-button:active {
-                transform: scale(0.95); /* Nhỏ lại một chút khi nhấn */
+                transform: scale(0.95); 
             }
     </style>
 }
@@ -53,7 +62,6 @@
         IconClass = "fa-sort-desc";
     }
 }
-<!-- Single Page Header start -->
 <div class="container-fluid page-header py-5">
     <h1 class="text-center text-white display-6">Sản Phẩm</h1>
     <ol class="breadcrumb justify-content-center mb-0">
@@ -62,8 +70,6 @@
         <li class="breadcrumb-item active text-white">Shop</li>
     </ol>
 </div>
-<!-- Single Page Header End -->
-<!-- Fruits Shop Start-->
 <div class="container-fluid fruite py-5">
     <div class="container py-5">
         <h1 class="mb-4">TÌM KIẾM</h1>
@@ -133,12 +139,6 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-lg-12">
-                                <div class="mb-3">
-                                    <a class="smart-suggestion-button" href="/User/Register">GỢI Ý THÔNG MINH</a>
-
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="col-lg-9">
@@ -154,23 +154,43 @@
                                             </a>
                                         </div>
                                         <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">
-                                            <a href="#">
-                                                @a.DanhMuc.TenDanhMuc
-                                            </a>
+                                            <p>
+                                                @a.SanPham.DanhMuc.TenDanhMuc
+                                            </p>
                                         </div>
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                             <a href="/product/details/@a.SanPhamID">
-                                                <h4>@a.TenSanPham</h4>
+                                                <h4>@a.SanPham.TenSanPham</h4>
                                             </a>
-                                            <div class="d-flex justify-content-between flex-lg-wrap">
-                                                <p class="text-dark fs-5 fw-bold mb-0">@String.Format("{0:n0}", a.Gia) VNĐ</p>
-                                                <a href="@Url.Action("Add", "Cart", new { id = a.SanPhamID , returnUrl = Request.Url.ToString()})" class="btn border border-secondary rounded-pill px-3 text-primary">
-                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Thêm vào giỏ hàng
-                                                </a>
+                                            <a href="/product/details/@a.SanPhamID">
+                                                <h4>@a.Gia</h4>
+                                            </a>
+                                         
+                                            <div class="rating">
+                                                @{
+                                                }
+
+                                                @if (a.SanPham.SoSaoTB != 0)
+                                                {
+                                            
+                                                    for (int i = 1; i <= 5; i++)
+                                                    {
+                                                        <i class="fa fa-star" style="color:@(i <= a.SanPham.SoSaoTB ? "gold" : "gray")"></i>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                    
+                                                    <span>Chưa có đánh giá</span>
+                                                }
                                             </div>
+                                     
+                                            <p class="text-muted mb-2">Đã bán: @a.SanPham.SoLuongDaBan</p>
+
                                         </div>
                                     </div>
                                 </div>
+
                             }
                             <div class="pagination d-flex justify-content-center mt-5">
                                 @{
@@ -186,7 +206,7 @@
                                     }
 
                                     int StartPage = Math.Max(1, ViewBag.Page - 5);
-                                    int EndPage = Math.Min(ViewBag.NoOfPages, StartPage + 9);
+                                    int EndPage = Math.Min(ViewBag.NoOfPages, StartPage + 6);
                                 }
                                 <a href="/Product?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=1" class="rounded">Trang đầu</a>
                                 <a href="/Product?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=@PrevPage" class="rounded">Trang trước</a>
@@ -214,4 +234,4 @@
         </div>
     </div>
 </div>
-<!-- Fruits Shop End-->
+

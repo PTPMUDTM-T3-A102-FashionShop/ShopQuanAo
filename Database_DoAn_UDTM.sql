@@ -1,4 +1,4 @@
-﻿﻿Create database DoAnKetMon_UDTM
+﻿CREATE DATABASE [DoAnKetMon_UDTM]
 use DoAnKetMon_UDTM
 CREATE TABLE NhomNguoiDung (
 	MaNhomNguoiDung INT PRIMARY KEY IDENTITY(1,1),
@@ -7,7 +7,7 @@ CREATE TABLE NhomNguoiDung (
 CREATE TABLE NguoiDung (
     NguoiDungID INT PRIMARY KEY IDENTITY(1,1),
     TenDangNhap NVARCHAR(50) UNIQUE NOT NULL,
-    MatKhau NVARCHAR(20) NOT NULL,
+    MatKhau NVARCHAR(255) NOT NULL,
     HoTen NVARCHAR(100) NOT NULL,
     Email NVARCHAR(100) UNIQUE NOT NULL,
     SoDienThoai NVARCHAR(15),
@@ -19,6 +19,7 @@ CREATE TABLE NguoiDung (
     KichHoat BIT DEFAULT 1,
     FOREIGN KEY (MaNhomNguoiDung) REFERENCES NhomNguoiDung(MaNhomNguoiDung)
 );    
+
 CREATE TABLE ManHinh (
     MaManHinh NVARCHAR(50) PRIMARY KEY NOT NULL, -- Mã màn hình để dùng trong ứng dụng
     TenManHinh NVARCHAR(100) NOT NULL
@@ -36,9 +37,10 @@ CREATE TABLE ThongTinGiaoHang (
     TenNguoiNhan NVARCHAR(100) NOT NULL,
     SoDienThoai NVARCHAR(15) NOT NULL,
     DiaChiGiaoHang NVARCHAR(255) NOT NULL,
-	DiaChiMacDinh BIT DEFAULT 0, -- Địa chỉ mặc định
+	DiaChiMacDinh BIT DEFAULT 0, -- Địa chỉ mặc định 1:mặc định/ 0:không phải mặc định
     FOREIGN KEY (NguoiDungID) REFERENCES NguoiDung(NguoiDungID)
 );
+
 CREATE TABLE DanhMuc (
     DanhMucID INT PRIMARY KEY IDENTITY(1,1),
     TenDanhMuc NVARCHAR(100) NOT NULL
@@ -53,13 +55,14 @@ CREATE TABLE NhaCungCap (
     MoTa NVARCHAR(MAX),
     NgayHopTac DATETIME DEFAULT GETDATE()
 );
-CREATE TABLE SanPham (
+CREATE TABLE SanPham ( --1 Sản Phẩm Khi Vừa Được Tạo ra bắc buột ít nhất phải có 1 CHI TIẾT SẢN PHẨM được tạo ra cùng
     SanPhamID INT PRIMARY KEY IDENTITY(1,1),
     TenSanPham NVARCHAR(100) NOT NULL,
     MoTa NVARCHAR(MAX),
+	SoSaoTB int Default 0, --Số sao của sản phẩm, nếu chưa có đánh giá nào thì mặc định là 0
     DanhMucID INT,
 	SoLuongDaBan INT DEFAULT 0,
-    KichHoat BIT DEFAULT 1,
+    KichHoat BIT DEFAULT 1, --Sản phẩm còn bán trên web hay không (1:Còn,0:Không)
     FOREIGN KEY (DanhMucID) REFERENCES DanhMuc(DanhMucID)
 );
 CREATE TABLE NhaCungCapSanPham(
@@ -84,7 +87,7 @@ CREATE TABLE ChiTietSanPham (
 	Gia DECIMAL(18, 2) NOT NULL,
 	HinhAnhUrl NVARCHAR(255),
     SoLuongTonKho INT NOT NULL,
-	KichHoat BIT DEFAULT 1,
+	KichHoat BIT DEFAULT 1, --Chi tiết của 1 sản phẩm còn bán hay không: 1:có - 0:không
     FOREIGN KEY (SanPhamID) REFERENCES SanPham(SanPhamID),
     FOREIGN KEY (MauID) REFERENCES Mau(MauID),
     FOREIGN KEY (SizeID) REFERENCES Size(SizeID),
@@ -96,22 +99,24 @@ CREATE TABLE DonHang (
 	NhanVienID INT,
     NguoiDungID INT NOT NULL,
     TongTien DECIMAL(18, 2) NOT NULL,
-    TinhTrangDonHang NVARCHAR(50) NOT NULL,
+    TinhTrangDonHang NVARCHAR(50) NOT NULL, --5 trạng thái: Đang xử lý,Đã Xác Nhận, Đang Vận Chuyển,Hoàn Thành,Đã huỷ:Phía web khi người dùng đặt hàng bên web thì đơn hàng sẽ được tạo với trạng thái [Đang xử lý],khi nhân viên xác nhận đơn thì chuyển thành [Đã Xác Nhận] hoặc [Đã Huỷ nếu] nhân viên Huỷ Đơn,[Đã Xác Nhận] --> [Đang Vận Chuyển] khi nhân viên bấm nút vận chuyển(hàm ý là đã giao cho nhân viên vận chuyển).Còn lại bên web xử lý
     NgayDatHang DATETIME DEFAULT GETDATE(),
 	HinhThucThanhToan NVARCHAR(50) NOT NULL,
-    TinhTrangThanhToan NVARCHAR(50) NOT NULL,
+    TinhTrangThanhToan NVARCHAR(50) NOT NULL,-- Đã Thanh Toán/Chưa Thanh Toán
     NgayThanhToan DATETIME DEFAULT GETDATE(),
     FOREIGN KEY (NguoiDungID) REFERENCES NguoiDung(NguoiDungID),
     FOREIGN KEY (NhanVienID) REFERENCES NguoiDung(NguoiDungID),
     FOREIGN KEY (DiaChiID) REFERENCES ThongTinGiaoHang(DiaChiID),
 );
 CREATE TABLE ChiTietDonHang (
+	ChiTietDonHangID INT PRIMARY KEY IDENTITY(1,1),
     DonHangID INT NOT NULL,
-    ChiTietID INT NOT NULL,
+    SanPhamID INT NOT NULL,
     SoLuong INT NOT NULL,
     DonGia DECIMAL(18, 2) NOT NULL,
+	TinhTrangDanhGia int Default 0, --Kiểm Tra Xem Chi Tiết Sản Phẩm trong đơn hàng được đánh giá chưa 0:chưa/1:rồi
     FOREIGN KEY (DonHangID) REFERENCES DonHang(DonHangID),
-    FOREIGN KEY (ChiTietID) REFERENCES ChiTietSanPham(ChiTietID)
+    FOREIGN KEY (SanPhamID) REFERENCES ChiTietSanPham(ChiTietID)
 );
 CREATE TABLE PhanHoi (
     PhanHoiID INT PRIMARY KEY IDENTITY(1,1),
@@ -123,7 +128,14 @@ CREATE TABLE PhanHoi (
     FOREIGN KEY (SanPhamID) REFERENCES SanPham(SanPhamID),
     FOREIGN KEY (NguoiDungID) REFERENCES NguoiDung(NguoiDungID)
 );
-
+CREATE TABLE GioHang (
+    GioHangID INT PRIMARY KEY IDENTITY(1,1),
+    NguoiDungID INT NOT NULL,
+    SanPhamID INT NOT NULL,
+    SoLuong INT NOT NULL,
+    FOREIGN KEY (NguoiDungID) REFERENCES NguoiDung(NguoiDungID),
+    FOREIGN KEY (SanPhamID) REFERENCES ChiTietSanPham(ChiTietID)
+);
 -- Thêm dữ liệu vào bảng DanhMuc
 INSERT INTO DanhMuc (TenDanhMuc)
 VALUES 
@@ -139,17 +151,8 @@ VALUES
 -- Thêm dữ liệu vào bảng SanPham
 INSERT INTO SanPham (TenSanPham, MoTa, DanhMucID, KichHoat)
 VALUES
-    (N'Áo thun trắng', N'Áo thun trắng cổ tròn', 1, 1),
-    (N'Áo thun đen', N'Áo thun đen cổ tim', 1, 1),
-    (N'Áo thun xanh', N'Áo thun xanh cổ chữ V', 1, 1),
-    (N'Áo thun đỏ', N'Áo thun đỏ cổ tròn', 1, 1),
-    (N'Áo thun vàng', N'Áo thun vàng cổ tròn', 1, 1),
-    (N'Quần jean xanh', N'Quần jean xanh nam', 2, 1),
-    (N'Quần jean đen', N'Quần jean đen nữ', 2, 1),
-    (N'Quần jean xám', N'Quần jean xám nam', 2, 1),
-    (N'Quần jean rách', N'Quần jean rách nữ', 2, 1),
-    (N'Quần jean skinny', N'Quần jean skinny nam', 2, 1);
-
+    (N'Áo thun', N'Áo thun cổ tròn', 1, 1),
+    (N'Quần jean', N'Quần jean nam', 2, 1)
 -- Thêm dữ liệu vào bảng NhomNguoiDung
 INSERT INTO NhomNguoiDung (TenNhomNguoiDung)
 VALUES 
@@ -217,3 +220,12 @@ VALUES
     (N'nhanvien3', N'password5', N'Hoang Van E', N'nhanvien3@example.com', N'0952345678', N'202 Street E', '1993-05-05', 2, N'Nam', 1),
     (N'quanly1', N'password6', N'Vo Thi F', N'quanly1@example.com', N'0962345678', N'303 Street F', '1985-06-06', 3, N'Nữ', 1),
     (N'quanly2', N'password7', N'Dang Van G', N'quanly2@example.com', N'0972345678', N'404 Street G', '1987-07-07', 3, N'Nam', 1);
+
+	-- Thêm dữ liệu vào bảng ChiTietSanPham
+INSERT INTO ChiTietSanPham (SanPhamID, MauID, SizeID, Gia, HinhAnhUrl, SoLuongTonKho)
+VALUES
+    (1, 1, 1, 150000, N'hinh1.jpg', 100),  -- Áo thun , Màu Đỏ, Size S
+    (1, 2, 2, 160000, N'hinh2.jpg', 200),  -- Áo thun , Màu Xanh dương, Size M
+    (2, 7, 2, 220000, N'hinh3.jpg', 90),  -- Quần jean, Màu Hồng, Size M
+    (2, 8, 1, 230000, N'hinh4.jpg', 80)  -- Quần jean, Màu Nâu, Size S
+    
