@@ -251,5 +251,12 @@ namespace FormShopQuanAo
             contentPanel.Controls.Add(editBrandControl);
         }
 
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            contentPanel.Controls.Clear();
+            ucOrder ucOrder = new ucOrder();
+            ucOrder.SetUserInfo(currentUser);
+            contentPanel.Controls.Add(ucOrder);
+        }
     }
 }
