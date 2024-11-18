@@ -44,5 +44,16 @@ namespace DTO.Properties {
                 return ((string)(this["DoAnKetMon_UDTMConnectionString1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-AU6VJ49A\\SQLEXPRESS;Initial Catalog=DoAnKetMon_UDTM;Integrated" +
+            " Security=True;Encrypt=True;TrustServerCertificate=True")]
+        public string DoAnKetMon_UDTMConnectionString2 {
+            get {
+                return ((string)(this["DoAnKetMon_UDTMConnectionString2"]));
+            }
+        }
     }
 }

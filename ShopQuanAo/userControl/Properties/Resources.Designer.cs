@@ -123,6 +123,16 @@ namespace userControl.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap wback {
+            get {
+                object obj = ResourceManager.GetObject("wback", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap wbrand {
             get {
                 object obj = ResourceManager.GetObject("wbrand", resourceCulture);
