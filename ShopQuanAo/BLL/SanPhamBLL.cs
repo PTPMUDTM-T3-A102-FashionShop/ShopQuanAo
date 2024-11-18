@@ -41,5 +41,11 @@ namespace BLL
         {
             return sanPhamDAL.GetSanPhamByDanhMucID(danhMucID);
         }
+
+        // Code thuan`
+        public List<SanPhamChiTietDTO> GetSanPhamChiTiet()
+        {
+            return sanPhamDAL.GetSanPhamChiTiet();
+        }
     }
 }

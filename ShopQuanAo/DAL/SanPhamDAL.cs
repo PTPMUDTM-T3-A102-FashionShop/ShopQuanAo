@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DB;
+using System.Data.SqlClient;
 
 namespace DAL
 {
@@ -12,6 +14,7 @@ namespace DAL
         DoAnKetMon_UDTMDataContext doAnKetMon_UDTM = new DoAnKetMon_UDTMDataContext();
         NhaCungCapSanPhamDAL nhaCungCapSanPhamDAL = new NhaCungCapSanPhamDAL();
         ChiTietSanPhamDAL chiTietSanPhamDAL = new ChiTietSanPhamDAL();
+        private DBConnection db = new DBConnection();
         public SanPhamDAL() { }
         public List<SanPham> GetAllSanPham()
         {
@@ -91,5 +94,40 @@ namespace DAL
                 doAnKetMon_UDTM.SubmitChanges();
             }
         }
+
+        //Code thuan`
+
+        public List<SanPhamChiTietDTO> GetSanPhamChiTiet()
+        {
+            List<SanPhamChiTietDTO> list = new List<SanPhamChiTietDTO>();
+            string query = @"
+                SELECT sp.SanPhamID, sp.TenSanPham, sp.MoTa, sp.KichHoat, m.TenMau, s.TenSize, ct.Gia, ct.SoLuongTonKho
+                FROM SanPham sp
+                JOIN ChiTietSanPham ct ON sp.SanPhamID = ct.SanPhamID
+                JOIN Mau m ON ct.MauID = m.MauID
+                JOIN Size s ON ct.SizeID = s.SizeID;";
+
+            SqlCommand cmd = new SqlCommand(query, db.conn);
+            db.conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                SanPhamChiTietDTO spct = new SanPhamChiTietDTO
+                {
+                    SanPhamID = (int)reader["SanPhamID"],
+                    TenSanPham = reader["TenSanPham"].ToString(),
+                    MoTa = reader["MoTa"].ToString(),
+                    KichHoat = (bool)reader["KichHoat"],
+                    TenMau = reader["TenMau"].ToString(),
+                    TenSize = reader["TenSize"].ToString(),
+                    Gia = (decimal)reader["Gia"],
+                    SoLuongTonKho = (int)reader["SoLuongTonKho"]
+                };
+                list.Add(spct);
+            }
+            db.conn.Close();
+            return list;
+        }
+
     }
 }
