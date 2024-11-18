@@ -30,11 +30,11 @@
         {
             this.cbbBrand = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
-            this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
             this.dgvBrand = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBack = new Guna.UI2.WinForms.Guna2Button();
+            this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
+            this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBrand)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,6 +55,58 @@
             this.label5.Size = new System.Drawing.Size(139, 25);
             this.label5.TabIndex = 58;
             this.label5.Text = "Nhà cung cấp:";
+            // 
+            // dgvBrand
+            // 
+            this.dgvBrand.AllowUserToAddRows = false;
+            this.dgvBrand.AllowUserToDeleteRows = false;
+            this.dgvBrand.AllowUserToResizeColumns = false;
+            this.dgvBrand.AllowUserToResizeRows = false;
+            this.dgvBrand.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvBrand.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBrand.Location = new System.Drawing.Point(105, 303);
+            this.dgvBrand.Name = "dgvBrand";
+            this.dgvBrand.ReadOnly = true;
+            this.dgvBrand.RowHeadersVisible = false;
+            this.dgvBrand.RowHeadersWidth = 51;
+            this.dgvBrand.RowTemplate.Height = 24;
+            this.dgvBrand.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvBrand.Size = new System.Drawing.Size(897, 362);
+            this.dgvBrand.TabIndex = 53;
+            this.dgvBrand.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBrand_CellClick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label1.Location = new System.Drawing.Point(398, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(339, 70);
+            this.label1.TabIndex = 52;
+            this.label1.Text = "Edit Brand";
+            // 
+            // btnBack
+            // 
+            this.btnBack.BorderRadius = 10;
+            this.btnBack.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnBack.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnBack.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnBack.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnBack.FillColor = System.Drawing.Color.SandyBrown;
+            this.btnBack.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.ForeColor = System.Drawing.Color.White;
+            this.btnBack.Image = global::userControl.Properties.Resources.wback;
+            this.btnBack.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnBack.ImageOffset = new System.Drawing.Point(5, 0);
+            this.btnBack.ImageSize = new System.Drawing.Size(23, 23);
+            this.btnBack.Location = new System.Drawing.Point(715, 213);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(146, 45);
+            this.btnBack.TabIndex = 66;
+            this.btnBack.Text = "Back";
+            this.btnBack.TextOffset = new System.Drawing.Point(15, 0);
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnDelete
             // 
@@ -99,58 +151,6 @@
             this.btnAdd.Text = "Add";
             this.btnAdd.TextOffset = new System.Drawing.Point(15, 0);
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // dgvBrand
-            // 
-            this.dgvBrand.AllowUserToAddRows = false;
-            this.dgvBrand.AllowUserToDeleteRows = false;
-            this.dgvBrand.AllowUserToResizeColumns = false;
-            this.dgvBrand.AllowUserToResizeRows = false;
-            this.dgvBrand.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvBrand.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBrand.Location = new System.Drawing.Point(105, 303);
-            this.dgvBrand.Name = "dgvBrand";
-            this.dgvBrand.ReadOnly = true;
-            this.dgvBrand.RowHeadersVisible = false;
-            this.dgvBrand.RowHeadersWidth = 51;
-            this.dgvBrand.RowTemplate.Height = 24;
-            this.dgvBrand.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBrand.Size = new System.Drawing.Size(897, 362);
-            this.dgvBrand.TabIndex = 53;
-            this.dgvBrand.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBrand_CellClick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DarkOrange;
-            this.label1.Location = new System.Drawing.Point(398, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(339, 70);
-            this.label1.TabIndex = 52;
-            this.label1.Text = "Edit Brand";
-            // 
-            // btnBack
-            // 
-            this.btnBack.BorderRadius = 10;
-            this.btnBack.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnBack.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnBack.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnBack.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnBack.FillColor = System.Drawing.Color.SandyBrown;
-            this.btnBack.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.ForeColor = System.Drawing.Color.White;
-            this.btnBack.Image = global::userControl.Properties.Resources.wd;
-            this.btnBack.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnBack.ImageOffset = new System.Drawing.Point(5, 0);
-            this.btnBack.ImageSize = new System.Drawing.Size(23, 23);
-            this.btnBack.Location = new System.Drawing.Point(715, 213);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(146, 45);
-            this.btnBack.TabIndex = 66;
-            this.btnBack.Text = "Remove";
-            this.btnBack.TextOffset = new System.Drawing.Point(15, 0);
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // ucEditBrand
             // 

@@ -50,12 +50,14 @@
   <ItemGroup>
     <Compile Include="ChiTietSanPhamDAL.cs" />
     <Compile Include="DanhMucDAL.cs" />
+    <Compile Include="MauDAL.cs" />
     <Compile Include="NguoiDungDAL.cs" />
     <Compile Include="NhaCungCapDAL.cs" />
     <Compile Include="NhaCungCapSanPhamDAL.cs" />
     <Compile Include="PhanQuyenDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SanPhamDAL.cs" />
+    <Compile Include="SizeDAL.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

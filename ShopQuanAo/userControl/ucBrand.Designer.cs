@@ -128,6 +128,7 @@
             this.dgvSP.RowHeadersVisible = false;
             this.dgvSP.RowHeadersWidth = 51;
             this.dgvSP.RowTemplate.Height = 24;
+            this.dgvSP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSP.Size = new System.Drawing.Size(889, 182);
             this.dgvSP.TabIndex = 10;
             // 
@@ -144,6 +145,7 @@
             this.dgvBrand.RowHeadersVisible = false;
             this.dgvBrand.RowHeadersWidth = 51;
             this.dgvBrand.RowTemplate.Height = 24;
+            this.dgvBrand.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBrand.Size = new System.Drawing.Size(859, 132);
             this.dgvBrand.TabIndex = 8;
             this.dgvBrand.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBrand_CellClick);

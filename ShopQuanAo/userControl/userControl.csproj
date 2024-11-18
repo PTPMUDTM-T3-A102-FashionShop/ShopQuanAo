@@ -88,6 +88,12 @@
     <Compile Include="ucDetail.Designer.cs">
       <DependentUpon>ucDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucHome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucHome.Designer.cs">
+      <DependentUpon>ucHome.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucLogin.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -130,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucDetail.resx">
       <DependentUpon>ucDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucHome.resx">
+      <DependentUpon>ucHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucLogin.resx">
       <DependentUpon>ucLogin.cs</DependentUpon>
@@ -185,6 +194,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\wbrand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wback.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -154,7 +154,7 @@ namespace FormShopQuanAo
             btnUser.Tag = "MH006";
             btnTK.Tag = "MH007";
 
-            btnHome.Focus();
+            btnHome.PerformClick();
 
             List<string> userPermissions = nguoiDungBLL.GetUserPermissions(currentUser.NguoiDungID);
 
@@ -235,7 +235,7 @@ namespace FormShopQuanAo
 
             ucDetail detailControl = new ucDetail(sanPhamID);
 
-            //detailControl.BackToProductRequested += ShowProduct;
+            detailControl.BackToProductRequested += ShowProduct;
 
             contentPanel.Controls.Add(detailControl);
         }
@@ -257,6 +257,13 @@ namespace FormShopQuanAo
             ucOrder ucOrder = new ucOrder();
             ucOrder.SetUserInfo(currentUser);
             contentPanel.Controls.Add(ucOrder);
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            contentPanel.Controls.Clear();
+            ucHome ucHome = new ucHome();
+            contentPanel.Controls.Add(ucHome);
         }
     }
 }
