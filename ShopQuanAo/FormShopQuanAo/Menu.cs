@@ -265,5 +265,27 @@ namespace FormShopQuanAo
             ucHome ucHome = new ucHome();
             contentPanel.Controls.Add(ucHome);
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất không?", "Đăng xuất", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Form parentForm = this.FindForm();
+
+                if (parentForm != null)
+                {
+                    Form loginForm = Application.OpenForms["Login"];
+
+                    if (loginForm != null)
+                    {
+                        loginForm.Show();
+                    }
+
+                    parentForm.Close();
+                }
+            }
+        }
     }
 }

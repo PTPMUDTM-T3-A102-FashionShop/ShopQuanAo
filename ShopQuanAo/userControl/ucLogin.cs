@@ -21,6 +21,17 @@ namespace userControl
         {
             InitializeComponent();
             txtPassword.PasswordChar = '*';
+            txtUsername.KeyDown += TxtFields_KeyDown;
+            txtPassword.KeyDown += TxtFields_KeyDown;
+        }
+        private void TxtFields_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin_Click(sender, e);
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -44,6 +55,9 @@ namespace userControl
             }
 
             User = user;
+            txtPassword.Text = string.Empty;
+            txtUsername.Text = string.Empty;
+            txtUsername.Focus();
             LoginSuccess?.Invoke(this, EventArgs.Empty);
         }
 

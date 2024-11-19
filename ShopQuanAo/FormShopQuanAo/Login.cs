@@ -22,7 +22,7 @@ namespace FormShopQuanAo
 
         private void LoginControl_LoginSuccess(object sender, EventArgs e)
         {
-            var user = (sender as ucLogin).User; // Truyền thông tin người dùng từ ucLogin
+            var user = (sender as ucLogin).User;
 
             this.Hide();
             Menu menuForm = new Menu(user);
