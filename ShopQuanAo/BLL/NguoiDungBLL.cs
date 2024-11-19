@@ -17,11 +17,27 @@ namespace BLL
             dal = new NguoiDungDAL();
         }
 
-        public NguoiDung ValidateUser(string username, string password)
+        public NguoiDung ValidateUser(string username, string password, out string message)
         {
+            message = string.Empty;
             var user = nguoiDungDAL.Login(username, password);
+
+            if (user == null)
+            {
+                message = "Tên đăng nhập hoặc mật khẩu không đúng.";
+                return null;
+            }
+
+            if (!user.KichHoat.GetValueOrDefault())
+            {
+                message = "Tài khoản của bạn đã bị khóa.";
+                return null;
+            }
+
             return user;
         }
+
+
 
         public List<string> GetUserPermissions(int userId)
         {

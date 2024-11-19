@@ -39,27 +39,29 @@ namespace userControl
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
 
-            // Kiểm tra nếu các ô text rỗng
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không được để trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Kiểm tra đăng nhập
-            NguoiDung user = nguoiDungBLL.ValidateUser(username, password);
+            string message;
+            NguoiDung user = nguoiDungBLL.ValidateUser(username, password, out message);
+
             if (user == null)
             {
-                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            // Đăng nhập thành công
             User = user;
             txtPassword.Text = string.Empty;
             txtUsername.Text = string.Empty;
             txtUsername.Focus();
             LoginSuccess?.Invoke(this, EventArgs.Empty);
         }
+
 
         private void btnExit_Click(object sender, EventArgs e)
         {

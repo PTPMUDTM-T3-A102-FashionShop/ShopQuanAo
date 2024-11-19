@@ -23,8 +23,8 @@ namespace DAL
         public NguoiDung Login(string username, string password)
         {
             var user = db.NguoiDungs
-                              .Where(u => u.TenDangNhap == username && u.MatKhau == password)
-                              .FirstOrDefault();
+                         .Where(u => u.TenDangNhap == username && u.MatKhau == password)
+                         .FirstOrDefault();
             return user;
         }
 
