@@ -17,5 +17,20 @@ namespace BLL
         {
             return mauDAL.getAllMau();
         }
+        public void AddMau(Mau mau)
+        {
+            mauDAL.AddMau(mau);
+        }
+
+        public void DeleteMau(int mauId)
+        {
+            mauDAL.DeleteMau(mauId);
+        }
+
+        public void UpdateMau(Mau updatedMau)
+        {
+            mauDAL.UpdateMau(updatedMau);
+        }
+
     }
 }

@@ -17,5 +17,32 @@ namespace DAL
         {
             return doAnKetMon_UDTM.Maus.Select(mau => mau).ToList<Mau>();
         }
+
+        public void AddMau(Mau mau)
+        {
+            doAnKetMon_UDTM.Maus.InsertOnSubmit(mau);
+            doAnKetMon_UDTM.SubmitChanges();
+        }
+
+        public void DeleteMau(int mauId)
+        {
+            var mauToDelete = doAnKetMon_UDTM.Maus.SingleOrDefault(m => m.MauID == mauId);
+            if (mauToDelete != null)
+            {
+                doAnKetMon_UDTM.Maus.DeleteOnSubmit(mauToDelete);
+                doAnKetMon_UDTM.SubmitChanges();
+            }
+        }
+
+        public void UpdateMau(Mau updatedMau)
+        {
+            var existingMau = doAnKetMon_UDTM.Maus.SingleOrDefault(m => m.MauID == updatedMau.MauID);
+            if (existingMau != null)
+            {
+                existingMau.TenMau = updatedMau.TenMau;
+                doAnKetMon_UDTM.SubmitChanges();
+            }
+        }
+
     }
 }

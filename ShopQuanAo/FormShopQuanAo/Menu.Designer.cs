@@ -34,19 +34,24 @@
             this.guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.sideBar = new Guna.UI2.WinForms.Guna2Panel();
+            this.sideBar = new System.Windows.Forms.FlowLayoutPanel();
+            this.dropdownPanel = new System.Windows.Forms.Panel();
+            this.contentPanel = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.btnLogout = new Guna.UI2.WinForms.Guna2Button();
-            this.btnTK = new Guna.UI2.WinForms.Guna2Button();
-            this.btnUser = new Guna.UI2.WinForms.Guna2Button();
+            this.btnHome = new Guna.UI2.WinForms.Guna2Button();
+            this.btnCate = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSizeColor = new Guna.UI2.WinForms.Guna2Button();
+            this.btnDanhMuc = new Guna.UI2.WinForms.Guna2Button();
+            this.btnBrand = new Guna.UI2.WinForms.Guna2Button();
             this.btnSP = new Guna.UI2.WinForms.Guna2Button();
             this.btnOrder = new Guna.UI2.WinForms.Guna2Button();
-            this.btnCate = new Guna.UI2.WinForms.Guna2Button();
-            this.btnHome = new Guna.UI2.WinForms.Guna2Button();
-            this.btnBrand = new Guna.UI2.WinForms.Guna2Button();
-            this.contentPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnUser = new Guna.UI2.WinForms.Guna2Button();
+            this.btnTK = new Guna.UI2.WinForms.Guna2Button();
+            this.btnLogout = new Guna.UI2.WinForms.Guna2Button();
             this.guna2CustomGradientPanel1.SuspendLayout();
             this.sideBar.SuspendLayout();
+            this.dropdownPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,7 +72,7 @@
             this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.guna2CustomGradientPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
-            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(1300, 46);
+            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(1315, 46);
             this.guna2CustomGradientPanel1.TabIndex = 0;
             // 
             // guna2ControlBox3
@@ -80,7 +85,7 @@
             this.guna2ControlBox3.HoverState.FillColor = System.Drawing.Color.BurlyWood;
             this.guna2ControlBox3.HoverState.IconColor = System.Drawing.Color.Black;
             this.guna2ControlBox3.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox3.Location = new System.Drawing.Point(1180, 0);
+            this.guna2ControlBox3.Location = new System.Drawing.Point(1195, 0);
             this.guna2ControlBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2ControlBox3.Name = "guna2ControlBox3";
             this.guna2ControlBox3.Size = new System.Drawing.Size(45, 46);
@@ -96,7 +101,7 @@
             this.guna2ControlBox1.HoverState.FillColor = System.Drawing.Color.Red;
             this.guna2ControlBox1.HoverState.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(1243, 0);
+            this.guna2ControlBox1.Location = new System.Drawing.Point(1258, 0);
             this.guna2ControlBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
             this.guna2ControlBox1.Size = new System.Drawing.Size(45, 46);
@@ -113,26 +118,51 @@
             // 
             this.sideBar.BackColor = System.Drawing.Color.BlanchedAlmond;
             this.sideBar.Controls.Add(this.guna2PictureBox1);
-            this.sideBar.Controls.Add(this.btnLogout);
-            this.sideBar.Controls.Add(this.btnTK);
-            this.sideBar.Controls.Add(this.btnUser);
+            this.sideBar.Controls.Add(this.btnHome);
+            this.sideBar.Controls.Add(this.dropdownPanel);
+            this.sideBar.Controls.Add(this.btnBrand);
             this.sideBar.Controls.Add(this.btnSP);
             this.sideBar.Controls.Add(this.btnOrder);
-            this.sideBar.Controls.Add(this.btnCate);
-            this.sideBar.Controls.Add(this.btnHome);
-            this.sideBar.Controls.Add(this.btnBrand);
+            this.sideBar.Controls.Add(this.btnUser);
+            this.sideBar.Controls.Add(this.btnTK);
+            this.sideBar.Controls.Add(this.btnLogout);
             this.sideBar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.sideBar.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.sideBar.Location = new System.Drawing.Point(0, 46);
-            this.sideBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sideBar.Name = "sideBar";
-            this.sideBar.Size = new System.Drawing.Size(211, 694);
-            this.sideBar.TabIndex = 1;
+            this.sideBar.Size = new System.Drawing.Size(210, 840);
+            this.sideBar.TabIndex = 3;
+            // 
+            // dropdownPanel
+            // 
+            this.dropdownPanel.Controls.Add(this.btnCate);
+            this.dropdownPanel.Controls.Add(this.btnSizeColor);
+            this.dropdownPanel.Controls.Add(this.btnDanhMuc);
+            this.dropdownPanel.Location = new System.Drawing.Point(3, 239);
+            this.dropdownPanel.MaximumSize = new System.Drawing.Size(200, 164);
+            this.dropdownPanel.MinimumSize = new System.Drawing.Size(200, 50);
+            this.dropdownPanel.Name = "dropdownPanel";
+            this.dropdownPanel.Size = new System.Drawing.Size(200, 50);
+            this.dropdownPanel.TabIndex = 10;
+            // 
+            // contentPanel
+            // 
+            this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.contentPanel.Location = new System.Drawing.Point(210, 46);
+            this.contentPanel.Name = "contentPanel";
+            this.contentPanel.Size = new System.Drawing.Size(1105, 840);
+            this.contentPanel.TabIndex = 4;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 15;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // guna2PictureBox1
             // 
             this.guna2PictureBox1.Image = global::FormShopQuanAo.Properties.Resources.logo;
             this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(3, 15);
+            this.guna2PictureBox1.Location = new System.Drawing.Point(3, 2);
             this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
             this.guna2PictureBox1.Size = new System.Drawing.Size(200, 178);
@@ -140,88 +170,144 @@
             this.guna2PictureBox1.TabIndex = 2;
             this.guna2PictureBox1.TabStop = false;
             // 
-            // btnLogout
+            // btnHome
             // 
-            this.btnLogout.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnLogout.BackColor = System.Drawing.Color.BlanchedAlmond;
-            this.btnLogout.BorderRadius = 20;
-            this.btnLogout.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnLogout.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnLogout.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLogout.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnLogout.FillColor = System.Drawing.Color.BlanchedAlmond;
-            this.btnLogout.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.ForeColor = System.Drawing.Color.Black;
-            this.btnLogout.HoverState.FillColor = System.Drawing.Color.SandyBrown;
-            this.btnLogout.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.HoverState.Image = global::FormShopQuanAo.Properties.Resources.wlogout;
-            this.btnLogout.Image = global::FormShopQuanAo.Properties.Resources.logout;
-            this.btnLogout.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnLogout.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnLogout.Location = new System.Drawing.Point(3, 592);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnLogout.Size = new System.Drawing.Size(200, 50);
-            this.btnLogout.TabIndex = 13;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            this.btnHome.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnHome.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.btnHome.BorderRadius = 20;
+            this.btnHome.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnHome.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnHome.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnHome.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnHome.FillColor = System.Drawing.Color.BlanchedAlmond;
+            this.btnHome.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHome.ForeColor = System.Drawing.Color.Black;
+            this.btnHome.HoverState.FillColor = System.Drawing.Color.SandyBrown;
+            this.btnHome.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnHome.HoverState.Image = global::FormShopQuanAo.Properties.Resources.whome;
+            this.btnHome.Image = global::FormShopQuanAo.Properties.Resources.bhome;
+            this.btnHome.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnHome.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnHome.Location = new System.Drawing.Point(3, 184);
+            this.btnHome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnHome.Size = new System.Drawing.Size(200, 50);
+            this.btnHome.TabIndex = 2;
+            this.btnHome.Text = "Home";
+            this.btnHome.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
-            // btnTK
+            // btnCate
             // 
-            this.btnTK.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnTK.BackColor = System.Drawing.Color.BlanchedAlmond;
-            this.btnTK.BorderRadius = 20;
-            this.btnTK.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnTK.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnTK.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnTK.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnTK.FillColor = System.Drawing.Color.BlanchedAlmond;
-            this.btnTK.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTK.ForeColor = System.Drawing.Color.Black;
-            this.btnTK.HoverState.FillColor = System.Drawing.Color.SandyBrown;
-            this.btnTK.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnTK.HoverState.Image = global::FormShopQuanAo.Properties.Resources.wana;
-            this.btnTK.Image = global::FormShopQuanAo.Properties.Resources.bana;
-            this.btnTK.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnTK.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnTK.Location = new System.Drawing.Point(3, 537);
-            this.btnTK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnTK.Name = "btnTK";
-            this.btnTK.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnTK.Size = new System.Drawing.Size(200, 50);
-            this.btnTK.TabIndex = 11;
-            this.btnTK.Text = "Analytics";
-            this.btnTK.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnCate.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.btnCate.BorderRadius = 20;
+            this.btnCate.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCate.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCate.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCate.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCate.FillColor = System.Drawing.Color.BlanchedAlmond;
+            this.btnCate.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCate.ForeColor = System.Drawing.Color.Black;
+            this.btnCate.HoverState.FillColor = System.Drawing.Color.SandyBrown;
+            this.btnCate.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnCate.HoverState.Image = global::FormShopQuanAo.Properties.Resources.wadown;
+            this.btnCate.Image = global::FormShopQuanAo.Properties.Resources.badown;
+            this.btnCate.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnCate.Location = new System.Drawing.Point(0, 0);
+            this.btnCate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCate.Name = "btnCate";
+            this.btnCate.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnCate.Size = new System.Drawing.Size(200, 50);
+            this.btnCate.TabIndex = 7;
+            this.btnCate.Text = "Categories";
+            this.btnCate.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnCate.TextOffset = new System.Drawing.Point(4, 0);
+            this.btnCate.Click += new System.EventHandler(this.btnCate_Click);
             // 
-            // btnUser
+            // btnSizeColor
             // 
-            this.btnUser.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnUser.BackColor = System.Drawing.Color.BlanchedAlmond;
-            this.btnUser.BorderRadius = 20;
-            this.btnUser.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnUser.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnUser.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnUser.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnUser.FillColor = System.Drawing.Color.BlanchedAlmond;
-            this.btnUser.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUser.ForeColor = System.Drawing.Color.Black;
-            this.btnUser.HoverState.FillColor = System.Drawing.Color.SandyBrown;
-            this.btnUser.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnUser.HoverState.Image = global::FormShopQuanAo.Properties.Resources.wuser;
-            this.btnUser.Image = global::FormShopQuanAo.Properties.Resources.account;
-            this.btnUser.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnUser.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnUser.Location = new System.Drawing.Point(3, 480);
-            this.btnUser.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnUser.Name = "btnUser";
-            this.btnUser.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnUser.Size = new System.Drawing.Size(200, 50);
-            this.btnUser.TabIndex = 9;
-            this.btnUser.Text = "Users";
-            this.btnUser.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
+            this.btnSizeColor.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.btnSizeColor.BorderRadius = 20;
+            this.btnSizeColor.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSizeColor.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSizeColor.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSizeColor.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSizeColor.FillColor = System.Drawing.Color.BlanchedAlmond;
+            this.btnSizeColor.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSizeColor.ForeColor = System.Drawing.Color.Black;
+            this.btnSizeColor.HoverState.FillColor = System.Drawing.Color.SandyBrown;
+            this.btnSizeColor.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnSizeColor.HoverState.Image = global::FormShopQuanAo.Properties.Resources.wcolor;
+            this.btnSizeColor.Image = global::FormShopQuanAo.Properties.Resources.bcolor;
+            this.btnSizeColor.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSizeColor.ImageOffset = new System.Drawing.Point(25, 0);
+            this.btnSizeColor.Location = new System.Drawing.Point(0, 108);
+            this.btnSizeColor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSizeColor.Name = "btnSizeColor";
+            this.btnSizeColor.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnSizeColor.Size = new System.Drawing.Size(200, 50);
+            this.btnSizeColor.TabIndex = 8;
+            this.btnSizeColor.Text = "Size - Color";
+            this.btnSizeColor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSizeColor.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnSizeColor.Click += new System.EventHandler(this.btnSizeColor_Click);
+            // 
+            // btnDanhMuc
+            // 
+            this.btnDanhMuc.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.btnDanhMuc.BorderRadius = 20;
+            this.btnDanhMuc.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnDanhMuc.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnDanhMuc.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnDanhMuc.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnDanhMuc.FillColor = System.Drawing.Color.BlanchedAlmond;
+            this.btnDanhMuc.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDanhMuc.ForeColor = System.Drawing.Color.Black;
+            this.btnDanhMuc.HoverState.FillColor = System.Drawing.Color.SandyBrown;
+            this.btnDanhMuc.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnDanhMuc.HoverState.Image = global::FormShopQuanAo.Properties.Resources.wcat;
+            this.btnDanhMuc.Image = global::FormShopQuanAo.Properties.Resources.bcat;
+            this.btnDanhMuc.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnDanhMuc.ImageOffset = new System.Drawing.Point(25, 0);
+            this.btnDanhMuc.Location = new System.Drawing.Point(0, 54);
+            this.btnDanhMuc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDanhMuc.Name = "btnDanhMuc";
+            this.btnDanhMuc.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnDanhMuc.Size = new System.Drawing.Size(200, 50);
+            this.btnDanhMuc.TabIndex = 9;
+            this.btnDanhMuc.Text = "Danh mục";
+            this.btnDanhMuc.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnDanhMuc.TextOffset = new System.Drawing.Point(10, 0);
+            this.btnDanhMuc.Click += new System.EventHandler(this.btnDanhMuc_Click);
+            // 
+            // btnBrand
+            // 
+            this.btnBrand.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnBrand.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.btnBrand.BorderRadius = 20;
+            this.btnBrand.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnBrand.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnBrand.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnBrand.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnBrand.FillColor = System.Drawing.Color.BlanchedAlmond;
+            this.btnBrand.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold);
+            this.btnBrand.ForeColor = System.Drawing.Color.Black;
+            this.btnBrand.HoverState.FillColor = System.Drawing.Color.SandyBrown;
+            this.btnBrand.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnBrand.HoverState.Image = global::FormShopQuanAo.Properties.Resources.wbrand;
+            this.btnBrand.Image = global::FormShopQuanAo.Properties.Resources.bbrand;
+            this.btnBrand.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnBrand.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnBrand.Location = new System.Drawing.Point(3, 294);
+            this.btnBrand.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnBrand.Name = "btnBrand";
+            this.btnBrand.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnBrand.Size = new System.Drawing.Size(200, 50);
+            this.btnBrand.TabIndex = 12;
+            this.btnBrand.Text = "Brands";
+            this.btnBrand.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnBrand.Click += new System.EventHandler(this.btnBrand_Click);
             // 
             // btnSP
             // 
@@ -241,7 +327,7 @@
             this.btnSP.Image = global::FormShopQuanAo.Properties.Resources.bpro;
             this.btnSP.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnSP.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnSP.Location = new System.Drawing.Point(5, 368);
+            this.btnSP.Location = new System.Drawing.Point(3, 348);
             this.btnSP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSP.Name = "btnSP";
             this.btnSP.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
@@ -269,7 +355,7 @@
             this.btnOrder.Image = global::FormShopQuanAo.Properties.Resources.bo;
             this.btnOrder.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnOrder.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnOrder.Location = new System.Drawing.Point(3, 423);
+            this.btnOrder.Location = new System.Drawing.Point(3, 402);
             this.btnOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
@@ -279,105 +365,93 @@
             this.btnOrder.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
-            // btnCate
+            // btnUser
             // 
-            this.btnCate.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnCate.BackColor = System.Drawing.Color.BlanchedAlmond;
-            this.btnCate.BorderRadius = 20;
-            this.btnCate.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCate.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCate.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCate.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCate.FillColor = System.Drawing.Color.BlanchedAlmond;
-            this.btnCate.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCate.ForeColor = System.Drawing.Color.Black;
-            this.btnCate.HoverState.FillColor = System.Drawing.Color.SandyBrown;
-            this.btnCate.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnCate.HoverState.Image = global::FormShopQuanAo.Properties.Resources.wcat;
-            this.btnCate.Image = global::FormShopQuanAo.Properties.Resources.bcat;
-            this.btnCate.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnCate.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnCate.Location = new System.Drawing.Point(3, 256);
-            this.btnCate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnCate.Name = "btnCate";
-            this.btnCate.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnCate.Size = new System.Drawing.Size(200, 50);
-            this.btnCate.TabIndex = 7;
-            this.btnCate.Text = "Categories";
-            this.btnCate.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnCate.Click += new System.EventHandler(this.btnCate_Click);
+            this.btnUser.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnUser.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.btnUser.BorderRadius = 20;
+            this.btnUser.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnUser.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnUser.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnUser.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnUser.FillColor = System.Drawing.Color.BlanchedAlmond;
+            this.btnUser.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUser.ForeColor = System.Drawing.Color.Black;
+            this.btnUser.HoverState.FillColor = System.Drawing.Color.SandyBrown;
+            this.btnUser.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnUser.HoverState.Image = global::FormShopQuanAo.Properties.Resources.wuser;
+            this.btnUser.Image = global::FormShopQuanAo.Properties.Resources.account;
+            this.btnUser.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnUser.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnUser.Location = new System.Drawing.Point(3, 456);
+            this.btnUser.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnUser.Name = "btnUser";
+            this.btnUser.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnUser.Size = new System.Drawing.Size(200, 50);
+            this.btnUser.TabIndex = 9;
+            this.btnUser.Text = "Users";
+            this.btnUser.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
             // 
-            // btnHome
+            // btnTK
             // 
-            this.btnHome.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnHome.BackColor = System.Drawing.Color.BlanchedAlmond;
-            this.btnHome.BorderRadius = 20;
-            this.btnHome.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnHome.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnHome.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnHome.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnHome.FillColor = System.Drawing.Color.BlanchedAlmond;
-            this.btnHome.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHome.ForeColor = System.Drawing.Color.Black;
-            this.btnHome.HoverState.FillColor = System.Drawing.Color.SandyBrown;
-            this.btnHome.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnHome.HoverState.Image = global::FormShopQuanAo.Properties.Resources.whome;
-            this.btnHome.Image = global::FormShopQuanAo.Properties.Resources.bhome;
-            this.btnHome.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnHome.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnHome.Location = new System.Drawing.Point(3, 199);
-            this.btnHome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnHome.Size = new System.Drawing.Size(200, 50);
-            this.btnHome.TabIndex = 2;
-            this.btnHome.Text = "Home";
-            this.btnHome.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
+            this.btnTK.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnTK.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.btnTK.BorderRadius = 20;
+            this.btnTK.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnTK.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnTK.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTK.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnTK.FillColor = System.Drawing.Color.BlanchedAlmond;
+            this.btnTK.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTK.ForeColor = System.Drawing.Color.Black;
+            this.btnTK.HoverState.FillColor = System.Drawing.Color.SandyBrown;
+            this.btnTK.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnTK.HoverState.Image = global::FormShopQuanAo.Properties.Resources.wana;
+            this.btnTK.Image = global::FormShopQuanAo.Properties.Resources.bana;
+            this.btnTK.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnTK.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnTK.Location = new System.Drawing.Point(3, 510);
+            this.btnTK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTK.Name = "btnTK";
+            this.btnTK.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnTK.Size = new System.Drawing.Size(200, 50);
+            this.btnTK.TabIndex = 11;
+            this.btnTK.Text = "Analytics";
+            this.btnTK.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
-            // btnBrand
+            // btnLogout
             // 
-            this.btnBrand.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnBrand.BackColor = System.Drawing.Color.BlanchedAlmond;
-            this.btnBrand.BorderRadius = 20;
-            this.btnBrand.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnBrand.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnBrand.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnBrand.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnBrand.FillColor = System.Drawing.Color.BlanchedAlmond;
-            this.btnBrand.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold);
-            this.btnBrand.ForeColor = System.Drawing.Color.Black;
-            this.btnBrand.HoverState.FillColor = System.Drawing.Color.SandyBrown;
-            this.btnBrand.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnBrand.HoverState.Image = global::FormShopQuanAo.Properties.Resources.wbrand;
-            this.btnBrand.Image = global::FormShopQuanAo.Properties.Resources.bbrand;
-            this.btnBrand.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnBrand.ImageOffset = new System.Drawing.Point(10, 0);
-            this.btnBrand.Location = new System.Drawing.Point(5, 313);
-            this.btnBrand.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnBrand.Name = "btnBrand";
-            this.btnBrand.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnBrand.Size = new System.Drawing.Size(200, 50);
-            this.btnBrand.TabIndex = 12;
-            this.btnBrand.Text = "Brands";
-            this.btnBrand.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnBrand.Click += new System.EventHandler(this.btnBrand_Click);
-            // 
-            // contentPanel
-            // 
-            this.contentPanel.AutoSize = true;
-            this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.contentPanel.Location = new System.Drawing.Point(211, 46);
-            this.contentPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(1089, 694);
-            this.contentPanel.TabIndex = 2;
+            this.btnLogout.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.btnLogout.BorderRadius = 20;
+            this.btnLogout.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogout.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogout.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLogout.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLogout.FillColor = System.Drawing.Color.BlanchedAlmond;
+            this.btnLogout.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.ForeColor = System.Drawing.Color.Black;
+            this.btnLogout.HoverState.FillColor = System.Drawing.Color.SandyBrown;
+            this.btnLogout.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.HoverState.Image = global::FormShopQuanAo.Properties.Resources.wlogout;
+            this.btnLogout.Image = global::FormShopQuanAo.Properties.Resources.logout;
+            this.btnLogout.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnLogout.ImageOffset = new System.Drawing.Point(10, 0);
+            this.btnLogout.Location = new System.Drawing.Point(3, 564);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnLogout.Size = new System.Drawing.Size(200, 50);
+            this.btnLogout.TabIndex = 13;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1300, 740);
+            this.ClientSize = new System.Drawing.Size(1315, 886);
             this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.sideBar);
             this.Controls.Add(this.guna2CustomGradientPanel1);
@@ -388,9 +462,9 @@
             this.Text = "Menu";
             this.guna2CustomGradientPanel1.ResumeLayout(false);
             this.sideBar.ResumeLayout(false);
+            this.dropdownPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -401,7 +475,6 @@
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox3;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
-        private Guna.UI2.WinForms.Guna2Panel sideBar;
         private Guna.UI2.WinForms.Guna2Button btnHome;
         private Guna.UI2.WinForms.Guna2Button btnCate;
         private Guna.UI2.WinForms.Guna2Button btnTK;
@@ -411,6 +484,11 @@
         private Guna.UI2.WinForms.Guna2Button btnBrand;
         private Guna.UI2.WinForms.Guna2Button btnLogout;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private Guna.UI2.WinForms.Guna2Panel contentPanel;
+        private Guna.UI2.WinForms.Guna2Button btnSizeColor;
+        private Guna.UI2.WinForms.Guna2Button btnDanhMuc;
+        private System.Windows.Forms.FlowLayoutPanel sideBar;
+        private System.Windows.Forms.Panel dropdownPanel;
+        private System.Windows.Forms.Panel contentPanel;
+        private System.Windows.Forms.Timer timer1;
     }
 }

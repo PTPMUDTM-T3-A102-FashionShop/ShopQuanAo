@@ -251,5 +251,23 @@
   <ItemGroup>
     <None Include="Image\wlogout.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\bcolor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\wcolor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\badown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\wadown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\baup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\waup.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
