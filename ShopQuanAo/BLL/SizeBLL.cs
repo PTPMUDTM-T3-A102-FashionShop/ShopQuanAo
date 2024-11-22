@@ -17,5 +17,21 @@ namespace BLL
         {
             return sizeDAL.getAllSize();
         }
+
+        public void AddSize(Size size)
+        {
+            sizeDAL.AddSize(size);
+        }
+
+        public void DeleteSize(int sizeId)
+        {
+            sizeDAL.DeleteSize(sizeId);
+        }
+
+        public void UpdateSize(Size updatedSize)
+        {
+            sizeDAL.UpdateSize(updatedSize);
+        }
+
     }
 }

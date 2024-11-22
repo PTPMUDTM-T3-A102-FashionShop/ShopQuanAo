@@ -50,7 +50,7 @@
             this.lbDate.AutoSize = true;
             this.lbDate.Font = new System.Drawing.Font("Segoe UI Semibold", 34.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDate.ForeColor = System.Drawing.Color.DarkOrange;
-            this.lbDate.Location = new System.Drawing.Point(49, 365);
+            this.lbDate.Location = new System.Drawing.Point(45, 368);
             this.lbDate.Name = "lbDate";
             this.lbDate.Size = new System.Drawing.Size(996, 76);
             this.lbDate.TabIndex = 1;

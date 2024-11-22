@@ -18,6 +18,7 @@ namespace FormShopQuanAo
     {
         private NguoiDung currentUser;
         NguoiDungBLL nguoiDungBLL = new NguoiDungBLL();
+        Boolean isCollapse;
 
         public Menu(NguoiDung user)
         {
@@ -32,8 +33,6 @@ namespace FormShopQuanAo
         {
             btnHome.GotFocus += BtnHome_GotFocus;
             btnHome.Leave += BtnHome_Leave;
-            btnCate.GotFocus += BtnCate_GotFocus; ;
-            btnCate.Leave += BtnCate_Leave; ;
             btnBrand.GotFocus += BtnBrand_GotFocus; ;
             btnBrand.Leave += BtnBrand_Leave; ;
             btnOrder.GotFocus += BtnOrder_GotFocus; ;
@@ -43,7 +42,23 @@ namespace FormShopQuanAo
             btnUser.GotFocus += BtnUser_GotFocus; ;
             btnUser.Leave += BtnUser_Leave; ;
             btnTK.GotFocus += BtnTK_GotFocus; ;
-            btnTK.Leave += BtnTK_Leave; 
+            btnTK.Leave += BtnTK_Leave;
+            btnDanhMuc.GotFocus += BtnDanhMuc_GotFocus;
+            btnDanhMuc.Leave += BtnDanhMuc_Leave;
+        }
+
+        private void BtnDanhMuc_Leave(object sender, EventArgs e)
+        {
+            btnDanhMuc.Image = Properties.Resources.bcat;
+            btnDanhMuc.FillColor = Color.BlanchedAlmond;
+            btnDanhMuc.ForeColor = Color.Black;
+        }
+
+        private void BtnDanhMuc_GotFocus(object sender, EventArgs e)
+        {
+            btnDanhMuc.Image = Properties.Resources.wcat;
+            btnDanhMuc.FillColor = Color.SandyBrown;
+            btnDanhMuc.ForeColor = Color.White;
         }
 
         private void BtnTK_Leave(object sender, EventArgs e)
@@ -111,23 +126,7 @@ namespace FormShopQuanAo
 
         private void BtnBrand_GotFocus(object sender, EventArgs e)
         {
-            btnBrand.Image = Properties.Resources.wbrand;
-            btnBrand.FillColor = Color.SandyBrown;
-            btnBrand.ForeColor = Color.White;
-        }
-
-        private void BtnCate_Leave(object sender, EventArgs e)
-        {
-            btnCate.Image = Properties.Resources.bcat;
-            btnCate.FillColor = Color.BlanchedAlmond;
-            btnCate.ForeColor = Color.Black;
-        }
-
-        private void BtnCate_GotFocus(object sender, EventArgs e)
-        {
-            btnCate.Image = Properties.Resources.wcat;
-            btnCate.FillColor = Color.SandyBrown;
-            btnCate.ForeColor = Color.White;
+            btnBrand.Image = Properties.Resources.baup;
         }
 
         private void BtnHome_Leave(object sender, EventArgs e)
@@ -187,9 +186,7 @@ namespace FormShopQuanAo
         #endregion
         private void btnCate_Click(object sender, EventArgs e)
         {
-            contentPanel.Controls.Clear();
-            ucCategory ucCategory = new ucCategory();
-            contentPanel.Controls.Add(ucCategory);
+            timer1.Start();
         }
 
         private void btnUser_Click(object sender, EventArgs e)
@@ -284,6 +281,46 @@ namespace FormShopQuanAo
                     }
 
                     parentForm.Close();
+                }
+            }
+        }
+
+        private void btnDanhMuc_Click(object sender, EventArgs e)
+        {
+            contentPanel.Controls.Clear();
+            ucCategory ucCategory = new ucCategory();
+            contentPanel.Controls.Add(ucCategory);
+        }
+
+        private void btnSizeColor_Click(object sender, EventArgs e)
+        {
+            contentPanel.Controls.Clear();
+            ucSizeColor ucSizeColor = new ucSizeColor();
+            contentPanel.Controls.Add(ucSizeColor);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (isCollapse)
+            {
+                btnCate.Image = Properties.Resources.baup;
+                btnCate.HoverState.Image = Properties.Resources.waup;
+                dropdownPanel.Height += 8;
+                if(dropdownPanel.Size == dropdownPanel.MaximumSize)
+                {
+                    timer1.Stop();
+                    isCollapse = false;
+                }
+            }
+            else
+            {
+                btnCate.Image = Properties.Resources.badown;
+                btnCate.HoverState.Image = Properties.Resources.wadown;
+                dropdownPanel.Height -= 8;
+                if (dropdownPanel.Size == dropdownPanel.MinimumSize)
+                {
+                    timer1.Stop();
+                    isCollapse = true;
                 }
             }
         }

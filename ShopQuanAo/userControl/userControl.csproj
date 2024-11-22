@@ -112,6 +112,12 @@
     <Compile Include="ucProduct.Designer.cs">
       <DependentUpon>ucProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucSizeColor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucSizeColor.Designer.cs">
+      <DependentUpon>ucSizeColor.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -148,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucProduct.resx">
       <DependentUpon>ucProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucSizeColor.resx">
+      <DependentUpon>ucSizeColor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucUser.resx">
       <DependentUpon>ucUser.cs</DependentUpon>

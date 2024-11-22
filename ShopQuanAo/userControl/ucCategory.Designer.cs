@@ -35,6 +35,7 @@
             this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
             this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSP)).BeginInit();
             this.SuspendLayout();
@@ -71,9 +72,9 @@
             // txtCate
             // 
             this.txtCate.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCate.Location = new System.Drawing.Point(278, 158);
+            this.txtCate.Location = new System.Drawing.Point(319, 158);
             this.txtCate.Name = "txtCate";
-            this.txtCate.Size = new System.Drawing.Size(224, 34);
+            this.txtCate.Size = new System.Drawing.Size(237, 34);
             this.txtCate.TabIndex = 2;
             // 
             // dgvSP
@@ -158,10 +159,21 @@
             this.btnAdd.TextOffset = new System.Drawing.Point(15, 0);
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(99, 161);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(182, 29);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Category name:";
+            // 
             // ucCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAdd);
@@ -188,5 +200,6 @@
         private Guna.UI2.WinForms.Guna2Button btnAdd;
         private Guna.UI2.WinForms.Guna2Button btnEdit;
         private Guna.UI2.WinForms.Guna2Button btnDelete;
+        private System.Windows.Forms.Label label2;
     }
 }
