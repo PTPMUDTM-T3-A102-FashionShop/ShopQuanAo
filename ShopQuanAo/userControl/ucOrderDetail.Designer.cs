@@ -87,7 +87,7 @@ namespace userControl
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(164, 55);
             this.btnEdit.TabIndex = 41;
-            this.btnEdit.Text = "Edit";
+            this.btnEdit.Text = "Sửa";
             this.btnEdit.TextOffset = new System.Drawing.Point(15, 0);
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
@@ -110,7 +110,7 @@ namespace userControl
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(164, 55);
             this.btnBack.TabIndex = 63;
-            this.btnBack.Text = "Back";
+            this.btnBack.Text = "Trở về";
             this.btnBack.TextOffset = new System.Drawing.Point(15, 0);
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 

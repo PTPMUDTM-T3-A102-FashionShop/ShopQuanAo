@@ -176,3 +176,4 @@ C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\use
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.dll
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.pdb
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.ucOrderDetail.resources
+C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.ucAnalytic.resources

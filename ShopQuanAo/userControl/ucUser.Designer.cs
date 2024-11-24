@@ -76,7 +76,7 @@ namespace userControl
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(164, 56);
             this.btnDelete.TabIndex = 13;
-            this.btnDelete.Text = "Delete";
+            this.btnDelete.Text = "Xóa";
             this.btnDelete.TextOffset = new System.Drawing.Point(15, 0);
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -99,7 +99,7 @@ namespace userControl
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(164, 56);
             this.btnEdit.TabIndex = 12;
-            this.btnEdit.Text = "Edit";
+            this.btnEdit.Text = "Sửa";
             this.btnEdit.TextOffset = new System.Drawing.Point(15, 0);
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
@@ -122,7 +122,7 @@ namespace userControl
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(164, 56);
             this.btnAdd.TabIndex = 11;
-            this.btnAdd.Text = "Add";
+            this.btnAdd.Text = "Thêm";
             this.btnAdd.TextOffset = new System.Drawing.Point(15, 0);
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 

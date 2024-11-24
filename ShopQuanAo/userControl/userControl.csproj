@@ -64,6 +64,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ucAnalytic.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucAnalytic.Designer.cs">
+      <DependentUpon>ucAnalytic.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucEditBrand.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -136,6 +142,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucAnalytic.resx">
+      <DependentUpon>ucAnalytic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucEditBrand.resx">
       <DependentUpon>ucEditBrand.cs</DependentUpon>

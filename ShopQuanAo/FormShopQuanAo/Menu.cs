@@ -325,5 +325,12 @@ namespace FormShopQuanAo
                 }
             }
         }
+
+        private void btnTK_Click(object sender, EventArgs e)
+        {
+            contentPanel.Controls.Clear();
+            ucAnalytic ucAnalytic= new ucAnalytic();
+            contentPanel.Controls.Add(ucAnalytic);
+        }
     }
 }
