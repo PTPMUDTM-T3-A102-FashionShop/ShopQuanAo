@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="ChiTietSanPhamBLL.cs" />
     <Compile Include="DanhMucBLL.cs" />
+    <Compile Include="DonHangBLL.cs" />
     <Compile Include="MauBLL.cs" />
     <Compile Include="NguoiDungBLL.cs" />
     <Compile Include="NhaCungCapBLL.cs" />

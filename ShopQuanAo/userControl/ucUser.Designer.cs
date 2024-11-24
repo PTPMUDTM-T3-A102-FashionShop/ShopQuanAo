@@ -137,7 +137,7 @@ namespace userControl
             this.dgvNguoiDung.Name = "dgvNguoiDung";
             this.dgvNguoiDung.RowHeadersWidth = 51;
             this.dgvNguoiDung.RowTemplate.Height = 24;
-            this.dgvNguoiDung.Size = new System.Drawing.Size(590, 365);
+            this.dgvNguoiDung.Size = new System.Drawing.Size(797, 365);
             this.dgvNguoiDung.TabIndex = 10;
             this.dgvNguoiDung.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNguoiDung_CellContentClick);
             // 
@@ -374,7 +374,7 @@ namespace userControl
             this.Controls.Add(this.dgvNguoiDung);
             this.Controls.Add(this.label1);
             this.Name = "ucUser";
-            this.Size = new System.Drawing.Size(1048, 723);
+            this.Size = new System.Drawing.Size(1246, 723);
             this.Load += new System.EventHandler(this.ucUser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvNguoiDung)).EndInit();
             this.ResumeLayout(false);

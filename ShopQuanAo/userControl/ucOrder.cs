@@ -18,6 +18,7 @@ namespace userControl
     {
         private NguoiDung nguoiDung;
         private SanPhamBLL sanPhamBLL = new SanPhamBLL();
+        private DBConnection dbConnection = new DBConnection();
         public ucOrder()
         {
             InitializeComponent();
@@ -70,6 +71,7 @@ namespace userControl
             List<SanPhamChiTietDTO> list = sanPhamBLL.GetSanPhamChiTiet();
             dgvSanPham.DataSource = list;
             dgvSanPham.ReadOnly = true;
+            dgvHoaDon.ReadOnly = true;
         }
 
         private void dgvSanPham_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -200,7 +202,86 @@ namespace userControl
 
         private void btnThemDonHang_Click(object sender, EventArgs e)
         {
+            if (dgvHoaDon.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu trong bảng hóa đơn.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            // Lấy thông tin người dùng và tổng tiền từ giao diện
+            int nguoiDungID = nguoiDung.NguoiDungID;
+            decimal tongTien = decimal.Parse(lblTongThanhTien.Text.Replace("Tổng thành tiền: ", "").Replace(" đ", "").Replace(",", ""));
+
+            DonHangDTO donHang = new DonHangDTO
+            {
+                NguoiDungID = nguoiDungID,
+                TongTien = tongTien,
+                TinhTrangDonHang = "Hoàn Thành",
+                HinhThucThanhToan = "Tiền mặt",
+                TinhTrangThanhToan = "Đã thanh toán"
+            };
+
+            List<ChiTietDonHangDTO> chiTietDonHangs = new List<ChiTietDonHangDTO>();
+
+            foreach (DataGridViewRow row in dgvHoaDon.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                int maSanPham = Convert.ToInt32(row.Cells["MaSanPham"].Value);
+                string tenMau = row.Cells["TenMau"].Value.ToString();
+                string tenSize = row.Cells["TenSize"].Value.ToString();
+                int soLuong = Convert.ToInt32(row.Cells["SoLuong"].Value);
+                decimal gia = Convert.ToDecimal(row.Cells["Gia"].Value);
+
+                // Lấy ChiTietID từ bảng ChiTietSanPham
+                int chiTietID = GetChiTietID(maSanPham, tenMau, tenSize);
+
+                ChiTietDonHangDTO chiTiet = new ChiTietDonHangDTO
+                {
+                    SanPhamID = chiTietID,
+                    SoLuong = soLuong,
+                    DonGia = gia
+                };
+
+                chiTietDonHangs.Add(chiTiet);
+            }
+
+            DonHangBLL donHangBLL = new DonHangBLL();
+            donHangBLL.ThemDonHang(donHang, chiTietDonHangs);
+
+            MessageBox.Show("Thêm đơn hàng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LamMoi();
+            LoadSanPhamChiTiet();
+        }
+
+        private int GetChiTietID(int maSanPham, string tenMau, string tenSize)
+        {
+            // Thực hiện truy vấn để lấy ChiTietID từ bảng ChiTietSanPham
+            DBConnection dbConnection = new DBConnection();
+            dbConnection.OpenConnection();
+
+            try
+            {
+                string query = @"
+            SELECT ct.ChiTietID
+            FROM ChiTietSanPham ct
+            JOIN Mau m ON ct.MauID = m.MauID
+            JOIN Size s ON ct.SizeID = s.SizeID
+            WHERE ct.SanPhamID = @SanPhamID
+              AND m.TenMau = @TenMau
+              AND s.TenSize = @TenSize";
+
+                SqlCommand cmd = new SqlCommand(query, dbConnection.conn);
+                cmd.Parameters.AddWithValue("@SanPhamID", maSanPham);
+                cmd.Parameters.AddWithValue("@TenMau", tenMau);
+                cmd.Parameters.AddWithValue("@TenSize", tenSize);
+
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            finally
+            {
+                dbConnection.CloseConnection();
+            }
         }
 
         private void dgvHoaDon_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -228,9 +309,13 @@ namespace userControl
             DialogResult result = MessageBox.Show("Chắc chắn làm mới bảng hóa đơn bán hàng?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                dgvHoaDon.Rows.Clear();
-                lblTongThanhTien.Text = "Tổng thành tiền: 0";
+                LamMoi();
             }
+        }
+
+        private void LamMoi() {
+            dgvHoaDon.Rows.Clear();
+            lblTongThanhTien.Text = "Tổng thành tiền: 0";
         }
 
         private void txtMaSanPham_TextChanged(object sender, EventArgs e)

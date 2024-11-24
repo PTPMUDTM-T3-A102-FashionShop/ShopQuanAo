@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="ChiTietSanPhamDAL.cs" />
     <Compile Include="DanhMucDAL.cs" />
+    <Compile Include="DonHangDAL.cs" />
     <Compile Include="MauDAL.cs" />
     <Compile Include="NguoiDungDAL.cs" />
     <Compile Include="NhaCungCapDAL.cs" />
