@@ -19,10 +19,16 @@ namespace userControl
         private NguoiDung nguoiDung;
         private SanPhamBLL sanPhamBLL = new SanPhamBLL();
         private DBConnection dbConnection = new DBConnection();
+        private Panel contentPanel;
         public ucOrder()
         {
             InitializeComponent();
             InitializeHoaDonGrid(); // Khởi tạo cột cho dgvHoaDon
+        }
+
+        public void SetContentPanel(Panel panel)
+        {
+            contentPanel = panel;
         }
 
         private void InitializeHoaDonGrid()
@@ -202,9 +208,27 @@ namespace userControl
 
         private void btnThemDonHang_Click(object sender, EventArgs e)
         {
-            if (dgvHoaDon.Rows.Count == 0)
+            // Kiểm tra xem có ít nhất một dòng hợp lệ trong dgvHoaDon
+            bool hasData = false;
+            foreach (DataGridViewRow row in dgvHoaDon.Rows)
             {
-                MessageBox.Show("Không có dữ liệu trong bảng hóa đơn.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (row.IsNewRow) continue; // Bỏ qua hàng mới (hàng trống cho nhập liệu)
+
+                // Kiểm tra nếu có ít nhất một dòng có dữ liệu hợp lệ
+                if (row.Cells["MaSanPham"].Value != null &&
+                    row.Cells["SoLuong"].Value != null &&
+                    row.Cells["Gia"].Value != null &&
+                    Convert.ToInt32(row.Cells["SoLuong"].Value) > 0 &&
+                    Convert.ToDecimal(row.Cells["Gia"].Value) > 0)
+                {
+                    hasData = true;
+                    break; // Dừng vòng lặp nếu tìm thấy dòng hợp lệ
+                }
+            }
+
+            if (!hasData)
+            {
+                MessageBox.Show("Không có dữ liệu hợp lệ trong bảng hóa đơn.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -321,6 +345,15 @@ namespace userControl
         private void txtMaSanPham_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnChiTietDonHang_Click(object sender, EventArgs e)
+        {
+            contentPanel.Controls.Clear();
+            ucOrderDetail ucOrderDetail = new ucOrderDetail();
+            ucOrderDetail.SetUserInfo(nguoiDung);  // Truyền thông tin người dùng vào ucOrderDetail
+            ucOrderDetail.SetContentPanel(contentPanel);  // Truyền contentPanel vào ucOrderDetail
+            contentPanel.Controls.Add(ucOrderDetail);
         }
     }
 }

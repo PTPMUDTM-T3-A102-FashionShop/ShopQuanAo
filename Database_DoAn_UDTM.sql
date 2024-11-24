@@ -230,3 +230,58 @@ VALUES
     (2, 7, 2, 220000, N'hinh3.jpg', 90),  -- Quần jean, Màu Hồng, Size M
     (2, 8, 1, 230000, N'hinh4.jpg', 80)  -- Quần jean, Màu Nâu, Size S
     
+
+-- Insert vào đơn hàng.
+
+INSERT [dbo].[DonHang] ([DiaChiID], [NhanVienID], [NguoiDungID], [TongTien], [TinhTrangDonHang], [NgayDatHang], [HinhThucThanhToan], [TinhTrangThanhToan], [NgayThanhToan]) VALUES (NULL, NULL, 6, CAST(1510000.00 AS Decimal(18, 2)), N'Hoàn Thành', CAST(N'2024-11-24 16:04:59.783' AS DateTime), N'Tiền mặt', N'Đã thanh toán', CAST(N'2024-11-24 16:04:59.783' AS DateTime))
+INSERT [dbo].[DonHang] ([DiaChiID], [NhanVienID], [NguoiDungID], [TongTien], [TinhTrangDonHang], [NgayDatHang], [HinhThucThanhToan], [TinhTrangThanhToan], [NgayThanhToan]) VALUES (NULL, NULL, 6, CAST(690000.00 AS Decimal(18, 2)), N'Hoàn Thành', CAST(N'2024-11-24 16:05:08.440' AS DateTime), N'Tiền mặt', N'Đã thanh toán', CAST(N'2024-11-24 16:05:08.440' AS DateTime))
+INSERT [dbo].[DonHang] ([DiaChiID], [NhanVienID], [NguoiDungID], [TongTien], [TinhTrangDonHang], [NgayDatHang], [HinhThucThanhToan], [TinhTrangThanhToan], [NgayThanhToan]) VALUES (NULL, NULL, 6, CAST(1830000.00 AS Decimal(18, 2)), N'Hoàn Thành', CAST(N'2024-11-24 16:05:45.167' AS DateTime), N'Tiền mặt', N'Đã thanh toán', CAST(N'2024-11-24 16:05:45.167' AS DateTime))
+
+-- Vừa insert vào 3 đơn hàng, xem coi 3 đơn hàng đó có id phải là 61, 62, 63 không, nếu không đúng sửa lại
+-- Đơn Số 1 có 2 Chi Tiết
+-- Đơn Số 2 có 1 Chi Tiết
+-- Đơn Số 3 có 3 Chi Tiết
+
+INSERT [dbo].[ChiTietDonHang] ([DonHangID], [SanPhamID], [SoLuong], [DonGia], [TinhTrangDanhGia]) VALUES (61, 1, 7, CAST(150000.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[ChiTietDonHang] ([DonHangID], [SanPhamID], [SoLuong], [DonGia], [TinhTrangDanhGia]) VALUES (61, 4, 2, CAST(230000.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[ChiTietDonHang] ([DonHangID], [SanPhamID], [SoLuong], [DonGia], [TinhTrangDanhGia]) VALUES (62, 4, 3, CAST(230000.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[ChiTietDonHang] ([DonHangID], [SanPhamID], [SoLuong], [DonGia], [TinhTrangDanhGia]) VALUES (63, 4, 3, CAST(230000.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[ChiTietDonHang] ([DonHangID], [SanPhamID], [SoLuong], [DonGia], [TinhTrangDanhGia]) VALUES (63, 3, 3, CAST(220000.00 AS Decimal(18, 2)), 0)
+INSERT [dbo].[ChiTietDonHang] ([DonHangID], [SanPhamID], [SoLuong], [DonGia], [TinhTrangDanhGia]) VALUES (63, 2, 3, CAST(160000.00 AS Decimal(18, 2)), 0)
+
+
+-- Dữ liệu TEST bảng DonHang
+ INSERT INTO DonHang (NguoiDungID, TongTien, TinhTrangDonHang, NgayDatHang, HinhThucThanhToan, TinhTrangThanhToan, NgayThanhToan)
+VALUES ( 6, 390000, N'Hoàn Thành', '2024-11-17 15:26:03', N'Tiền mặt', N'Đã thanh toán', '2024-11-17 15:26:03');
+
+-- Đang Xử Lý, Đã thanh toán
+INSERT INTO DonHang (NguoiDungID, TongTien, TinhTrangDonHang, NgayDatHang, HinhThucThanhToan, TinhTrangThanhToan, NgayThanhToan)
+VALUES (6, 500000, N'Đang Xử Lý', '2024-11-18 10:00:00', N'Tiền mặt', N'Đã thanh toán', '2024-11-18 12:30:00');
+
+-- Đã Xác Nhận, Đã thanh toán
+INSERT INTO DonHang (NguoiDungID, TongTien, TinhTrangDonHang, NgayDatHang, HinhThucThanhToan, TinhTrangThanhToan, NgayThanhToan)
+VALUES (6, 600000, N'Đã Xác Nhận', '2024-11-18 11:15:00', N'Chuyển khoản', N'Đã thanh toán', '2024-11-18 14:00:00');
+
+-- Đang Vận Chuyển, Đã thanh toán
+INSERT INTO DonHang (NguoiDungID, TongTien, TinhTrangDonHang, NgayDatHang, HinhThucThanhToan, TinhTrangThanhToan, NgayThanhToan)
+VALUES (6, 750000, N'Đang Vận Chuyển', '2024-11-19 09:00:00', N'Tiền mặt', N'Đã thanh toán', '2024-11-19 12:15:00');
+
+-- Hoàn Thành, Đã thanh toán
+INSERT INTO DonHang (NguoiDungID, TongTien, TinhTrangDonHang, NgayDatHang, HinhThucThanhToan, TinhTrangThanhToan, NgayThanhToan)
+VALUES (6, 900000, N'Hoàn Thành', '2024-11-19 13:00:00', N'Chuyển khoản', N'Đã thanh toán', '2024-11-19 15:45:00');
+
+-- Đã Hủy, Chưa thanh toán
+INSERT INTO DonHang (NguoiDungID, TongTien, TinhTrangDonHang, NgayDatHang, HinhThucThanhToan, TinhTrangThanhToan, NgayThanhToan)
+VALUES (6, 0, N'Đã Hủy', '2024-11-20 10:00:00', N'Tiền mặt', N'Chưa thanh toán', NULL);
+
+-- Đang Xử Lý, Chưa thanh toán
+INSERT INTO DonHang (NguoiDungID, TongTien, TinhTrangDonHang, NgayDatHang, HinhThucThanhToan, TinhTrangThanhToan, NgayThanhToan)
+VALUES (6, 450000, N'Đang Xử Lý', '2024-11-20 11:30:00', N'Tiền mặt', N'Chưa thanh toán', NULL);
+
+-- Đã Xác Nhận, Chưa thanh toán
+INSERT INTO DonHang (NguoiDungID, TongTien, TinhTrangDonHang, NgayDatHang, HinhThucThanhToan, TinhTrangThanhToan, NgayThanhToan)
+VALUES (6, 550000, N'Đã Xác Nhận', '2024-11-20 12:15:00', N'Chuyển khoản', N'Chưa thanh toán', NULL);
+
+-- Đang Vận Chuyển, Chưa thanh toán
+INSERT INTO DonHang (NguoiDungID, TongTien, TinhTrangDonHang, NgayDatHang, HinhThucThanhToan, TinhTrangThanhToan, NgayThanhToan)
+VALUES (6, 300000, N'Đang Vận Chuyển', '2024-11-20 14:00:00', N'Tiền mặt', N'Chưa thanh toán', NULL);

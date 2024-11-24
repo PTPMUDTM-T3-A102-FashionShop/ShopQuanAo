@@ -147,6 +147,7 @@ C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\use
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\BLL.dll
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\DB.dll
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\DTO.dll
+C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\FormShopQuanAo.exe
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\Guna.UI2.dll
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\DAL.dll
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\DTO.pdb
@@ -174,4 +175,4 @@ C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\use
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.csproj.CopyComplete
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.dll
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.pdb
-C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\FormShopQuanAo.exe
+C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.ucOrderDetail.resources

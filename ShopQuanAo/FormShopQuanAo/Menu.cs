@@ -253,6 +253,7 @@ namespace FormShopQuanAo
             contentPanel.Controls.Clear();
             ucOrder ucOrder = new ucOrder();
             ucOrder.SetUserInfo(currentUser);
+            ucOrder.SetContentPanel(contentPanel); // Truyền contentPanel vào ucOrder
             contentPanel.Controls.Add(ucOrder);
         }
 
