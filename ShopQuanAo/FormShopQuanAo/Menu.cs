@@ -253,6 +253,7 @@ namespace FormShopQuanAo
             contentPanel.Controls.Clear();
             ucOrder ucOrder = new ucOrder();
             ucOrder.SetUserInfo(currentUser);
+            ucOrder.SetContentPanel(contentPanel); // Truyền contentPanel vào ucOrder
             contentPanel.Controls.Add(ucOrder);
         }
 
@@ -323,6 +324,13 @@ namespace FormShopQuanAo
                     isCollapse = true;
                 }
             }
+        }
+
+        private void btnTK_Click(object sender, EventArgs e)
+        {
+            contentPanel.Controls.Clear();
+            ucAnalytic ucAnalytic= new ucAnalytic();
+            contentPanel.Controls.Add(ucAnalytic);
         }
     }
 }

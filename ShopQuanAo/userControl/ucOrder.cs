@@ -18,10 +18,17 @@ namespace userControl
     {
         private NguoiDung nguoiDung;
         private SanPhamBLL sanPhamBLL = new SanPhamBLL();
+        private DBConnection dbConnection = new DBConnection();
+        private Panel contentPanel;
         public ucOrder()
         {
             InitializeComponent();
             InitializeHoaDonGrid(); // Khởi tạo cột cho dgvHoaDon
+        }
+
+        public void SetContentPanel(Panel panel)
+        {
+            contentPanel = panel;
         }
 
         private void InitializeHoaDonGrid()
@@ -70,6 +77,7 @@ namespace userControl
             List<SanPhamChiTietDTO> list = sanPhamBLL.GetSanPhamChiTiet();
             dgvSanPham.DataSource = list;
             dgvSanPham.ReadOnly = true;
+            dgvHoaDon.ReadOnly = true;
         }
 
         private void dgvSanPham_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -200,7 +208,104 @@ namespace userControl
 
         private void btnThemDonHang_Click(object sender, EventArgs e)
         {
+            // Kiểm tra xem có ít nhất một dòng hợp lệ trong dgvHoaDon
+            bool hasData = false;
+            foreach (DataGridViewRow row in dgvHoaDon.Rows)
+            {
+                if (row.IsNewRow) continue; // Bỏ qua hàng mới (hàng trống cho nhập liệu)
 
+                // Kiểm tra nếu có ít nhất một dòng có dữ liệu hợp lệ
+                if (row.Cells["MaSanPham"].Value != null &&
+                    row.Cells["SoLuong"].Value != null &&
+                    row.Cells["Gia"].Value != null &&
+                    Convert.ToInt32(row.Cells["SoLuong"].Value) > 0 &&
+                    Convert.ToDecimal(row.Cells["Gia"].Value) > 0)
+                {
+                    hasData = true;
+                    break; // Dừng vòng lặp nếu tìm thấy dòng hợp lệ
+                }
+            }
+
+            if (!hasData)
+            {
+                MessageBox.Show("Không có dữ liệu hợp lệ trong bảng hóa đơn.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Lấy thông tin người dùng và tổng tiền từ giao diện
+            int nguoiDungID = nguoiDung.NguoiDungID;
+            decimal tongTien = decimal.Parse(lblTongThanhTien.Text.Replace("Tổng thành tiền: ", "").Replace(" đ", "").Replace(",", ""));
+
+            DonHangDTO donHang = new DonHangDTO
+            {
+                NguoiDungID = nguoiDungID,
+                TongTien = tongTien,
+                TinhTrangDonHang = "Hoàn Thành",
+                HinhThucThanhToan = "Tiền mặt",
+                TinhTrangThanhToan = "Đã thanh toán"
+            };
+
+            List<ChiTietDonHangDTO> chiTietDonHangs = new List<ChiTietDonHangDTO>();
+
+            foreach (DataGridViewRow row in dgvHoaDon.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                int maSanPham = Convert.ToInt32(row.Cells["MaSanPham"].Value);
+                string tenMau = row.Cells["TenMau"].Value.ToString();
+                string tenSize = row.Cells["TenSize"].Value.ToString();
+                int soLuong = Convert.ToInt32(row.Cells["SoLuong"].Value);
+                decimal gia = Convert.ToDecimal(row.Cells["Gia"].Value);
+
+                // Lấy ChiTietID từ bảng ChiTietSanPham
+                int chiTietID = GetChiTietID(maSanPham, tenMau, tenSize);
+
+                ChiTietDonHangDTO chiTiet = new ChiTietDonHangDTO
+                {
+                    SanPhamID = chiTietID,
+                    SoLuong = soLuong,
+                    DonGia = gia
+                };
+
+                chiTietDonHangs.Add(chiTiet);
+            }
+
+            DonHangBLL donHangBLL = new DonHangBLL();
+            donHangBLL.ThemDonHang(donHang, chiTietDonHangs);
+
+            MessageBox.Show("Thêm đơn hàng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LamMoi();
+            LoadSanPhamChiTiet();
+        }
+
+        private int GetChiTietID(int maSanPham, string tenMau, string tenSize)
+        {
+            // Thực hiện truy vấn để lấy ChiTietID từ bảng ChiTietSanPham
+            DBConnection dbConnection = new DBConnection();
+            dbConnection.OpenConnection();
+
+            try
+            {
+                string query = @"
+            SELECT ct.ChiTietID
+            FROM ChiTietSanPham ct
+            JOIN Mau m ON ct.MauID = m.MauID
+            JOIN Size s ON ct.SizeID = s.SizeID
+            WHERE ct.SanPhamID = @SanPhamID
+              AND m.TenMau = @TenMau
+              AND s.TenSize = @TenSize";
+
+                SqlCommand cmd = new SqlCommand(query, dbConnection.conn);
+                cmd.Parameters.AddWithValue("@SanPhamID", maSanPham);
+                cmd.Parameters.AddWithValue("@TenMau", tenMau);
+                cmd.Parameters.AddWithValue("@TenSize", tenSize);
+
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            finally
+            {
+                dbConnection.CloseConnection();
+            }
         }
 
         private void dgvHoaDon_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -228,14 +333,27 @@ namespace userControl
             DialogResult result = MessageBox.Show("Chắc chắn làm mới bảng hóa đơn bán hàng?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                dgvHoaDon.Rows.Clear();
-                lblTongThanhTien.Text = "Tổng thành tiền: 0";
+                LamMoi();
             }
+        }
+
+        private void LamMoi() {
+            dgvHoaDon.Rows.Clear();
+            lblTongThanhTien.Text = "Tổng thành tiền: 0";
         }
 
         private void txtMaSanPham_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnChiTietDonHang_Click(object sender, EventArgs e)
+        {
+            contentPanel.Controls.Clear();
+            ucOrderDetail ucOrderDetail = new ucOrderDetail();
+            ucOrderDetail.SetUserInfo(nguoiDung);  // Truyền thông tin người dùng vào ucOrderDetail
+            ucOrderDetail.SetContentPanel(contentPanel);  // Truyền contentPanel vào ucOrderDetail
+            contentPanel.Controls.Add(ucOrderDetail);
         }
     }
 }

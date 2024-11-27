@@ -81,7 +81,7 @@ namespace DTO
     #endregion
 		
 		public DoAnKetMon_UDTMDataContext() : 
-				base(global::DTO.Properties.Settings.Default.DoAnKetMon_UDTMConnectionString2, mappingSource)
+				base(global::DTO.Properties.Settings.Default.DoAnKetMon_UDTMConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
