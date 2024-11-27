@@ -16,6 +16,7 @@ using Accord.MachineLearning.DecisionTrees;
 using Accord.MachineLearning.DecisionTrees.Learning;
 using Accord.Statistics.Filters;
 using Accord.Math;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace userControl
 {
@@ -50,7 +51,7 @@ namespace userControl
                 dbConnection.OpenConnection();
 
                 string query = @"
-                    SELECT sp.SanPhamID, sp.TenSanPham, sp.MoTa, m.TenMau, s.TenSize, ctp.Gia, ctp.HinhAnhUrl, ctp.SoLuongTonKho
+                    SELECT sp.MoTa, m.TenMau, s.TenSize, ctp.Gia, ctp.SoLuongTonKho
                     FROM SanPham sp
                     INNER JOIN ChiTietSanPham ctp ON sp.SanPhamID = ctp.SanPhamID
                     INNER JOIN Mau m ON ctp.MauID = m.MauID
@@ -206,7 +207,7 @@ namespace userControl
                 dbConnection.OpenConnection();
 
                 string query = @"
-            SELECT TOP 3 sp.MoTa
+            SELECT TOP 3 sp.MoTa, ctp.SoLuongTonKho
             FROM SanPham sp
             INNER JOIN ChiTietSanPham ctp ON sp.SanPhamID = ctp.SanPhamID
             INNER JOIN Mau m ON ctp.MauID = m.MauID
@@ -222,11 +223,23 @@ namespace userControl
                 DataTable dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
 
-                // Hiển thị 3 sản phẩm (MoTa) lên lbl3MoTa
-                lbl3MoTa.Text = "Top 3 sản phẩm:\n";
+                // Hiển thị dữ liệu lên biểu đồ
+                chartTopProducts.Series.Clear();
+                chartTopProducts.Titles.Clear();
+                chartTopProducts.Titles.Add("Top 3 sản phẩm theo số lượng tồn kho");
+
+                Series series = new Series
+                {
+                    Name = "Sản phẩm",
+                    IsValueShownAsLabel = true,
+                    ChartType = SeriesChartType.Bar
+                };
+
+                chartTopProducts.Series.Add(series);
+
                 foreach (DataRow row in dataTable.Rows)
                 {
-                    lbl3MoTa.Text += row["MoTa"].ToString() + "\n";
+                    series.Points.AddXY(row["MoTa"].ToString(), row["SoLuongTonKho"]);
                 }
 
                 if (isPredictionSuccessful)
@@ -235,7 +248,7 @@ namespace userControl
                 }
                 else
                 {
-                    MessageBox.Show("Dự đoán không thành công, hãy tham khảo Top 3 sản phẩm khuyên dùng");
+                    MessageBox.Show("Dự đoán không thành công, hãy tham khảo Top 3 sản phẩm khuyên dùng!");
                 }
             }
             catch
@@ -275,6 +288,16 @@ namespace userControl
         }
 
         private void lbl3MoTa_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chartTopProducts_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
