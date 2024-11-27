@@ -30,3 +30,4 @@ C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\DB\bin\Debug\DB.pdb
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.csproj.CoreCompileInputs.cache
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.dll
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.pdb
+C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.csproj.AssemblyReference.cache
