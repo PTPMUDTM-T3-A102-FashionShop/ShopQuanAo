@@ -50,3 +50,13 @@ C:\Users\gialo\Desktop\hyvong\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.csproj.Cor
 C:\Users\gialo\Desktop\hyvong\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.csproj.CopyComplete
 C:\Users\gialo\Desktop\hyvong\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.dll
 C:\Users\gialo\Desktop\hyvong\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.pdb
+C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\DTO\bin\Debug\DTO.dll.config
+C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\DTO\bin\Debug\DTO.dll
+C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\DTO\bin\Debug\DTO.pdb
+C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\DTO\bin\Debug\DB.dll
+C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\DTO\bin\Debug\DB.pdb
+C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\DTO\bin\Debug\DB.dll.config
+C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.csproj.CopyComplete
+C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.dll
+C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.pdb

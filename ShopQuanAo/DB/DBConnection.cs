@@ -18,5 +18,21 @@ namespace DB
             cmd = new SqlCommand();
             cmd.Connection = conn;
         }
+
+        public void OpenConnection()
+        {
+            if (conn.State == System.Data.ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+        }
+
+        public void CloseConnection()
+        {
+            if (conn.State == System.Data.ConnectionState.Open)
+            {
+                conn.Close();
+            }
+        }
     }
 }
