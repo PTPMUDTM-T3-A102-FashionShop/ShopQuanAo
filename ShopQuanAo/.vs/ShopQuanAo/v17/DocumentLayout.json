@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7EEB472F-339C-4F5F-90A3-852982E63103}|FormShopQuanAo\\FormShopQuanAo.csproj|d:\\pmemudungtminh\\doan\\shopquanao\\shopquanao\\formshopquanao\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7EEB472F-339C-4F5F-90A3-852982E63103}|FormShopQuanAo\\FormShopQuanAo.csproj|solutionrelative:formshopquanao\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|d:\\pmemudungtminh\\doan\\shopquanao\\shopquanao\\usercontrol\\ucsizecolor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|solutionrelative:usercontrol\\ucsizecolor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,11 +15,11 @@
       "RelativeMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|solutionrelative:usercontrol\\ucsizecolor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B55FA6CB-F0E3-4D52-A32F-06426E4E2B3E}|BLL\\BLL.csproj|d:\\pmemudungtminh\\doan\\shopquanao\\shopquanao\\bll\\maubll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B55FA6CB-F0E3-4D52-A32F-06426E4E2B3E}|BLL\\BLL.csproj|D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\bll\\maubll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B55FA6CB-F0E3-4D52-A32F-06426E4E2B3E}|BLL\\BLL.csproj|solutionrelative:bll\\maubll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{74870452-B61D-4B25-A52A-6092E36C75FB}|DAL\\DAL.csproj|d:\\pmemudungtminh\\doan\\shopquanao\\shopquanao\\dal\\maudal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{74870452-B61D-4B25-A52A-6092E36C75FB}|DAL\\DAL.csproj|D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\dal\\maudal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{74870452-B61D-4B25-A52A-6092E36C75FB}|DAL\\DAL.csproj|solutionrelative:dal\\maudal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -26,11 +30,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "Login.cs [Design]",
+              "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\FormShopQuanAo\\Login.cs",
+              "RelativeDocumentMoniker": "FormShopQuanAo\\Login.cs",
+              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\FormShopQuanAo\\Login.cs [Design]",
+              "RelativeToolTip": "FormShopQuanAo\\Login.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-23T16:09:26.677Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "MauBLL.cs",
               "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\BLL\\MauBLL.cs",
               "RelativeDocumentMoniker": "BLL\\MauBLL.cs",
@@ -38,12 +54,11 @@
               "RelativeToolTip": "BLL\\MauBLL.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAAwCEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-22T20:22:07.552Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-22T20:22:07.552Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "MauDAL.cs",
               "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\DAL\\MauDAL.cs",
               "RelativeDocumentMoniker": "DAL\\MauDAL.cs",
@@ -51,33 +66,31 @@
               "RelativeToolTip": "DAL\\MauDAL.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAADwvy0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-22T20:22:02.191Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-22T20:22:02.191Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ucSizeColor.cs",
               "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\userControl\\ucSizeColor.cs",
               "RelativeDocumentMoniker": "userControl\\ucSizeColor.cs",
               "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\userControl\\ucSizeColor.cs",
               "RelativeToolTip": "userControl\\ucSizeColor.cs",
-              "ViewState": "AgIAAJcAAAAAAAAAAAAUwLgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAJAAAAAAAAAAAAAYwJ8AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-22T10:03:52.027Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ucSizeColor.cs [Design]",
               "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\userControl\\ucSizeColor.cs",
               "RelativeDocumentMoniker": "userControl\\ucSizeColor.cs",
               "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\userControl\\ucSizeColor.cs [Design]",
               "RelativeToolTip": "userControl\\ucSizeColor.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-22T09:48:21.798Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-11-22T09:48:21.798Z"
             }
           ]
         }
