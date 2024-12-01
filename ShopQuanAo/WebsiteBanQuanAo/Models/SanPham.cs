@@ -17,8 +17,10 @@ namespace WebsiteBanQuanAo.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SanPham()
         {
+            this.ChiTietKhuyenMais = new HashSet<ChiTietKhuyenMai>();
             this.ChiTietSanPhams = new HashSet<ChiTietSanPham>();
             this.PhanHois = new HashSet<PhanHoi>();
+            this.NhaCungCaps = new HashSet<NhaCungCap>();
         }
     
         public int SanPhamID { get; set; }
@@ -30,9 +32,13 @@ namespace WebsiteBanQuanAo.Models
         public Nullable<bool> KichHoat { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiTietKhuyenMai> ChiTietKhuyenMais { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietSanPham> ChiTietSanPhams { get; set; }
         public virtual DanhMuc DanhMuc { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhanHoi> PhanHois { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NhaCungCap> NhaCungCaps { get; set; }
     }
 }

@@ -5,13 +5,67 @@
 }
 @section css{
     <style>
+        .price-original {
+            color: gray;
+        }
+
+            .price-original .original-price {
+                text-decoration: line-through;
+            }
+
+        .discount-badge {
+            background-color: red;
+            color: white;
+            font-size: 0.8em;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 10px;
+            text-decoration: none; /* Đảm bảo tag không bị gạch */
+        }
+
+        .price-discounted {
+            color: green;
+            font-weight: bold;
+        }
+
+        .hidden-form {
+            display: none; /* Ẩn form */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            z-index: 1000;
+        }
+
+            .hidden-form.active {
+                display: block; /* Hiển thị form */
+            }
+
+        form h3 {
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        body {
+            background-color: #f8f9fa; /* Tô nền trang */
+        }
+
         .rating {
-            font-size: 1.2em; 
+            font-size: 1.2em; /* Tăng kích thước sao */
             color: gold;
         }
 
             .rating i {
-                margin-right: 2px; 
+                margin-right: 2px; /* Khoảng cách giữa các sao */
             }
 
         .product-img {
@@ -39,13 +93,94 @@
         }
 
             .smart-suggestion-button:hover {
-                background-color: #0056b3; 
-                transform: scale(1.05); 
+                background-color: #0056b3; /* Màu nền khi hover */
+                transform: scale(1.05); /* Phóng to một chút khi hover */
             }
 
             .smart-suggestion-button:active {
-                transform: scale(0.95); 
+                transform: scale(0.95); /* Nhỏ lại một chút khi nhấn */
             }
+
+
+
+
+        /* Sidebar Styles */
+        .sidebar {
+            background-color: #f8f9fa; /* Nền màu sáng */
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+            .sidebar .list-group-item {
+                font-size: 16px;
+                padding: 10px 15px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                transition: background-color 0.3s;
+            }
+
+                .sidebar .list-group-item:hover {
+                    background-color: #f1f1f1;
+                }
+
+            .sidebar h4 {
+                margin-bottom: 15px;
+                font-weight: bold;
+            }
+
+        /* Smart suggestion button */
+        .smart-suggestion-button {
+            display: block;
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+            .smart-suggestion-button:hover {
+                background-color: #0056b3;
+            }
+
+        /* Form Styling */
+        .hidden-form {
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+            .hidden-form .form-group {
+                margin-bottom: 15px;
+            }
+
+            .hidden-form select, .hidden-form input {
+                width: 100%;
+                padding: 8px;
+                margin-top: 5px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+
+            .hidden-form button {
+                width: 100%;
+                padding: 10px;
+                margin-top: 15px;
+                border-radius: 5px;
+                font-size: 16px;
+            }
+
+                .hidden-form button.btn-secondary {
+                    background-color: #6c757d;
+                }
+
+                .hidden-form button.btn-primary {
+                    background-color: #007bff;
+                }
     </style>
 }
 @section slmua{
@@ -62,117 +197,217 @@
         IconClass = "fa-sort-desc";
     }
 }
-<div class="container-fluid page-header py-5">
-    <h1 class="text-center text-white display-6">Sản Phẩm</h1>
-    <ol class="breadcrumb justify-content-center mb-0">
-        <li class="breadcrumb-item"><a href="/Home/index">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">Pages</a></li>
-        <li class="breadcrumb-item active text-white">Shop</li>
-    </ol>
+<!-- Single Page Header start -->
+<div class="container-fluid page-header py-5" style="background-image: url('@Url.Content("~/img/banner5.jpg")');">
+    <h1 class="text-center text-white display-6"><p style="color:green">Sản Phẩm</p></h1>
 </div>
+
+
+<!-- Single Page Header End -->
+<!-- Fruits Shop Start-->
 <div class="container-fluid fruite py-5">
     <div class="container py-5">
-        <h1 class="mb-4">TÌM KIẾM</h1>
         <div class="row g-4">
             <div class="col-lg-12">
-                <div class="row g-4">
-                    <div class="col-xl-3">
-                        <form action="/Product">
-                            <div class="input-group w-100 mx-auto d-flex">
-                                <input type="search" name="search" class="form-control p-3" placeholder="Tìm Kiếm sản phẩm" aria-describedby="search-icon-1" value="@ViewBag.search"
-                                       style="border-radius: 20px 0 0 20px;" />
-                                <button type="submit" id="search-icon-1" class="input-group-text p-3"
-                                        style="background-color: #ccc; border-radius: 0 20px 20px 0; border: none;">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </div>
-                        </form>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="ml-2">
-                                <div class="btn-group">
-                                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link" style="font-size: 25px" href="#" id="sortDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                Sắp Xếp <i class="fas fa-sort"></i>
-                                            </a>
-                                            <ul class="dropdown-menu" aria-labelledby="sortDropdown">
-                                                <li><a class="dropdown-item" href="/Product?SortColumn=Price&IconClass=asc">Giá tăng dần</a></li>
-                                                <li><a class="dropdown-item" href="/Product?SortColumn=Price&IconClass=desc">Giá giảm dần</a></li>
-                                                <li><a class="dropdown-item" href="/Product?SortColumn=Price&IconClass=asc">Tên A-Z</a></li>
-                                                <li><a class="dropdown-item" href="/Product?SortColumn=Price&IconClass=desc">Tên Z-A</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div style="height:10px">
-
-                </div>
                 <div class="row g-4">
                     <div class="col-lg-3">
                         <div class="row g-4">
                             <div class="col-lg-12">
                                 <div class="mb-3">
-                                    <h4>Danh Mục Quần Áo</h4>
-                                    <ul class="list-unstyled clothing-categories">
+                                    <h1 class="text-center mb-4" style="font-family: 'Arial', sans-serif; color: #2c3e50;">TÌM KIẾM</h1>
+                                    <form action="/Product">
+                                        <div class="input-group w-100 mx-auto d-flex">
+                                            <input type="search" name="search" class="form-control p-3" placeholder="Tìm Kiếm sản phẩm" aria-describedby="search-icon-1" value="@ViewBag.search"
+                                                   style="border-radius: 25px 0 0 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
+                                            <button type="submit" id="search-icon-1" class="input-group-text p-3"
+                                                    style="background-color: #3498db; border-radius: 0 25px 25px 0; border: none; color: white; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+
+                                    <div class="d-flex align-items-center justify-content-between mt-4">
+                                        <div class="ml-2">
+                                            <div class="btn-group">
+                                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                                    <li class="nav-item dropdown">
+                                                        <a class="nav-link" href="#" id="sortDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                                           style="font-size: 18px; font-weight: 500; color: #34495e; background-color: #ecf0f1; border-radius: 8px; padding: 10px 15px; transition: all 0.3s ease;">
+                                                            Sắp Xếp <i class="fas fa-sort"></i>
+                                                        </a>
+                                                        <ul class="dropdown-menu shadow-lg" aria-labelledby="sortDropdown" style="border-radius: 8px;">
+                                                            <li><a class="dropdown-item" href="/Product?SortColumn=Price&IconClass=asc" style="font-size: 16px;">Giá tăng dần</a></li>
+                                                            <li><a class="dropdown-item" href="/Product?SortColumn=Price&IconClass=desc" style="font-size: 16px;">Giá giảm dần</a></li>
+                                                            <li><a class="dropdown-item" href="/Product?SortColumn=Name&IconClass=asc" style="font-size: 16px;">Tên A-Z</a></li>
+                                                            <li><a class="dropdown-item" href="/Product?SortColumn=Name&IconClass=desc" style="font-size: 16px;">Tên Z-A</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h4 class="text-center mb-4" style="font-weight: bold;">Danh Mục Quần Áo</h4>
+                                    <ul class="list-unstyled clothing-categories" style="padding-left: 0;">
                                         @foreach (var b in ViewBag.dm)
                                         {
                                             int Temp = 0;
-                                            <li>
-                                                <div class="d-flex justify-content-between clothing-name">
-                                                    <a href="/product/index/@b.DanhMucID"><i class="fas fa-tshirt me-2"></i>@b.TenDanhMuc</a>
-                                                    @foreach (var a in ViewBag.sp)
-                                                    {
-                                                        if (a.DanhMuc.TenDanhMuc == b.TenDanhMuc)
-                                                        {
-                                                            Temp++;
-                                                        }
-                                                    }
-                                                    <span>@Temp</span>
+                                            <li class="mb-3" style="list-style-type: none;">
+                                                <div class="d-flex justify-content-between align-items-center clothing-name p-3 border rounded shadow-sm"
+                                                     style="transition: background-color 0.3s ease;">
+                                                    <!-- Link to filter products by category -->
+                                                    <a href="@Url.Action("Index", "Product", new { danhmucid = b.DanhMucID, search = ViewBag.search, SortColumn = ViewBag.SortColumn, IconClass = ViewBag.IconClass, page = 1 })"
+                                                       class="d-flex align-items-center text-decoration-none text-dark"
+                                                       style="font-weight: 600;">
+                                                        <i class="fas fa-tshirt me-2"></i>@b.TenDanhMuc
+                                                    </a>
+
+
                                                 </div>
                                             </li>
                                         }
                                     </ul>
+
                                 </div>
                             </div>
+                            <div class="col-lg-12">
+
+
+
+                                <div class="mb-3">
+                                    <a class="smart-suggestion-button" href="javascript:void(0);">GỢI Ý THÔNG MINH</a>
+                                </div>
+
+                                <!-- Form thu thập thông tin -->
+                                <div id="smartSuggestionForm" class="hidden-form">
+                                    <form>
+                                        <h3>Gợi ý thông minh</h3>
+                                        <div class="form-group">
+                                            @Html.Label("Độ Tuổi")
+                                            <input type="number" name="dotuoi" min="1" max="120" value="18" class="form-control" />
+                                        </div>
+                                        <input type="hidden" name="trangthaigoiy" value="true" />
+                                        <!-- Thêm trường cho Sở thích -->
+                                        <div class="form-group">
+                                            @Html.Label("Sở Thích")
+                                            <select name="sothich" class="form-control">
+                                                <option value="Thể thao">Thể thao năng động</option>
+                                                <option value="Công sở, lịch sự">Công sở, lịch sự</option>
+                                                <option value="Đơn giản, thường ngày">Đơn giản, thường ngày</option>
+                                                <option value="Thời trang du lịch">Thời trang du lịch</option>
+                                                <option value="Thời trang hot trend">Thời trang hot trend</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Thêm trường cho Mức chi tiêu -->
+                                        <div class="form-group">
+                                            @Html.Label("Mức Chi Tiêu Trong Năm ")
+                                            <select name="mucchitieu" class="form-control">
+                                                @for (int i = 5000000; i <= 1000000000; i += 5000000)
+                                                {
+                                                    <option value="@i">@i.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</option>
+                                                }
+                                            </select>
+                                        </div>
+
+
+                                        <!-- Thêm trường cho Giới tính -->
+                                        <div class="form-group">
+                                            @Html.Label("Giới Tính")
+                                            <select name="gioitinh" class="form-control">
+                                                <option value="Nam">Nam</option>
+                                                <option value="Nữ">Nữ</option>
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Gửi</button>
+                                        <button type="button" class="btn btn-secondary" onclick="hideForm()">Hủy</button>
+                                    </form>
+                                </div>
+                                <script>
+                                    // Hiển thị form
+                                    document.querySelector('.smart-suggestion-button').addEventListener('click', function () {
+                                        const form = document.getElementById('smartSuggestionForm');
+                                        form.classList.add('active');
+                                    });
+
+                                    // Ẩn form
+                                    function hideForm() {
+                                        const form = document.getElementById('smartSuggestionForm');
+                                        form.classList.remove('active');
+                                    }
+
+                                </script>
+
+
+
+                            </div>
                         </div>
+
                     </div>
                     <div class="col-lg-9">
                         <div class="row g-4 justify-content-center">
 
+
+
+
+
+
                             @foreach (var a in Model)
                             {
                                 <div class="col-md-6 col-lg-6 col-xl-4">
-                                    <div class="rounded position-relative product-item">
-                                        <div class="product-img">
-                                            <a href="/product/details/@a.SanPhamID">
-                                                <img src="~/img/@a.HinhAnhUrl" class="img-fluid w-100 rounded-top product-img-fixed" alt="">
-                                            </a>
+                                    <div class="rounded position-relative product-item" style="display: flex; flex-direction: column; height: 100%;">
+                                        <div class="product-img" style="flex-shrink: 0;">
+                                            @if (a.SoLuongTonKho > 0 && a.KichHoat == true)
+                                            {
+                                                <a href="/product/details/@a.SanPhamID">
+                                                    <img src="~/img/@a.HinhAnhUrl" class="img-fluid w-100 rounded-top product-img-fixed" alt="">
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <img src="~/img/@a.HinhAnhUrl" class="img-fluid w-100 rounded-top product-img-fixed grayscale" alt="Hết hàng">
+                                            }
                                         </div>
                                         <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">
                                             <p>
                                                 @a.SanPham.DanhMuc.TenDanhMuc
                                             </p>
                                         </div>
-                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom" style="flex-grow: 1;">
                                             <a href="/product/details/@a.SanPhamID">
                                                 <h4>@a.SanPham.TenSanPham</h4>
                                             </a>
-                                            <a href="/product/details/@a.SanPhamID">
-                                                <h4>@a.Gia</h4>
-                                            </a>
-                                         
-                                            <div class="rating">
-                                                @{
-                                                }
+                                            @if (a.GiaDuocGiam == 0)
+                                            {
+                                                <a href="/product/details/@a.SanPhamID">
+                                                    <span class="price-discounted" style="margin-right: 10px; font-size: 1em; font-family: 'Arial', sans-serif; color: green; font-weight: bold;">
+                                                        @a.Gia.ToString("N0") VNĐ
+                                                    </span>
+                                                </a>
+                                            }
+                                            else
+                                            {
 
+                                                var GiaThucTe = a.Gia - a.GiaDuocGiam;
+
+                                                <a href="/product/details/@a.SanPhamID">
+                                                    <h4 class="price-original" style="color: gray; font-size: 1em; text-decoration: none;">
+                                                        <span class="original-price" style="text-decoration: line-through; margin-right: 10px; font-size: 1em; font-family: 'Arial', sans-serif;">
+                                                            @a.Gia.ToString("N0") VNĐ
+                                                        </span>
+                                                        <span class="discount-badge" style="background-color: red; color: white; font-size: 1em; font-weight: bold; padding: 2px 6px; border-radius: 4px; font-family: 'Arial', sans-serif;">
+                                                            -@((a.GiaDuocGiam ?? 0).ToString("N0")) VNĐ
+                                                        </span>
+                                                    </h4>
+                                                    <h4 class="price-discounted" style="color: green; font-size: 1em; font-weight: bold; font-family: 'Arial', sans-serif;">
+                                                        @((GiaThucTe ?? 0).ToString("N0")) VNĐ
+                                                    </h4>
+                                                </a>
+                                            }
+                                            <!-- Hiển thị số sao -->
+                                            <div class="rating">
                                                 @if (a.SanPham.SoSaoTB != 0)
                                                 {
-                                            
+                                                    // Nếu có đánh giá (AverageRating không null), hiển thị sao
                                                     for (int i = 1; i <= 5; i++)
                                                     {
                                                         <i class="fa fa-star" style="color:@(i <= a.SanPham.SoSaoTB ? "gold" : "gray")"></i>
@@ -180,18 +415,37 @@
                                                 }
                                                 else
                                                 {
-                                    
+                                                    // Nếu không có đánh giá, không hiển thị sao
                                                     <span>Chưa có đánh giá</span>
                                                 }
                                             </div>
-                                     
+                                            <!-- Hiển thị số lượt đã bán -->
                                             <p class="text-muted mb-2">Đã bán: @a.SanPham.SoLuongDaBan</p>
-
                                         </div>
                                     </div>
                                 </div>
-
                             }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             <div class="pagination d-flex justify-content-center mt-5">
                                 @{
                                     int PrevPage = ViewBag.Page - 1;
@@ -208,23 +462,24 @@
                                     int StartPage = Math.Max(1, ViewBag.Page - 5);
                                     int EndPage = Math.Min(ViewBag.NoOfPages, StartPage + 6);
                                 }
-                                <a href="/Product?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=1" class="rounded">Trang đầu</a>
-                                <a href="/Product?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=@PrevPage" class="rounded">Trang trước</a>
+                                <a href="/Product?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=1&dotuoi=@ViewBag.dotuoi&gioitinh=@ViewBag.gioitinh&sothich=@ViewBag.sothich&mucchitieu=@ViewBag.mucchitieu&trangthaigoiy=@ViewBag.trangthaigoiy&search=@ViewBag.search&danhmucid=@ViewBag.dmid" class="rounded">Trang đầu</a>
+                                <a href="/Product?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=@PrevPage&dotuoi=@ViewBag.dotuoi&gioitinh=@ViewBag.gioitinh&sothich=@ViewBag.sothich&mucchitieu=@ViewBag.mucchitieu&trangthaigoiy=@ViewBag.trangthaigoiy&search=@ViewBag.search&danhmucid=@ViewBag.dmid" class="rounded">Trang trước</a>
 
                                 @for (int i = StartPage; i <= EndPage; i++)
                                 {
                                     if (i == ViewBag.Page)
                                     {
-                                        <a href="/Product?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=@i" class="active rounded">@i</a>
+                                        <a href="/Product?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=@i&dotuoi=@ViewBag.dotuoi&gioitinh=@ViewBag.gioitinh&sothich=@ViewBag.sothich&mucchitieu=@ViewBag.mucchitieu&trangthaigoiy=@ViewBag.trangthaigoiy&search=@ViewBag.search&danhmucid=@ViewBag.dmid" class="active rounded">@i</a>
                                     }
                                     else
                                     {
-                                        <a href="/Product?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=@i" class="rounded">@i</a>
+                                        <a href="/Product?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=@i&dotuoi=@ViewBag.dotuoi&gioitinh=@ViewBag.gioitinh&sothich=@ViewBag.sothich&mucchitieu=@ViewBag.mucchitieu&trangthaigoiy=@ViewBag.trangthaigoiy&search=@ViewBag.search&danhmucid=@ViewBag.dmid" class="rounded">@i</a>
                                     }
                                 }
 
-                                <a href="/Product?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=@NextPage" class="rounded">Tiếp theo</a>
-                                <a href="/Product?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=@ViewBag.NoOfPages" class="rounded">Trang cuối</a>
+
+                                <a href="/Product?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=@NextPage&dotuoi=@ViewBag.dotuoi&gioitinh=@ViewBag.gioitinh&sothich=@ViewBag.sothich&mucchitieu=@ViewBag.mucchitieu&trangthaigoiy=@ViewBag.trangthaigoiy&search=@ViewBag.search&danhmucid=@ViewBag.dmid" class="rounded">Tiếp theo</a>
+                                <a href="/Product?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&page=@ViewBag.NoOfPages&dotuoi=@ViewBag.dotuoi&gioitinh=@ViewBag.gioitinh&sothich=@ViewBag.sothich&mucchitieu=@ViewBag.mucchitieu&trangthaigoiy=@ViewBag.trangthaigoiy&search=@ViewBag.search&danhmucid=@ViewBag.dmid" class="rounded">Trang cuối</a>
                             </div>
 
                         </div>
@@ -234,4 +489,4 @@
         </div>
     </div>
 </div>
-
+<!-- Fruits Shop End-->

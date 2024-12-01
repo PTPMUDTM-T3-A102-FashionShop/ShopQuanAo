@@ -4,38 +4,42 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e2c2c3e82e3e4cf7832066f49d7a3d8b" Name="Diagram1">
-        <EntityTypeShape EntityType="DoAnKetMon_UDTMModel.ChiTietDonHang" Width="1.5" PointX="12" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DoAnKetMon_UDTMModel.ChiTietSanPham" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DoAnKetMon_UDTMModel.DanhMuc" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DoAnKetMon_UDTMModel.DonHang" Width="1.5" PointX="9.75" PointY="12.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DoAnKetMon_UDTMModel.GioHang" Width="1.5" PointX="7.5" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DoAnKetMon_UDTMModel.ManHinh" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DoAnKetMon_UDTMModel.Mau" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DoAnKetMon_UDTMModel.NguoiDung" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DoAnKetMon_UDTMModel.NhaCungCap" Width="1.5" PointX="7.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DoAnKetMon_UDTMModel.NhomNguoiDung" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DoAnKetMon_UDTMModel.PhanHoi" Width="1.5" PointX="10.5" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DoAnKetMon_UDTMModel.SanPham" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DoAnKetMon_UDTMModel.Size" Width="1.5" PointX="3" PointY="14.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DoAnKetMon_UDTMModel.sysdiagram" Width="1.5" PointX="9.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DoAnKetMon_UDTMModel.ThongTinGiaoHang" Width="1.5" PointX="7.5" PointY="18.875" IsExpanded="true" />
-        <AssociationConnector Association="DoAnKetMon_UDTMModel.FK__ChiTietDo__DonHa__7B5B524B" ManuallyRouted="false" />
-        <AssociationConnector Association="DoAnKetMon_UDTMModel.FK__ChiTietDo__SanPh__7C4F7684" ManuallyRouted="false" />
-        <AssociationConnector Association="DoAnKetMon_UDTMModel.FK__ChiTietSa__MauID__6FE99F9F" ManuallyRouted="false" />
-        <AssociationConnector Association="DoAnKetMon_UDTMModel.FK__ChiTietSa__SanPh__6EF57B66" ManuallyRouted="false" />
-        <AssociationConnector Association="DoAnKetMon_UDTMModel.FK__ChiTietSa__SizeI__70DDC3D8" ManuallyRouted="false" />
-        <AssociationConnector Association="DoAnKetMon_UDTMModel.FK__GioHang__SanPham__10566F31" ManuallyRouted="false" />
-        <AssociationConnector Association="DoAnKetMon_UDTMModel.FK__SanPham__DanhMuc__6383C8BA" ManuallyRouted="false" />
-        <AssociationConnector Association="DoAnKetMon_UDTMModel.FK__DonHang__DiaChiI__778AC167" ManuallyRouted="false" />
-        <AssociationConnector Association="DoAnKetMon_UDTMModel.FK__DonHang__NguoiDu__75A278F5" ManuallyRouted="false" />
-        <AssociationConnector Association="DoAnKetMon_UDTMModel.FK__DonHang__NhanVie__76969D2E" ManuallyRouted="false" />
-        <AssociationConnector Association="DoAnKetMon_UDTMModel.FK__GioHang__NguoiDu__0F624AF8" ManuallyRouted="false" />
-        <AssociationConnector Association="DoAnKetMon_UDTMModel.FK__NguoiDung__MaNho__4F7CD00D" ManuallyRouted="false" />
-        <AssociationConnector Association="DoAnKetMon_UDTMModel.FK__PhanHoi__NguoiDu__02084FDA" ManuallyRouted="false" />
-        <AssociationConnector Association="DoAnKetMon_UDTMModel.FK__ThongTinG__Nguoi__59063A47" ManuallyRouted="false" />
-        <AssociationConnector Association="DoAnKetMon_UDTMModel.FK__PhanHoi__SanPham__01142BA1" ManuallyRouted="false" />
-        <AssociationConnector Association="DoAnKetMon_UDTMModel.PhanQuyen" ManuallyRouted="false" />
+      <Diagram DiagramId="316b0d9891d84c6393628ae0303a0b23" Name="Diagram1">
+        <EntityTypeShape EntityType="DoAnKetMon_UDTM21114Model.ChiTietDonHang" Width="1.5" PointX="12" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnKetMon_UDTM21114Model.ChiTietKhuyenMai" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnKetMon_UDTM21114Model.ChiTietSanPham" Width="1.5" PointX="5.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnKetMon_UDTM21114Model.DanhMuc" Width="1.5" PointX="0.75" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnKetMon_UDTM21114Model.DonHang" Width="1.5" PointX="9.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnKetMon_UDTM21114Model.GioHang" Width="1.5" PointX="7.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnKetMon_UDTM21114Model.KhuyenMai" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnKetMon_UDTM21114Model.ManHinh" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnKetMon_UDTM21114Model.Mau" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnKetMon_UDTM21114Model.NguoiDung" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnKetMon_UDTM21114Model.NhaCungCap" Width="1.5" PointX="0.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnKetMon_UDTM21114Model.NhomNguoiDung" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnKetMon_UDTM21114Model.PhanHoi" Width="1.5" PointX="10.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnKetMon_UDTM21114Model.SanPham" Width="1.5" PointX="3" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnKetMon_UDTM21114Model.Size" Width="1.5" PointX="3" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoAnKetMon_UDTM21114Model.ThongTinGiaoHang" Width="1.5" PointX="7.5" PointY="17.5" IsExpanded="true" />
+        <AssociationConnector Association="DoAnKetMon_UDTM21114Model.FK__ChiTietDo__DonHa__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnKetMon_UDTM21114Model.FK__ChiTietDo__SanPh__6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnKetMon_UDTM21114Model.FK__ChiTietKh__Khuye__7D439ABD" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnKetMon_UDTM21114Model.FK__ChiTietKh__SanPh__7C4F7684" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnKetMon_UDTM21114Model.FK__ChiTietSa__MauID__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnKetMon_UDTM21114Model.FK__ChiTietSa__SanPh__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnKetMon_UDTM21114Model.FK__ChiTietSa__SizeI__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnKetMon_UDTM21114Model.FK__GioHang__SanPham__76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnKetMon_UDTM21114Model.FK__SanPham__DanhMuc__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnKetMon_UDTM21114Model.FK__DonHang__DiaChiI__68487DD7" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnKetMon_UDTM21114Model.FK__DonHang__NguoiDu__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnKetMon_UDTM21114Model.FK__DonHang__NhanVie__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnKetMon_UDTM21114Model.FK__GioHang__NguoiDu__75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnKetMon_UDTM21114Model.FK__NguoiDung__MaNho__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnKetMon_UDTM21114Model.FK__PhanHoi__NguoiDu__72C60C4A" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnKetMon_UDTM21114Model.FK__ThongTinG__Nguoi__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnKetMon_UDTM21114Model.FK__PhanHoi__SanPham__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnKetMon_UDTM21114Model.NhaCungCapSanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="DoAnKetMon_UDTM21114Model.PhanQuyen" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

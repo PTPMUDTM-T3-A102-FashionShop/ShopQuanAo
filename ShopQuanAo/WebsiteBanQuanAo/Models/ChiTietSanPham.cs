@@ -26,6 +26,7 @@ namespace WebsiteBanQuanAo.Models
         public int MauID { get; set; }
         public int SizeID { get; set; }
         public decimal Gia { get; set; }
+        public Nullable<decimal> GiaDuocGiam { get; set; }
         public string HinhAnhUrl { get; set; }
         public int SoLuongTonKho { get; set; }
         public Nullable<bool> KichHoat { get; set; }

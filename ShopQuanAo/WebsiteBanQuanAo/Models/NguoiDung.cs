@@ -34,8 +34,13 @@ namespace WebsiteBanQuanAo.Models
         public Nullable<System.DateTime> NgaySinh { get; set; }
         public Nullable<int> MaNhomNguoiDung { get; set; }
         public Nullable<System.DateTime> NgayTao { get; set; }
-        public string GioiTinh { get; set; }
         public Nullable<bool> KichHoat { get; set; }
+        public Nullable<bool> Train { get; set; }
+        public Nullable<int> MucChiTieu { get; set; }
+        public Nullable<int> DoTuoi { get; set; }
+        public string PhanKhucKH { get; set; }
+        public string SoThich { get; set; }
+        public string GioiTinh { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonHang> DonHangs { get; set; }

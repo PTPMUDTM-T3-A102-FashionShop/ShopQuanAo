@@ -1,14 +1,15 @@
-﻿using WebsiteBanQuanAo.Filters;
-using WebsiteBanQuanAo.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using WebsiteBanQuanAo.Filters;
+using WebsiteBanQuanAo.Models;
 
-namespace WebsiteBanQuanAo.Controllers
+namespace DoAnChuyenNganh.Controllers
 {
+    [UserAuthorization]
     public class AddressController : Controller
     {
-        private readonly DoAnKetMon_UDTMEntities2 db = new DoAnKetMon_UDTMEntities2();
+        private readonly ShopQuanAoEntities db = new ShopQuanAoEntities();
 
         public ActionResult Index()
         {
@@ -16,33 +17,44 @@ namespace WebsiteBanQuanAo.Controllers
             var addresses = GetShippingAddresses(userId);
             return View(addresses);
         }
+
+        // Lấy danh sách địa chỉ giao hàng của người dùng
         private List<ThongTinGiaoHang> GetShippingAddresses(int userId)
         {
             return db.ThongTinGiaoHangs.Where(addr => addr.NguoiDungID == userId).ToList();
         }
+
         public ActionResult AddShippingAddress()
         {
-            return View(); 
+            return View(); // Bạn có thể để trang này để thêm địa chỉ
         }
+
+        // Thêm địa chỉ giao hàng
         [HttpPost]
         public ActionResult AddShippingAddress(ThongTinGiaoHang address)
         {
             if (!ModelState.IsValid)
             {
+                // Nếu không hợp lệ, trả về danh sách địa chỉ để hiển thị lỗi
                 var addresses = GetShippingAddresses(GetCurrentUserId());
-                return View("Index", addresses); 
+                return View("Index", addresses); // Trả về view Index với danh sách địa chỉ
             }
 
             int userId = GetCurrentUserId();
             address.NguoiDungID = userId;
+
+            // Nếu địa chỉ được chọn làm mặc định
             if (address.DiaChiMacDinh)
             {
+                // Bỏ mặc định tất cả các địa chỉ khác
                 SetDefaultShippingAddress(userId, address.DiaChiID);
             }
+
             db.ThongTinGiaoHangs.Add(address);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
         public ActionResult EditShippingAddress(int id)
         {
             var address = db.ThongTinGiaoHangs.Find(id);
@@ -50,7 +62,9 @@ namespace WebsiteBanQuanAo.Controllers
             {
                 return HttpNotFound();
             }
-            return View(address); 
+
+            // Trả về view với địa chỉ hiện tại
+            return View(address); // Trả về đối tượng address cho view
         }
 
         [HttpPost]
@@ -58,7 +72,8 @@ namespace WebsiteBanQuanAo.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(updatedAddress);
+                // Nếu có lỗi xác thực, trả về form với dữ liệu đã nhập
+                return View(updatedAddress); // Trả về đối tượng updatedAddress cho view
             }
 
             var existingAddress = db.ThongTinGiaoHangs.Find(updatedAddress.DiaChiID);
@@ -72,31 +87,42 @@ namespace WebsiteBanQuanAo.Controllers
                     SetDefaultShippingAddress(existingAddress.NguoiDungID, existingAddress.DiaChiID);
                 }
 
-                existingAddress.DiaChiMacDinh = updatedAddress.DiaChiMacDinh; 
+                existingAddress.DiaChiMacDinh = updatedAddress.DiaChiMacDinh; // Cập nhật cờ mặc định
                 db.SaveChanges();
             }
+
+            // Quay về danh sách địa chỉ
             var addressesAfterEdit = GetShippingAddresses(existingAddress.NguoiDungID);
             return View("Index", addressesAfterEdit);
         }
+
+
+        // Phương thức thiết lập địa chỉ mặc định
         [HttpPost]
         public ActionResult SetDefaultShippingAddress(int userId, int diaChiId)
         {
+            // Bỏ thiết lập tất cả địa chỉ khác là mặc định
             var otherAddresses = db.ThongTinGiaoHangs
                 .Where(addr => addr.NguoiDungID == userId && addr.DiaChiID != diaChiId)
                 .ToList();
 
             foreach (var addr in otherAddresses)
             {
-                addr.DiaChiMacDinh = false; 
+                addr.DiaChiMacDinh = false; // Đặt các địa chỉ khác thành không mặc định
             }
+
+            // Đặt địa chỉ được chọn làm mặc định
             var addressToSetDefault = db.ThongTinGiaoHangs.Find(diaChiId);
             if (addressToSetDefault != null)
             {
-                addressToSetDefault.DiaChiMacDinh = true; 
+                addressToSetDefault.DiaChiMacDinh = true; // Đặt địa chỉ thành mặc định
             }
+
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        // Phương thức thiết lập địa chỉ mặc định mới
         private void SetNewDefaultAddress(int userId)
         {
             var remainingAddress = db.ThongTinGiaoHangs
@@ -109,6 +135,8 @@ namespace WebsiteBanQuanAo.Controllers
                 db.SaveChanges();
             }
         }
+
+        // Xóa địa chỉ giao hàng
         [HttpPost]
         public ActionResult DeleteShippingAddress(int id)
         {
@@ -117,6 +145,8 @@ namespace WebsiteBanQuanAo.Controllers
             {
                 db.ThongTinGiaoHangs.Remove(address);
                 db.SaveChanges();
+
+                // Thiết lập địa chỉ mới mặc định nếu địa chỉ bị xóa là địa chỉ mặc định
                 if (address.DiaChiMacDinh)
                 {
                     SetNewDefaultAddress(address.NguoiDungID);
@@ -124,6 +154,8 @@ namespace WebsiteBanQuanAo.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        // Phương thức phụ để lấy ID người dùng hiện tại
         private int GetCurrentUserId()
         {
             var authCookie = Request.Cookies["auth"];
