@@ -188,3 +188,9 @@ C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\use
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.csproj.CopyComplete
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.dll
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.pdb
+D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.ucAnalytic.resources
+D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.ucEditBrand.resources
+D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.ucHome.resources
+D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.ucOrder.resources
+D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.ucOrderDetail.resources
+D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.ucSizeColor.resources

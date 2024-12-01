@@ -64,11 +64,11 @@ namespace DAL
                 throw new Exception("Lỗi khi cập nhật chi tiết sản phẩm", ex);
             }
         }
-        public bool DeleteChiTietSanPham(int chiTietSanPhamID)
+        public bool DeleteChiTietSanPham(int ChiTietID)
         {
             try
             {
-                var record = doAnKetMon_UDTM.ChiTietSanPhams.SingleOrDefault(ctsp => ctsp.ChiTietID == chiTietSanPhamID);
+                var record = doAnKetMon_UDTM.ChiTietSanPhams.SingleOrDefault(ctsp => ctsp.ChiTietID == ChiTietID);
                 if (record != null)
                 {
                     doAnKetMon_UDTM.ChiTietSanPhams.DeleteOnSubmit(record); // Đánh dấu bản ghi để xóa
