@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DoAnKetMon_UDTM" Class="DoAnKetMon_UDTMDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=MSI\SUCOBATNGO;Initial Catalog=DoAnKetMon_UDTM;Integrated Security=True" SettingsObjectName="DTO.Properties.Settings" SettingsPropertyName="DoAnKetMon_UDTMConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LAPTOP-AU6VJ49A\SQLEXPRESS;Initial Catalog=DoAnKetMon_UDTM;Integrated Security=True;Encrypt=True;Trust Server Certificate=True" SettingsObjectName="DTO.Properties.Settings" SettingsPropertyName="DoAnKetMon_UDTMConnectionString2" Provider="System.Data.SqlClient" />
   <Table Name="dbo.ChiTietDonHang" Member="ChiTietDonHangs">
     <Type Name="ChiTietDonHang">
       <Column Name="ChiTietDonHangID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
