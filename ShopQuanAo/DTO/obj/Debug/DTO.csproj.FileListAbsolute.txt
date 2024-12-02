@@ -60,3 +60,4 @@ C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.csproj.
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.csproj.CopyComplete
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.dll
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.pdb
+D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\DTO\obj\Debug\DTO.csproj.AssemblyReference.cache

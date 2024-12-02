@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DoAnKetMon_UDTMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DoAnKetMon_UDTM21114Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ChiTietDonHang">
           <Key>
             <PropertyRef Name="ChiTietDonHangID" />
@@ -16,6 +16,15 @@
           <Property Name="DonGia" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="TinhTrangDanhGia" Type="int" />
         </EntityType>
+        <EntityType Name="ChiTietKhuyenMai">
+          <Key>
+            <PropertyRef Name="ChiTietKhuyenMaiID" />
+          </Key>
+          <Property Name="ChiTietKhuyenMaiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SanPhamID" Type="int" />
+          <Property Name="KhuyenMaiID" Type="int" />
+          <Property Name="DaHetHan" Type="bit" />
+        </EntityType>
         <EntityType Name="ChiTietSanPham">
           <Key>
             <PropertyRef Name="ChiTietID" />
@@ -25,6 +34,7 @@
           <Property Name="MauID" Type="int" Nullable="false" />
           <Property Name="SizeID" Type="int" Nullable="false" />
           <Property Name="Gia" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="GiaDuocGiam" Type="decimal" Precision="18" Scale="2" />
           <Property Name="HinhAnhUrl" Type="nvarchar" MaxLength="255" />
           <Property Name="SoLuongTonKho" Type="int" Nullable="false" />
           <Property Name="KichHoat" Type="bit" />
@@ -60,6 +70,17 @@
           <Property Name="SanPhamID" Type="int" Nullable="false" />
           <Property Name="SoLuong" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="KhuyenMai">
+          <Key>
+            <PropertyRef Name="MaKhuyenMai" />
+          </Key>
+          <Property Name="MaKhuyenMai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenChuongTrinhKM" Type="nvarchar" MaxLength="100" />
+          <Property Name="MucGiam" Type="int" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="255" />
+          <Property Name="NgayBatDau" Type="date" />
+          <Property Name="NgayKetThuc" Type="date" />
+        </EntityType>
         <EntityType Name="ManHinh">
           <Key>
             <PropertyRef Name="MaManHinh" />
@@ -80,16 +101,21 @@
           </Key>
           <Property Name="NguoiDungID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenDangNhap" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="MatKhau" Type="nvarchar" MaxLength="255" />
-          <Property Name="HoTen" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MatKhau" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
           <Property Name="SoDienThoai" Type="nvarchar" MaxLength="15" />
           <Property Name="DiaChi" Type="nvarchar" MaxLength="255" />
           <Property Name="NgaySinh" Type="date" />
           <Property Name="MaNhomNguoiDung" Type="int" />
           <Property Name="NgayTao" Type="datetime" />
-          <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" />
           <Property Name="KichHoat" Type="bit" />
+          <Property Name="Train" Type="bit" />
+          <Property Name="MucChiTieu" Type="int" />
+          <Property Name="DoTuoi" Type="int" />
+          <Property Name="PhanKhucKH" Type="nvarchar" MaxLength="100" />
+          <Property Name="SoThich" Type="nvarchar" MaxLength="255" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="NhaCungCap">
           <Key>
@@ -103,12 +129,14 @@
           <Property Name="MoTa" Type="nvarchar(max)" />
           <Property Name="NgayHopTac" Type="datetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="NhaCungCapSanPham">
-          <Property Name="NhaCungCapID" Type="int" />
-          <Property Name="SanPhamID" Type="int" />
-        </EntityType>-->
+          <Key>
+            <PropertyRef Name="NhaCungCapID" />
+            <PropertyRef Name="SanPhamID" />
+          </Key>
+          <Property Name="NhaCungCapID" Type="int" Nullable="false" />
+          <Property Name="SanPhamID" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="NhomNguoiDung">
           <Key>
             <PropertyRef Name="MaNhomNguoiDung" />
@@ -154,16 +182,6 @@ warning 6013: The table/view 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' does not ha
           <Property Name="SizeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenSize" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="ThongTinGiaoHang">
           <Key>
             <PropertyRef Name="DiaChiID" />
@@ -175,7 +193,7 @@ warning 6013: The table/view 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' does not ha
           <Property Name="DiaChiGiaoHang" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="DiaChiMacDinh" Type="bit" />
         </EntityType>
-        <Association Name="FK__ChiTietDo__DonHa__7B5B524B">
+        <Association Name="FK__ChiTietDo__DonHa__6C190EBB">
           <End Role="DonHang" Type="Self.DonHang" Multiplicity="1" />
           <End Role="ChiTietDonHang" Type="Self.ChiTietDonHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -187,7 +205,7 @@ warning 6013: The table/view 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' does not ha
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietDo__SanPh__7C4F7684">
+        <Association Name="FK__ChiTietDo__SanPh__6D0D32F4">
           <End Role="ChiTietSanPham" Type="Self.ChiTietSanPham" Multiplicity="1" />
           <End Role="ChiTietDonHang" Type="Self.ChiTietDonHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -199,7 +217,31 @@ warning 6013: The table/view 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' does not ha
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietSa__MauID__6FE99F9F">
+        <Association Name="FK__ChiTietKh__Khuye__7D439ABD">
+          <End Role="KhuyenMai" Type="Self.KhuyenMai" Multiplicity="0..1" />
+          <End Role="ChiTietKhuyenMai" Type="Self.ChiTietKhuyenMai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhuyenMai">
+              <PropertyRef Name="MaKhuyenMai" />
+            </Principal>
+            <Dependent Role="ChiTietKhuyenMai">
+              <PropertyRef Name="KhuyenMaiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietKh__SanPh__7C4F7684">
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="0..1" />
+          <End Role="ChiTietKhuyenMai" Type="Self.ChiTietKhuyenMai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="SanPhamID" />
+            </Principal>
+            <Dependent Role="ChiTietKhuyenMai">
+              <PropertyRef Name="SanPhamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietSa__MauID__60A75C0F">
           <End Role="Mau" Type="Self.Mau" Multiplicity="1" />
           <End Role="ChiTietSanPham" Type="Self.ChiTietSanPham" Multiplicity="*" />
           <ReferentialConstraint>
@@ -211,7 +253,7 @@ warning 6013: The table/view 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' does not ha
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietSa__SanPh__6EF57B66">
+        <Association Name="FK__ChiTietSa__SanPh__5FB337D6">
           <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
           <End Role="ChiTietSanPham" Type="Self.ChiTietSanPham" Multiplicity="*" />
           <ReferentialConstraint>
@@ -223,7 +265,7 @@ warning 6013: The table/view 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' does not ha
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietSa__SizeI__70DDC3D8">
+        <Association Name="FK__ChiTietSa__SizeI__619B8048">
           <End Role="Size" Type="Self.Size" Multiplicity="1" />
           <End Role="ChiTietSanPham" Type="Self.ChiTietSanPham" Multiplicity="*" />
           <ReferentialConstraint>
@@ -235,7 +277,7 @@ warning 6013: The table/view 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' does not ha
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DonHang__DiaChiI__778AC167">
+        <Association Name="FK__DonHang__DiaChiI__68487DD7">
           <End Role="ThongTinGiaoHang" Type="Self.ThongTinGiaoHang" Multiplicity="0..1" />
           <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -247,7 +289,7 @@ warning 6013: The table/view 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' does not ha
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DonHang__NguoiDu__75A278F5">
+        <Association Name="FK__DonHang__NguoiDu__66603565">
           <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="1" />
           <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -259,7 +301,7 @@ warning 6013: The table/view 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' does not ha
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DonHang__NhanVie__76969D2E">
+        <Association Name="FK__DonHang__NhanVie__6754599E">
           <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="0..1" />
           <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -271,7 +313,7 @@ warning 6013: The table/view 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' does not ha
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__GioHang__NguoiDu__0F624AF8">
+        <Association Name="FK__GioHang__NguoiDu__75A278F5">
           <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="1" />
           <End Role="GioHang" Type="Self.GioHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -283,7 +325,7 @@ warning 6013: The table/view 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' does not ha
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__GioHang__SanPham__10566F31">
+        <Association Name="FK__GioHang__SanPham__76969D2E">
           <End Role="ChiTietSanPham" Type="Self.ChiTietSanPham" Multiplicity="1" />
           <End Role="GioHang" Type="Self.GioHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -295,7 +337,7 @@ warning 6013: The table/view 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' does not ha
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NguoiDung__MaNho__4F7CD00D">
+        <Association Name="FK__NguoiDung__MaNho__3E52440B">
           <End Role="NhomNguoiDung" Type="Self.NhomNguoiDung" Multiplicity="0..1" />
           <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="*" />
           <ReferentialConstraint>
@@ -307,13 +349,31 @@ warning 6013: The table/view 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' does not ha
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__NhaCungCa__NhaCu__656C112C" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__NhaCungCa__SanPh__66603565" />-->
-        <Association Name="FK__PhanHoi__NguoiDu__02084FDA">
+        <Association Name="FK__NhaCungCa__NhaCu__5535A963">
+          <End Role="NhaCungCap" Type="Self.NhaCungCap" Multiplicity="1" />
+          <End Role="NhaCungCapSanPham" Type="Self.NhaCungCapSanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhaCungCap">
+              <PropertyRef Name="NhaCungCapID" />
+            </Principal>
+            <Dependent Role="NhaCungCapSanPham">
+              <PropertyRef Name="NhaCungCapID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NhaCungCa__SanPh__5629CD9C">
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+          <End Role="NhaCungCapSanPham" Type="Self.NhaCungCapSanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="SanPhamID" />
+            </Principal>
+            <Dependent Role="NhaCungCapSanPham">
+              <PropertyRef Name="SanPhamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhanHoi__NguoiDu__72C60C4A">
           <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="1" />
           <End Role="PhanHoi" Type="Self.PhanHoi" Multiplicity="*" />
           <ReferentialConstraint>
@@ -325,7 +385,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PhanHoi__SanPham__01142BA1">
+        <Association Name="FK__PhanHoi__SanPham__71D1E811">
           <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
           <End Role="PhanHoi" Type="Self.PhanHoi" Multiplicity="*" />
           <ReferentialConstraint>
@@ -337,7 +397,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PhanQuyen__MaMan__5441852A">
+        <Association Name="FK__PhanQuyen__MaMan__4316F928">
           <End Role="ManHinh" Type="Self.ManHinh" Multiplicity="1" />
           <End Role="PhanQuyen" Type="Self.PhanQuyen" Multiplicity="*" />
           <ReferentialConstraint>
@@ -349,7 +409,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PhanQuyen__MaNho__5535A963">
+        <Association Name="FK__PhanQuyen__MaNho__440B1D61">
           <End Role="NhomNguoiDung" Type="Self.NhomNguoiDung" Multiplicity="1" />
           <End Role="PhanQuyen" Type="Self.PhanQuyen" Multiplicity="*" />
           <ReferentialConstraint>
@@ -361,7 +421,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SanPham__DanhMuc__6383C8BA">
+        <Association Name="FK__SanPham__DanhMuc__52593CB8">
           <End Role="DanhMuc" Type="Self.DanhMuc" Multiplicity="0..1" />
           <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
           <ReferentialConstraint>
@@ -373,7 +433,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ThongTinG__Nguoi__59063A47">
+        <Association Name="FK__ThongTinG__Nguoi__47DBAE45">
           <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="1" />
           <End Role="ThongTinGiaoHang" Type="Self.ThongTinGiaoHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -385,88 +445,106 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DoAnKetMon_UDTMModelStoreContainer">
+        <EntityContainer Name="DoAnKetMon_UDTM21114ModelStoreContainer">
           <EntitySet Name="ChiTietDonHang" EntityType="Self.ChiTietDonHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChiTietKhuyenMai" EntityType="Self.ChiTietKhuyenMai" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietSanPham" EntityType="Self.ChiTietSanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DanhMuc" EntityType="Self.DanhMuc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DonHang" EntityType="Self.DonHang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GioHang" EntityType="Self.GioHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KhuyenMai" EntityType="Self.KhuyenMai" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ManHinh" EntityType="Self.ManHinh" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mau" EntityType="Self.Mau" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NguoiDung" EntityType="Self.NguoiDung" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NhaCungCap" EntityType="Self.NhaCungCap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhaCungCapSanPham" EntityType="Self.NhaCungCapSanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NhomNguoiDung" EntityType="Self.NhomNguoiDung" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhanHoi" EntityType="Self.PhanHoi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhanQuyen" EntityType="Self.PhanQuyen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Size" EntityType="Self.Size" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThongTinGiaoHang" EntityType="Self.ThongTinGiaoHang" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__ChiTietDo__DonHa__7B5B524B" Association="Self.FK__ChiTietDo__DonHa__7B5B524B">
+          <AssociationSet Name="FK__ChiTietDo__DonHa__6C190EBB" Association="Self.FK__ChiTietDo__DonHa__6C190EBB">
             <End Role="DonHang" EntitySet="DonHang" />
             <End Role="ChiTietDonHang" EntitySet="ChiTietDonHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietDo__SanPh__7C4F7684" Association="Self.FK__ChiTietDo__SanPh__7C4F7684">
+          <AssociationSet Name="FK__ChiTietDo__SanPh__6D0D32F4" Association="Self.FK__ChiTietDo__SanPh__6D0D32F4">
             <End Role="ChiTietSanPham" EntitySet="ChiTietSanPham" />
             <End Role="ChiTietDonHang" EntitySet="ChiTietDonHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietSa__MauID__6FE99F9F" Association="Self.FK__ChiTietSa__MauID__6FE99F9F">
+          <AssociationSet Name="FK__ChiTietKh__Khuye__7D439ABD" Association="Self.FK__ChiTietKh__Khuye__7D439ABD">
+            <End Role="KhuyenMai" EntitySet="KhuyenMai" />
+            <End Role="ChiTietKhuyenMai" EntitySet="ChiTietKhuyenMai" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietKh__SanPh__7C4F7684" Association="Self.FK__ChiTietKh__SanPh__7C4F7684">
+            <End Role="SanPham" EntitySet="SanPham" />
+            <End Role="ChiTietKhuyenMai" EntitySet="ChiTietKhuyenMai" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietSa__MauID__60A75C0F" Association="Self.FK__ChiTietSa__MauID__60A75C0F">
             <End Role="Mau" EntitySet="Mau" />
             <End Role="ChiTietSanPham" EntitySet="ChiTietSanPham" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietSa__SanPh__6EF57B66" Association="Self.FK__ChiTietSa__SanPh__6EF57B66">
+          <AssociationSet Name="FK__ChiTietSa__SanPh__5FB337D6" Association="Self.FK__ChiTietSa__SanPh__5FB337D6">
             <End Role="SanPham" EntitySet="SanPham" />
             <End Role="ChiTietSanPham" EntitySet="ChiTietSanPham" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietSa__SizeI__70DDC3D8" Association="Self.FK__ChiTietSa__SizeI__70DDC3D8">
+          <AssociationSet Name="FK__ChiTietSa__SizeI__619B8048" Association="Self.FK__ChiTietSa__SizeI__619B8048">
             <End Role="Size" EntitySet="Size" />
             <End Role="ChiTietSanPham" EntitySet="ChiTietSanPham" />
           </AssociationSet>
-          <AssociationSet Name="FK__DonHang__DiaChiI__778AC167" Association="Self.FK__DonHang__DiaChiI__778AC167">
+          <AssociationSet Name="FK__DonHang__DiaChiI__68487DD7" Association="Self.FK__DonHang__DiaChiI__68487DD7">
             <End Role="ThongTinGiaoHang" EntitySet="ThongTinGiaoHang" />
             <End Role="DonHang" EntitySet="DonHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__DonHang__NguoiDu__75A278F5" Association="Self.FK__DonHang__NguoiDu__75A278F5">
+          <AssociationSet Name="FK__DonHang__NguoiDu__66603565" Association="Self.FK__DonHang__NguoiDu__66603565">
             <End Role="NguoiDung" EntitySet="NguoiDung" />
             <End Role="DonHang" EntitySet="DonHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__DonHang__NhanVie__76969D2E" Association="Self.FK__DonHang__NhanVie__76969D2E">
+          <AssociationSet Name="FK__DonHang__NhanVie__6754599E" Association="Self.FK__DonHang__NhanVie__6754599E">
             <End Role="NguoiDung" EntitySet="NguoiDung" />
             <End Role="DonHang" EntitySet="DonHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__GioHang__NguoiDu__0F624AF8" Association="Self.FK__GioHang__NguoiDu__0F624AF8">
+          <AssociationSet Name="FK__GioHang__NguoiDu__75A278F5" Association="Self.FK__GioHang__NguoiDu__75A278F5">
             <End Role="NguoiDung" EntitySet="NguoiDung" />
             <End Role="GioHang" EntitySet="GioHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__GioHang__SanPham__10566F31" Association="Self.FK__GioHang__SanPham__10566F31">
+          <AssociationSet Name="FK__GioHang__SanPham__76969D2E" Association="Self.FK__GioHang__SanPham__76969D2E">
             <End Role="ChiTietSanPham" EntitySet="ChiTietSanPham" />
             <End Role="GioHang" EntitySet="GioHang" />
           </AssociationSet>
-          <AssociationSet Name="FK__NguoiDung__MaNho__4F7CD00D" Association="Self.FK__NguoiDung__MaNho__4F7CD00D">
+          <AssociationSet Name="FK__NguoiDung__MaNho__3E52440B" Association="Self.FK__NguoiDung__MaNho__3E52440B">
             <End Role="NhomNguoiDung" EntitySet="NhomNguoiDung" />
             <End Role="NguoiDung" EntitySet="NguoiDung" />
           </AssociationSet>
-          <AssociationSet Name="FK__PhanHoi__NguoiDu__02084FDA" Association="Self.FK__PhanHoi__NguoiDu__02084FDA">
+          <AssociationSet Name="FK__NhaCungCa__NhaCu__5535A963" Association="Self.FK__NhaCungCa__NhaCu__5535A963">
+            <End Role="NhaCungCap" EntitySet="NhaCungCap" />
+            <End Role="NhaCungCapSanPham" EntitySet="NhaCungCapSanPham" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NhaCungCa__SanPh__5629CD9C" Association="Self.FK__NhaCungCa__SanPh__5629CD9C">
+            <End Role="SanPham" EntitySet="SanPham" />
+            <End Role="NhaCungCapSanPham" EntitySet="NhaCungCapSanPham" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhanHoi__NguoiDu__72C60C4A" Association="Self.FK__PhanHoi__NguoiDu__72C60C4A">
             <End Role="NguoiDung" EntitySet="NguoiDung" />
             <End Role="PhanHoi" EntitySet="PhanHoi" />
           </AssociationSet>
-          <AssociationSet Name="FK__PhanHoi__SanPham__01142BA1" Association="Self.FK__PhanHoi__SanPham__01142BA1">
+          <AssociationSet Name="FK__PhanHoi__SanPham__71D1E811" Association="Self.FK__PhanHoi__SanPham__71D1E811">
             <End Role="SanPham" EntitySet="SanPham" />
             <End Role="PhanHoi" EntitySet="PhanHoi" />
           </AssociationSet>
-          <AssociationSet Name="FK__PhanQuyen__MaMan__5441852A" Association="Self.FK__PhanQuyen__MaMan__5441852A">
+          <AssociationSet Name="FK__PhanQuyen__MaMan__4316F928" Association="Self.FK__PhanQuyen__MaMan__4316F928">
             <End Role="ManHinh" EntitySet="ManHinh" />
             <End Role="PhanQuyen" EntitySet="PhanQuyen" />
           </AssociationSet>
-          <AssociationSet Name="FK__PhanQuyen__MaNho__5535A963" Association="Self.FK__PhanQuyen__MaNho__5535A963">
+          <AssociationSet Name="FK__PhanQuyen__MaNho__440B1D61" Association="Self.FK__PhanQuyen__MaNho__440B1D61">
             <End Role="NhomNguoiDung" EntitySet="NhomNguoiDung" />
             <End Role="PhanQuyen" EntitySet="PhanQuyen" />
           </AssociationSet>
-          <AssociationSet Name="FK__SanPham__DanhMuc__6383C8BA" Association="Self.FK__SanPham__DanhMuc__6383C8BA">
+          <AssociationSet Name="FK__SanPham__DanhMuc__52593CB8" Association="Self.FK__SanPham__DanhMuc__52593CB8">
             <End Role="DanhMuc" EntitySet="DanhMuc" />
             <End Role="SanPham" EntitySet="SanPham" />
           </AssociationSet>
-          <AssociationSet Name="FK__ThongTinG__Nguoi__59063A47" Association="Self.FK__ThongTinG__Nguoi__59063A47">
+          <AssociationSet Name="FK__ThongTinG__Nguoi__47DBAE45" Association="Self.FK__ThongTinG__Nguoi__47DBAE45">
             <End Role="NguoiDung" EntitySet="NguoiDung" />
             <End Role="ThongTinGiaoHang" EntitySet="ThongTinGiaoHang" />
           </AssociationSet>
@@ -475,7 +553,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DoAnKetMon_UDTMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DoAnKetMon_UDTM21114Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="ChiTietDonHang">
           <Key>
             <PropertyRef Name="ChiTietDonHangID" />
@@ -486,8 +564,19 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
           <Property Name="SoLuong" Type="Int32" Nullable="false" />
           <Property Name="DonGia" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="TinhTrangDanhGia" Type="Int32" />
-          <NavigationProperty Name="DonHang" Relationship="Self.FK__ChiTietDo__DonHa__7B5B524B" FromRole="ChiTietDonHang" ToRole="DonHang" />
-          <NavigationProperty Name="ChiTietSanPham" Relationship="Self.FK__ChiTietDo__SanPh__7C4F7684" FromRole="ChiTietDonHang" ToRole="ChiTietSanPham" />
+          <NavigationProperty Name="DonHang" Relationship="Self.FK__ChiTietDo__DonHa__6C190EBB" FromRole="ChiTietDonHang" ToRole="DonHang" />
+          <NavigationProperty Name="ChiTietSanPham" Relationship="Self.FK__ChiTietDo__SanPh__6D0D32F4" FromRole="ChiTietDonHang" ToRole="ChiTietSanPham" />
+        </EntityType>
+        <EntityType Name="ChiTietKhuyenMai">
+          <Key>
+            <PropertyRef Name="ChiTietKhuyenMaiID" />
+          </Key>
+          <Property Name="ChiTietKhuyenMaiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SanPhamID" Type="Int32" />
+          <Property Name="KhuyenMaiID" Type="Int32" />
+          <Property Name="DaHetHan" Type="Boolean" />
+          <NavigationProperty Name="KhuyenMai" Relationship="Self.FK__ChiTietKh__Khuye__7D439ABD" FromRole="ChiTietKhuyenMai" ToRole="KhuyenMai" />
+          <NavigationProperty Name="SanPham" Relationship="Self.FK__ChiTietKh__SanPh__7C4F7684" FromRole="ChiTietKhuyenMai" ToRole="SanPham" />
         </EntityType>
         <EntityType Name="ChiTietSanPham">
           <Key>
@@ -498,14 +587,15 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
           <Property Name="MauID" Type="Int32" Nullable="false" />
           <Property Name="SizeID" Type="Int32" Nullable="false" />
           <Property Name="Gia" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="GiaDuocGiam" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="HinhAnhUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="SoLuongTonKho" Type="Int32" Nullable="false" />
           <Property Name="KichHoat" Type="Boolean" />
-          <NavigationProperty Name="ChiTietDonHangs" Relationship="Self.FK__ChiTietDo__SanPh__7C4F7684" FromRole="ChiTietSanPham" ToRole="ChiTietDonHang" />
-          <NavigationProperty Name="Mau" Relationship="Self.FK__ChiTietSa__MauID__6FE99F9F" FromRole="ChiTietSanPham" ToRole="Mau" />
-          <NavigationProperty Name="SanPham" Relationship="Self.FK__ChiTietSa__SanPh__6EF57B66" FromRole="ChiTietSanPham" ToRole="SanPham" />
-          <NavigationProperty Name="Size" Relationship="Self.FK__ChiTietSa__SizeI__70DDC3D8" FromRole="ChiTietSanPham" ToRole="Size" />
-          <NavigationProperty Name="GioHangs" Relationship="Self.FK__GioHang__SanPham__10566F31" FromRole="ChiTietSanPham" ToRole="GioHang" />
+          <NavigationProperty Name="ChiTietDonHangs" Relationship="Self.FK__ChiTietDo__SanPh__6D0D32F4" FromRole="ChiTietSanPham" ToRole="ChiTietDonHang" />
+          <NavigationProperty Name="Mau" Relationship="Self.FK__ChiTietSa__MauID__60A75C0F" FromRole="ChiTietSanPham" ToRole="Mau" />
+          <NavigationProperty Name="SanPham" Relationship="Self.FK__ChiTietSa__SanPh__5FB337D6" FromRole="ChiTietSanPham" ToRole="SanPham" />
+          <NavigationProperty Name="Size" Relationship="Self.FK__ChiTietSa__SizeI__619B8048" FromRole="ChiTietSanPham" ToRole="Size" />
+          <NavigationProperty Name="GioHangs" Relationship="Self.FK__GioHang__SanPham__76969D2E" FromRole="ChiTietSanPham" ToRole="GioHang" />
         </EntityType>
         <EntityType Name="DanhMuc">
           <Key>
@@ -513,7 +603,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
           </Key>
           <Property Name="DanhMucID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenDanhMuc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="SanPhams" Relationship="Self.FK__SanPham__DanhMuc__6383C8BA" FromRole="DanhMuc" ToRole="SanPham" />
+          <NavigationProperty Name="SanPhams" Relationship="Self.FK__SanPham__DanhMuc__52593CB8" FromRole="DanhMuc" ToRole="SanPham" />
         </EntityType>
         <EntityType Name="DonHang">
           <Key>
@@ -529,10 +619,10 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
           <Property Name="HinhThucThanhToan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TinhTrangThanhToan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NgayThanhToan" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="ChiTietDonHangs" Relationship="Self.FK__ChiTietDo__DonHa__7B5B524B" FromRole="DonHang" ToRole="ChiTietDonHang" />
-          <NavigationProperty Name="ThongTinGiaoHang" Relationship="Self.FK__DonHang__DiaChiI__778AC167" FromRole="DonHang" ToRole="ThongTinGiaoHang" />
-          <NavigationProperty Name="NguoiDung" Relationship="Self.FK__DonHang__NguoiDu__75A278F5" FromRole="DonHang" ToRole="NguoiDung" />
-          <NavigationProperty Name="NguoiDung1" Relationship="Self.FK__DonHang__NhanVie__76969D2E" FromRole="DonHang" ToRole="NguoiDung" />
+          <NavigationProperty Name="ChiTietDonHangs" Relationship="Self.FK__ChiTietDo__DonHa__6C190EBB" FromRole="DonHang" ToRole="ChiTietDonHang" />
+          <NavigationProperty Name="ThongTinGiaoHang" Relationship="Self.FK__DonHang__DiaChiI__68487DD7" FromRole="DonHang" ToRole="ThongTinGiaoHang" />
+          <NavigationProperty Name="NguoiDung" Relationship="Self.FK__DonHang__NguoiDu__66603565" FromRole="DonHang" ToRole="NguoiDung" />
+          <NavigationProperty Name="NguoiDung1" Relationship="Self.FK__DonHang__NhanVie__6754599E" FromRole="DonHang" ToRole="NguoiDung" />
         </EntityType>
         <EntityType Name="GioHang">
           <Key>
@@ -542,8 +632,20 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
           <Property Name="NguoiDungID" Type="Int32" Nullable="false" />
           <Property Name="SanPhamID" Type="Int32" Nullable="false" />
           <Property Name="SoLuong" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ChiTietSanPham" Relationship="Self.FK__GioHang__SanPham__10566F31" FromRole="GioHang" ToRole="ChiTietSanPham" />
-          <NavigationProperty Name="NguoiDung" Relationship="Self.FK__GioHang__NguoiDu__0F624AF8" FromRole="GioHang" ToRole="NguoiDung" />
+          <NavigationProperty Name="ChiTietSanPham" Relationship="Self.FK__GioHang__SanPham__76969D2E" FromRole="GioHang" ToRole="ChiTietSanPham" />
+          <NavigationProperty Name="NguoiDung" Relationship="Self.FK__GioHang__NguoiDu__75A278F5" FromRole="GioHang" ToRole="NguoiDung" />
+        </EntityType>
+        <EntityType Name="KhuyenMai">
+          <Key>
+            <PropertyRef Name="MaKhuyenMai" />
+          </Key>
+          <Property Name="MaKhuyenMai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenChuongTrinhKM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MucGiam" Type="Int32" />
+          <Property Name="MoTa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NgayBatDau" Type="DateTime" Precision="0" />
+          <Property Name="NgayKetThuc" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="ChiTietKhuyenMais" Relationship="Self.FK__ChiTietKh__Khuye__7D439ABD" FromRole="KhuyenMai" ToRole="ChiTietKhuyenMai" />
         </EntityType>
         <EntityType Name="ManHinh">
           <Key>
@@ -559,7 +661,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
           </Key>
           <Property Name="MauID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenMau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="ChiTietSanPhams" Relationship="Self.FK__ChiTietSa__MauID__6FE99F9F" FromRole="Mau" ToRole="ChiTietSanPham" />
+          <NavigationProperty Name="ChiTietSanPhams" Relationship="Self.FK__ChiTietSa__MauID__60A75C0F" FromRole="Mau" ToRole="ChiTietSanPham" />
         </EntityType>
         <EntityType Name="NguoiDung">
           <Key>
@@ -567,22 +669,27 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
           </Key>
           <Property Name="NguoiDungID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MatKhau" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MatKhau" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SoDienThoai" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="DiaChi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="NgaySinh" Type="DateTime" Precision="0" />
           <Property Name="MaNhomNguoiDung" Type="Int32" />
           <Property Name="NgayTao" Type="DateTime" Precision="3" />
-          <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="KichHoat" Type="Boolean" />
-          <NavigationProperty Name="DonHangs" Relationship="Self.FK__DonHang__NguoiDu__75A278F5" FromRole="NguoiDung" ToRole="DonHang" />
-          <NavigationProperty Name="DonHangs1" Relationship="Self.FK__DonHang__NhanVie__76969D2E" FromRole="NguoiDung" ToRole="DonHang" />
-          <NavigationProperty Name="GioHangs" Relationship="Self.FK__GioHang__NguoiDu__0F624AF8" FromRole="NguoiDung" ToRole="GioHang" />
-          <NavigationProperty Name="NhomNguoiDung" Relationship="Self.FK__NguoiDung__MaNho__4F7CD00D" FromRole="NguoiDung" ToRole="NhomNguoiDung" />
-          <NavigationProperty Name="PhanHois" Relationship="Self.FK__PhanHoi__NguoiDu__02084FDA" FromRole="NguoiDung" ToRole="PhanHoi" />
-          <NavigationProperty Name="ThongTinGiaoHangs" Relationship="Self.FK__ThongTinG__Nguoi__59063A47" FromRole="NguoiDung" ToRole="ThongTinGiaoHang" />
+          <Property Name="Train" Type="Boolean" />
+          <Property Name="MucChiTieu" Type="Int32" />
+          <Property Name="DoTuoi" Type="Int32" />
+          <Property Name="PhanKhucKH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SoThich" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DonHangs" Relationship="Self.FK__DonHang__NguoiDu__66603565" FromRole="NguoiDung" ToRole="DonHang" />
+          <NavigationProperty Name="DonHangs1" Relationship="Self.FK__DonHang__NhanVie__6754599E" FromRole="NguoiDung" ToRole="DonHang" />
+          <NavigationProperty Name="GioHangs" Relationship="Self.FK__GioHang__NguoiDu__75A278F5" FromRole="NguoiDung" ToRole="GioHang" />
+          <NavigationProperty Name="NhomNguoiDung" Relationship="Self.FK__NguoiDung__MaNho__3E52440B" FromRole="NguoiDung" ToRole="NhomNguoiDung" />
+          <NavigationProperty Name="PhanHois" Relationship="Self.FK__PhanHoi__NguoiDu__72C60C4A" FromRole="NguoiDung" ToRole="PhanHoi" />
+          <NavigationProperty Name="ThongTinGiaoHangs" Relationship="Self.FK__ThongTinG__Nguoi__47DBAE45" FromRole="NguoiDung" ToRole="ThongTinGiaoHang" />
         </EntityType>
         <EntityType Name="NhaCungCap">
           <Key>
@@ -595,6 +702,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NgayHopTac" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SanPhams" Relationship="Self.NhaCungCapSanPham" FromRole="NhaCungCap" ToRole="SanPham" />
         </EntityType>
         <EntityType Name="NhomNguoiDung">
           <Key>
@@ -602,7 +710,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
           </Key>
           <Property Name="MaNhomNguoiDung" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenNhomNguoiDung" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="NguoiDungs" Relationship="Self.FK__NguoiDung__MaNho__4F7CD00D" FromRole="NhomNguoiDung" ToRole="NguoiDung" />
+          <NavigationProperty Name="NguoiDungs" Relationship="Self.FK__NguoiDung__MaNho__3E52440B" FromRole="NhomNguoiDung" ToRole="NguoiDung" />
           <NavigationProperty Name="ManHinhs" Relationship="Self.PhanQuyen" FromRole="NhomNguoiDung" ToRole="ManHinh" />
         </EntityType>
         <EntityType Name="PhanHoi">
@@ -615,8 +723,8 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
           <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DanhGia" Type="Int32" />
           <Property Name="NgayPhanHoi" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="NguoiDung" Relationship="Self.FK__PhanHoi__NguoiDu__02084FDA" FromRole="PhanHoi" ToRole="NguoiDung" />
-          <NavigationProperty Name="SanPham" Relationship="Self.FK__PhanHoi__SanPham__01142BA1" FromRole="PhanHoi" ToRole="SanPham" />
+          <NavigationProperty Name="NguoiDung" Relationship="Self.FK__PhanHoi__NguoiDu__72C60C4A" FromRole="PhanHoi" ToRole="NguoiDung" />
+          <NavigationProperty Name="SanPham" Relationship="Self.FK__PhanHoi__SanPham__71D1E811" FromRole="PhanHoi" ToRole="SanPham" />
         </EntityType>
         <EntityType Name="SanPham">
           <Key>
@@ -629,9 +737,11 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
           <Property Name="DanhMucID" Type="Int32" />
           <Property Name="SoLuongDaBan" Type="Int32" />
           <Property Name="KichHoat" Type="Boolean" />
-          <NavigationProperty Name="ChiTietSanPhams" Relationship="Self.FK__ChiTietSa__SanPh__6EF57B66" FromRole="SanPham" ToRole="ChiTietSanPham" />
-          <NavigationProperty Name="DanhMuc" Relationship="Self.FK__SanPham__DanhMuc__6383C8BA" FromRole="SanPham" ToRole="DanhMuc" />
-          <NavigationProperty Name="PhanHois" Relationship="Self.FK__PhanHoi__SanPham__01142BA1" FromRole="SanPham" ToRole="PhanHoi" />
+          <NavigationProperty Name="ChiTietKhuyenMais" Relationship="Self.FK__ChiTietKh__SanPh__7C4F7684" FromRole="SanPham" ToRole="ChiTietKhuyenMai" />
+          <NavigationProperty Name="ChiTietSanPhams" Relationship="Self.FK__ChiTietSa__SanPh__5FB337D6" FromRole="SanPham" ToRole="ChiTietSanPham" />
+          <NavigationProperty Name="DanhMuc" Relationship="Self.FK__SanPham__DanhMuc__52593CB8" FromRole="SanPham" ToRole="DanhMuc" />
+          <NavigationProperty Name="PhanHois" Relationship="Self.FK__PhanHoi__SanPham__71D1E811" FromRole="SanPham" ToRole="PhanHoi" />
+          <NavigationProperty Name="NhaCungCaps" Relationship="Self.NhaCungCapSanPham" FromRole="SanPham" ToRole="NhaCungCap" />
         </EntityType>
         <EntityType Name="Size">
           <Key>
@@ -639,17 +749,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
           </Key>
           <Property Name="SizeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenSize" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="ChiTietSanPhams" Relationship="Self.FK__ChiTietSa__SizeI__70DDC3D8" FromRole="Size" ToRole="ChiTietSanPham" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="ChiTietSanPhams" Relationship="Self.FK__ChiTietSa__SizeI__619B8048" FromRole="Size" ToRole="ChiTietSanPham" />
         </EntityType>
         <EntityType Name="ThongTinGiaoHang">
           <Key>
@@ -661,10 +761,10 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
           <Property Name="SoDienThoai" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DiaChiGiaoHang" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DiaChiMacDinh" Type="Boolean" />
-          <NavigationProperty Name="DonHangs" Relationship="Self.FK__DonHang__DiaChiI__778AC167" FromRole="ThongTinGiaoHang" ToRole="DonHang" />
-          <NavigationProperty Name="NguoiDung" Relationship="Self.FK__ThongTinG__Nguoi__59063A47" FromRole="ThongTinGiaoHang" ToRole="NguoiDung" />
+          <NavigationProperty Name="DonHangs" Relationship="Self.FK__DonHang__DiaChiI__68487DD7" FromRole="ThongTinGiaoHang" ToRole="DonHang" />
+          <NavigationProperty Name="NguoiDung" Relationship="Self.FK__ThongTinG__Nguoi__47DBAE45" FromRole="ThongTinGiaoHang" ToRole="NguoiDung" />
         </EntityType>
-        <Association Name="FK__ChiTietDo__DonHa__7B5B524B">
+        <Association Name="FK__ChiTietDo__DonHa__6C190EBB">
           <End Role="DonHang" Type="Self.DonHang" Multiplicity="1" />
           <End Role="ChiTietDonHang" Type="Self.ChiTietDonHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -676,7 +776,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietDo__SanPh__7C4F7684">
+        <Association Name="FK__ChiTietDo__SanPh__6D0D32F4">
           <End Role="ChiTietSanPham" Type="Self.ChiTietSanPham" Multiplicity="1" />
           <End Role="ChiTietDonHang" Type="Self.ChiTietDonHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -688,7 +788,31 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietSa__MauID__6FE99F9F">
+        <Association Name="FK__ChiTietKh__Khuye__7D439ABD">
+          <End Role="KhuyenMai" Type="Self.KhuyenMai" Multiplicity="0..1" />
+          <End Role="ChiTietKhuyenMai" Type="Self.ChiTietKhuyenMai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhuyenMai">
+              <PropertyRef Name="MaKhuyenMai" />
+            </Principal>
+            <Dependent Role="ChiTietKhuyenMai">
+              <PropertyRef Name="KhuyenMaiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietKh__SanPh__7C4F7684">
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="0..1" />
+          <End Role="ChiTietKhuyenMai" Type="Self.ChiTietKhuyenMai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="SanPhamID" />
+            </Principal>
+            <Dependent Role="ChiTietKhuyenMai">
+              <PropertyRef Name="SanPhamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietSa__MauID__60A75C0F">
           <End Role="Mau" Type="Self.Mau" Multiplicity="1" />
           <End Role="ChiTietSanPham" Type="Self.ChiTietSanPham" Multiplicity="*" />
           <ReferentialConstraint>
@@ -700,7 +824,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietSa__SanPh__6EF57B66">
+        <Association Name="FK__ChiTietSa__SanPh__5FB337D6">
           <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
           <End Role="ChiTietSanPham" Type="Self.ChiTietSanPham" Multiplicity="*" />
           <ReferentialConstraint>
@@ -712,7 +836,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietSa__SizeI__70DDC3D8">
+        <Association Name="FK__ChiTietSa__SizeI__619B8048">
           <End Role="Size" Type="Self.Size" Multiplicity="1" />
           <End Role="ChiTietSanPham" Type="Self.ChiTietSanPham" Multiplicity="*" />
           <ReferentialConstraint>
@@ -724,7 +848,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__GioHang__SanPham__10566F31">
+        <Association Name="FK__GioHang__SanPham__76969D2E">
           <End Role="ChiTietSanPham" Type="Self.ChiTietSanPham" Multiplicity="1" />
           <End Role="GioHang" Type="Self.GioHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -736,7 +860,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SanPham__DanhMuc__6383C8BA">
+        <Association Name="FK__SanPham__DanhMuc__52593CB8">
           <End Role="DanhMuc" Type="Self.DanhMuc" Multiplicity="0..1" />
           <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
           <ReferentialConstraint>
@@ -748,7 +872,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DonHang__DiaChiI__778AC167">
+        <Association Name="FK__DonHang__DiaChiI__68487DD7">
           <End Role="ThongTinGiaoHang" Type="Self.ThongTinGiaoHang" Multiplicity="0..1" />
           <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -760,7 +884,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DonHang__NguoiDu__75A278F5">
+        <Association Name="FK__DonHang__NguoiDu__66603565">
           <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="1" />
           <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -772,7 +896,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DonHang__NhanVie__76969D2E">
+        <Association Name="FK__DonHang__NhanVie__6754599E">
           <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="0..1" />
           <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -784,7 +908,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__GioHang__NguoiDu__0F624AF8">
+        <Association Name="FK__GioHang__NguoiDu__75A278F5">
           <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="1" />
           <End Role="GioHang" Type="Self.GioHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -796,7 +920,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NguoiDung__MaNho__4F7CD00D">
+        <Association Name="FK__NguoiDung__MaNho__3E52440B">
           <End Role="NhomNguoiDung" Type="Self.NhomNguoiDung" Multiplicity="0..1" />
           <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="*" />
           <ReferentialConstraint>
@@ -808,7 +932,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PhanHoi__NguoiDu__02084FDA">
+        <Association Name="FK__PhanHoi__NguoiDu__72C60C4A">
           <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="1" />
           <End Role="PhanHoi" Type="Self.PhanHoi" Multiplicity="*" />
           <ReferentialConstraint>
@@ -820,7 +944,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ThongTinG__Nguoi__59063A47">
+        <Association Name="FK__ThongTinG__Nguoi__47DBAE45">
           <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="1" />
           <End Role="ThongTinGiaoHang" Type="Self.ThongTinGiaoHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -832,7 +956,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PhanHoi__SanPham__01142BA1">
+        <Association Name="FK__PhanHoi__SanPham__71D1E811">
           <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
           <End Role="PhanHoi" Type="Self.PhanHoi" Multiplicity="*" />
           <ReferentialConstraint>
@@ -844,16 +968,22 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="NhaCungCapSanPham">
+          <End Role="NhaCungCap" Type="Self.NhaCungCap" Multiplicity="*" />
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
+        </Association>
         <Association Name="PhanQuyen">
           <End Role="ManHinh" Type="Self.ManHinh" Multiplicity="*" />
           <End Role="NhomNguoiDung" Type="Self.NhomNguoiDung" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="DoAnKetMon_UDTMEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ShopQuanAoEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ChiTietDonHangs" EntityType="Self.ChiTietDonHang" />
+          <EntitySet Name="ChiTietKhuyenMais" EntityType="Self.ChiTietKhuyenMai" />
           <EntitySet Name="ChiTietSanPhams" EntityType="Self.ChiTietSanPham" />
           <EntitySet Name="DanhMucs" EntityType="Self.DanhMuc" />
           <EntitySet Name="DonHangs" EntityType="Self.DonHang" />
           <EntitySet Name="GioHangs" EntityType="Self.GioHang" />
+          <EntitySet Name="KhuyenMais" EntityType="Self.KhuyenMai" />
           <EntitySet Name="ManHinhs" EntityType="Self.ManHinh" />
           <EntitySet Name="Maus" EntityType="Self.Mau" />
           <EntitySet Name="NguoiDungs" EntityType="Self.NguoiDung" />
@@ -862,67 +992,78 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
           <EntitySet Name="PhanHois" EntityType="Self.PhanHoi" />
           <EntitySet Name="SanPhams" EntityType="Self.SanPham" />
           <EntitySet Name="Sizes" EntityType="Self.Size" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="ThongTinGiaoHangs" EntityType="Self.ThongTinGiaoHang" />
-          <AssociationSet Name="FK__ChiTietDo__DonHa__7B5B524B" Association="Self.FK__ChiTietDo__DonHa__7B5B524B">
+          <AssociationSet Name="FK__ChiTietDo__DonHa__6C190EBB" Association="Self.FK__ChiTietDo__DonHa__6C190EBB">
             <End Role="DonHang" EntitySet="DonHangs" />
             <End Role="ChiTietDonHang" EntitySet="ChiTietDonHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietDo__SanPh__7C4F7684" Association="Self.FK__ChiTietDo__SanPh__7C4F7684">
+          <AssociationSet Name="FK__ChiTietDo__SanPh__6D0D32F4" Association="Self.FK__ChiTietDo__SanPh__6D0D32F4">
             <End Role="ChiTietSanPham" EntitySet="ChiTietSanPhams" />
             <End Role="ChiTietDonHang" EntitySet="ChiTietDonHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietSa__MauID__6FE99F9F" Association="Self.FK__ChiTietSa__MauID__6FE99F9F">
+          <AssociationSet Name="FK__ChiTietKh__Khuye__7D439ABD" Association="Self.FK__ChiTietKh__Khuye__7D439ABD">
+            <End Role="KhuyenMai" EntitySet="KhuyenMais" />
+            <End Role="ChiTietKhuyenMai" EntitySet="ChiTietKhuyenMais" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietKh__SanPh__7C4F7684" Association="Self.FK__ChiTietKh__SanPh__7C4F7684">
+            <End Role="SanPham" EntitySet="SanPhams" />
+            <End Role="ChiTietKhuyenMai" EntitySet="ChiTietKhuyenMais" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietSa__MauID__60A75C0F" Association="Self.FK__ChiTietSa__MauID__60A75C0F">
             <End Role="Mau" EntitySet="Maus" />
             <End Role="ChiTietSanPham" EntitySet="ChiTietSanPhams" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietSa__SanPh__6EF57B66" Association="Self.FK__ChiTietSa__SanPh__6EF57B66">
+          <AssociationSet Name="FK__ChiTietSa__SanPh__5FB337D6" Association="Self.FK__ChiTietSa__SanPh__5FB337D6">
             <End Role="SanPham" EntitySet="SanPhams" />
             <End Role="ChiTietSanPham" EntitySet="ChiTietSanPhams" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietSa__SizeI__70DDC3D8" Association="Self.FK__ChiTietSa__SizeI__70DDC3D8">
+          <AssociationSet Name="FK__ChiTietSa__SizeI__619B8048" Association="Self.FK__ChiTietSa__SizeI__619B8048">
             <End Role="Size" EntitySet="Sizes" />
             <End Role="ChiTietSanPham" EntitySet="ChiTietSanPhams" />
           </AssociationSet>
-          <AssociationSet Name="FK__GioHang__SanPham__10566F31" Association="Self.FK__GioHang__SanPham__10566F31">
+          <AssociationSet Name="FK__GioHang__SanPham__76969D2E" Association="Self.FK__GioHang__SanPham__76969D2E">
             <End Role="ChiTietSanPham" EntitySet="ChiTietSanPhams" />
             <End Role="GioHang" EntitySet="GioHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK__SanPham__DanhMuc__6383C8BA" Association="Self.FK__SanPham__DanhMuc__6383C8BA">
+          <AssociationSet Name="FK__SanPham__DanhMuc__52593CB8" Association="Self.FK__SanPham__DanhMuc__52593CB8">
             <End Role="DanhMuc" EntitySet="DanhMucs" />
             <End Role="SanPham" EntitySet="SanPhams" />
           </AssociationSet>
-          <AssociationSet Name="FK__DonHang__DiaChiI__778AC167" Association="Self.FK__DonHang__DiaChiI__778AC167">
+          <AssociationSet Name="FK__DonHang__DiaChiI__68487DD7" Association="Self.FK__DonHang__DiaChiI__68487DD7">
             <End Role="ThongTinGiaoHang" EntitySet="ThongTinGiaoHangs" />
             <End Role="DonHang" EntitySet="DonHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK__DonHang__NguoiDu__75A278F5" Association="Self.FK__DonHang__NguoiDu__75A278F5">
+          <AssociationSet Name="FK__DonHang__NguoiDu__66603565" Association="Self.FK__DonHang__NguoiDu__66603565">
             <End Role="NguoiDung" EntitySet="NguoiDungs" />
             <End Role="DonHang" EntitySet="DonHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK__DonHang__NhanVie__76969D2E" Association="Self.FK__DonHang__NhanVie__76969D2E">
+          <AssociationSet Name="FK__DonHang__NhanVie__6754599E" Association="Self.FK__DonHang__NhanVie__6754599E">
             <End Role="NguoiDung" EntitySet="NguoiDungs" />
             <End Role="DonHang" EntitySet="DonHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK__GioHang__NguoiDu__0F624AF8" Association="Self.FK__GioHang__NguoiDu__0F624AF8">
+          <AssociationSet Name="FK__GioHang__NguoiDu__75A278F5" Association="Self.FK__GioHang__NguoiDu__75A278F5">
             <End Role="NguoiDung" EntitySet="NguoiDungs" />
             <End Role="GioHang" EntitySet="GioHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK__NguoiDung__MaNho__4F7CD00D" Association="Self.FK__NguoiDung__MaNho__4F7CD00D">
+          <AssociationSet Name="FK__NguoiDung__MaNho__3E52440B" Association="Self.FK__NguoiDung__MaNho__3E52440B">
             <End Role="NhomNguoiDung" EntitySet="NhomNguoiDungs" />
             <End Role="NguoiDung" EntitySet="NguoiDungs" />
           </AssociationSet>
-          <AssociationSet Name="FK__PhanHoi__NguoiDu__02084FDA" Association="Self.FK__PhanHoi__NguoiDu__02084FDA">
+          <AssociationSet Name="FK__PhanHoi__NguoiDu__72C60C4A" Association="Self.FK__PhanHoi__NguoiDu__72C60C4A">
             <End Role="NguoiDung" EntitySet="NguoiDungs" />
             <End Role="PhanHoi" EntitySet="PhanHois" />
           </AssociationSet>
-          <AssociationSet Name="FK__ThongTinG__Nguoi__59063A47" Association="Self.FK__ThongTinG__Nguoi__59063A47">
+          <AssociationSet Name="FK__ThongTinG__Nguoi__47DBAE45" Association="Self.FK__ThongTinG__Nguoi__47DBAE45">
             <End Role="NguoiDung" EntitySet="NguoiDungs" />
             <End Role="ThongTinGiaoHang" EntitySet="ThongTinGiaoHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK__PhanHoi__SanPham__01142BA1" Association="Self.FK__PhanHoi__SanPham__01142BA1">
+          <AssociationSet Name="FK__PhanHoi__SanPham__71D1E811" Association="Self.FK__PhanHoi__SanPham__71D1E811">
             <End Role="SanPham" EntitySet="SanPhams" />
             <End Role="PhanHoi" EntitySet="PhanHois" />
+          </AssociationSet>
+          <AssociationSet Name="NhaCungCapSanPham" Association="Self.NhaCungCapSanPham">
+            <End Role="NhaCungCap" EntitySet="NhaCungCaps" />
+            <End Role="SanPham" EntitySet="SanPhams" />
           </AssociationSet>
           <AssociationSet Name="PhanQuyen" Association="Self.PhanQuyen">
             <End Role="ManHinh" EntitySet="ManHinhs" />
@@ -934,9 +1075,9 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DoAnKetMon_UDTMModelStoreContainer" CdmEntityContainer="DoAnKetMon_UDTMEntities2">
+        <EntityContainerMapping StorageEntityContainer="DoAnKetMon_UDTM21114ModelStoreContainer" CdmEntityContainer="ShopQuanAoEntities">
           <EntitySetMapping Name="ChiTietDonHangs">
-            <EntityTypeMapping TypeName="DoAnKetMon_UDTMModel.ChiTietDonHang">
+            <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.ChiTietDonHang">
               <MappingFragment StoreEntitySet="ChiTietDonHang">
                 <ScalarProperty Name="ChiTietDonHangID" ColumnName="ChiTietDonHangID" />
                 <ScalarProperty Name="DonHangID" ColumnName="DonHangID" />
@@ -947,14 +1088,25 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ChiTietKhuyenMais">
+            <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.ChiTietKhuyenMai">
+              <MappingFragment StoreEntitySet="ChiTietKhuyenMai">
+                <ScalarProperty Name="ChiTietKhuyenMaiID" ColumnName="ChiTietKhuyenMaiID" />
+                <ScalarProperty Name="SanPhamID" ColumnName="SanPhamID" />
+                <ScalarProperty Name="KhuyenMaiID" ColumnName="KhuyenMaiID" />
+                <ScalarProperty Name="DaHetHan" ColumnName="DaHetHan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ChiTietSanPhams">
-            <EntityTypeMapping TypeName="DoAnKetMon_UDTMModel.ChiTietSanPham">
+            <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.ChiTietSanPham">
               <MappingFragment StoreEntitySet="ChiTietSanPham">
                 <ScalarProperty Name="ChiTietID" ColumnName="ChiTietID" />
                 <ScalarProperty Name="SanPhamID" ColumnName="SanPhamID" />
                 <ScalarProperty Name="MauID" ColumnName="MauID" />
                 <ScalarProperty Name="SizeID" ColumnName="SizeID" />
                 <ScalarProperty Name="Gia" ColumnName="Gia" />
+                <ScalarProperty Name="GiaDuocGiam" ColumnName="GiaDuocGiam" />
                 <ScalarProperty Name="HinhAnhUrl" ColumnName="HinhAnhUrl" />
                 <ScalarProperty Name="SoLuongTonKho" ColumnName="SoLuongTonKho" />
                 <ScalarProperty Name="KichHoat" ColumnName="KichHoat" />
@@ -962,7 +1114,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DanhMucs">
-            <EntityTypeMapping TypeName="DoAnKetMon_UDTMModel.DanhMuc">
+            <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.DanhMuc">
               <MappingFragment StoreEntitySet="DanhMuc">
                 <ScalarProperty Name="DanhMucID" ColumnName="DanhMucID" />
                 <ScalarProperty Name="TenDanhMuc" ColumnName="TenDanhMuc" />
@@ -970,7 +1122,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DonHangs">
-            <EntityTypeMapping TypeName="DoAnKetMon_UDTMModel.DonHang">
+            <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.DonHang">
               <MappingFragment StoreEntitySet="DonHang">
                 <ScalarProperty Name="DonHangID" ColumnName="DonHangID" />
                 <ScalarProperty Name="DiaChiID" ColumnName="DiaChiID" />
@@ -986,7 +1138,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GioHangs">
-            <EntityTypeMapping TypeName="DoAnKetMon_UDTMModel.GioHang">
+            <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.GioHang">
               <MappingFragment StoreEntitySet="GioHang">
                 <ScalarProperty Name="GioHangID" ColumnName="GioHangID" />
                 <ScalarProperty Name="NguoiDungID" ColumnName="NguoiDungID" />
@@ -995,8 +1147,20 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="KhuyenMais">
+            <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.KhuyenMai">
+              <MappingFragment StoreEntitySet="KhuyenMai">
+                <ScalarProperty Name="MaKhuyenMai" ColumnName="MaKhuyenMai" />
+                <ScalarProperty Name="TenChuongTrinhKM" ColumnName="TenChuongTrinhKM" />
+                <ScalarProperty Name="MucGiam" ColumnName="MucGiam" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
+                <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ManHinhs">
-            <EntityTypeMapping TypeName="DoAnKetMon_UDTMModel.ManHinh">
+            <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.ManHinh">
               <MappingFragment StoreEntitySet="ManHinh">
                 <ScalarProperty Name="MaManHinh" ColumnName="MaManHinh" />
                 <ScalarProperty Name="TenManHinh" ColumnName="TenManHinh" />
@@ -1004,7 +1168,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Maus">
-            <EntityTypeMapping TypeName="DoAnKetMon_UDTMModel.Mau">
+            <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.Mau">
               <MappingFragment StoreEntitySet="Mau">
                 <ScalarProperty Name="MauID" ColumnName="MauID" />
                 <ScalarProperty Name="TenMau" ColumnName="TenMau" />
@@ -1012,7 +1176,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NguoiDungs">
-            <EntityTypeMapping TypeName="DoAnKetMon_UDTMModel.NguoiDung">
+            <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.NguoiDung">
               <MappingFragment StoreEntitySet="NguoiDung">
                 <ScalarProperty Name="NguoiDungID" ColumnName="NguoiDungID" />
                 <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
@@ -1024,13 +1188,18 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
                 <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
                 <ScalarProperty Name="MaNhomNguoiDung" ColumnName="MaNhomNguoiDung" />
                 <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
-                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
                 <ScalarProperty Name="KichHoat" ColumnName="KichHoat" />
+                <ScalarProperty Name="Train" ColumnName="Train" />
+                <ScalarProperty Name="MucChiTieu" ColumnName="MucChiTieu" />
+                <ScalarProperty Name="DoTuoi" ColumnName="DoTuoi" />
+                <ScalarProperty Name="PhanKhucKH" ColumnName="PhanKhucKH" />
+                <ScalarProperty Name="SoThich" ColumnName="SoThich" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NhaCungCaps">
-            <EntityTypeMapping TypeName="DoAnKetMon_UDTMModel.NhaCungCap">
+            <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.NhaCungCap">
               <MappingFragment StoreEntitySet="NhaCungCap">
                 <ScalarProperty Name="NhaCungCapID" ColumnName="NhaCungCapID" />
                 <ScalarProperty Name="TenNhaCungCap" ColumnName="TenNhaCungCap" />
@@ -1043,7 +1212,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NhomNguoiDungs">
-            <EntityTypeMapping TypeName="DoAnKetMon_UDTMModel.NhomNguoiDung">
+            <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.NhomNguoiDung">
               <MappingFragment StoreEntitySet="NhomNguoiDung">
                 <ScalarProperty Name="MaNhomNguoiDung" ColumnName="MaNhomNguoiDung" />
                 <ScalarProperty Name="TenNhomNguoiDung" ColumnName="TenNhomNguoiDung" />
@@ -1051,7 +1220,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PhanHois">
-            <EntityTypeMapping TypeName="DoAnKetMon_UDTMModel.PhanHoi">
+            <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.PhanHoi">
               <MappingFragment StoreEntitySet="PhanHoi">
                 <ScalarProperty Name="PhanHoiID" ColumnName="PhanHoiID" />
                 <ScalarProperty Name="SanPhamID" ColumnName="SanPhamID" />
@@ -1063,7 +1232,7 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SanPhams">
-            <EntityTypeMapping TypeName="DoAnKetMon_UDTMModel.SanPham">
+            <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.SanPham">
               <MappingFragment StoreEntitySet="SanPham">
                 <ScalarProperty Name="SanPhamID" ColumnName="SanPhamID" />
                 <ScalarProperty Name="TenSanPham" ColumnName="TenSanPham" />
@@ -1076,26 +1245,15 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sizes">
-            <EntityTypeMapping TypeName="DoAnKetMon_UDTMModel.Size">
+            <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.Size">
               <MappingFragment StoreEntitySet="Size">
                 <ScalarProperty Name="SizeID" ColumnName="SizeID" />
                 <ScalarProperty Name="TenSize" ColumnName="TenSize" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="DoAnKetMon_UDTMModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ThongTinGiaoHangs">
-            <EntityTypeMapping TypeName="DoAnKetMon_UDTMModel.ThongTinGiaoHang">
+            <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.ThongTinGiaoHang">
               <MappingFragment StoreEntitySet="ThongTinGiaoHang">
                 <ScalarProperty Name="DiaChiID" ColumnName="DiaChiID" />
                 <ScalarProperty Name="NguoiDungID" ColumnName="NguoiDungID" />
@@ -1106,7 +1264,15 @@ error 6004: The table 'DoAnKetMon_UDTM.dbo.NhaCungCapSanPham' is referenced by a
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="PhanQuyen" TypeName="DoAnKetMon_UDTMModel.PhanQuyen" StoreEntitySet="PhanQuyen">
+          <AssociationSetMapping Name="NhaCungCapSanPham" TypeName="DoAnKetMon_UDTM21114Model.NhaCungCapSanPham" StoreEntitySet="NhaCungCapSanPham">
+            <EndProperty Name="NhaCungCap">
+              <ScalarProperty Name="NhaCungCapID" ColumnName="NhaCungCapID" />
+            </EndProperty>
+            <EndProperty Name="SanPham">
+              <ScalarProperty Name="SanPhamID" ColumnName="SanPhamID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="PhanQuyen" TypeName="DoAnKetMon_UDTM21114Model.PhanQuyen" StoreEntitySet="PhanQuyen">
             <EndProperty Name="ManHinh">
               <ScalarProperty Name="MaManHinh" ColumnName="MaManHinh" />
             </EndProperty>

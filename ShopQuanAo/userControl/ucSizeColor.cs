@@ -58,21 +58,21 @@ namespace userControl
 
         private void btnAddSize_Click(object sender, EventArgs e)
         {
-            string newSizeName = txtSize.Text.Trim();
-            if (string.IsNullOrEmpty(newSizeName))
+            string newTenSize = txtSize.Text.Trim();
+            if (string.IsNullOrEmpty(newTenSize))
             {
                 MessageBox.Show("Vui lòng nhập tên size!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             List<DTO.Size> sizes = sizeBLL.getAllSize();
-            if (sizes.Any(s => s.TenSize == newSizeName))
+            if (sizes.Any(s => s.TenSize == newTenSize))
             {
                 MessageBox.Show("Size đã tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            DTO.Size newSize = new DTO.Size { TenSize = newSizeName };
+            DTO.Size newSize = new DTO.Size { TenSize = newTenSize };
             sizeBLL.AddSize(newSize);
             MessageBox.Show("Thêm size thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             loadSize();
@@ -103,15 +103,15 @@ namespace userControl
             }
 
             int selectedSizeId = Convert.ToInt32(dgvSize.SelectedRows[0].Cells["SizeID"].Value);
-            string newSizeName = txtSize.Text.Trim();
+            string newTenSize = txtSize.Text.Trim();
 
-            if (string.IsNullOrEmpty(newSizeName))
+            if (string.IsNullOrEmpty(newTenSize))
             {
                 MessageBox.Show("Vui lòng nhập tên size mới!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            DTO.Size updatedSize = new DTO.Size { SizeID = selectedSizeId, TenSize = newSizeName };
+            DTO.Size updatedSize = new DTO.Size { SizeID = selectedSizeId, TenSize = newTenSize };
             sizeBLL.UpdateSize(updatedSize);
             MessageBox.Show("Cập nhật size thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             loadSize();

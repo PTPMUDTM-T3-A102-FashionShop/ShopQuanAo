@@ -39,11 +39,11 @@ namespace BLL
                 throw new Exception("Lỗi khi cập nhật chi tiết sản phẩm", ex);
             }
         }
-        public bool DeleteChiTietSanPham(int chiTietSanPhamID)
+        public bool DeleteChiTietSanPham(int ChiTietID)
         {
             try
             {
-                return chiTietSanPhamDAL.DeleteChiTietSanPham(chiTietSanPhamID); // Gọi phương thức xóa trong DAL
+                return chiTietSanPhamDAL.DeleteChiTietSanPham(ChiTietID); // Gọi phương thức xóa trong DAL
             }
             catch (Exception ex)
             {

@@ -198,7 +198,7 @@ namespace userControl
             }
 
             // Lấy thông tin chi tiết sản phẩm từ DataGridView
-            int chiTietSanPhamID = (int)dgvDetail.CurrentRow.Cells["ChiTietID"].Value; // ID của chi tiết sản phẩm
+            int ChiTietID = (int)dgvDetail.CurrentRow.Cells["ChiTietID"].Value; // ID của chi tiết sản phẩm
             string hinhAnhUrl = dgvDetail.CurrentRow.Cells["HinhAnhUrl"].Value.ToString(); // Tên file ảnh của chi tiết
 
             // Hỏi xác nhận người dùng trước khi xóa
@@ -211,7 +211,7 @@ namespace userControl
             // Xóa chi tiết sản phẩm khỏi cơ sở dữ liệu
             try
             {
-                bool isDeleted = chiTietSanPhamBLL.DeleteChiTietSanPham(chiTietSanPhamID); // Gọi phương thức xóa trong BLL
+                bool isDeleted = chiTietSanPhamBLL.DeleteChiTietSanPham(ChiTietID); // Gọi phương thức xóa trong BLL
 
                 if (isDeleted)
                 {
@@ -243,7 +243,7 @@ namespace userControl
             // Lấy giá trị từ các trường nhập liệu
             decimal gia;
             int soLuongTonKho;
-            int chiTietSanPhamID = (int)dgvDetail.CurrentRow.Cells["ChiTietID"].Value; // Lấy ID chi tiết sản phẩm đã chọn
+            int ChiTietID = (int)dgvDetail.CurrentRow.Cells["ChiTietID"].Value; // Lấy ID chi tiết sản phẩm đã chọn
             string currentImageUrl = dgvDetail.CurrentRow.Cells["HinhAnhUrl"].Value.ToString(); // Lấy tên ảnh cũ từ DataGridView
 
             if (string.IsNullOrEmpty(txtPrice.Text) || !decimal.TryParse(txtPrice.Text, out gia) || gia < 10000)
@@ -310,7 +310,7 @@ namespace userControl
             // Cập nhật thông tin chi tiết sản phẩm
             ChiTietSanPham chiTietSanPham = new ChiTietSanPham
             {
-                ChiTietID = chiTietSanPhamID,
+                ChiTietID = ChiTietID,
                 SanPhamID = sanPhamID,
                 MauID = mauID,
                 SizeID = sizeID,
