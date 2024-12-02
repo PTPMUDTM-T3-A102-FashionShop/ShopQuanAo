@@ -33,12 +33,12 @@
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.ucLogin1 = new userControl.ucLogin();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.ucLogin1 = new userControl.ucLogin();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
@@ -81,13 +81,20 @@
             this.guna2Panel1.Size = new System.Drawing.Size(423, 621);
             this.guna2Panel1.TabIndex = 1;
             // 
+            // ucLogin1
+            // 
+            this.ucLogin1.Location = new System.Drawing.Point(0, 284);
+            this.ucLogin1.Name = "ucLogin1";
+            this.ucLogin1.Size = new System.Drawing.Size(420, 258);
+            this.ucLogin1.TabIndex = 7;
+            // 
             // guna2PictureBox2
             // 
             this.guna2PictureBox2.Image = global::FormShopQuanAo.Properties.Resources.logo;
             this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(102, 67);
+            this.guna2PictureBox2.Location = new System.Drawing.Point(113, 67);
             this.guna2PictureBox2.Name = "guna2PictureBox2";
-            this.guna2PictureBox2.Size = new System.Drawing.Size(220, 156);
+            this.guna2PictureBox2.Size = new System.Drawing.Size(209, 156);
             this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox2.TabIndex = 6;
             this.guna2PictureBox2.TabStop = false;
@@ -140,13 +147,6 @@
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(0, 41);
             this.guna2Panel2.TabIndex = 2;
-            // 
-            // ucLogin1
-            // 
-            this.ucLogin1.Location = new System.Drawing.Point(0, 284);
-            this.ucLogin1.Name = "ucLogin1";
-            this.ucLogin1.Size = new System.Drawing.Size(420, 258);
-            this.ucLogin1.TabIndex = 7;
             // 
             // Login
             // 

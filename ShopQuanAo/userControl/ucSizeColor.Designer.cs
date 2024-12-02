@@ -274,7 +274,7 @@
             this.btnAddSize.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnAddSize.ImageOffset = new System.Drawing.Point(3, 0);
             this.btnAddSize.ImageSize = new System.Drawing.Size(23, 23);
-            this.btnAddSize.Location = new System.Drawing.Point(198, 209);
+            this.btnAddSize.Location = new System.Drawing.Point(199, 209);
             this.btnAddSize.Name = "btnAddSize";
             this.btnAddSize.Size = new System.Drawing.Size(195, 45);
             this.btnAddSize.TabIndex = 10;
