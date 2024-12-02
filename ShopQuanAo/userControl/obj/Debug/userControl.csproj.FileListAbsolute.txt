@@ -188,9 +188,25 @@ C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\use
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.csproj.CopyComplete
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.dll
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.pdb
+<<<<<<< HEAD
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\Accord.dll.config
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\Accord.dll
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\Accord.MachineLearning.dll
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\Accord.Math.Core.dll
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\Accord.Math.dll
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\Accord.Statistics.dll
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\Accord.xml
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\Accord.MachineLearning.xml
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\Accord.Math.xml
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\Accord.Math.Core.xml
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\Accord.Statistics.xml
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.ucAnalytic.resources
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.ucOrderDetail.resources
+=======
 D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.ucAnalytic.resources
 D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.ucEditBrand.resources
 D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.ucHome.resources
 D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.ucOrder.resources
 D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.ucOrderDetail.resources
 D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.ucSizeColor.resources
+>>>>>>> 92475729f27c4214670663d92e6bae47d5dcffca
