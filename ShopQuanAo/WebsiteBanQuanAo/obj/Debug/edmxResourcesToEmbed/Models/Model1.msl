@@ -1,19 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DoAnKetMon_UDTMModelStoreContainer" CdmEntityContainer="DoAnKetMon_UDTMEntities">
+  <EntityContainerMapping StorageEntityContainer="DoAnKetMon_UDTM21114ModelStoreContainer" CdmEntityContainer="ShopQuanAoEntities">
     <EntitySetMapping Name="ChiTietDonHangs">
-      <EntityTypeMapping TypeName="DoAnKetMon_UDTMModel.ChiTietDonHang">
+      <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.ChiTietDonHang">
         <MappingFragment StoreEntitySet="ChiTietDonHang">
           <ScalarProperty Name="ChiTietDonHangID" ColumnName="ChiTietDonHangID" />
           <ScalarProperty Name="DonHangID" ColumnName="DonHangID" />
           <ScalarProperty Name="SanPhamID" ColumnName="SanPhamID" />
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
           <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+          <ScalarProperty Name="TinhTrangDanhGia" ColumnName="TinhTrangDanhGia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietKhuyenMais">
+      <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.ChiTietKhuyenMai">
+        <MappingFragment StoreEntitySet="ChiTietKhuyenMai">
+          <ScalarProperty Name="ChiTietKhuyenMaiID" ColumnName="ChiTietKhuyenMaiID" />
+          <ScalarProperty Name="SanPhamID" ColumnName="SanPhamID" />
+          <ScalarProperty Name="KhuyenMaiID" ColumnName="KhuyenMaiID" />
+          <ScalarProperty Name="DaHetHan" ColumnName="DaHetHan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietSanPhams">
+      <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.ChiTietSanPham">
+        <MappingFragment StoreEntitySet="ChiTietSanPham">
+          <ScalarProperty Name="ChiTietID" ColumnName="ChiTietID" />
+          <ScalarProperty Name="SanPhamID" ColumnName="SanPhamID" />
+          <ScalarProperty Name="MauID" ColumnName="MauID" />
+          <ScalarProperty Name="SizeID" ColumnName="SizeID" />
+          <ScalarProperty Name="Gia" ColumnName="Gia" />
+          <ScalarProperty Name="GiaDuocGiam" ColumnName="GiaDuocGiam" />
+          <ScalarProperty Name="HinhAnhUrl" ColumnName="HinhAnhUrl" />
+          <ScalarProperty Name="SoLuongTonKho" ColumnName="SoLuongTonKho" />
+          <ScalarProperty Name="KichHoat" ColumnName="KichHoat" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="DanhMucs">
-      <EntityTypeMapping TypeName="DoAnKetMon_UDTMModel.DanhMuc">
+      <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.DanhMuc">
         <MappingFragment StoreEntitySet="DanhMuc">
           <ScalarProperty Name="DanhMucID" ColumnName="DanhMucID" />
           <ScalarProperty Name="TenDanhMuc" ColumnName="TenDanhMuc" />
@@ -21,19 +47,23 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="DonHangs">
-      <EntityTypeMapping TypeName="DoAnKetMon_UDTMModel.DonHang">
+      <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.DonHang">
         <MappingFragment StoreEntitySet="DonHang">
           <ScalarProperty Name="DonHangID" ColumnName="DonHangID" />
+          <ScalarProperty Name="DiaChiID" ColumnName="DiaChiID" />
+          <ScalarProperty Name="NhanVienID" ColumnName="NhanVienID" />
           <ScalarProperty Name="NguoiDungID" ColumnName="NguoiDungID" />
           <ScalarProperty Name="TongTien" ColumnName="TongTien" />
           <ScalarProperty Name="TinhTrangDonHang" ColumnName="TinhTrangDonHang" />
           <ScalarProperty Name="NgayDatHang" ColumnName="NgayDatHang" />
-          <ScalarProperty Name="DiaChiGiaoHang" ColumnName="DiaChiGiaoHang" />
+          <ScalarProperty Name="HinhThucThanhToan" ColumnName="HinhThucThanhToan" />
+          <ScalarProperty Name="TinhTrangThanhToan" ColumnName="TinhTrangThanhToan" />
+          <ScalarProperty Name="NgayThanhToan" ColumnName="NgayThanhToan" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="GioHangs">
-      <EntityTypeMapping TypeName="DoAnKetMon_UDTMModel.GioHang">
+      <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.GioHang">
         <MappingFragment StoreEntitySet="GioHang">
           <ScalarProperty Name="GioHangID" ColumnName="GioHangID" />
           <ScalarProperty Name="NguoiDungID" ColumnName="NguoiDungID" />
@@ -42,8 +72,36 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="KhuyenMais">
+      <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.KhuyenMai">
+        <MappingFragment StoreEntitySet="KhuyenMai">
+          <ScalarProperty Name="MaKhuyenMai" ColumnName="MaKhuyenMai" />
+          <ScalarProperty Name="TenChuongTrinhKM" ColumnName="TenChuongTrinhKM" />
+          <ScalarProperty Name="MucGiam" ColumnName="MucGiam" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
+          <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ManHinhs">
+      <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.ManHinh">
+        <MappingFragment StoreEntitySet="ManHinh">
+          <ScalarProperty Name="MaManHinh" ColumnName="MaManHinh" />
+          <ScalarProperty Name="TenManHinh" ColumnName="TenManHinh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maus">
+      <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.Mau">
+        <MappingFragment StoreEntitySet="Mau">
+          <ScalarProperty Name="MauID" ColumnName="MauID" />
+          <ScalarProperty Name="TenMau" ColumnName="TenMau" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="NguoiDungs">
-      <EntityTypeMapping TypeName="DoAnKetMon_UDTMModel.NguoiDung">
+      <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.NguoiDung">
         <MappingFragment StoreEntitySet="NguoiDung">
           <ScalarProperty Name="NguoiDungID" ColumnName="NguoiDungID" />
           <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
@@ -52,15 +110,21 @@
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
           <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
-          <ScalarProperty Name="VaiTro" ColumnName="VaiTro" />
+          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+          <ScalarProperty Name="MaNhomNguoiDung" ColumnName="MaNhomNguoiDung" />
           <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
-          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
           <ScalarProperty Name="KichHoat" ColumnName="KichHoat" />
+          <ScalarProperty Name="Train" ColumnName="Train" />
+          <ScalarProperty Name="MucChiTieu" ColumnName="MucChiTieu" />
+          <ScalarProperty Name="DoTuoi" ColumnName="DoTuoi" />
+          <ScalarProperty Name="PhanKhucKH" ColumnName="PhanKhucKH" />
+          <ScalarProperty Name="SoThich" ColumnName="SoThich" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="NhaCungCaps">
-      <EntityTypeMapping TypeName="DoAnKetMon_UDTMModel.NhaCungCap">
+      <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.NhaCungCap">
         <MappingFragment StoreEntitySet="NhaCungCap">
           <ScalarProperty Name="NhaCungCapID" ColumnName="NhaCungCapID" />
           <ScalarProperty Name="TenNhaCungCap" ColumnName="TenNhaCungCap" />
@@ -72,8 +136,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="NhomNguoiDungs">
+      <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.NhomNguoiDung">
+        <MappingFragment StoreEntitySet="NhomNguoiDung">
+          <ScalarProperty Name="MaNhomNguoiDung" ColumnName="MaNhomNguoiDung" />
+          <ScalarProperty Name="TenNhomNguoiDung" ColumnName="TenNhomNguoiDung" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="PhanHois">
-      <EntityTypeMapping TypeName="DoAnKetMon_UDTMModel.PhanHoi">
+      <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.PhanHoi">
         <MappingFragment StoreEntitySet="PhanHoi">
           <ScalarProperty Name="PhanHoiID" ColumnName="PhanHoiID" />
           <ScalarProperty Name="SanPhamID" ColumnName="SanPhamID" />
@@ -85,31 +157,53 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="SanPhams">
-      <EntityTypeMapping TypeName="DoAnKetMon_UDTMModel.SanPham">
+      <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.SanPham">
         <MappingFragment StoreEntitySet="SanPham">
           <ScalarProperty Name="SanPhamID" ColumnName="SanPhamID" />
           <ScalarProperty Name="TenSanPham" ColumnName="TenSanPham" />
           <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-          <ScalarProperty Name="Gia" ColumnName="Gia" />
-          <ScalarProperty Name="SoLuongTonKho" ColumnName="SoLuongTonKho" />
+          <ScalarProperty Name="SoSaoTB" ColumnName="SoSaoTB" />
           <ScalarProperty Name="DanhMucID" ColumnName="DanhMucID" />
-          <ScalarProperty Name="NhaCungCapID" ColumnName="NhaCungCapID" />
-          <ScalarProperty Name="HinhAnhUrl" ColumnName="HinhAnhUrl" />
-          <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+          <ScalarProperty Name="SoLuongDaBan" ColumnName="SoLuongDaBan" />
           <ScalarProperty Name="KichHoat" ColumnName="KichHoat" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ThanhToans">
-      <EntityTypeMapping TypeName="DoAnKetMon_UDTMModel.ThanhToan">
-        <MappingFragment StoreEntitySet="ThanhToan">
-          <ScalarProperty Name="ThanhToanID" ColumnName="ThanhToanID" />
-          <ScalarProperty Name="DonHangID" ColumnName="DonHangID" />
-          <ScalarProperty Name="HinhThucThanhToan" ColumnName="HinhThucThanhToan" />
-          <ScalarProperty Name="TinhTrangThanhToan" ColumnName="TinhTrangThanhToan" />
-          <ScalarProperty Name="NgayThanhToan" ColumnName="NgayThanhToan" />
+    <EntitySetMapping Name="Sizes">
+      <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.Size">
+        <MappingFragment StoreEntitySet="Size">
+          <ScalarProperty Name="SizeID" ColumnName="SizeID" />
+          <ScalarProperty Name="TenSize" ColumnName="TenSize" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ThongTinGiaoHangs">
+      <EntityTypeMapping TypeName="DoAnKetMon_UDTM21114Model.ThongTinGiaoHang">
+        <MappingFragment StoreEntitySet="ThongTinGiaoHang">
+          <ScalarProperty Name="DiaChiID" ColumnName="DiaChiID" />
+          <ScalarProperty Name="NguoiDungID" ColumnName="NguoiDungID" />
+          <ScalarProperty Name="TenNguoiNhan" ColumnName="TenNguoiNhan" />
+          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+          <ScalarProperty Name="DiaChiGiaoHang" ColumnName="DiaChiGiaoHang" />
+          <ScalarProperty Name="DiaChiMacDinh" ColumnName="DiaChiMacDinh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="NhaCungCapSanPham" TypeName="DoAnKetMon_UDTM21114Model.NhaCungCapSanPham" StoreEntitySet="NhaCungCapSanPham">
+      <EndProperty Name="NhaCungCap">
+        <ScalarProperty Name="NhaCungCapID" ColumnName="NhaCungCapID" />
+      </EndProperty>
+      <EndProperty Name="SanPham">
+        <ScalarProperty Name="SanPhamID" ColumnName="SanPhamID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PhanQuyen" TypeName="DoAnKetMon_UDTM21114Model.PhanQuyen" StoreEntitySet="PhanQuyen">
+      <EndProperty Name="ManHinh">
+        <ScalarProperty Name="MaManHinh" ColumnName="MaManHinh" />
+      </EndProperty>
+      <EndProperty Name="NhomNguoiDung">
+        <ScalarProperty Name="MaNhomNguoiDung" ColumnName="MaNhomNguoiDung" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

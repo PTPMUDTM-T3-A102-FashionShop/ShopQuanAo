@@ -72,23 +72,75 @@
 
         @* Các trường trong form *@
         <div class="form-group">
-            @Html.LabelFor(model => model.HoTen, "Họ Tên")
-            @Html.TextBoxFor(model => model.HoTen, new { @class = "form-control", placeholder = "Nhập họ tên" })
-        </div>
-        <div class="form-group">
             @Html.LabelFor(model => model.TenDangNhap, "Tên Đăng Nhập")
             @Html.TextBoxFor(model => model.TenDangNhap, new { @class = "form-control", placeholder = "Nhập tên đăng nhập" })
+            @Html.ValidationMessageFor(model => model.TenDangNhap, "", new { @class = "text-danger" })
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="position: relative;">
             @Html.LabelFor(model => model.MatKhau, "Mật Khẩu")
-            @Html.TextBoxFor(model => model.MatKhau, new { @class = "form-control", type = "password", placeholder = "Nhập mật khẩu" })
+
+            <input type="password" id="MatKhau" name="MatKhau" class="form-control" placeholder="Nhập mật khẩu" style="width: 100%; padding-right: 40px; padding-left: 10px; font-size: 16px; line-height: 1.5; box-sizing: border-box;" />
+
+            <!-- Eye Icon for toggling password visibility -->
+            <span id="togglePassword" style="position: absolute; right: 10px; top: 67%; transform: translateY(-50%); font-size: 20px; color: #888; cursor: pointer; z-index: 1;">
+                <i class="fa fa-eye"></i>
+            </span>
         </div>
+
+        <script>
+            // Toggle password visibility
+            document.getElementById('togglePassword').onclick = function () {
+                var passwordField = document.getElementById('MatKhau');
+                if (passwordField.type === "password") {
+                    passwordField.type = "text"; // Show password
+                } else {
+                    passwordField.type = "password"; // Hide password
+                }
+            };
+        </script>
+
+        <!-- FontAwesome CDN -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.Email, "Email")
             @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Nhập email" })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
         </div>
+
+        <!-- Thêm trường cho Độ tuổi -->
+        <div class="form-group">
+            @Html.Label("Độ Tuổi")
+            <input type="number" name="DoTuoi" min="1" max="120" value="18" class="form-control" />
+        </div>
+
+        <!-- Thêm trường cho Sở thích -->
+        <div class="form-group">
+            @Html.Label("Sở Thích")
+            <select name="SoThich" class="form-control">
+                <option value="Thể thao">Thể thao năng động</option>
+                <option value="Công sở, lịch sự">Công sở, lịch sự</option>
+                <option value="Đơn giản, thường ngày">Đơn giản, thường ngày</option>
+                <option value="Thời trang du lịch">Thời trang du lịch</option>
+                <option value="Thời trang hot trend">Thời trang hot trend</option>
+            </select>
+        </div>
+
+        <!-- Thêm trường cho Mức chi tiêu -->
+        <div class="form-group">
+            @Html.Label("Mức Chi Tiêu Trong Năm ")
+            <select name="MucChiTieu" class="form-control">
+                @for (int i = 5000000; i <= 1000000000; i += 5000000)
+                {
+                    <option value="@i">@i.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</option>
+                }
+            </select>
+        </div>
+
+
+        <!-- Thêm trường cho Giới tính -->
         <div class="form-group">
             @Html.Label("Giới Tính")
             <select name="GioiTinh" class="form-control">
@@ -106,3 +158,71 @@
         </div>
     }
 </div>
+<script>
+    document.querySelector(".form-register button[type='submit']").addEventListener("click", function (e) {
+        e.preventDefault(); // Ngăn chặn gửi form nếu có lỗi
+        let isValid = true;
+
+        // Xóa thông báo lỗi cũ
+        document.querySelectorAll(".form-group .text-danger").forEach(el => el.remove());
+
+        // Lấy các trường dữ liệu
+        const fields = [
+            {
+                name: "TenDangNhap",
+                label: "Tên đăng nhập",
+                value: document.querySelector("[name='TenDangNhap']").value.trim(),
+                rules: [
+                    { test: val => val, error: "Tên đăng nhập không được để trống." },
+                    { test: val => val.length >= 3, error: "Tên đăng nhập phải có ít nhất 3 ký tự." }
+                ]
+            },
+            {
+                name: "MatKhau",
+                label: "Mật khẩu",
+                value: document.querySelector("[name='MatKhau']").value.trim(),
+                rules: [
+                    { test: val => val, error: "Mật khẩu không được để trống." },
+                    { test: val => val.length >= 6, error: "Mật khẩu phải có ít nhất 6 ký tự." }
+                ]
+            },
+            {
+                name: "Email",
+                label: "Email",
+                value: document.querySelector("[name='Email']").value.trim(),
+                rules: [
+                    { test: val => val, error: "Email không được để trống." },
+                    { test: val => val.includes("@@"), error: "Email phải chứa ký tự '@@'." },
+                    {
+                        test: val => /^[a-zA-Z0-9._%+-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(val),
+                        error: "Email không hợp lệ."
+                    }
+                ]
+            }
+        ];
+
+        fields.forEach(field => {
+            const fieldElement = document.querySelector(`[name='${field.name}']`);
+            const fieldGroup = fieldElement.closest(".form-group");
+
+            for (let rule of field.rules) {
+                if (!rule.test(field.value)) {
+                    isValid = false;
+
+                    // Thêm lỗi dưới label và dừng kiểm tra các quy tắc tiếp theo
+                    const errorElement = document.createElement("div");
+                    errorElement.classList.add("text-danger");
+                    errorElement.textContent = rule.error;
+                    fieldGroup.appendChild(errorElement);
+                    break; // Ngừng kiểm tra các quy tắc tiếp theo
+                }
+            }
+        });
+        // Nếu hợp lệ, gửi form
+        if (isValid) {
+            document.querySelector(".form-register form").submit();
+         }
+    });
+
+</script>
+

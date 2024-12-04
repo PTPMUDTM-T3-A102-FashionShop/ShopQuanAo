@@ -13,10 +13,10 @@ namespace WebsiteBanQuanAo.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DoAnKetMon_UDTMEntities : DbContext
+    public partial class ShopQuanAoEntities : DbContext
     {
-        public DoAnKetMon_UDTMEntities()
-            : base("name=DoAnKetMon_UDTMEntities")
+        public ShopQuanAoEntities()
+            : base("name=ShopQuanAoEntities")
         {
         }
     
@@ -26,13 +26,20 @@ namespace WebsiteBanQuanAo.Models
         }
     
         public virtual DbSet<ChiTietDonHang> ChiTietDonHangs { get; set; }
+        public virtual DbSet<ChiTietKhuyenMai> ChiTietKhuyenMais { get; set; }
+        public virtual DbSet<ChiTietSanPham> ChiTietSanPhams { get; set; }
         public virtual DbSet<DanhMuc> DanhMucs { get; set; }
         public virtual DbSet<DonHang> DonHangs { get; set; }
         public virtual DbSet<GioHang> GioHangs { get; set; }
+        public virtual DbSet<KhuyenMai> KhuyenMais { get; set; }
+        public virtual DbSet<ManHinh> ManHinhs { get; set; }
+        public virtual DbSet<Mau> Maus { get; set; }
         public virtual DbSet<NguoiDung> NguoiDungs { get; set; }
         public virtual DbSet<NhaCungCap> NhaCungCaps { get; set; }
+        public virtual DbSet<NhomNguoiDung> NhomNguoiDungs { get; set; }
         public virtual DbSet<PhanHoi> PhanHois { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
-        public virtual DbSet<ThanhToan> ThanhToans { get; set; }
+        public virtual DbSet<Size> Sizes { get; set; }
+        public virtual DbSet<ThongTinGiaoHang> ThongTinGiaoHangs { get; set; }
     }
 }

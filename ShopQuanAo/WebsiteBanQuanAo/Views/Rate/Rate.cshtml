@@ -1,0 +1,168 @@
+﻿@model WebsiteBanQuanAo.Models.ChiTietSanPham
+@{
+    ViewBag.Title = "Rate";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@section css{
+    <style>
+        /* Căn giữa các thành phần */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .star-rating {
+            display: flex;
+            justify-content: center; /* Căn giữa theo chiều ngang */
+            align-items: center; /* Căn giữa theo chiều dọc */
+            cursor: pointer;
+        }
+
+        .star {
+            font-size: 40px;
+            color: #ddd; /* Màu xám nhạt cho sao chưa được chọn */
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+            .star.checked {
+                color: gold; /* Màu vàng cho sao đã được chọn */
+            }
+
+            /* Hiệu ứng hover cho các sao */
+            .star:hover {
+                color: orange;
+            }
+
+        /* Tạo bóng mờ cho các sao */
+        .star-rating {
+            text-align: center;
+        }
+
+        .form-container {
+            width: 60%;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 20px;
+            color: #555;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: none;
+            font-size: 16px;
+        }
+
+            textarea:focus {
+                outline: none;
+                border-color: #4CAF50;
+            }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+            .btn:hover {
+                background-color: #0056b3;
+            }
+
+        /* Thông báo thành công */
+        .success-message {
+            margin-top: 20px;
+            color: green;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        /* Cải tiến responsive */
+
+
+    </style>
+}
+
+<div style="height:250px"></div>
+<div class="container">
+    <h2>Đánh giá sản phẩm</h2>
+    <h3>@Model.SanPham.TenSanPham</h3>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="success-message">
+            @TempData["Success"]
+        </div>
+    }
+
+    <div class="form-container">
+        <form action="@Url.Action("Rate", "Rate", new { id = Model.ChiTietID, iddonhang = ViewBag.iddonhang })" method="post">
+            <div class="mb-4">
+                <label>Số sao:</label>
+                <div class="star-rating" id="star-rating">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                </div>
+                <input type="hidden" name="danhGia" id="soSao" value="0" />
+            </div>
+
+            <div class="mb-4">
+                <label for="noiDung">Nội dung đánh giá:</label><br>
+                <textarea id="noiDung" name="noiDung" rows="4" required></textarea>
+            </div>
+
+            <div class="mb-4">
+                <button type="submit" class="btn btn-primary">Gửi đánh giá</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    const stars = document.querySelectorAll('.star');
+    const ratingInput = document.getElementById('soSao');
+
+    stars.forEach(star => {
+        star.addEventListener('click', () => {
+            const rating = star.getAttribute('data-value');
+            ratingInput.value = rating;
+            updateStars(rating);
+        });
+    });
+
+    function updateStars(rating) {
+        stars.forEach(star => {
+            const starValue = star.getAttribute('data-value');
+            if (parseInt(starValue) <= rating) {
+                star.classList.add('checked');
+            } else {
+                star.classList.remove('checked');
+            }
+        });
+    }
+</script>

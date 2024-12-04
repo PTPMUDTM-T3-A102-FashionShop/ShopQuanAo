@@ -27,29 +27,70 @@
             @{
                 int i = 1;
                 decimal totalPrice = 0;
+                decimal totalTietKiem = 0;
+
             }
             @foreach (var item in Model)
             {
-                decimal price = item.SanPham.Gia * item.SoLuong;
+                decimal totalGoc = item.ChiTietSanPham.Gia * item.SoLuong;
+                decimal price = (item.ChiTietSanPham.Gia - (item.ChiTietSanPham.GiaDuocGiam ?? 0)) * item.SoLuong;
                 totalPrice += price;
+                totalTietKiem += (item.ChiTietSanPham.GiaDuocGiam * item.SoLuong) ?? 0;
                 <tr class="cart-item align-middle">
                     <th scope="row">@i</th>
                     <td>
-                        <img class="img-thumbnail" style="max-height: 80px; width: auto;" src="~/img/@item.SanPham.HinhAnhUrl" alt="@item.SanPham.TenSanPham" />
+                        <img class="img-thumbnail" style="max-height: 80px; width: auto;" src="~/img/@item.ChiTietSanPham.HinhAnhUrl" alt="@item.ChiTietSanPham.SanPham.TenSanPham" />
                     </td>
                     <td>
-                        <span class="product-name">@Html.DisplayFor(model => item.SanPham.TenSanPham)</span>
+                        <span class="product-name">@Html.DisplayFor(model => item.ChiTietSanPham.SanPham.TenSanPham)</span>
+                        <br />
+                        <span class="product-size">Size: @item.ChiTietSanPham.Size.TenSize</span>
+                        <br />
+                        <span class="product-color">Màu: @item.ChiTietSanPham.Mau.TenMau</span>
                     </td>
                     <td>
                         @using (Html.BeginForm("UpdateQuantity", "Cart", FormMethod.Post, new { @class = "update-quantity-form" }))
                         {
-                            <input type="number" value="@item.SoLuong" name="quan" min="1" style="width: 60px" class="form-control d-inline" />
-                            <input type="hidden" name="proid" value="@item.GioHangID" />
-                            <button type="submit" class="btn btn-sm btn-primary ms-2">Cập Nhật</button>
+                            if (item.ChiTietSanPham.SoLuongTonKho > 0 && item.ChiTietSanPham.KichHoat == true)
+                            {
+                                <!-- Quantity input -->
+                                <input type="number"
+                                       value="@item.SoLuong"
+                                       name="quan"
+                                       min="1"
+                                       max="@item.ChiTietSanPham.SoLuongTonKho"
+                                       style="width: 60px"
+                                       class="form-control d-inline" />
+                                <input type="hidden" name="proid" value="@item.GioHangID" />
+
+                                <!-- Submit button -->
+                                <button type="submit" class="btn btn-sm btn-primary ms-2">Cập Nhật</button>
+                            }
+                            else
+                            {
+                                <!-- Display out-of-stock message -->
+                                <span class="text-danger">Hết hàng</span>
+                            }
                         }
                     </td>
+
                     <td>
-                        <span class="product-price">@price.ToString("N0") VNĐ</span>
+                        @if (item.ChiTietSanPham.GiaDuocGiam == 0)
+                        {
+                            <span class="product-price text-muted small d-block">
+                                <span>@totalGoc.ToString("N0")</span> VNĐ
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="product-price text-muted text-decoration-line-through small d-block">
+                                <span>@totalGoc.ToString("N0")</span> VNĐ
+                            </span>
+                            <span class="product-price text-danger fw-bold fs-5">
+                                <span>@price.ToString("N0")</span> VNĐ
+                            </span>
+                        }
+
                     </td>
                     <td>
                         @using (Html.BeginForm("DeleteQuantity", "Cart", FormMethod.Post, new { @class = "delete-item-form" }))
@@ -61,17 +102,50 @@
                 </tr>
                 i++;
             }
+
             <tr class="cart-total-row">
-                <td colspan="4" class="text-center fw-bold">Tổng Tiền</td>
-                <td colspan="2" class="fw-bold text-danger">@totalPrice.ToString("N0") VNĐ</td>
+                <td colspan="6" class="text-center py-4 bg-light border rounded shadow-sm">
+                    @if (totalTietKiem == 0)
+                    {
+                        <div class="fs-4 text-danger">
+                            Tổng: <span class="text-primary">@totalPrice.ToString("N0")</span> VNĐ
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="fs-4 text-danger">
+                            Tổng: <span class="text-primary">@totalPrice.ToString("N0")</span> VNĐ
+                        </div>
+                        <div class="fs-6 text-success">
+                            Bạn đã tiết kiệm: <span class="fw-bold">@totalTietKiem.ToString("N0")</span> VNĐ
+                        </div>
+                    }
+                </td>
             </tr>
+
+
+
+
+
         </tbody>
     </table>
     <div class="cart-actions mt-4 d-flex justify-content-between">
         <a href="/product" class="btn btn-outline-secondary">Tiếp tục mua hàng</a>
-        <a href="/Cart/ThanhToan" class="btn btn-success">Thanh Toán</a>
+        <a href="/pay" class="btn btn-success">Thanh Toán</a>
     </div>
 </div>
+@if (ViewBag.ErrorMessage != null)
+{
+    <div style="text-align:center" class="alert alert-danger">
+        @ViewBag.ErrorMessage
+    </div>
+}
+@if (TempData["ktracart"] != null)
+{
+    <div style="text-align:center" class="alert alert-danger">
+        @TempData["ktracart"]
+    </div>
+}
 
 <!-- Custom CSS -->
 <style>
@@ -124,6 +198,3 @@
         display: inline-block;
     }
 </style>
-
-
-

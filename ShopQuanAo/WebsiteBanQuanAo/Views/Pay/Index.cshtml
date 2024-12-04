@@ -1,0 +1,217 @@
+﻿@model List<WebsiteBanQuanAo.Models.GioHang>
+@{
+    ViewBag.Title = "Thanh Toán";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@section slmua {
+    <span id="cartItemCount">@ViewBag.SLSP</span>
+}
+<style>
+    .payment-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px;
+        border-radius: 10px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .payment-title {
+        text-align: center;
+        color: #333;
+        margin-bottom: 30px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        border-radius: 5px;
+        border: 1px solid #ced4da;
+        transition: border-color 0.3s;
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+    .btn-success {
+        width: 100%;
+        padding: 12px;
+        background-color: #28a745;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+    .text-danger {
+        font-size: 0.9em;
+    }
+
+    .address-info {
+        border: 1px solid #ced4da;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+    .payment-option label {
+        padding: 10px;
+        border: 2px solid transparent;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    .payment-option input[type="radio"] {
+        display: none;
+    }
+
+        .payment-option input[type="radio"]:checked + label {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: white;
+        }
+
+    .payment-option label:hover {
+        border-color: #28a745;
+    }
+
+    .error-message {
+        color: red;
+        font-size: 0.9em;
+        margin-top: 10px;
+        text-align: center;
+    }
+</style>
+
+
+<div style="height:200px">
+</div>
+<form action="@Url.Action("Index", "Pay")" method="post" class="payment-container">
+    <h2 class="payment-title">Thông tin đơn hàng</h2>
+    <div class="form-group">
+        <label>Địa chỉ giao hàng:</label>
+        <a href="@Url.Action("Index", "Address")" class="address-info d-block">
+            @if (ViewBag.DiaChiGiaoHang != null)
+            {
+                var selectedAddress = ViewBag.DiaChiGiaoHang;
+                <p><strong>Tên người nhận:</strong> @selectedAddress.TenNguoiNhan</p>
+                <p><strong>Số điện thoại:</strong> @selectedAddress.SoDienThoai</p>
+                <p><strong>Địa chỉ:</strong> @selectedAddress.DiaChiGiaoHang</p>
+            }
+            else
+            {
+                <p style="color: red;">Vui lòng thêm địa chỉ giao hàng.</p>
+            }
+        </a>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Hình ảnh</th>
+                <th>Tên sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Giá</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int i = 1;
+                decimal totalPrice = 0;
+            }
+            @foreach (var item in Model)
+            {
+                decimal price = (item.ChiTietSanPham.Gia - (item.ChiTietSanPham.GiaDuocGiam ?? 0)) * item.SoLuong;
+                totalPrice += price;
+                <tr>
+                    <td>@i</td>
+                    <td>
+                        <img class="img-thumbnail" src="~/img/@item.ChiTietSanPham.HinhAnhUrl" alt="@item.ChiTietSanPham.SanPham.TenSanPham" style="max-height: 80px;">
+                    </td>
+                    <td>
+                        <span>@item.ChiTietSanPham.SanPham.TenSanPham</span><br />
+                        <span>Size: @item.ChiTietSanPham.Size.TenSize</span><br />
+                        <span>Màu: @item.ChiTietSanPham.Mau.TenMau</span>
+                    </td>
+                    <td>@item.SoLuong</td>
+                    <td>@price.ToString("N0") VNĐ</td>
+                </tr>
+                i++;
+            }
+            <tr>
+                <td colspan="5" class="text-center fw-bold">
+                    Tổng Tiền:  <span style="color: red; text-align:center">@totalPrice.ToString("N0")VNĐ</span>
+                </td>
+                @*<td colspan="2" class="fw-bold text-danger">@totalPrice.ToString("N0") VNĐ</td>*@
+            </tr>
+        </tbody>
+    </table>
+    <div class="form-group">
+        <label>Phương thức thanh toán:</label>
+        <div class="d-flex">
+            <div class="payment-option me-3">
+                <input type="radio" name="paymentMethod" id="vnpay" value="vnpay">
+                <label for="vnpay">
+                    <img src="~/img/vnpay.png" alt="VNPay" style="width: 80px;"> VNPay
+                </label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" name="paymentMethod" id="cash" value="cash">
+                <label for="cash">
+                    <img src="~/img/tienmat.jpg" alt="Cash" style="width: 80px;"> Tiền mặt
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group text-center">
+        <button type="submit" class="btn btn-success">Xác nhận thanh toán</button>
+    </div>
+
+    <div class="error-message" id="paymentMethodError" style="display: none;">
+        Vui lòng chọn phương thức thanh toán.
+    </div>
+</form>
+
+<script>
+    document.querySelector(".payment-container button[type='submit']").addEventListener("click", function (e) {
+        e.preventDefault(); // Ngăn chặn gửi form nếu có lỗi
+        let isValid = true;
+
+        // Xóa thông báo lỗi cũ
+        document.querySelectorAll(".text-danger").forEach(el => el.remove());
+        document.getElementById("paymentMethodError").style.display = 'none';
+
+        // Kiểm tra địa chỉ giao hàng
+        const address = document.querySelector(".address-info p");
+        if (!address) {
+            isValid = false;
+            const errorMessage = document.createElement("div");
+            errorMessage.classList.add("text-danger");
+            errorMessage.textContent = "Vui lòng thêm địa chỉ giao hàng.";
+            document.querySelector(".address-info").appendChild(errorMessage);
+        }
+
+        // Kiểm tra phương thức thanh toán
+        const paymentMethod = document.querySelector("[name='paymentMethod']:checked");
+        if (!paymentMethod) {
+            isValid = false;
+            document.getElementById("paymentMethodError").style.display = 'block';
+        }
+
+        // Nếu hợp lệ, gửi form
+        if (isValid) {
+            document.querySelector(".payment-container").submit();
+        }
+    });
+</script>

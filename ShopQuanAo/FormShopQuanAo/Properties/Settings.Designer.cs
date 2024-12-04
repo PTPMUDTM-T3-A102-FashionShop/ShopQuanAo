@@ -12,7 +12,7 @@ namespace FormShopQuanAo.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.11.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -20,6 +20,19 @@ namespace FormShopQuanAo.Properties {
         public static Settings Default {
             get {
                 return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MSI\\SUCOBATNGO;Initial Catalog=DoAnKetMon_UDTM;Integrated Security=Tr" +
+            "ue")]
+        public string DB_DoAnKetMon_UDTMConnectionString {
+            get {
+                return ((string)(this["DB_DoAnKetMon_UDTMConnectionString"]));
+            }
+            set {
+                this["DB_DoAnKetMon_UDTMConnectionString"] = value;
             }
         }
     }
