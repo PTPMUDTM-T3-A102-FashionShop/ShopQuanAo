@@ -16,7 +16,6 @@ namespace DAL
         DoAnKetMon_UDTMDataContext db = new DoAnKetMon_UDTMDataContext();
         private DBConnection dbcon;
         public NguoiDungDAL() {
-            dbcon = new DBConnection();
         }
 
         // Kiểm tra đăng nhập
