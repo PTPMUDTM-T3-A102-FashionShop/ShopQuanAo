@@ -14,7 +14,6 @@ namespace BLL
         NguoiDungDAL nguoiDungDAL = new NguoiDungDAL();
         private NguoiDungDAL dal;
         public NguoiDungBLL() {
-            dal = new NguoiDungDAL();
         }
 
         public NguoiDung ValidateUser(string username, string password, out string message)
