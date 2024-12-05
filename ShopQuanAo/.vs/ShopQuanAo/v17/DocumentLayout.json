@@ -3,44 +3,28 @@
   "WorkspaceRootPath": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{685FA2DA-D8AB-4657-8FE0-06CEE617E7BD}|DTO\\DTO.csproj|d:\\pmemudungtminh\\doan\\shopquanao\\shopquanao\\dto\\doanketmon_udtm.dbml||{B465B5AD-8799-4507-B90A-EE29ACF36AF9}|",
-      "RelativeMoniker": "D:0:0:{685FA2DA-D8AB-4657-8FE0-06CEE617E7BD}|DTO\\DTO.csproj|solutionrelative:dto\\doanketmon_udtm.dbml||{B465B5AD-8799-4507-B90A-EE29ACF36AF9}|"
+      "AbsoluteMoniker": "D:0:0:{7EEB472F-339C-4F5F-90A3-852982E63103}|FormShopQuanAo\\FormShopQuanAo.csproj|d:\\pmemudungtminh\\doan\\shopquanao\\shopquanao\\formshopquanao\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7EEB472F-339C-4F5F-90A3-852982E63103}|FormShopQuanAo\\FormShopQuanAo.csproj|solutionrelative:formshopquanao\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{74870452-B61D-4B25-A52A-6092E36C75FB}|DAL\\DAL.csproj|D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\dal\\nguoidungdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{74870452-B61D-4B25-A52A-6092E36C75FB}|DAL\\DAL.csproj|solutionrelative:dal\\nguoidungdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7EEB472F-339C-4F5F-90A3-852982E63103}|FormShopQuanAo\\FormShopQuanAo.csproj|d:\\pmemudungtminh\\doan\\shopquanao\\shopquanao\\formshopquanao\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EEB472F-339C-4F5F-90A3-852982E63103}|FormShopQuanAo\\FormShopQuanAo.csproj|solutionrelative:formshopquanao\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B55FA6CB-F0E3-4D52-A32F-06426E4E2B3E}|BLL\\BLL.csproj|D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\bll\\nguoidungbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B55FA6CB-F0E3-4D52-A32F-06426E4E2B3E}|BLL\\BLL.csproj|solutionrelative:bll\\nguoidungbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|d:\\pmemudungtminh\\doan\\shopquanao\\shopquanao\\usercontrol\\uchome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|solutionrelative:usercontrol\\uchome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|d:\\pmemudungtminh\\doan\\shopquanao\\shopquanao\\usercontrol\\ucorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|solutionrelative:usercontrol\\ucorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|d:\\pmemudungtminh\\doan\\shopquanao\\shopquanao\\usercontrol\\uclogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|solutionrelative:usercontrol\\uclogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\usercontrol\\uclogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|solutionrelative:usercontrol\\uclogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B55FA6CB-F0E3-4D52-A32F-06426E4E2B3E}|BLL\\BLL.csproj|D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\bll\\maubll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B55FA6CB-F0E3-4D52-A32F-06426E4E2B3E}|BLL\\BLL.csproj|solutionrelative:bll\\maubll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B55FA6CB-F0E3-4D52-A32F-06426E4E2B3E}|BLL\\BLL.csproj|D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\bll\\donhangbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B55FA6CB-F0E3-4D52-A32F-06426E4E2B3E}|BLL\\BLL.csproj|solutionrelative:bll\\donhangbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B55FA6CB-F0E3-4D52-A32F-06426E4E2B3E}|BLL\\BLL.csproj|D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\bll\\danhmucbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B55FA6CB-F0E3-4D52-A32F-06426E4E2B3E}|BLL\\BLL.csproj|solutionrelative:bll\\danhmucbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B55FA6CB-F0E3-4D52-A32F-06426E4E2B3E}|BLL\\BLL.csproj|D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\bll\\chitietsanphambll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B55FA6CB-F0E3-4D52-A32F-06426E4E2B3E}|BLL\\BLL.csproj|solutionrelative:bll\\chitietsanphambll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\usercontrol\\uchome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|solutionrelative:usercontrol\\uchome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\usercontrol\\uclogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|solutionrelative:usercontrol\\uclogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,125 +34,81 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "NguoiDungDAL.cs",
-              "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\DAL\\NguoiDungDAL.cs",
-              "RelativeDocumentMoniker": "DAL\\NguoiDungDAL.cs",
-              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\DAL\\NguoiDungDAL.cs",
-              "RelativeToolTip": "DAL\\NguoiDungDAL.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-04T14:52:09.812Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "NguoiDungBLL.cs",
-              "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\BLL\\NguoiDungBLL.cs",
-              "RelativeDocumentMoniker": "BLL\\NguoiDungBLL.cs",
-              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\BLL\\NguoiDungBLL.cs",
-              "RelativeToolTip": "BLL\\NguoiDungBLL.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-04T14:47:34.593Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DanhMucBLL.cs",
-              "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\BLL\\DanhMucBLL.cs",
-              "RelativeDocumentMoniker": "BLL\\DanhMucBLL.cs",
-              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\BLL\\DanhMucBLL.cs",
-              "RelativeToolTip": "BLL\\DanhMucBLL.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-04T14:47:26.51Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ChiTietSanPhamBLL.cs",
-              "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\BLL\\ChiTietSanPhamBLL.cs",
-              "RelativeDocumentMoniker": "BLL\\ChiTietSanPhamBLL.cs",
-              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\BLL\\ChiTietSanPhamBLL.cs",
-              "RelativeToolTip": "BLL\\ChiTietSanPhamBLL.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-04T14:47:23.784Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ucHome.cs [Design]",
-              "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\userControl\\ucHome.cs",
-              "RelativeDocumentMoniker": "userControl\\ucHome.cs",
-              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\userControl\\ucHome.cs [Design]",
-              "RelativeToolTip": "userControl\\ucHome.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-04T14:44:38.711Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DoAnKetMon_UDTM.dbml",
-              "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\DTO\\DoAnKetMon_UDTM.dbml",
-              "RelativeDocumentMoniker": "DTO\\DoAnKetMon_UDTM.dbml",
-              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\DTO\\DoAnKetMon_UDTM.dbml",
-              "RelativeToolTip": "DTO\\DoAnKetMon_UDTM.dbml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001722|",
-              "WhenOpened": "2024-12-04T14:37:22.865Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ucLogin.cs",
-              "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\userControl\\ucLogin.cs",
-              "RelativeDocumentMoniker": "userControl\\ucLogin.cs",
-              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\userControl\\ucLogin.cs",
-              "RelativeToolTip": "userControl\\ucLogin.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAewD0AAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-04T14:35:11.489Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DonHangBLL.cs",
-              "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\BLL\\DonHangBLL.cs",
-              "RelativeDocumentMoniker": "BLL\\DonHangBLL.cs",
-              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\BLL\\DonHangBLL.cs",
-              "RelativeToolTip": "BLL\\DonHangBLL.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-04T14:47:29.383Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "MauBLL.cs",
-              "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\BLL\\MauBLL.cs",
-              "RelativeDocumentMoniker": "BLL\\MauBLL.cs",
-              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\BLL\\MauBLL.cs",
-              "RelativeToolTip": "BLL\\MauBLL.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-04T14:47:31.484Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
               "Title": "ucLogin.cs [Design]",
               "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\userControl\\ucLogin.cs",
               "RelativeDocumentMoniker": "userControl\\ucLogin.cs",
               "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\userControl\\ucLogin.cs [Design]",
               "RelativeToolTip": "userControl\\ucLogin.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-04T14:35:08.88Z"
+              "WhenOpened": "2024-12-05T08:21:16.904Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ucOrder.cs [Design]",
+              "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\userControl\\ucOrder.cs",
+              "RelativeDocumentMoniker": "userControl\\ucOrder.cs",
+              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\userControl\\ucOrder.cs [Design]",
+              "RelativeToolTip": "userControl\\ucOrder.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T08:21:13.354Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ucHome.cs [Design]",
+              "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\userControl\\ucHome.cs",
+              "RelativeDocumentMoniker": "userControl\\ucHome.cs",
+              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\userControl\\ucHome.cs [Design]",
+              "RelativeToolTip": "userControl\\ucHome.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T08:21:06.367Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Menu.cs",
+              "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\FormShopQuanAo\\Menu.cs",
+              "RelativeDocumentMoniker": "FormShopQuanAo\\Menu.cs",
+              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\FormShopQuanAo\\Menu.cs",
+              "RelativeToolTip": "FormShopQuanAo\\Menu.cs",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAcwIAAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T08:16:59.312Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Menu.cs [Design]",
+              "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\FormShopQuanAo\\Menu.cs",
+              "RelativeDocumentMoniker": "FormShopQuanAo\\Menu.cs",
+              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\FormShopQuanAo\\Menu.cs [Design]",
+              "RelativeToolTip": "FormShopQuanAo\\Menu.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T08:16:58.5Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ucLogin.cs",
+              "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\userControl\\ucLogin.cs",
+              "RelativeDocumentMoniker": "userControl\\ucLogin.cs",
+              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\ShopQuanAo\\ShopQuanAo\\userControl\\ucLogin.cs",
+              "RelativeToolTip": "userControl\\ucLogin.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAswCYAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T14:35:11.489Z",
+              "EditorCaption": ""
             }
           ]
         }
