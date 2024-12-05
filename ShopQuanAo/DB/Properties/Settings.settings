@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DB.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="DB_DoAnKetMon_UDTMConnectionString" Type="System.String" Scope="User">
+    <Setting Name="DoAnKetMon_UDTMConnectionString" Type="System.String" Scope="User">
       <Value Profile="(Default)">Data Source=MSI\SUCOBATNGO;Initial Catalog=DoAnKetMon_UDTM;Integrated Security=True</Value>
     </Setting>
   </Settings>

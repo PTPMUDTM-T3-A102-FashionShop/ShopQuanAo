@@ -16,6 +16,7 @@ namespace DAL
         DoAnKetMon_UDTMDataContext db = new DoAnKetMon_UDTMDataContext();
         private DBConnection dbcon;
         public NguoiDungDAL() {
+            dbcon = new DBConnection();
         }
 
         // Kiểm tra đăng nhập
@@ -49,7 +50,7 @@ namespace DAL
             try
             {
                 dbcon.conn.Open();
-                dbcon.cmd.CommandText = "SELECT TenDangNhap, MatKhau, HoTen, Email, SoDienThoai, DiaChi, NgaySinh, MaNhomNguoiDung, GioiTinh, KichHoat FROM NguoiDung";
+                dbcon.cmd.CommandText = "SELECT TenDangNhap, MatKhau, HoTen, Email, SoDienThoai, DiaChi, NgaySinh, MaNhomNguoiDung, GioiTinh, KichHoat FROM NguoiDung where Train = 0";
                 SqlDataAdapter da = new SqlDataAdapter(dbcon.cmd);
                 da.Fill(dt);
             }

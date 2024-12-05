@@ -27,12 +27,12 @@ namespace DB.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MSI\\SUCOBATNGO;Initial Catalog=DoAnKetMon_UDTM;Integrated Security=Tr" +
             "ue")]
-        public string DB_DoAnKetMon_UDTMConnectionString {
+        public string DoAnKetMon_UDTMConnectionString {
             get {
-                return ((string)(this["DB_DoAnKetMon_UDTMConnectionString"]));
+                return ((string)(this["DoAnKetMon_UDTMConnectionString"]));
             }
             set {
-                this["DB_DoAnKetMon_UDTMConnectionString"] = value;
+                this["DoAnKetMon_UDTMConnectionString"] = value;
             }
         }
     }
