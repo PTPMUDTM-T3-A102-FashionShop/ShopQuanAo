@@ -29,9 +29,9 @@ namespace userControl
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dgvSanPham = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -148,7 +148,7 @@ namespace userControl
             // 
             this.lblDuDoan.AutoSize = true;
             this.lblDuDoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDuDoan.Location = new System.Drawing.Point(87, 755);
+            this.lblDuDoan.Location = new System.Drawing.Point(27, 759);
             this.lblDuDoan.Name = "lblDuDoan";
             this.lblDuDoan.Size = new System.Drawing.Size(229, 29);
             this.lblDuDoan.TabIndex = 51;
@@ -180,16 +180,16 @@ namespace userControl
             // 
             // chartTopProducts
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chartTopProducts.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chartTopProducts.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chartTopProducts.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartTopProducts.Legends.Add(legend1);
             this.chartTopProducts.Location = new System.Drawing.Point(18, 157);
             this.chartTopProducts.Name = "chartTopProducts";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chartTopProducts.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartTopProducts.Series.Add(series1);
             this.chartTopProducts.Size = new System.Drawing.Size(527, 334);
             this.chartTopProducts.TabIndex = 53;
             this.chartTopProducts.Text = "chart1";

@@ -14,7 +14,7 @@ namespace DB
 
         public DBConnection()
         {
-            conn = new SqlConnection(Properties.Settings.Default.DB_DoAnKetMon_UDTMConnectionString);
+            conn = new SqlConnection(Properties.Settings.Default.DoAnKetMon_UDTMConnectionString);
             cmd = new SqlCommand();
             cmd.Connection = conn;
         }

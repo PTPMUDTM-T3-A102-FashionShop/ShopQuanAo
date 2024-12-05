@@ -193,7 +193,12 @@ namespace userControl
 
                 // Hiển thị kết quả dự đoán
                 string moTa = codebook.Revert("MoTa", predicted);
-                lblDuDoan.Text = $"Dự đoán: {moTa}";
+
+                // Lấy câu đầu tiên từ mô tả dự đoán
+                string moTaFirstSentence = moTa.Split(new[] { '.' }, 2)[0] + ".";
+
+                // Hiển thị câu đầu tiên trong label
+                lblDuDoan.Text = $"Dự đoán: {moTaFirstSentence}";
                 isPredictionSuccessful = true;
             }
             catch
@@ -240,6 +245,8 @@ namespace userControl
                 foreach (DataRow row in dataTable.Rows)
                 {
                     series.Points.AddXY(row["MoTa"].ToString(), row["SoLuongTonKho"]);
+                    chartTopProducts.ChartAreas[0].AxisX.LabelStyle.Angle = 0;
+                    chartTopProducts.ChartAreas[0].AxisX.LabelStyle.IsStaggered = false;
                 }
 
                 if (isPredictionSuccessful)

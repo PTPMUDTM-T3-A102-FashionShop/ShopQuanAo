@@ -80,3 +80,16 @@ C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.csproj.
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.dll
 C:\Users\gialo\Desktop\codetoday\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.pdb
+C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\DAL\bin\Debug\DAL.dll
+C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\DAL\bin\Debug\DAL.pdb
+C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\DAL\bin\Debug\DB.dll
+C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\DAL\bin\Debug\DTO.dll
+C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\DAL\bin\Debug\DB.pdb
+C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\DAL\bin\Debug\DB.dll.config
+C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\DAL\bin\Debug\DTO.pdb
+C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\DAL\bin\Debug\DTO.dll.config
+C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.dll
+C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.pdb
+C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
