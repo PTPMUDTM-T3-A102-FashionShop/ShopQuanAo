@@ -126,7 +126,7 @@ namespace FormShopQuanAo
 
         private void BtnBrand_GotFocus(object sender, EventArgs e)
         {
-            btnBrand.Image = Properties.Resources.baup;
+            btnBrand.Image = Properties.Resources.bbrand;
         }
 
         private void BtnHome_Leave(object sender, EventArgs e)
