@@ -274,7 +274,7 @@ namespace FormShopQuanAo
 
                 if (parentForm != null)
                 {
-                    Form loginForm = Application.OpenForms["Login"];
+                    Login loginForm = new Login();
 
                     if (loginForm != null)
                     {
