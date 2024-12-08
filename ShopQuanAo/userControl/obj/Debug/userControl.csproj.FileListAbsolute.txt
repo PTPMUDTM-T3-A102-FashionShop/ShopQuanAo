@@ -250,3 +250,6 @@ C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userCo
 C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\FormShopQuanAo.exe
 C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\FormShopQuanAo.pdb
 C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\FormShopQuanAo.exe.config
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\FormShopQuanAo.exe
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\FormShopQuanAo.pdb
+D:\PMemUDungTMinh\DoAn\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\FormShopQuanAo.exe.config
