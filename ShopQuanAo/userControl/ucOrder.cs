@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using BLL;
 using DTO;
 using DB;
+using Microsoft.Office.Interop.Excel;
+using Application = Microsoft.Office.Interop.Excel.Application;
 
 namespace userControl
 {
@@ -20,6 +22,11 @@ namespace userControl
         private SanPhamBLL sanPhamBLL = new SanPhamBLL();
         private DBConnection dbConnection = new DBConnection();
         private Panel contentPanel;
+
+        private Application excel;
+        private Workbook workbook;
+        private Worksheet worksheet;
+
         public ucOrder()
         {
             InitializeComponent();
@@ -274,8 +281,155 @@ namespace userControl
             donHangBLL.ThemDonHang(donHang, chiTietDonHangs);
 
             MessageBox.Show("Thêm đơn hàng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ExportToExcel(dgvHoaDon, lblTongThanhTien, nguoiDung.HoTen);
             LamMoi();
             LoadSanPhamChiTiet();
+        }
+
+        public void ExportToExcel(DataGridView dgvHoaDon, System.Windows.Forms.Label lblTongThanhTien, string nguoiLap)
+        {
+            excel = new Application { Visible = false };
+            workbook = excel.Workbooks.Add(Type.Missing);
+            worksheet = (Worksheet)workbook.ActiveSheet;
+
+            try
+            {
+                SetupWorksheet();
+                SetHeaderInfo(nguoiLap);
+                CreateTableHeader();
+                FillTableData(dgvHoaDon);
+                AddFooter(dgvHoaDon.Rows.Count, lblTongThanhTien.Text);
+                FormatWorksheet();
+
+                string fileName = SaveExcelFile();
+                MessageBox.Show($"Đã xuất hóa đơn thành công: {fileName}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi xuất Excel: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                CleanupExcelResources();
+            }
+        }
+
+        private void SetupWorksheet()
+        {
+            worksheet.PageSetup.Orientation = XlPageOrientation.xlLandscape;
+            worksheet.PageSetup.FitToPagesWide = 1;
+            worksheet.PageSetup.FitToPagesTall = false;
+        }
+
+        private void SetHeaderInfo(string nguoiLap)
+        {
+            Range headerRange = worksheet.Range["A1:E1"];
+            headerRange.Merge();
+            headerRange.Value = "HÓA ĐƠN THANH TOÁN SHOP THE ZONE";
+            headerRange.Font.Size = 16;
+            headerRange.Font.Bold = true;
+            headerRange.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+
+            worksheet.Cells[2, 2] = "Địa chỉ: Lê Trọng Tấn, Tân Phú, TP.HCM";
+            worksheet.Cells[3, 2] = "Số điện thoại: +09 1234 7986";
+            worksheet.Cells[4, 2] = $"Ngày và giờ: {DateTime.Now:dd/MM/yyyy HH:mm:ss}";
+            worksheet.Cells[5, 2] = $"Người lập: {nguoiLap}";
+
+            Range infoRange = worksheet.Range["A2:E5"];
+            infoRange.Font.Size = 12;
+            infoRange.HorizontalAlignment = XlHAlign.xlHAlignLeft;
+        }
+
+        private void CreateTableHeader()
+        {
+            string[] headers = { "STT", "Tên Sản Phẩm", "Số Lượng", "Giá", "Tổng Thành Tiền" };
+            Range headerRange = worksheet.Range["A6:E6"];
+            headerRange.Value = headers;
+            headerRange.Font.Bold = true;
+            headerRange.Interior.Color = XlRgbColor.rgbLightGray;
+            headerRange.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+            headerRange.VerticalAlignment = XlVAlign.xlVAlignCenter;
+            headerRange.Borders.LineStyle = XlLineStyle.xlContinuous;
+        }
+
+        private void FillTableData(DataGridView dgvHoaDon)
+        {
+            int row = 7;
+            foreach (DataGridViewRow dgvRow in dgvHoaDon.Rows)
+            {
+                if (dgvRow.IsNewRow) continue;
+                WriteRowData(row++, dgvRow);
+            }
+        }
+
+        private void WriteRowData(int row, DataGridViewRow dgvRow)
+        {
+            worksheet.Cells[row, 1] = dgvRow.Cells["STT"].Value?.ToString();
+            worksheet.Cells[row, 2] = dgvRow.Cells["TenSanPham"].Value?.ToString();
+            worksheet.Cells[row, 3] = dgvRow.Cells["SoLuong"].Value?.ToString();
+
+            if (decimal.TryParse(dgvRow.Cells["Gia"].Value?.ToString(), out var gia))
+                worksheet.Cells[row, 4] = gia;
+
+            if (decimal.TryParse(dgvRow.Cells["TongThanhTien"].Value?.ToString(), out var tongTien))
+                worksheet.Cells[row, 5] = tongTien;
+
+            Range dataRange = worksheet.Range[$"A{row}:E{row}"];
+            dataRange.Borders.LineStyle = XlLineStyle.xlContinuous;
+            dataRange.VerticalAlignment = XlVAlign.xlVAlignCenter;
+        }
+
+        private void AddFooter(int rowCount, string totalAmount)
+        {
+            int lastRow = rowCount + 7;
+
+            Range totalRange = worksheet.Range[$"A{lastRow}:E{lastRow}"];
+            totalRange.Merge();
+            totalRange.Value = totalAmount;
+            totalRange.Font.Bold = true;
+            totalRange.HorizontalAlignment = XlHAlign.xlHAlignRight;
+
+            Range thankYouRange = worksheet.Range[$"A{lastRow + 1}:E{lastRow + 1}"];
+            thankYouRange.Merge();
+            thankYouRange.Value = "Cảm ơn - Hẹn gặp lại Quý Khách";
+            thankYouRange.Font.Italic = true;
+            thankYouRange.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+        }
+
+        private void FormatWorksheet()
+        {
+            worksheet.Columns.AutoFit();
+            worksheet.Rows.AutoFit();
+
+            Range usedRange = worksheet.UsedRange;
+            usedRange.Borders.LineStyle = XlLineStyle.xlContinuous;
+            usedRange.Columns[4].NumberFormat = "#,##0";
+            usedRange.Columns[5].NumberFormat = "#,##0";
+        }
+        private string SaveExcelFile()
+        {
+
+            // Thay đổi đường dẫn nè
+            string folderPath = @"C:\Users\gialo\Desktop\";
+            string fileName = $"HoaDon_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx";
+            string fullPath = System.IO.Path.Combine(folderPath, fileName);
+
+            workbook.SaveAs(fullPath);
+            workbook.Close();
+            return fullPath;
+        }
+
+        private void CleanupExcelResources()
+        {
+            if (worksheet != null) System.Runtime.InteropServices.Marshal.ReleaseComObject(worksheet);
+            if (workbook != null) System.Runtime.InteropServices.Marshal.ReleaseComObject(workbook);
+            if (excel != null)
+            {
+                excel.Quit();
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(excel);
+            }
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
         }
 
         private int GetChiTietID(int maSanPham, string tenMau, string tenSize)

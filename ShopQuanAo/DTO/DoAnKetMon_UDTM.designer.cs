@@ -22,7 +22,7 @@ namespace DTO
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="DoAnKetMon_UDTM21114")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name= "DoAnKetMon_UDTM")]
 	public partial class DoAnKetMon_UDTMDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -87,7 +87,7 @@ namespace DTO
     #endregion
 		
 		public DoAnKetMon_UDTMDataContext() : 
-				base(global::DTO.Properties.Settings.Default.DoAnKetMon_UDTM21114ConnectionString, mappingSource)
+				base(global::DTO.Properties.Settings.Default.DoAnKetMon_UDTMConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
