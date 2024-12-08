@@ -227,8 +227,6 @@ C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\Accord
 C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\BLL.pdb
 C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\DB.pdb
 C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\DB.dll.config
-C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\FormShopQuanAo.pdb
-C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\FormShopQuanAo.exe.config
 C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\DAL.pdb
 C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.csproj.AssemblyReference.cache
 C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.Properties.Resources.resources
@@ -250,3 +248,5 @@ C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userCo
 C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.dll
 C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\userControl\obj\Debug\userControl.pdb
 C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\FormShopQuanAo.exe
+C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\FormShopQuanAo.pdb
+C:\Users\gialo\Desktop\logfix\ShopQuanAo\ShopQuanAo\userControl\bin\Debug\FormShopQuanAo.exe.config

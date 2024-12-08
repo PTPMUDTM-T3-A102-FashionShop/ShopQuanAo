@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="DoAnKetMon_UDTMConnectionString" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Data Source=LAPTOP-AU6VJ49A\SQLEXPRESS;Initial Catalog=DoAnKetMon_UDTM21114;Integrated Security=True;Encrypt=True;TrustServerCertificate=True</Value>
+      <Value Profile="(Default)">Data Source=MSI\SUCOBATNGO;Initial Catalog=DoAnKetMon_UDTM;Integrated Security=True</Value>
     </Setting>
   </Settings>
 </SettingsFile>
