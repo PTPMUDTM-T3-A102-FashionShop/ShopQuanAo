@@ -53,6 +53,22 @@ namespace DAL
             }
         }
 
+        public int GetMaxSanPhamID()
+        {
+            try
+            {
+                // Lấy ID lớn nhất trong bảng SanPham
+                int maxId = doAnKetMon_UDTM.SanPhams.Max(sp => sp.SanPhamID);
+                return maxId;
+            }
+            catch (Exception ex)
+            {
+                // Xử lý lỗi nếu cần thiết
+                return -1; // Hoặc một giá trị mặc định nếu có lỗi
+            }
+        }
+
+
         // Cập nhật sản phẩm
         public bool UpdateSanPham(SanPham sanPham)
         {

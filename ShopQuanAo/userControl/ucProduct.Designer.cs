@@ -45,8 +45,29 @@
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
             this.btnEdit = new Guna.UI2.WinForms.Guna2Button();
             this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnUpload = new Guna.UI2.WinForms.Guna2Button();
+            this.pbImg = new System.Windows.Forms.PictureBox();
+            this.txtQuantity = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbbSize = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbbMau = new System.Windows.Forms.ComboBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.rdbDetailOff = new System.Windows.Forms.RadioButton();
+            this.rdbDetailOn = new System.Windows.Forms.RadioButton();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cbbBrand = new System.Windows.Forms.ComboBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSP)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImg)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtName
@@ -54,7 +75,7 @@
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.Location = new System.Drawing.Point(260, 112);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(735, 28);
+            this.txtName.Size = new System.Drawing.Size(434, 28);
             this.txtName.TabIndex = 41;
             // 
             // txtDes
@@ -63,7 +84,7 @@
             this.txtDes.Location = new System.Drawing.Point(184, 154);
             this.txtDes.Multiline = true;
             this.txtDes.Name = "txtDes";
-            this.txtDes.Size = new System.Drawing.Size(811, 59);
+            this.txtDes.Size = new System.Drawing.Size(510, 59);
             this.txtDes.TabIndex = 40;
             // 
             // label6
@@ -80,7 +101,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(101, 231);
+            this.label5.Location = new System.Drawing.Point(711, 113);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(107, 25);
             this.label5.TabIndex = 38;
@@ -104,14 +125,14 @@
             this.dgvSP.AllowUserToResizeRows = false;
             this.dgvSP.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSP.Location = new System.Drawing.Point(106, 406);
+            this.dgvSP.Location = new System.Drawing.Point(106, 535);
             this.dgvSP.Name = "dgvSP";
             this.dgvSP.ReadOnly = true;
             this.dgvSP.RowHeadersVisible = false;
             this.dgvSP.RowHeadersWidth = 51;
             this.dgvSP.RowTemplate.Height = 24;
             this.dgvSP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSP.Size = new System.Drawing.Size(889, 270);
+            this.dgvSP.Size = new System.Drawing.Size(889, 238);
             this.dgvSP.TabIndex = 28;
             this.dgvSP.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSP_CellClick);
             // 
@@ -130,7 +151,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(446, 231);
+            this.label3.Location = new System.Drawing.Point(711, 167);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 25);
             this.label3.TabIndex = 43;
@@ -140,7 +161,7 @@
             // 
             this.groupBox1.Controls.Add(this.rdbOff);
             this.groupBox1.Controls.Add(this.rdbOn);
-            this.groupBox1.Location = new System.Drawing.Point(573, 219);
+            this.groupBox1.Location = new System.Drawing.Point(835, 155);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(160, 98);
             this.groupBox1.TabIndex = 45;
@@ -171,7 +192,7 @@
             // cbbDanhMuc
             // 
             this.cbbDanhMuc.FormattingEnabled = true;
-            this.cbbDanhMuc.Location = new System.Drawing.Point(224, 235);
+            this.cbbDanhMuc.Location = new System.Drawing.Point(847, 117);
             this.cbbDanhMuc.Name = "cbbDanhMuc";
             this.cbbDanhMuc.Size = new System.Drawing.Size(148, 24);
             this.cbbDanhMuc.TabIndex = 49;
@@ -190,7 +211,7 @@
             this.btnEditBrand.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnEditBrand.ImageOffset = new System.Drawing.Point(2, 0);
             this.btnEditBrand.ImageSize = new System.Drawing.Size(23, 23);
-            this.btnEditBrand.Location = new System.Drawing.Point(791, 335);
+            this.btnEditBrand.Location = new System.Drawing.Point(791, 474);
             this.btnEditBrand.Name = "btnEditBrand";
             this.btnEditBrand.Size = new System.Drawing.Size(204, 45);
             this.btnEditBrand.TabIndex = 51;
@@ -212,7 +233,7 @@
             this.btnEditDetail.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnEditDetail.ImageOffset = new System.Drawing.Point(2, 0);
             this.btnEditDetail.ImageSize = new System.Drawing.Size(23, 23);
-            this.btnEditDetail.Location = new System.Drawing.Point(583, 335);
+            this.btnEditDetail.Location = new System.Drawing.Point(583, 474);
             this.btnEditDetail.Name = "btnEditDetail";
             this.btnEditDetail.Size = new System.Drawing.Size(202, 45);
             this.btnEditDetail.TabIndex = 42;
@@ -234,7 +255,7 @@
             this.btnDelete.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnDelete.ImageOffset = new System.Drawing.Point(5, 0);
             this.btnDelete.ImageSize = new System.Drawing.Size(23, 23);
-            this.btnDelete.Location = new System.Drawing.Point(260, 335);
+            this.btnDelete.Location = new System.Drawing.Point(260, 474);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(146, 45);
             this.btnDelete.TabIndex = 31;
@@ -256,7 +277,7 @@
             this.btnEdit.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnEdit.ImageOffset = new System.Drawing.Point(5, 0);
             this.btnEdit.ImageSize = new System.Drawing.Size(23, 23);
-            this.btnEdit.Location = new System.Drawing.Point(422, 335);
+            this.btnEdit.Location = new System.Drawing.Point(422, 474);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(146, 45);
             this.btnEdit.TabIndex = 30;
@@ -278,7 +299,7 @@
             this.btnAdd.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnAdd.ImageOffset = new System.Drawing.Point(5, 0);
             this.btnAdd.ImageSize = new System.Drawing.Size(23, 23);
-            this.btnAdd.Location = new System.Drawing.Point(106, 335);
+            this.btnAdd.Location = new System.Drawing.Point(106, 474);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(146, 45);
             this.btnAdd.TabIndex = 29;
@@ -286,10 +307,198 @@
             this.btnAdd.TextOffset = new System.Drawing.Point(15, 0);
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnUpload);
+            this.groupBox2.Controls.Add(this.pbImg);
+            this.groupBox2.Controls.Add(this.txtQuantity);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.cbbSize);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.cbbMau);
+            this.groupBox2.Controls.Add(this.groupBox3);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.txtPrice);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Location = new System.Drawing.Point(106, 272);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(889, 187);
+            this.groupBox2.TabIndex = 52;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "groupBox2";
+            // 
+            // btnUpload
+            // 
+            this.btnUpload.BorderRadius = 20;
+            this.btnUpload.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnUpload.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnUpload.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnUpload.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnUpload.FillColor = System.Drawing.Color.LightGray;
+            this.btnUpload.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnUpload.ForeColor = System.Drawing.Color.Black;
+            this.btnUpload.Location = new System.Drawing.Point(510, 134);
+            this.btnUpload.Name = "btnUpload";
+            this.btnUpload.Size = new System.Drawing.Size(160, 42);
+            this.btnUpload.TabIndex = 84;
+            this.btnUpload.Text = "Chọn file ảnh";
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
+            // 
+            // pbImg
+            // 
+            this.pbImg.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.pbImg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbImg.Location = new System.Drawing.Point(705, 21);
+            this.pbImg.Name = "pbImg";
+            this.pbImg.Size = new System.Drawing.Size(155, 155);
+            this.pbImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbImg.TabIndex = 83;
+            this.pbImg.TabStop = false;
+            // 
+            // txtQuantity
+            // 
+            this.txtQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuantity.Location = new System.Drawing.Point(464, 87);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(196, 28);
+            this.txtQuantity.TabIndex = 82;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(367, 88);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(90, 25);
+            this.label4.TabIndex = 81;
+            this.label4.Text = "Tồn kho:";
+            // 
+            // cbbSize
+            // 
+            this.cbbSize.FormattingEnabled = true;
+            this.cbbSize.Location = new System.Drawing.Point(464, 41);
+            this.cbbSize.Name = "cbbSize";
+            this.cbbSize.Size = new System.Drawing.Size(196, 24);
+            this.cbbSize.TabIndex = 80;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(367, 37);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(57, 25);
+            this.label7.TabIndex = 79;
+            this.label7.Text = "Size:";
+            // 
+            // cbbMau
+            // 
+            this.cbbMau.FormattingEnabled = true;
+            this.cbbMau.Location = new System.Drawing.Point(142, 41);
+            this.cbbMau.Name = "cbbMau";
+            this.cbbMau.Size = new System.Drawing.Size(176, 24);
+            this.cbbMau.TabIndex = 78;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.rdbDetailOff);
+            this.groupBox3.Controls.Add(this.rdbDetailOn);
+            this.groupBox3.Location = new System.Drawing.Point(154, 127);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(303, 54);
+            this.groupBox3.TabIndex = 77;
+            this.groupBox3.TabStop = false;
+            // 
+            // rdbDetailOff
+            // 
+            this.rdbDetailOff.AutoSize = true;
+            this.rdbDetailOff.Location = new System.Drawing.Point(144, 17);
+            this.rdbDetailOff.Name = "rdbDetailOff";
+            this.rdbDetailOff.Size = new System.Drawing.Size(136, 20);
+            this.rdbDetailOff.TabIndex = 1;
+            this.rdbDetailOff.TabStop = true;
+            this.rdbDetailOff.Text = "Ngừng kinh doanh";
+            this.rdbDetailOff.UseVisualStyleBackColor = true;
+            // 
+            // rdbDetailOn
+            // 
+            this.rdbDetailOn.AutoSize = true;
+            this.rdbDetailOn.Location = new System.Drawing.Point(18, 17);
+            this.rdbDetailOn.Name = "rdbDetailOn";
+            this.rdbDetailOn.Size = new System.Drawing.Size(94, 20);
+            this.rdbDetailOn.TabIndex = 0;
+            this.rdbDetailOn.TabStop = true;
+            this.rdbDetailOn.Text = "Kinh doanh";
+            this.rdbDetailOn.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(32, 139);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(100, 25);
+            this.label8.TabIndex = 76;
+            this.label8.Text = "Kích hoạt:";
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrice.Location = new System.Drawing.Point(142, 87);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(176, 28);
+            this.txtPrice.TabIndex = 75;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(32, 37);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(57, 25);
+            this.label9.TabIndex = 74;
+            this.label9.Text = "Màu:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(32, 88);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(86, 25);
+            this.label10.TabIndex = 73;
+            this.label10.Text = "Giá bán:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(101, 228);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(112, 25);
+            this.label11.TabIndex = 53;
+            this.label11.Text = "First Brand:";
+            // 
+            // cbbBrand
+            // 
+            this.cbbBrand.FormattingEnabled = true;
+            this.cbbBrand.Location = new System.Drawing.Point(235, 232);
+            this.cbbBrand.Name = "cbbBrand";
+            this.cbbBrand.Size = new System.Drawing.Size(189, 24);
+            this.cbbBrand.TabIndex = 66;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // ucProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cbbBrand);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnEditBrand);
             this.Controls.Add(this.cbbDanhMuc);
             this.Controls.Add(this.groupBox1);
@@ -306,11 +515,16 @@
             this.Controls.Add(this.dgvSP);
             this.Controls.Add(this.label1);
             this.Name = "ucProduct";
-            this.Size = new System.Drawing.Size(1100, 700);
+            this.Size = new System.Drawing.Size(1100, 790);
             this.Load += new System.EventHandler(this.ucProduct_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSP)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImg)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -335,5 +549,23 @@
         private System.Windows.Forms.RadioButton rdbOff;
         private System.Windows.Forms.ComboBox cbbDanhMuc;
         private Guna.UI2.WinForms.Guna2Button btnEditBrand;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private Guna.UI2.WinForms.Guna2Button btnUpload;
+        private System.Windows.Forms.PictureBox pbImg;
+        private System.Windows.Forms.TextBox txtQuantity;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbbSize;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cbbMau;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RadioButton rdbDetailOff;
+        private System.Windows.Forms.RadioButton rdbDetailOn;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtPrice;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cbbBrand;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
