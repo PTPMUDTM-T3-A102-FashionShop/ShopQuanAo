@@ -16,7 +16,7 @@ namespace WebsiteBanQuanAo.KNN
         private List<string> y_huanLuyen = new List<string>();
         public void DocDuLieuHuanLuyen()
         {
-            string duongDanFile = @"D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai\ShopQuanAo\ShopQuanAo\WebsiteBanQuanAo\KNN\train_data.txt";
+            string duongDanFile = @"D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai2\ShopQuanAo\ShopQuanAo\WebsiteBanQuanAo\KNN\train_data.txt";
             if (!File.Exists(duongDanFile))
                 throw new FileNotFoundException($"File không tồn tại: {duongDanFile}");
             var cacDong = File.ReadAllLines(duongDanFile);

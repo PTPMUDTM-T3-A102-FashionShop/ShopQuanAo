@@ -59,12 +59,40 @@
                                        name="quan"
                                        min="1"
                                        max="@item.ChiTietSanPham.SoLuongTonKho"
-                                       style="width: 60px"
+                                       id="quantity-@item.GioHangID"
+                                       style="width: 150px"
                                        class="form-control d-inline" />
                                 <input type="hidden" name="proid" value="@item.GioHangID" />
-
                                 <!-- Submit button -->
                                 <button type="submit" class="btn btn-sm btn-primary ms-2">Cập Nhật</button>
+                                <!-- Thông báo -->
+                                <div id="error-msg-@item.GioHangID" style="color: red; display: none;"></div>
+
+                                <script>
+                                    // Lấy các input theo tên hoặc id
+                                    document.addEventListener("DOMContentLoaded", function () {
+                                        const quantityInput = document.getElementById("quantity-@item.GioHangID");
+                                        const errorMsg = document.getElementById("error-msg-@item.GioHangID");
+                                        const maxQuantity = @item.ChiTietSanPham.SoLuongTonKho;
+
+                                        quantityInput.addEventListener("input", function () {
+                                            const currentValue = parseInt(quantityInput.value);
+
+                                            if (currentValue > maxQuantity) {
+                                                // Hiển thị thông báo lỗi tùy chỉnh
+                                                errorMsg.style.display = "block";
+                                                errorMsg.textContent = `Số lượng không được vượt quá ${maxQuantity}.`;
+                                                quantityInput.value = maxQuantity; // Đặt lại giá trị tối đa
+                                            } else {
+                                                // Ẩn thông báo lỗi khi giá trị hợp lệ
+                                                errorMsg.style.display = "none";
+                                            }
+                                        });
+                                    });
+                                </script>
+
+
+
                             }
                             else
                             {
@@ -90,6 +118,7 @@
                                 <span>@price.ToString("N0")</span> VNĐ
                             </span>
                         }
+
 
                     </td>
                     <td>

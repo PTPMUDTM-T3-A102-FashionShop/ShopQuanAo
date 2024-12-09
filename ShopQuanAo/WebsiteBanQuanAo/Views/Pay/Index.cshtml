@@ -3,72 +3,107 @@
     ViewBag.Title = "Thanh Toán";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
+
 @section slmua {
     <span id="cartItemCount">@ViewBag.SLSP</span>
 }
+
 <style>
+    /* Cấu trúc container thanh toán */
     .payment-container {
-        max-width: 800px;
-        margin: 0 auto;
+        width: 80%;
+        max-width: 900px;
+        margin: 30px auto;
         padding: 40px;
-        border-radius: 10px;
-        background-color: #ffffff;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        background: linear-gradient(145deg, #f8f8f8, #ffffff);
+        border-radius: 12px;
+        box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.1);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
+    /* Tiêu đề */
     .payment-title {
         text-align: center;
+        font-size: 30px;
         color: #333;
         margin-bottom: 30px;
+        font-weight: bold;
     }
 
+    /* Nhóm form */
     .form-group {
-        margin-bottom: 15px;
+        margin-bottom: 25px;
     }
 
+    /* Style cho các input form */
     .form-control {
-        border-radius: 5px;
-        border: 1px solid #ced4da;
-        transition: border-color 0.3s;
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        background-color: #f4f4f4;
+        box-sizing: border-box;
+        transition: all 0.3s ease;
     }
 
         .form-control:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            border-color: #56a6fc;
+            background-color: #fff;
         }
 
+    /* Button thanh toán */
     .btn-success {
         width: 100%;
-        padding: 12px;
-        background-color: #28a745;
+        padding: 15px;
+        background-color: #56a6fc;
         border: none;
-        border-radius: 5px;
-        color: #fff;
+        border-radius: 8px;
+        color: white;
+        font-size: 18px;
         font-weight: bold;
         transition: background-color 0.3s;
     }
 
         .btn-success:hover {
-            background-color: #218838;
+            background-color: #428bca;
         }
 
     .text-danger {
-        font-size: 0.9em;
+        font-size: 1em;
     }
 
+    /* Địa chỉ giao hàng */
     .address-info {
-        border: 1px solid #ced4da;
-        padding: 10px;
-        border-radius: 5px;
-        margin-bottom: 20px;
+        padding: 20px;
+        background-color: #fafafa;
+        border-radius: 8px;
+        margin-bottom: 25px;
+        border: 1px solid #ddd;
     }
 
+        .address-info p {
+            margin: 5px 0;
+        }
+
+        .address-info a {
+            color: #56a6fc;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: right;
+            display: block;
+            margin-top: 15px;
+        }
+
+    /* Tùy chọn thanh toán */
     .payment-option label {
-        padding: 10px;
-        border: 2px solid transparent;
-        border-radius: 5px;
+        display: block;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 8px;
         cursor: pointer;
-        transition: background-color 0.3s, border-color 0.3s;
+        border: 2px solid transparent;
+        text-align: center;
+        transition: all 0.3s ease;
     }
 
     .payment-option input[type="radio"] {
@@ -76,45 +111,83 @@
     }
 
         .payment-option input[type="radio"]:checked + label {
-            background-color: #28a745;
-            border-color: #28a745;
+            background-color: #56a6fc;
+            border-color: #56a6fc;
             color: white;
         }
 
     .payment-option label:hover {
-        border-color: #28a745;
+        background-color: #e0e0e0;
+        border-color: #56a6fc;
+    }
+
+    /* Table sản phẩm */
+    table {
+        width: 100%;
+        margin-bottom: 30px;
+        border-spacing: 0;
+        border-collapse: collapse;
+    }
+
+        table th, table td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+        table th {
+            background-color: #56a6fc;
+            color: white;
+        }
+
+        table td img {
+            width: 80px;
+            height: auto;
+            border-radius: 5px;
+        }
+
+    .total-price {
+        font-size: 22px;
+        font-weight: bold;
+        color: #e74c3c;
     }
 
     .error-message {
-        color: red;
-        font-size: 0.9em;
-        margin-top: 10px;
+        color: #d9534f;
+        font-size: 1em;
         text-align: center;
+        margin-top: 20px;
     }
 </style>
 
+<div style="height:100px"></div>
 
-<div style="height:200px">
-</div>
 <form action="@Url.Action("Index", "Pay")" method="post" class="payment-container">
     <h2 class="payment-title">Thông tin đơn hàng</h2>
+
+    <!-- Địa chỉ giao hàng -->
     <div class="form-group">
         <label>Địa chỉ giao hàng:</label>
-        <a href="@Url.Action("Index", "Address")" class="address-info d-block">
+        <div class="address-info">
             @if (ViewBag.DiaChiGiaoHang != null)
             {
                 var selectedAddress = ViewBag.DiaChiGiaoHang;
                 <p><strong>Tên người nhận:</strong> @selectedAddress.TenNguoiNhan</p>
                 <p><strong>Số điện thoại:</strong> @selectedAddress.SoDienThoai</p>
                 <p><strong>Địa chỉ:</strong> @selectedAddress.DiaChiGiaoHang</p>
+                <a href="@Url.Action("Index", "Address")">Thay đổi địa chỉ</a>
             }
             else
             {
                 <p style="color: red;">Vui lòng thêm địa chỉ giao hàng.</p>
+                <a href="@Url.Action("Index", "Address")">Thêm địa chỉ</a>
             }
-        </a>
+        </div>
     </div>
-    <table class="table table-hover">
+
+    <!-- Bảng sản phẩm -->
+    <table>
         <thead>
             <tr>
                 <th>STT</th>
@@ -136,7 +209,7 @@
                 <tr>
                     <td>@i</td>
                     <td>
-                        <img class="img-thumbnail" src="~/img/@item.ChiTietSanPham.HinhAnhUrl" alt="@item.ChiTietSanPham.SanPham.TenSanPham" style="max-height: 80px;">
+                        <img class="img-thumbnail" src="~/img/@item.ChiTietSanPham.HinhAnhUrl" alt="@item.ChiTietSanPham.SanPham.TenSanPham">
                     </td>
                     <td>
                         <span>@item.ChiTietSanPham.SanPham.TenSanPham</span><br />
@@ -149,17 +222,18 @@
                 i++;
             }
             <tr>
-                <td colspan="5" class="text-center fw-bold">
-                    Tổng Tiền:  <span style="color: red; text-align:center">@totalPrice.ToString("N0")VNĐ</span>
+                <td colspan="5" class="text-center total-price">
+                    Tổng Tiền: <span>@totalPrice.ToString("N0") VNĐ</span>
                 </td>
-                @*<td colspan="2" class="fw-bold text-danger">@totalPrice.ToString("N0") VNĐ</td>*@
             </tr>
         </tbody>
     </table>
+
+    <!-- Phương thức thanh toán -->
     <div class="form-group">
         <label>Phương thức thanh toán:</label>
-        <div class="d-flex">
-            <div class="payment-option me-3">
+        <div class="d-flex flex-column">
+            <div class="payment-option">
                 <input type="radio" name="paymentMethod" id="vnpay" value="vnpay">
                 <label for="vnpay">
                     <img src="~/img/vnpay.png" alt="VNPay" style="width: 80px;"> VNPay
@@ -174,10 +248,12 @@
         </div>
     </div>
 
+    <!-- Button thanh toán -->
     <div class="form-group text-center">
         <button type="submit" class="btn btn-success">Xác nhận thanh toán</button>
     </div>
 
+    <!-- Thông báo lỗi -->
     <div class="error-message" id="paymentMethodError" style="display: none;">
         Vui lòng chọn phương thức thanh toán.
     </div>

@@ -116,38 +116,36 @@
             <input type="number" name="DoTuoi" min="1" max="120" value="18" class="form-control" />
         </div>
 
-        <!-- Thêm trường cho Sở thích -->
+
         <div class="form-group">
-            @Html.Label("Sở Thích")
-            <select name="SoThich" class="form-control">
-                <option value="Thể thao">Thể thao năng động</option>
-                <option value="Công sở, lịch sự">Công sở, lịch sự</option>
-                <option value="Đơn giản, thường ngày">Đơn giản, thường ngày</option>
-                <option value="Thời trang du lịch">Thời trang du lịch</option>
-                <option value="Thời trang hot trend">Thời trang hot trend</option>
-            </select>
+            @Html.Label("Số tiền dự tín chi tiêu trong 1 năm:")
+
+            <!-- Thanh trượt -->
+            <input type="range" id="MucChiTieu" name="MucChiTieu" class="form-control-range" min="0" max="100000000" step="500000" value="0" onchange="updateRangeValue(this.value)">
+
+            <!-- Hiển thị giá trị của thanh trượt -->
+            <div class="text-center mt-2">
+                <span id="rangeValue">0</span> VNĐ
+            </div>
         </div>
 
-        <!-- Thêm trường cho Mức chi tiêu -->
-        <div class="form-group">
-            @Html.Label("Mức Chi Tiêu Trong Năm ")
-            <select name="MucChiTieu" class="form-control">
-                @for (int i = 5000000; i <= 1000000000; i += 5000000)
-                {
-                    <option value="@i">@i.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</option>
-                }
-            </select>
-        </div>
+        <script>
+            // Cập nhật giá trị hiển thị của thanh trượt
+            function updateRangeValue(value) {
+                // Định dạng giá trị theo kiểu tiền tệ VN
+                var formattedValue = Number(value).toLocaleString('vi-VN');
+                // Cập nhật giá trị vào phần tử hiển thị
+                document.getElementById("rangeValue").textContent = formattedValue;
+            }
+
+            // Gọi hàm ngay khi tải trang để hiển thị giá trị mặc định
+            document.addEventListener("DOMContentLoaded", function () {
+                updateRangeValue(document.getElementById("MucChiTieu").value);
+            });
+        </script>
 
 
-        <!-- Thêm trường cho Giới tính -->
-        <div class="form-group">
-            @Html.Label("Giới Tính")
-            <select name="GioiTinh" class="form-control">
-                <option value="Nam">Nam</option>
-                <option value="Nữ">Nữ</option>
-            </select>
-        </div>
+
 
         <div class="form-group text-center">
             <button type="submit" class="btn btn-primary">Đăng Ký</button>

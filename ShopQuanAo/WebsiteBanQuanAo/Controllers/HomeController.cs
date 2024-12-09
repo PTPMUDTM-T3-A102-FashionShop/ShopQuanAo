@@ -68,6 +68,14 @@ namespace WebsiteBanQuanAo.Controllers
              .ToList();
             ViewBag.SLSP = totalQuantity;
             ViewBag.SanPhamLienQuan = sanPhams;
+            List<ChiTietSanPham> sanPhamGiams = db.ChiTietSanPhams
+               .Where(x => x.GiaDuocGiam != 0)
+               .ToList();
+            sanPhamGiams = sanPhamGiams
+           .GroupBy(row => row.SanPham.SanPhamID)
+           .Select(group => group.OrderBy(row => row.Gia).FirstOrDefault())
+           .ToList();
+            ViewBag.sanPhamGiams = sanPhamGiams;
             return View(sanPhams);
         }
 
@@ -94,32 +102,6 @@ namespace WebsiteBanQuanAo.Controllers
                     .Where(sp => sp.SanPham.MoTa.ToLower().Contains(tuKhoaDoTuoi.ToLower()));
             }
 
-            // Lọc sản phẩm theo giới tính
-            if (!string.IsNullOrEmpty(gioiTinh))
-            {
-                string gioiTinhLower = gioiTinh.ToLower();
-                if (gioiTinhLower == "nam")
-                {
-                    sanPhamsQuery = sanPhamsQuery.Where(sp =>
-                        sp.SanPham.TenSanPham.ToLower().Contains("nam") ||
-                        sp.SanPham.TenSanPham.ToLower().Contains("unisex"));
-                }
-                else if (gioiTinhLower == "nữ")
-                {
-                    sanPhamsQuery = sanPhamsQuery.Where(sp =>
-                        sp.SanPham.TenSanPham.ToLower().Contains("nữ") ||
-                        sp.SanPham.TenSanPham.ToLower().Contains("unisex"));
-                }
-            }
-
-            // Lọc sản phẩm theo sở thích
-            if (!string.IsNullOrEmpty(soThich))
-            {
-                var soThichArray = soThich.Split(',').Select(st => st.Trim().ToLower()).ToArray();
-                sanPhamsQuery = sanPhamsQuery
-                    .Where(sp => soThichArray.Any(st => sp.SanPham.DanhMuc.TenDanhMuc.ToLower().Contains(st)));
-            }
-
             // Trả về danh sách các sản phẩm lọc xong
             return sanPhamsQuery.Distinct().Take(9).ToList();
         }
@@ -129,19 +111,19 @@ namespace WebsiteBanQuanAo.Controllers
         {
             switch (phanKhucKH)
             {
-                case "Thanh niên từ 0 đến 37 tuổi chi tiêu thấp":
-                case "Trung niên từ 38 đến 60 tuổi chi tiêu thấp":
-                case "Cao tuổi từ 60 tuổi trở lên chi tiêu thấp":
+                case "Người trẻ tiết kiệm":
+                case "Người trung niên tiết kiệm":
+                case "Người cao tuổi tiết kiệm":
                     return isMin ? 150000 : 400000;
 
-                case "Thanh niên từ 0 đến 37 tuổi chi tiêu vừa phải":
-                case "Trung niên từ 38 đến 60 tuổi chi tiêu vừa phải":
-                case "Cao tuổi từ 60 tuổi trở lên chi tiêu vừa phải":
+                case "Người trẻ chi tiêu cân đối":
+                case "Người trung niên chi tiêu cân đối":
+                case "Người cao tuổi chi tiêu cân đối":
                     return isMin ? 500000 : 750000;
 
-                case "Thanh niên từ 0 đến 37 tuổi chi tiêu cao":
-                case "Trung niên từ 38 đến 60 tuổi chi tiêu cao":
-                case "Cao tuổi từ 60 tuổi trở lên chi tiêu cao":
+                case "Người trẻ chi tiêu mạnh tay":
+                case "Người trung niên chi tiêu mạnh tay":
+                case "Người cao tuổi chi tiêu mạnh tay":
                     return isMin ? 800000 : int.MaxValue;
 
                 default:
@@ -150,11 +132,11 @@ namespace WebsiteBanQuanAo.Controllers
         }
         private string LayTuKhoaDoTuoi(string phanKhucKH)
         {
-            if (phanKhucKH.Contains("Thanh niên"))
-                return "thanh niên";
-            if (phanKhucKH.Contains("Trung niên"))
+            if (phanKhucKH.Contains("Người trẻ"))
+                return "người trẻ";
+            if (phanKhucKH.Contains("Người trung niên"))
                 return "trung niên";
-            if (phanKhucKH.Contains("Cao tuổi"))
+            if (phanKhucKH.Contains("Người cao tuổi"))
                 return "cao tuổi";
             return string.Empty;
         }

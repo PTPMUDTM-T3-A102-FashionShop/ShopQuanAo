@@ -3,61 +3,74 @@
 @{
     ViewBag.Title = "Thêm Địa Chỉ";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
-
 }
+<div style="height:100px"></div>
+<div class="container mt-5">
+    <h2 class="text-center">@ViewBag.Title</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
 
-<div style="height:200px">
+        <div class="form-container">
+            <div class="form-group">
+                @Html.Label("TenNguoiNhan", "Tên người nhận", new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.TenNguoiNhan, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("SoDienThoai", "Số điện thoại", new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.SoDienThoai, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("DiaChiGiaoHang", "Địa chỉ giao hàng", new { @class = "form-label" })
+                @Html.TextAreaFor(m => m.DiaChiGiaoHang, new { @class = "form-control", rows = 3 })
+            </div>
+
+            <div class="form-group form-check">
+                @Html.CheckBoxFor(m => m.DiaChiMacDinh, new { @class = "form-check-input" })
+                @Html.LabelFor(m => m.DiaChiMacDinh, new { @class = "form-check-label" })
+            </div>
+
+            <div class="form-group text-center mt-3">
+                <button type="submit" class="btn btn-primary">Lưu</button>
+                <a href="@Url.Action("Index", "Address")" class="btn btn-secondary ml-2">Hủy</a>
+            </div>
+        </div>
+    }
 </div>
-<h2>@ViewBag.Title</h2>
-@using (Html.BeginForm())
-{
-    @Html.ValidationSummary(true)
 
-    <div class="form-container">
-        <div class="form-group">
-            @Html.LabelFor(m => m.TenNguoiNhan)
-            @Html.TextBoxFor(m => m.TenNguoiNhan, new { @class = "form-control" })
-        </div>
+<style>
+    .form-container {
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        max-width: 500px;
+        width: 100%;
+    }
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.SoDienThoai)
-            @Html.TextBoxFor(m => m.SoDienThoai, new { @class = "form-control" })
-        </div>
+    .form-group {
+        margin-bottom: 1rem;
+    }
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.DiaChiGiaoHang)
-            @Html.TextAreaFor(m => m.DiaChiGiaoHang, new { @class = "form-control" })
-        </div>
+    .form-check-label {
+        font-size: 16px;
+    }
 
-        <div class="form-group">
-            @Html.CheckBoxFor(m => m.DiaChiMacDinh)
-            @Html.LabelFor(m => m.DiaChiMacDinh)
-        </div>
+    .form-label {
+        font-weight: bold;
+        font-size: 16px;
+    }
 
-        <button type="submit" class="btn btn-primary">Lưu</button>
-        <a href="@Url.Action("Index", "Address")" class="btn btn-secondary">Hủy</a>
-    </div>
-    <style>
-        .form-container {
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
-            max-width: 400px;
-            width: 100%;
-        }
+    h2 {
+        margin-bottom: 20px;
+    }
 
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-    </style>
-
-}
-
+    /* To make sure Vietnamese fonts display correctly */
+    body {
+        font-family: 'Arial', sans-serif, 'Helvetica', 'Roboto', sans-serif;
+    }
+</style>

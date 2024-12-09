@@ -171,47 +171,40 @@
             <div class="col-md-6">
                 <div class="p-3 d-flex flex-column justify-content-between">
                     <br />
-                    <h3>Tên sản phẩm: @ViewBag.sanpham.SanPham.TenSanPham</h3>
+                    <h3>@ViewBag.sanpham.SanPham.TenSanPham</h3>
                     <div class="mt-2 content">
                         <p>Mô Tả: @ViewBag.sanpham.SanPham.MoTa</p>
                     </div>
                     @if (ViewBag.sanpham.GiaDuocGiam == 0)
                     {
-                        <span class="price-discounted" style="margin-right: 10px; font-size: 1em; font-family: 'Arial', sans-serif; color: green; font-weight: bold;">
+                        <span class="price-discounted" style="margin-right: 10px; font-size: 1em; font-family: 'Arial', sans-serif; color: green; font-weight: bold;" id="giaSanPham">
                             @ViewBag.sanpham.Gia.ToString("N0") VNĐ
                         </span>
                     }
                     else
                     {
-
                         var GiaThucTe = ViewBag.sanpham.Gia - ViewBag.sanpham.GiaDuocGiam;
-
-
-
                         <h4 class="price-original" style="color: gray; font-size: 1em; text-decoration: none;">
-                            <span class="original-price" style="text-decoration: line-through; margin-right: 10px; font-size: 1em; font-family: 'Arial', sans-serif;">
+                            <span class="original-price" style="text-decoration: line-through; margin-right: 10px; font-size: 1em; font-family: 'Arial', sans-serif;" id="giaGoc">
                                 @ViewBag.sanpham.Gia.ToString("N0") VNĐ
                             </span>
-                            <span class="discount-badge" style="background-color: red; color: white; font-size: 1em; font-weight: bold; padding: 2px 6px; border-radius: 4px; font-family: 'Arial', sans-serif;">
+                            <span class="discount-badge" style="background-color: red; color: white; font-size: 1em; font-weight: bold; padding: 2px 6px; border-radius: 4px; font-family: 'Arial', sans-serif;" id="giaduocgiam">
                                 -@((ViewBag.sanpham.GiaDuocGiam ?? 0).ToString("N0")) VNĐ
                             </span>
-
                         </h4>
-                        <h4 class="price-discounted" style="color: green; font-size: 1em; font-weight: bold; font-family: 'Arial', sans-serif;">
+                        <h4 class="price-discounted" style="color: green; font-size: 1em; font-weight: bold; font-family: 'Arial', sans-serif;" id="giaSanPham">
                             @((GiaThucTe ?? 0).ToString("N0")) VNĐ
                         </h4>
-
-
                     }
 
                     <div class="form-group mt-3">
                         <label>Size:</label>
                         <div class="form-group mt-3">
                             <select id="sizeSelect" class="form-select" onchange="filterColors()">
-                                <option value="">Chọn Size</option>
+                                <option value="">Chọn Size:</option>
                                 @foreach (var item in Model)
                                 {
-                                    if (item.SoLuongTonKho > 0 && item.KichHoat == true)  // Only show sizes with stock > 0
+                                    if (item.SoLuongTonKho > 0 && item.KichHoat == true)  // Chỉ hiển thị size có số lượng tồn kho > 0
                                     {
                                         <option value="@item.SizeID"
                                                 data-size-name="@item.Size.TenSize"
@@ -219,7 +212,6 @@
                                                 style="@(item.SoLuongTonKho <= 0 ? "color: gray;" : "")">
                                             @item.Size.TenSize
                                         </option>
-
                                     }
                                 }
                             </select>
@@ -227,11 +219,11 @@
 
                         <div class="form-group mt-3">
                             <label>Màu:</label>
-                            <select id="colorSelect" class="form-select" onchange="updatePrice()" disabled>
+                            <select id="colorSelect" class="form-select" onchange="updatePrice(); updateStock();">
                                 <option value="">Chọn Màu</option>
                                 @foreach (var item in Model)
                                 {
-                                    if (item.SoLuongTonKho > 0 && item.KichHoat == true)  // Only show sizes with stock > 0
+                                    if (item.SoLuongTonKho > 0 && item.KichHoat == true)  // Chỉ hiển thị màu sắc có số lượng tồn kho > 0
                                     {
                                         <option value="@item.MauID"
                                                 data-sizeid="@item.SizeID"
@@ -243,11 +235,144 @@
                                 }
                             </select>
                         </div>
-                        <p>Còn: <span id="soLuongTonKho">@slt</span> sản phẩm</p>
+                    </div>
 
-                        <script>
+                    <p>Còn: <span id="soLuongTonKho">@slt</span> sản phẩm</p>
 
-                            // Khi trang được tải, xử lý size và màu
+
+
+
+
+                    <!-- Các nút mua hàng -->
+                    <div class="buttons d-flex flex-row mt-4 gap-3 justify-content-between">
+                        <button type="button" class="btn btn-dark flex-grow-1" onclick="addToCart()">Thêm Giỏ Hàng</button>
+                        <button type="button" class="btn btn-dark flex-grow-1" onclick="buyNow()">Mua Ngay</button>
+                    </div>
+
+                    <style>
+                        .btn {
+                            transition: background-color 0.3s ease, transform 0.2s ease;
+                        }
+
+                            .btn:hover {
+                                background-color: #0056b3; /* Đổi màu nền khi hover */
+                                transform: scale(1.05); /* Hiệu ứng phóng to nhẹ */
+                            }
+
+                            /* Thêm hiệu ứng khi người dùng nhấn nút */
+                            .btn:active {
+                                transform: scale(0.98); /* Thu nhỏ nhẹ khi nhấn */
+                            }
+                    </style>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div style="padding: 20px;">
+        <h2 style="text-align: left;">Bình luận về sản phẩm</h2>
+
+        @if (ViewBag.phanhoi != null && ViewBag.phanhoi.Count > 0)
+        {
+            <div style="max-height: 400px; overflow-y: auto; border: 1px solid #ddd; border-radius: 8px; padding: 15px; background-color: #f9f9f9;">
+                @foreach (var phanHoi in ViewBag.phanhoi)
+                {
+                    <div style="margin-bottom: 20px; padding: 10px; border-radius: 8px; background-color: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <p style="font-size: 16px; font-weight: bold; color: #333;">@phanHoi.NguoiDung.TenDangNhap</p>
+                        <p style="font-size: 12px; color: #777; margin-bottom: 10px;">
+                            <em>@phanHoi.NgayPhanHoi.ToString("dd/MM/yyyy")</em>
+                        </p>
+                        <p style="font-size: 14px; color: #555;">@phanHoi.NoiDung</p>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p style="font-size: 16px; color: #888; text-align: left;">Chưa có bình luận nào.</p>
+        }
+    </div>
+
+
+    <a href="/product" class="btn btn-outline-primary mt-3">
+        <i class="fas fa-arrow-left"></i>
+        <span class="ms-2">Quay lại danh sách sản phẩm</span>
+    </a>
+</div>
+
+
+<script>
+
+
+                                    function updatePrice() {
+                                    var sizeValue = document.getElementById('sizeSelect').value;
+                                    var colorValue = document.getElementById('colorSelect').value;
+                                    var productID = @Html.Raw(Json.Encode(Model[0].SanPhamID));
+
+                                    if (!sizeValue || !colorValue) {
+                                        return; // Nếu chưa chọn Size hoặc Màu, không cập nhật giá
+                                    }
+
+                                    // Gửi yêu cầu Ajax để lấy giá dựa trên SizeID, MauID và ChiTietSanPhamID
+                                    $.ajax({
+                                        url: '/Product/GetPrice',
+                                        type: 'GET',
+                                        data: { SizeID: sizeValue, colorID: colorValue, productID: productID },
+                                        success: function (response) {
+                                            if (response && response.gia !== undefined && response.chiTietSanPhamGia !== undefined) {
+                                                var formattedPrice = parseFloat(response.gia)
+                                                    .toLocaleString('vi-VN')
+                                                    .concat(' VNĐ');
+                                                var giaduocgiam = parseFloat(response.giaduocgiam)
+                                                    .toLocaleString('vi-VN')
+                                                    .concat(' VNĐ');
+                                                var originalPrice = parseFloat(response.chiTietSanPhamGia)
+                                                    .toLocaleString('vi-VN')
+                                                    .concat(' VNĐ');
+
+                                                $('#giaduocgiam').text(giaduocgiam);
+                                                $('#giaSanPham').text(formattedPrice);
+                                                $('#giaGoc').text(originalPrice);
+                                            } else {
+                                                alert('Dữ liệu giá trả về không hợp lệ.');
+                                            }
+                                        },
+                                        error: function () {
+                                            alert('Có lỗi xảy ra khi lấy giá.');
+                                        }
+                                    });
+                                }
+
+                                function updateStock() {
+                                    var sizeValue = document.getElementById('sizeSelect').value;
+                                    var colorValue = document.getElementById('colorSelect').value;
+                                    var productID = @Html.Raw(Json.Encode(Model[0].SanPhamID));
+
+                                    if (!sizeValue || !colorValue) {
+                                        document.getElementById('soLuongTonKho').textContent = '@slt';
+                                        return;
+                                    }
+
+                                    $.ajax({
+                                        url: '/Product/GetStock',
+                                        type: 'GET',
+                                        data: { SizeID: sizeValue, colorID: colorValue, productID: productID },
+                                        success: function (response) {
+                                            if (response && response.soLuongTonKho !== undefined) {
+                                                document.getElementById('soLuongTonKho').textContent = response.soLuongTonKho;
+                                            } else {
+                                                alert('Dữ liệu số lượng tồn kho trả về không hợp lệ.');
+                                            }
+                                        },
+                                        error: function () {
+                                            alert('Có lỗi xảy ra khi lấy số lượng tồn kho.');
+                                        }
+                                    });
+                                }
+                        // Khi trang được tải, xử lý size và màu
                             window.onload = function() {
                                 const sizeSelect = document.getElementById('sizeSelect');
                                 const colorSelect = document.getElementById('colorSelect');
@@ -260,11 +385,11 @@
 
                                 // Duyệt qua các options để loại bỏ các tên size trùng lặp
                                 for (let i = 1; i < options.length; i++) { // Bỏ qua option đầu tiên là "Chọn Size"
-                                    const TenSize = options[i].getAttribute('data-size-name');
+                                    const sizeName = options[i].getAttribute('data-size-name');
 
                                     // Nếu tên size chưa có trong mảng uniqueSizes, thêm vào và để lại option
-                                    if (!uniqueSizes.includes(TenSize)) {
-                                        uniqueSizes.push(TenSize);
+                                    if (!uniqueSizes.includes(sizeName)) {
+                                        uniqueSizes.push(sizeName);
                                     } else {
                                         // Nếu tên size đã có trong mảng, loại bỏ option
                                         options[i].remove();
@@ -320,193 +445,76 @@
                                     }
                                 }
                         };
-                        function updateStock() {
-                        var sizeValue = document.getElementById('sizeSelect').value;
-                        var colorValue = document.getElementById('colorSelect').value;
-                        var productID = @Model[0].SanPhamID;
+                                        var isLoggedIn = @Html.Raw(Json.Encode(Session["UserID"] != null));
+                                 function changeImage(element) {
+                                            var mainImage = document.getElementById("main_product_image");
+                                            mainImage.src = element.src; // Cập nhật hình ảnh chính
+                                        }
 
-                        if (!sizeValue || !colorValue) {
-                            // Nếu chưa chọn đủ Size và Màu, đặt số lượng tồn kho về giá trị mặc định
-                            document.getElementById('soLuongTonKho').textContent = '@slt';
-                            return;
-                        }
 
-                        // Gửi yêu cầu Ajax để lấy số lượng tồn kho từ server
-                        $.ajax({
-                            url: '/Product/GetStock',
-                            type: 'GET',
-                            data: { sizeID: sizeValue, colorID: colorValue, productID: productID },
-                            success: function (response) {
-                                // Cập nhật số lượng tồn kho hiển thị
-                                if (response && response.soLuongTonKho !== undefined) {
-                                    document.getElementById('soLuongTonKho').textContent = response.soLuongTonKho;
-                                } else {
-                                    alert('Dữ liệu số lượng tồn kho trả về không hợp lệ.');
+                                function addToCart() {
+                                     var sizeValue = document.getElementById('sizeSelect').value;
+                                    var colorValue = document.getElementById('colorSelect').value;
+
+                                    if (!sizeValue || !colorValue) {
+                                        alert('Vui lòng chọn Size và Màu trước khi thêm vào giỏ hàng.');
+                                        return false; // Dừng lại nếu chưa chọn đủ
+                                    }
+
+                                    // Sử dụng Url.Action để tạo đường dẫn đúng với tham số được mã hóa
+                                    var baseUrl = '@Url.Action("Add", "Cart", new { id = Model[0].SanPhamID })';
+                                    var addToCartUrl = `${baseUrl}?sizeID=${encodeURIComponent(sizeValue)}&colorID=${encodeURIComponent(colorValue)}`;
+
+                                                // Điều hướng đến đường dẫn mới
+                                         window.location.href = addToCartUrl;
                                 }
-                            },
-                            error: function () {
-                                alert('Có lỗi xảy ra khi lấy số lượng tồn kho.');
+                                function buyNow() {
+                                    var sizeValue = document.getElementById('sizeSelect').value;
+                                    var colorValue = document.getElementById('colorSelect').value;
+
+                                    if (!sizeValue || !colorValue) {
+                                        alert('Vui lòng chọn Size và Màu trước khi mua ngay.');
+                                        return false; // Dừng lại nếu chưa chọn đủ
+                                    }
+
+                                    // Sử dụng Url.Action để tạo đường dẫn đúng với tham số được mã hóa
+                                    var baseUrl = '@Url.Action("Add", "Cart", new { id = Model[0].SanPhamID })';
+                                    var addToCartUrl = `${baseUrl}?sizeID=${encodeURIComponent(sizeValue)}&colorID=${encodeURIComponent(colorValue)}`;
+
+                                    // Điều hướng đến đường dẫn mới để thêm sản phẩm vào giỏ hàng
+                                    $.ajax({
+                                        url: addToCartUrl,
+                                        type: 'GET',
+                                        success: function(response) {
+                                            // Sau khi thêm vào giỏ hàng, chuyển hướng đến trang giỏ hàng hoặc thanh toán
+                                            window.location.href = '@Url.Action("Index", "Cart")'; // Điều hướng đến trang giỏ hàng
+                                        },
+                                        error: function() {
+                                            alert('Có lỗi xảy ra khi thêm vào giỏ hàng.');
+                                        }
+                                    });
+                                }
+
+                        function filterColors() {
+                            var selectedSize = document.getElementById('sizeSelect').value;
+                            var colorOptions = document.getElementById('colorSelect').options;
+
+                            // Hiện/ẩn các lựa chọn màu sắc dựa trên Size đã chọn
+                            for (var i = 0; i < colorOptions.length; i++) {
+                                var option = colorOptions[i];
+                                if (selectedSize) {
+                                    if (option.getAttribute('data-sizeid') === selectedSize) {
+                                        option.style.display = 'block'; // Hiển thị màu sắc phù hợp với size
+                                    } else {
+                                        option.style.display = 'none'; // Ẩn màu sắc không phù hợp với size
+                                    }
+                                } else {
+                                    option.style.display = 'block'; // Nếu không chọn size, hiển thị tất cả màu sắc
+                                }
                             }
-                        });
-                    }
 
-                    // Gọi hàm updateStock mỗi khi thay đổi Size hoặc Màu
-                    document.getElementById('sizeSelect').addEventListener('change', updateStock);
-                    document.getElementById('colorSelect').addEventListener('change', updateStock);
-
-                        </script>
-
-
-
-
-                        <!-- Các nút mua hàng -->
-                        <div class="buttons d-flex flex-row mt-4 gap-3">
-                            <button type="button" class="btn btn-dark" onclick="addToCart()">Thêm Giỏ Hàng</button>
-                        </div>
-                        <a href="#" onclick="buyNow()" class="buttons d-flex flex-row mt-4 gap-3">
-                            <button type="button" class="btn btn-dark">Mua Ngay</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div style="padding: 20px;">
-            <h2 style="text-align: left;">Bình luận về sản phẩm</h2>
-
-            @if (ViewBag.phanhoi != null && ViewBag.phanhoi.Count > 0)
-            {
-                <div style="max-height: 400px; overflow-y: auto; border: 1px solid #ddd; border-radius: 8px; padding: 15px; background-color: #f9f9f9;">
-                    @foreach (var phanHoi in ViewBag.phanhoi)
-                    {
-                        <div style="margin-bottom: 20px; padding: 10px; border-radius: 8px; background-color: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                            <p style="font-size: 16px; font-weight: bold; color: #333;">@phanHoi.NguoiDung.TenDangNhap</p>
-                            <p style="font-size: 12px; color: #777; margin-bottom: 10px;">
-                                <em>@phanHoi.NgayPhanHoi.ToString("dd/MM/yyyy")</em>
-                            </p>
-                            <p style="font-size: 14px; color: #555;">@phanHoi.NoiDung</p>
-                        </div>
-                    }
-                </div>
-            }
-            else
-            {
-                <p style="font-size: 16px; color: #888; text-align: left;">Chưa có bình luận nào.</p>
-            }
-        </div>
-
-
-        <a href="/product" class="btn btn-outline-primary mt-3">
-            <i class="fas fa-arrow-left"></i>
-            <span class="ms-2">Quay lại danh sách sản phẩm</span>
-        </a>
-    </div>
-
-    <script>
-        var isLoggedIn = @Html.Raw(Json.Encode(Session["UserID"] != null));
-    function changeImage(element) {
-                var mainImage = document.getElementById("main_product_image");
-                mainImage.src = element.src; // Cập nhật hình ảnh chính
-            }
-            function updatePrice() {
-                var sizeValue = document.getElementById('sizeSelect').value;
-                var colorValue = document.getElementById('colorSelect').value;
-                var productID = @Model[0].SanPhamID;
-
-                if (!sizeValue || !colorValue) {
-                    return; // Nếu chưa chọn size hoặc màu, không cập nhật giá
-                }
-
-    // Gửi yêu cầu Ajax để lấy giá dựa trên SizeID, MauID và ChiTietID
-    $.ajax({
-                url: '/Product/GetPrice',
-        type: 'GET',
-        data: { sizeID: sizeValue, colorID: colorValue, productID: productID },
-        success: function(response) {
-            // Cập nhật giá hiển thị
-            if (response && response.gia !== undefined) {
-                // Định dạng giá trị thành dạng VNĐ
-                var formattedPrice = parseFloat(response.gia)
-                    .toLocaleString('vi-VN')
-                    .concat(' VNĐ');
-
-                // Cập nhật giá hiển thị
-                $('#giaSanPham').text(formattedPrice);
-            } else {
-                alert('Dữ liệu giá trả về không hợp lệ.');
-            }
-                    },
-        error: function() {
-                        alert('Có lỗi xảy ra khi lấy giá.');
-                    }
-                });
-            }
-
-        function addToCart() {
-                var sizeValue = document.getElementById('sizeSelect').value;
-                var colorValue = document.getElementById('colorSelect').value;
-
-                if (!sizeValue || !colorValue) {
-                    alert('Vui lòng chọn Size và Màu trước khi thêm vào giỏ hàng.');
-                    return false; // Dừng lại nếu chưa chọn đủ
-                }
-
-                // Sử dụng Url.Action để tạo đường dẫn đúng với tham số được mã hóa
-                var baseUrl = '@Url.Action("Add", "Cart", new { id = Model[0].SanPhamID })';
-                var addToCartUrl = `${baseUrl}?sizeID=${encodeURIComponent(sizeValue)}&colorID=${encodeURIComponent(colorValue)}`;
-
-                // Điều hướng đến đường dẫn mới
-                window.location.href = addToCartUrl;
-        }
-        function buyNow() {
-            var sizeValue = document.getElementById('sizeSelect').value;
-            var colorValue = document.getElementById('colorSelect').value;
-
-            if (!sizeValue || !colorValue) {
-                alert('Vui lòng chọn Size và Màu trước khi mua ngay.');
-                return false; // Dừng lại nếu chưa chọn đủ
-            }
-
-            // Sử dụng Url.Action để tạo đường dẫn đúng với tham số được mã hóa
-            var baseUrl = '@Url.Action("Add", "Cart", new { id = Model[0].SanPhamID })';
-            var addToCartUrl = `${baseUrl}?sizeID=${encodeURIComponent(sizeValue)}&colorID=${encodeURIComponent(colorValue)}`;
-
-            // Điều hướng đến đường dẫn mới để thêm sản phẩm vào giỏ hàng
-            $.ajax({
-                url: addToCartUrl,
-                type: 'GET',
-                success: function(response) {
-                    // Sau khi thêm vào giỏ hàng, chuyển hướng đến trang giỏ hàng hoặc thanh toán
-                    window.location.href = '@Url.Action("Index", "Cart")'; // Điều hướng đến trang giỏ hàng
-                },
-                error: function() {
-                    alert('Có lỗi xảy ra khi thêm vào giỏ hàng.');
-                }
-            });
-        }
-
-            function filterColors() {
-                var selectedSize = document.getElementById('sizeSelect').value;
-                var colorOptions = document.getElementById('colorSelect').options;
-
-                // Hiện/ẩn các lựa chọn màu sắc dựa trên Size đã chọn
-                for (var i = 0; i < colorOptions.length; i++) {
-                    var option = colorOptions[i];
-                    if (selectedSize) {
-                        if (option.getAttribute('data-sizeid') === selectedSize) {
-                            option.style.display = 'block'; // Hiển thị màu sắc phù hợp với size
-                        } else {
-                            option.style.display = 'none'; // Ẩn màu sắc không phù hợp với size
+                            // Đặt lại giá trị màu sắc đã chọn (nếu có)
+                            document.getElementById('colorSelect').value = "";
+                            updatePrice(); // Cập nhật giá lại sau khi thay đổi
                         }
-                    } else {
-                        option.style.display = 'block'; // Nếu không chọn size, hiển thị tất cả màu sắc
-                    }
-                }
-
-                // Đặt lại giá trị màu sắc đã chọn (nếu có)
-                document.getElementById('colorSelect').value = "";
-                updatePrice(); // Cập nhật giá lại sau khi thay đổi
-            }
-
-    </script>
+</script>

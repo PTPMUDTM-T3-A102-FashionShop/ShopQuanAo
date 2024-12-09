@@ -1,11 +1,11 @@
-﻿using System;
+﻿using WebsiteBanQuanAo.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WebsiteBanQuanAo.Models;
 
-namespace DoAnChuyenNganh.Controllers
+namespace WebsiteBanQuanAo.Controllers
 {
     public class RateController : Controller
     {
