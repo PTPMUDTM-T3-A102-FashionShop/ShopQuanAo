@@ -106,3 +106,16 @@ D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai2\ShopQuanAo\ShopQuanAo\DAL\obj\Deb
 D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai2\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.csproj.CopyComplete
 D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai2\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.dll
 D:\HK7\PhatTrienUngDungThongMinh\KhuVucLamBai2\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.pdb
+D:\PMemUDungTMinh\DoAn\DoAn2\ShopQuanAo\ShopQuanAo\DAL\bin\Debug\DAL.dll
+D:\PMemUDungTMinh\DoAn\DoAn2\ShopQuanAo\ShopQuanAo\DAL\bin\Debug\DAL.pdb
+D:\PMemUDungTMinh\DoAn\DoAn2\ShopQuanAo\ShopQuanAo\DAL\bin\Debug\DB.dll
+D:\PMemUDungTMinh\DoAn\DoAn2\ShopQuanAo\ShopQuanAo\DAL\bin\Debug\DTO.dll
+D:\PMemUDungTMinh\DoAn\DoAn2\ShopQuanAo\ShopQuanAo\DAL\bin\Debug\DB.pdb
+D:\PMemUDungTMinh\DoAn\DoAn2\ShopQuanAo\ShopQuanAo\DAL\bin\Debug\DB.dll.config
+D:\PMemUDungTMinh\DoAn\DoAn2\ShopQuanAo\ShopQuanAo\DAL\bin\Debug\DTO.pdb
+D:\PMemUDungTMinh\DoAn\DoAn2\ShopQuanAo\ShopQuanAo\DAL\bin\Debug\DTO.dll.config
+D:\PMemUDungTMinh\DoAn\DoAn2\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+D:\PMemUDungTMinh\DoAn\DoAn2\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\PMemUDungTMinh\DoAn\DoAn2\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.csproj.Up2Date
+D:\PMemUDungTMinh\DoAn\DoAn2\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.dll
+D:\PMemUDungTMinh\DoAn\DoAn2\ShopQuanAo\ShopQuanAo\DAL\obj\Debug\DAL.pdb

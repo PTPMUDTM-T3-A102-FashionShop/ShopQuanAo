@@ -152,16 +152,19 @@ namespace userControl
             {
                 Directory.CreateDirectory(destinationFolder);
             }
-
+            bool kichHoat = rdbOn.Checked;
             try
             {
                 // Tạo đối tượng ChiTietSanPham
                 ChiTietSanPham chiTietSanPham = new ChiTietSanPham
                 {
+                    //Kich hoat ??
                     SanPhamID = sanPhamID,
                     MauID = mauID,
+                    GiaDuocGiam = 0,
                     SizeID = sizeID,
                     Gia = gia,
+                    KichHoat= kichHoat,
                     SoLuongTonKho = soLuongTonKho,
                     HinhAnhUrl = newFileName
                 };

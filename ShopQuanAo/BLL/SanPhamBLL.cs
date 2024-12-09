@@ -41,7 +41,10 @@ namespace BLL
         {
             return sanPhamDAL.GetSanPhamByDanhMucID(danhMucID);
         }
-
+        public int GetMaxSanPhamID()
+        {
+            return sanPhamDAL.GetMaxSanPhamID();
+        }
         // Code thuan`
         public List<SanPhamChiTietDTO> GetSanPhamChiTiet()
         {
