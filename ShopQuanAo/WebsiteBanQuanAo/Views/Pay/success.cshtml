@@ -1,45 +1,81 @@
 ﻿@{
-    ViewBag.Title = "Đặt Hàng Thành Công";
+    ViewBag.Title = "Cảm ơn bạn đã mua sắm!";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
-<div style="height:150px"></div>
-<div class="container mt-5">
-    <div class="text-center">
-        <h1 class="text-success mb-4">Đặt Hàng Thành Công!</h1>
-        <p class="lead text-muted">Cảm ơn bạn đã mua sắm tại cửa hàng của chúng tôi. Đơn hàng của bạn đã được xử lý thành công.</p>
+<div style="height:200px"></div>
+<div class="container mt-5 py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 text-center">
+            <h1 class="display-4 text-primary mb-4">Chúc Mừng Bạn!</h1>
+            <p class="lead text-muted mb-4">Cảm ơn bạn đã tin tưởng mua sắm tại cửa hàng của chúng tôi. Đơn hàng của bạn đã được xử lý thành công. Chúng tôi rất vui khi bạn lựa chọn chúng tôi.</p>
 
-        <div class="mt-4">
-            <a href="/Home/index" class="btn btn-success btn-lg px-4 py-2 mr-3">
-                Tiếp Tục Mua Sắm
-            </a>
-            <a href="/Order/index" class="btn btn-info btn-lg px-4 py-2">
-                Xem Thông Tin Đơn Hàng
-            </a>
+          
+            <!-- Các nút hành động -->
+            <div class="mt-4">
+                <a href="/Home/index" class="btn btn-lg btn-outline-primary px-5 py-3 mb-3 mb-lg-0 mr-lg-3">
+                    Tiếp Tục Mua Sắm
+                </a>
+                <a href="/Order/index" class="btn btn-lg btn-outline-success px-5 py-3">
+                    Xem Đơn Hàng Của Bạn
+                </a>
+            </div>
+
+            <!-- Thông điệp cảm ơn bổ sung -->
+            <div id="thankYouMessage" class="mt-5">
+                <p class="text-muted">Chúng tôi luôn cố gắng mang đến những sản phẩm tốt nhất cho bạn. Hãy quay lại mua sắm với chúng tôi nhé!</p>
+            </div>
         </div>
     </div>
 </div>
 
 <style>
-    .btn-success, .btn-info {
+    .btn-outline-primary, .btn-outline-success {
+        border-width: 2px;
+        border-radius: 25px;
         text-decoration: none;
-        transition: background-color 0.3s ease;
+        font-weight: bold;
+        letter-spacing: 1px;
     }
 
-        .btn-success:hover {
+        .btn-outline-primary:hover {
+            background-color: #007bff;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.5);
+        }
+
+        .btn-outline-success:hover {
             background-color: #28a745;
+            color: white;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.5);
         }
 
-        .btn-info:hover {
-            background-color: #17a2b8;
-        }
-
-    .text-center {
-        text-align: center;
+    /* Hiệu ứng cho thông điệp cảm ơn */
+    #thankYouMessage {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 1s ease, transform 1s ease;
     }
+
+        #thankYouMessage.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
     .lead {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         color: #6c757d;
+    }
+
+    .display-4 {
+        font-size: 3.5rem;
+        font-weight: 600;
     }
 </style>
 
+<script>
+    // Thêm lớp "visible" cho hiệu ứng khi trang đã tải xong
+    document.addEventListener("DOMContentLoaded", function () {
+        const thankYouMessage = document.getElementById("thankYouMessage");
+        thankYouMessage.classList.add("visible");
+    });
+</script>

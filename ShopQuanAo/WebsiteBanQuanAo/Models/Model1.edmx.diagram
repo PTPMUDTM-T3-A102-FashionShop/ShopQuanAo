@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="316b0d9891d84c6393628ae0303a0b23" Name="Diagram1">
+      <Diagram DiagramId="bf231b2e3c4040fa9dd8894328b4103a" Name="Diagram1">
         <EntityTypeShape EntityType="DoAnKetMon_UDTM21114Model.ChiTietDonHang" Width="1.5" PointX="12" PointY="11.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DoAnKetMon_UDTM21114Model.ChiTietKhuyenMai" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
         <EntityTypeShape EntityType="DoAnKetMon_UDTM21114Model.ChiTietSanPham" Width="1.5" PointX="5.25" PointY="16.25" IsExpanded="true" />

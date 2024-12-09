@@ -4,7 +4,9 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 @section css{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
+
         .product-img {
             height: 450px;
             overflow: hidden;
@@ -129,9 +131,11 @@
 <div class="container-fluid fruite py-5">
     <div class="container py-5">
         <div class="tab-class text-center">
-            <div class="row g-12">
-                <div class="col-lg-12 text-start">
-                    <h1>Sản Phẩm Thời Trang có thể bạn thích</h1>
+            <div class="row g-12 justify-content-center">
+                <div class="col-lg-12 text-center">
+                    <h1 class="display-4 text-white font-weight-bold d-flex justify-content-center align-items-center bg-dark text-white rounded-3 py-3 px-4 shadow-lg animate__animated animate__pulse animate__infinite animate__slow" style="background-color: orange; font-size: 3rem;">
+                        <i class="fas fa-fire-alt me-3"></i> Sản phẩm phù hợp với bạn
+                    </h1>
                 </div>
             </div>
 
@@ -158,11 +162,7 @@
                                                         <img src="~/img/@a.HinhAnhUrl" class="img-fluid w-100 rounded-top product-img-fixed grayscale" alt="Hết hàng">
                                                     }
                                                 </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">
-                                                    <p>
-                                                        @a.SanPham.DanhMuc.TenDanhMuc
-                                                    </p>
-                                                </div>
+
                                                 <div class="p-4 border border-secondary border-top-0 rounded-bottom" style="flex-grow: 1;">
                                                     <a href="/product/details/@a.SanPhamID">
                                                         <h4>@a.SanPham.TenSanPham</h4>
@@ -226,7 +226,119 @@
                     </div>
                 </div>
             </div>
+            
+            <div style="height:40px"></div>
+            <div class="row g-12 justify-content-center">
+                <div class="col-lg-12 text-center">
+                    <h1 class="display-4 text-white font-weight-bold d-flex justify-content-center align-items-center bg-dark text-white rounded-3 py-3 px-4 shadow-lg animate__animated animate__pulse animate__infinite animate__slow" style="background-color: orange; font-size: 3rem;">
+                        <i class="fas fa-tags me-3"></i> Sản phẩm đang được khuyến mãi
+                    </h1>
+                </div>
+            </div>
+            <div style="height:40px"></div>
+            <div class="tab-content">
+                <div id="tab-1" class="tab-pane fade show p-0 active">
+                    <div class="row g-4">
+                        <div class="col-lg-12">
+                            <div class="row g-4">
 
+                                @if (ViewBag.sanPhamGiams != null)
+                                {
+                                    foreach (var a in ViewBag.sanPhamGiams)
+                                    {
+                                        <div class="col-md-6 col-lg-6 col-xl-4">
+                                            <div class="rounded position-relative product-item" style="display: flex; flex-direction: column; height: 100%;">
+                                                <div class="product-img" style="flex-shrink: 0;">
+                                                    @if (a.SoLuongTonKho > 0 && a.KichHoat == true)
+                                                    {
+                                                        <a href="/product/details/@a.SanPhamID">
+                                                            <img src="~/img/@a.HinhAnhUrl" class="img-fluid w-100 rounded-top product-img-fixed" alt="">
+                                                        </a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <img src="~/img/@a.HinhAnhUrl" class="img-fluid w-100 rounded-top product-img-fixed grayscale" alt="Hết hàng">
+                                                    }
+                                                </div>
+                                                <div style="
+                                                            position: absolute;
+                                                            top: 10px;
+                                                            left: 10px;
+                                                            padding: 10px 15px;
+                                                            border-radius: 5px;
+                                                            color: gold;
+                                                            font-weight: bold;
+                                                            text-shadow: 2px 2px 5px red, 0 0 10px gold, 0 0 15px orange;
+                                                            background-color: red;
+                                                            box-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 69, 0, 0.6);
+                                                            border: 2px solid gold;
+                                                        ">
+                                                    Khuyến mãi
+                                                </div>
+
+                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom" style="flex-grow: 1;">
+                                                    <a href="/product/details/@a.SanPhamID">
+                                                        <h4>@a.SanPham.TenSanPham</h4>
+                                                    </a>
+                                                    @if (a.GiaDuocGiam == 0)
+                                                    {
+                                                        <a href="/product/details/@a.SanPhamID">
+                                                            <span class="price-discounted" style="margin-right: 10px; font-size: 1em; font-family: 'Arial', sans-serif; color: green; font-weight: bold;">
+                                                                @a.Gia.ToString("N0") VNĐ
+                                                            </span>
+                                                        </a>
+                                                    }
+                                                    else
+                                                    {
+
+                                                        var GiaThucTe = a.Gia - a.GiaDuocGiam;
+
+                                                        <a href="/product/details/@a.SanPhamID">
+                                                            <h4 class="price-original" style="color: gray; font-size: 1em; text-decoration: none;">
+                                                                <span class="original-price" style="text-decoration: line-through; margin-right: 10px; font-size: 1em; font-family: 'Arial', sans-serif;">
+                                                                    @a.Gia.ToString("N0") VNĐ
+                                                                </span>
+                                                                <span class="discount-badge" style="background-color: red; color: white; font-size: 1em; font-weight: bold; padding: 2px 6px; border-radius: 4px; font-family: 'Arial', sans-serif;">
+                                                                    -@((a.GiaDuocGiam ?? 0).ToString("N0")) VNĐ
+                                                                </span>
+                                                            </h4>
+                                                            <h4 class="price-discounted" style="color: green; font-size: 1em; font-weight: bold; font-family: 'Arial', sans-serif;">
+                                                                @((GiaThucTe ?? 0).ToString("N0")) VNĐ
+                                                            </h4>
+                                                        </a>
+                                                    }
+                                                    <!-- Hiển thị số sao -->
+                                                    <div class="rating">
+                                                        @if (a.SanPham.SoSaoTB != 0)
+                                                        {
+                                                            // Nếu có đánh giá (AverageRating không null), hiển thị sao
+                                                            for (int i = 1; i <= 5; i++)
+                                                            {
+                                                                <i class="fa fa-star" style="color:@(i <= a.SanPham.SoSaoTB ? "gold" : "gray")"></i>
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            // Nếu không có đánh giá, không hiển thị sao
+                                                            <span>Chưa có đánh giá</span>
+                                                        }
+                                                    </div>
+                                                    <!-- Hiển thị số lượt đã bán -->
+                                                    <p class="text-muted mb-2">Đã bán: @a.SanPham.SoLuongDaBan</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <p>Không có sản phẩm nào phù hợp.</p>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -243,7 +355,7 @@
                     </div>
                     <div class="featurs-content text-center">
                         <h5>Miễn Phí Vận Chuyển</h5>
-                        <p class="mb-0">Miễn phí cho đơn hàng trên 300.000 VNĐ</p>
+                        <p class="mb-0">Cho đơn hàng trên 300.000 VNĐ</p>
                     </div>
                 </div>
             </div>

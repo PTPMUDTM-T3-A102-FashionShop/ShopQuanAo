@@ -1,9 +1,9 @@
-﻿using System;
+﻿using WebsiteBanQuanAo.Filters;
+using WebsiteBanQuanAo.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using WebsiteBanQuanAo.Filters;
-using WebsiteBanQuanAo.Models;
 
 namespace WebsiteBanQuanAo.Controllers
 {
@@ -105,7 +105,7 @@ namespace WebsiteBanQuanAo.Controllers
                 {
                     GioHang newCartItem = new GioHang
                     {
-                        SanPhamID = productDetail.ChiTietID, // Sử dụng ChiTietID cho mục giỏ hàng
+                        SanPhamID = productDetail.ChiTietID, // Sử dụng ChiTietSanPhamID cho mục giỏ hàng
                         SoLuong = 1,
                         NguoiDungID = userId
                     };

@@ -269,77 +269,7 @@
 
                                 </div>
                             </div>
-                            <div class="col-lg-12">
-
-
-
-                                <div class="mb-3">
-                                    <a class="smart-suggestion-button" href="javascript:void(0);">GỢI Ý THÔNG MINH</a>
-                                </div>
-
-                                <!-- Form thu thập thông tin -->
-                                <div id="smartSuggestionForm" class="hidden-form">
-                                    <form>
-                                        <h3>Gợi ý thông minh</h3>
-                                        <div class="form-group">
-                                            @Html.Label("Độ Tuổi")
-                                            <input type="number" name="dotuoi" min="1" max="120" value="18" class="form-control" />
-                                        </div>
-                                        <input type="hidden" name="trangthaigoiy" value="true" />
-                                        <!-- Thêm trường cho Sở thích -->
-                                        <div class="form-group">
-                                            @Html.Label("Sở Thích")
-                                            <select name="sothich" class="form-control">
-                                                <option value="Thể thao">Thể thao năng động</option>
-                                                <option value="Công sở, lịch sự">Công sở, lịch sự</option>
-                                                <option value="Đơn giản, thường ngày">Đơn giản, thường ngày</option>
-                                                <option value="Thời trang du lịch">Thời trang du lịch</option>
-                                                <option value="Thời trang hot trend">Thời trang hot trend</option>
-                                            </select>
-                                        </div>
-
-                                        <!-- Thêm trường cho Mức chi tiêu -->
-                                        <div class="form-group">
-                                            @Html.Label("Mức Chi Tiêu Trong Năm ")
-                                            <select name="mucchitieu" class="form-control">
-                                                @for (int i = 5000000; i <= 1000000000; i += 5000000)
-                                                {
-                                                    <option value="@i">@i.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))</option>
-                                                }
-                                            </select>
-                                        </div>
-
-
-                                        <!-- Thêm trường cho Giới tính -->
-                                        <div class="form-group">
-                                            @Html.Label("Giới Tính")
-                                            <select name="gioitinh" class="form-control">
-                                                <option value="Nam">Nam</option>
-                                                <option value="Nữ">Nữ</option>
-                                            </select>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Gửi</button>
-                                        <button type="button" class="btn btn-secondary" onclick="hideForm()">Hủy</button>
-                                    </form>
-                                </div>
-                                <script>
-                                    // Hiển thị form
-                                    document.querySelector('.smart-suggestion-button').addEventListener('click', function () {
-                                        const form = document.getElementById('smartSuggestionForm');
-                                        form.classList.add('active');
-                                    });
-
-                                    // Ẩn form
-                                    function hideForm() {
-                                        const form = document.getElementById('smartSuggestionForm');
-                                        form.classList.remove('active');
-                                    }
-
-                                </script>
-
-
-
-                            </div>
+                            
                         </div>
 
                     </div>
@@ -367,11 +297,7 @@
                                                 <img src="~/img/@a.HinhAnhUrl" class="img-fluid w-100 rounded-top product-img-fixed grayscale" alt="Hết hàng">
                                             }
                                         </div>
-                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">
-                                            <p>
-                                                @a.SanPham.DanhMuc.TenDanhMuc
-                                            </p>
-                                        </div>
+
                                         <div class="p-4 border border-secondary border-top-0 rounded-bottom" style="flex-grow: 1;">
                                             <a href="/product/details/@a.SanPhamID">
                                                 <h4>@a.SanPham.TenSanPham</h4>

@@ -1,14 +1,14 @@
-﻿using System;
+﻿using WebsiteBanQuanAo.Filters;
+using WebsiteBanQuanAo.Models;
+using WebsiteBanQuanAo.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
-using WebsiteBanQuanAo.Filters;
-using WebsiteBanQuanAo.Models;
-using WebsiteBanQuanAo.Services;
 
-namespace DoAnChuyenNganh.Controllers
+namespace WebsiteBanQuanAo.Controllers
 {
     [UserAuthorization]
     public class PayController : Controller
@@ -163,7 +163,7 @@ namespace DoAnChuyenNganh.Controllers
                 DiaChiID = selectedAddress.DiaChiID,
                 TongTien = totalPrice,
                 TinhTrangDonHang = "Đang xử lý", // Trạng thái ban đầu của đơn hàng
-                HinhThucThanhToan = paymentMethod == "vnpay" ? "VNPAY" : "Tiền mặt",
+                HinhThucThanhToan = paymentMethod,
                 TinhTrangThanhToan = paymentMethod == "vnpay" ? "Đã thanh toán" : "Chưa thanh toán",
                 NgayThanhToan = paymentMethod == "vnpay" ? DateTime.Now : (DateTime?)null,
                 NgayDatHang = DateTime.Now
