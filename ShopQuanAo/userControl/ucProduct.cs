@@ -17,6 +17,9 @@ namespace userControl
         DanhMucBLL danhMucBLL = new DanhMucBLL();
         NhaCungCapBLL nhaCungCapBLL = new NhaCungCapBLL();
         SanPhamBLL sanPhamBLL = new SanPhamBLL();
+        MauBLL mauBLL = new MauBLL();
+        SizeBLL sizeBLL = new SizeBLL();
+        ChiTietSanPhamBLL chiTietSanPhamBLL = new ChiTietSanPhamBLL();
         public event Action<int> EditBrandRequested;
         public event Action<int> EditDetailRequested;
         public ucProduct()
@@ -32,7 +35,26 @@ namespace userControl
             cbbDanhMuc.DisplayMember = "TenDanhMuc";
             cbbDanhMuc.ValueMember = "DanhMucID";
         }
+        void loadBrand()
+        {
+            List<NhaCungCap> brands = nhaCungCapBLL.getAllNhaCungCapBLL();
 
+            NhaCungCap defaultBrand = new NhaCungCap
+            {
+                NhaCungCapID = 0,
+                TenNhaCungCap = "<Vui lòng chọn nhà cung cấp>"
+            };
+
+            brands.Insert(0, defaultBrand);
+
+            // Gán danh sách vào ComboBox
+            cbbBrand.DataSource = brands;
+            cbbBrand.DisplayMember = "TenNhaCungCap";
+            cbbBrand.ValueMember = "NhaCungCapID";
+
+            // Đặt mục mặc định
+            cbbBrand.SelectedIndex = 0;
+        }
         void loadSanPham()
         {
             List<SanPham> sanphams = sanPhamBLL.GetAllSanPham();
@@ -44,11 +66,46 @@ namespace userControl
             dgvSP.Columns["MoTa"].HeaderText = "Mô tả";
             dgvSP.Columns["SoLuongDaBan"].HeaderText = "Số lượng đã bán";
         }
+        void loadMau()
+        {
+            List<Mau> maus = mauBLL.getAllMau();
 
+            Mau defaultMau = new Mau
+            {
+                MauID = 0,
+                TenMau = "<Vui lòng chọn màu>"
+            };
+
+            maus.Insert(0, defaultMau);
+            cbbMau.DataSource = maus;
+            cbbMau.DisplayMember = "TenMau";
+            cbbMau.ValueMember = "MauID";
+            cbbMau.SelectedIndex = 0;
+        }
+
+        void loadSize()
+        {
+            List<DTO.Size> sizes = sizeBLL.getAllSize();
+
+            DTO.Size defaultSize = new DTO.Size
+            {
+                SizeID = 0,
+                TenSize = "<Vui lòng chọn kích thước>"
+            };
+
+            sizes.Insert(0, defaultSize);
+            cbbSize.DataSource = sizes;
+            cbbSize.DisplayMember = "TenSize";
+            cbbSize.ValueMember = "SizeID";
+            cbbSize.SelectedIndex = 0;
+        }
         private void ucProduct_Load(object sender, EventArgs e)
         {
             loadDanhMuc();
             loadSanPham();
+            loadBrand();
+            loadMau();
+            loadSize();
         }
         #endregion
         private void btnAdd_Click(object sender, EventArgs e)
@@ -181,6 +238,26 @@ namespace userControl
                 MessageBox.Show("Vui lòng chọn một sản phẩm để xem chi tiết!");
             }
 
+        }
+
+        private void btnUpload_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "Image Files (*.jpg;*.png)|*.jpg;*.png";
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = openFileDialog1.FileName;
+
+                if (filePath.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase) ||
+                    filePath.EndsWith(".png", StringComparison.OrdinalIgnoreCase))
+                {
+                    pbImg.ImageLocation = filePath;
+                }
+                else
+                {
+                    MessageBox.Show("Chỉ cho phép chọn các file .jpg hoặc .png.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

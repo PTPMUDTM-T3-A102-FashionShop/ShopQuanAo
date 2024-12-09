@@ -63,7 +63,7 @@
             this.Controls.Add(this.lbDate);
             this.Controls.Add(this.lbTime);
             this.Name = "ucHome";
-            this.Size = new System.Drawing.Size(1100, 700);
+            this.Size = new System.Drawing.Size(1089, 700);
             this.Load += new System.EventHandler(this.ucHome_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
