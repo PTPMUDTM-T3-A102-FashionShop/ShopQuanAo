@@ -3,15 +3,39 @@
   "WorkspaceRootPath": "D:\\PMemUDungTMinh\\DoAn\\DoAn2\\ShopQuanAo\\ShopQuanAo\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|d:\\pmemudungtminh\\doan\\doan2\\shopquanao\\shopquanao\\usercontrol\\ucproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{685FA2DA-D8AB-4657-8FE0-06CEE617E7BD}|DTO\\DTO.csproj|d:\\pmemudungtminh\\doan\\doan2\\shopquanao\\shopquanao\\dto\\spdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{685FA2DA-D8AB-4657-8FE0-06CEE617E7BD}|DTO\\DTO.csproj|solutionrelative:dto\\spdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|d:\\pmemudungtminh\\doan\\doan2\\shopquanao\\shopquanao\\usercontrol\\ucorderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|solutionrelative:usercontrol\\ucorderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|D:\\PMemUDungTMinh\\DoAn\\DoAn2\\ShopQuanAo\\ShopQuanAo\\usercontrol\\ucorderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|solutionrelative:usercontrol\\ucorderdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|D:\\PMemUDungTMinh\\DoAn\\DoAn2\\ShopQuanAo\\ShopQuanAo\\usercontrol\\ucorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|solutionrelative:usercontrol\\ucorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|D:\\PMemUDungTMinh\\DoAn\\DoAn2\\ShopQuanAo\\ShopQuanAo\\usercontrol\\ucorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|solutionrelative:usercontrol\\ucorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{685FA2DA-D8AB-4657-8FE0-06CEE617E7BD}|DTO\\DTO.csproj|D:\\PMemUDungTMinh\\DoAn\\DoAn2\\ShopQuanAo\\ShopQuanAo\\dto\\doanketmon_udtm.dbml||{B465B5AD-8799-4507-B90A-EE29ACF36AF9}|",
+      "RelativeMoniker": "D:0:0:{685FA2DA-D8AB-4657-8FE0-06CEE617E7BD}|DTO\\DTO.csproj|solutionrelative:dto\\doanketmon_udtm.dbml||{B465B5AD-8799-4507-B90A-EE29ACF36AF9}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|D:\\PMemUDungTMinh\\DoAn\\DoAn2\\ShopQuanAo\\ShopQuanAo\\usercontrol\\ucproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|solutionrelative:usercontrol\\ucproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|d:\\pmemudungtminh\\doan\\doan2\\shopquanao\\shopquanao\\usercontrol\\ucdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|D:\\PMemUDungTMinh\\DoAn\\DoAn2\\ShopQuanAo\\ShopQuanAo\\usercontrol\\ucdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|solutionrelative:usercontrol\\ucdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|d:\\pmemudungtminh\\doan\\doan2\\shopquanao\\shopquanao\\usercontrol\\ucproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|D:\\PMemUDungTMinh\\DoAn\\DoAn2\\ShopQuanAo\\ShopQuanAo\\usercontrol\\ucproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{58F8B4CF-EC8B-4084-88C4-9BD28303CD01}|userControl\\userControl.csproj|solutionrelative:usercontrol\\ucproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -22,11 +46,86 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SPDTO.cs",
+              "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\DoAn2\\ShopQuanAo\\ShopQuanAo\\DTO\\SPDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\SPDTO.cs",
+              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\DoAn2\\ShopQuanAo\\ShopQuanAo\\DTO\\SPDTO.cs",
+              "RelativeToolTip": "DTO\\SPDTO.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAzwBAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T06:11:36.599Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ucOrder.cs",
+              "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\DoAn2\\ShopQuanAo\\ShopQuanAo\\userControl\\ucOrder.cs",
+              "RelativeDocumentMoniker": "userControl\\ucOrder.cs",
+              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\DoAn2\\ShopQuanAo\\ShopQuanAo\\userControl\\ucOrder.cs",
+              "RelativeToolTip": "userControl\\ucOrder.cs",
+              "ViewState": "AgIAAJ0BAAAAAAAAAAAAwOMBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T05:47:42.507Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ucOrder.cs [Design]",
+              "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\DoAn2\\ShopQuanAo\\ShopQuanAo\\userControl\\ucOrder.cs",
+              "RelativeDocumentMoniker": "userControl\\ucOrder.cs",
+              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\DoAn2\\ShopQuanAo\\ShopQuanAo\\userControl\\ucOrder.cs [Design]",
+              "RelativeToolTip": "userControl\\ucOrder.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T05:47:41.389Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DoAnKetMon_UDTM.dbml",
+              "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\DoAn2\\ShopQuanAo\\ShopQuanAo\\DTO\\DoAnKetMon_UDTM.dbml",
+              "RelativeDocumentMoniker": "DTO\\DoAnKetMon_UDTM.dbml",
+              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\DoAn2\\ShopQuanAo\\ShopQuanAo\\DTO\\DoAnKetMon_UDTM.dbml",
+              "RelativeToolTip": "DTO\\DoAnKetMon_UDTM.dbml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001722|",
+              "WhenOpened": "2024-12-10T05:45:20.916Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "ucOrderDetail.cs",
+              "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\DoAn2\\ShopQuanAo\\ShopQuanAo\\userControl\\ucOrderDetail.cs",
+              "RelativeDocumentMoniker": "userControl\\ucOrderDetail.cs",
+              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\DoAn2\\ShopQuanAo\\ShopQuanAo\\userControl\\ucOrderDetail.cs",
+              "RelativeToolTip": "userControl\\ucOrderDetail.cs",
+              "ViewState": "AgIAAMMAAAAAAAAAAAAiwN4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T05:36:41.039Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ucOrderDetail.cs [Design]",
+              "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\DoAn2\\ShopQuanAo\\ShopQuanAo\\userControl\\ucOrderDetail.cs",
+              "RelativeDocumentMoniker": "userControl\\ucOrderDetail.cs",
+              "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\DoAn2\\ShopQuanAo\\ShopQuanAo\\userControl\\ucOrderDetail.cs [Design]",
+              "RelativeToolTip": "userControl\\ucOrderDetail.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T05:35:44.548Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "ucDetail.cs",
               "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\DoAn2\\ShopQuanAo\\ShopQuanAo\\userControl\\ucDetail.cs",
               "RelativeDocumentMoniker": "userControl\\ucDetail.cs",
@@ -39,20 +138,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "ucProduct.cs",
               "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\DoAn2\\ShopQuanAo\\ShopQuanAo\\userControl\\ucProduct.cs",
               "RelativeDocumentMoniker": "userControl\\ucProduct.cs",
               "ToolTip": "D:\\PMemUDungTMinh\\DoAn\\DoAn2\\ShopQuanAo\\ShopQuanAo\\userControl\\ucProduct.cs",
               "RelativeToolTip": "userControl\\ucProduct.cs",
-              "ViewState": "AgIAAF0BAAAAAAAAAIAwwH8BAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAEwBAAAAAAAAAAAtwG8BAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-09T19:27:01.952Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "ucProduct.cs [Design]",
               "DocumentMoniker": "D:\\PMemUDungTMinh\\DoAn\\DoAn2\\ShopQuanAo\\ShopQuanAo\\userControl\\ucProduct.cs",
               "RelativeDocumentMoniker": "userControl\\ucProduct.cs",

@@ -32,7 +32,7 @@ namespace userControl
         private void ucOrderDetail_Load(object sender, EventArgs e)
         {
             // Thiết lập các giá trị cho ComboBox khi form được tải
-            cbTinhTrangDonHang.Items.AddRange(new string[] { "Đang Xử Lý", "Đã Xác Nhận", "Đang Vận Chuyển", "Hoàn Thành", "Đã Hủy" });
+            cbTinhTrangDonHang.Items.AddRange(new string[] { "Đã Xác Nhận", "Đang Vận Chuyển", "Đã Hủy" });
             cbTinhTrangThanhToan.Items.AddRange(new string[] { "Đã thanh toán", "Chưa thanh toán" });
             LoadDonHangData();
             dgvDonHang.ReadOnly = true; // Ngăn người dùng chỉnh sửa dữ liệu trực tiếp trên DataGridView
@@ -106,17 +106,44 @@ namespace userControl
                 try
                 {
                     dBConnection.OpenConnection();
+
+                    string tinhTrangDonHang = cbTinhTrangDonHang.SelectedItem.ToString();
+
+                    // Nếu trạng thái đơn hàng là 'Đã Hủy', cập nhật số lượng sản phẩm
+                    if (tinhTrangDonHang == "Đã Hủy")
+                    {
+                        string selectQuery = "SELECT SanPhamID, SoLuong FROM ChiTietDonHang WHERE DonHangID = @DonHangID";
+                        SqlCommand selectCmd = new SqlCommand(selectQuery, dBConnection.conn);
+                        selectCmd.Parameters.AddWithValue("@DonHangID", selectedDonHangID);
+                        SqlDataAdapter adapter = new SqlDataAdapter(selectCmd);
+                        DataTable chiTietDonHangTable = new DataTable();
+                        adapter.Fill(chiTietDonHangTable);
+
+                        foreach (DataRow row in chiTietDonHangTable.Rows)
+                        {
+                            int sanPhamID = Convert.ToInt32(row["SanPhamID"]);
+                            int soLuong = Convert.ToInt32(row["SoLuong"]);
+
+                            string updateSanPhamQuery = "UPDATE ChiTietSanPham SET SoLuongTonKho = SoLuongTonKho + @SoLuong WHERE ChiTietID = @SanPhamID";
+                            SqlCommand updateSanPhamCmd = new SqlCommand(updateSanPhamQuery, dBConnection.conn);
+                            updateSanPhamCmd.Parameters.AddWithValue("@SoLuong", soLuong);
+                            updateSanPhamCmd.Parameters.AddWithValue("@SanPhamID", sanPhamID);
+                            updateSanPhamCmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    // Cập nhật trạng thái đơn hàng
                     string query = @"
-                        UPDATE DonHang
-                        SET TinhTrangDonHang = @TinhTrangDonHang,
-                            HinhThucThanhToan = @HinhThucThanhToan,
-                            TinhTrangThanhToan = @TinhTrangThanhToan,
-                            NgayThanhToan = GETDATE(),
-                            NhanVienID = @NhanVienID
-                        WHERE DonHangID = @DonHangID";
+                UPDATE DonHang
+                SET TinhTrangDonHang = @TinhTrangDonHang,
+                    HinhThucThanhToan = @HinhThucThanhToan,
+                    TinhTrangThanhToan = @TinhTrangThanhToan,
+                    NgayThanhToan = GETDATE(),
+                    NhanVienID = @NhanVienID
+                WHERE DonHangID = @DonHangID";
 
                     SqlCommand cmd = new SqlCommand(query, dBConnection.conn);
-                    cmd.Parameters.AddWithValue("@TinhTrangDonHang", cbTinhTrangDonHang.SelectedItem.ToString());
+                    cmd.Parameters.AddWithValue("@TinhTrangDonHang", tinhTrangDonHang);
                     cmd.Parameters.AddWithValue("@HinhThucThanhToan", txtHinhThucThanhToan.Text);
                     cmd.Parameters.AddWithValue("@TinhTrangThanhToan", cbTinhTrangThanhToan.SelectedItem.ToString());
                     cmd.Parameters.AddWithValue("@NhanVienID", nguoiDung.NguoiDungID);
@@ -142,6 +169,7 @@ namespace userControl
                     dBConnection.CloseConnection();
                 }
             }
+
         }
 
         private int GetSelectedDonHangID()
@@ -179,11 +207,20 @@ namespace userControl
             if (e.RowIndex >= 0 && e.RowIndex < dgvDonHang.Rows.Count - 1) // Kiểm tra để tránh hàng cuối cùng trống
             {
                 DataGridViewRow row = dgvDonHang.Rows[e.RowIndex];
+                string tinhTrangDonHang = row.Cells["TinhTrangDonHang"].Value.ToString();
+
+                if (tinhTrangDonHang == "Hoàn Thành" || tinhTrangDonHang == "Đã Hủy")
+                {
+                    MessageBox.Show("Không cho phép thay đổi đơn hàng đã hoàn thành hoặc đã hủy. Vui lòng chọn đơn hàng khác nhé!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 selectedDonHangID = Convert.ToInt32(row.Cells["DonHangID"].Value);
-                cbTinhTrangDonHang.SelectedItem = row.Cells["TinhTrangDonHang"].Value.ToString();
+                cbTinhTrangDonHang.SelectedItem = tinhTrangDonHang;
                 txtHinhThucThanhToan.Text = row.Cells["HinhThucThanhToan"].Value.ToString();
                 cbTinhTrangThanhToan.SelectedItem = row.Cells["TinhTrangThanhToan"].Value.ToString();
             }
+
         }
     }
 }
