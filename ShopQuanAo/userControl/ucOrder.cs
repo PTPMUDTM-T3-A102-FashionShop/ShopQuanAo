@@ -410,7 +410,7 @@ namespace userControl
         {
 
             // Thay đổi đường dẫn nè
-            string folderPath = @"C:\Users\gialo\Desktop\";
+            string folderPath = @"C:\Users\THIS PC\OneDrive\Desktop\";
             string fileName = $"HoaDon_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx";
             string fullPath = System.IO.Path.Combine(folderPath, fileName);
 
