@@ -166,7 +166,7 @@
             this.btnDeleteColor.ImageSize = new System.Drawing.Size(23, 23);
             this.btnDeleteColor.Location = new System.Drawing.Point(213, 557);
             this.btnDeleteColor.Name = "btnDeleteColor";
-            this.btnDeleteColor.Size = new System.Drawing.Size(182, 45);
+            this.btnDeleteColor.Size = new System.Drawing.Size(197, 45);
             this.btnDeleteColor.TabIndex = 18;
             this.btnDeleteColor.Text = "Delete color";
             this.btnDeleteColor.TextOffset = new System.Drawing.Point(15, 0);
@@ -188,7 +188,7 @@
             this.btnEditColor.ImageSize = new System.Drawing.Size(23, 23);
             this.btnEditColor.Location = new System.Drawing.Point(214, 619);
             this.btnEditColor.Name = "btnEditColor";
-            this.btnEditColor.Size = new System.Drawing.Size(181, 45);
+            this.btnEditColor.Size = new System.Drawing.Size(196, 45);
             this.btnEditColor.TabIndex = 17;
             this.btnEditColor.Text = "Edit color";
             this.btnEditColor.TextOffset = new System.Drawing.Point(15, 0);
@@ -210,7 +210,7 @@
             this.btnAddColor.ImageSize = new System.Drawing.Size(23, 23);
             this.btnAddColor.Location = new System.Drawing.Point(213, 496);
             this.btnAddColor.Name = "btnAddColor";
-            this.btnAddColor.Size = new System.Drawing.Size(182, 45);
+            this.btnAddColor.Size = new System.Drawing.Size(197, 45);
             this.btnAddColor.TabIndex = 16;
             this.btnAddColor.Text = "Add color";
             this.btnAddColor.TextOffset = new System.Drawing.Point(15, 0);
@@ -232,7 +232,7 @@
             this.btnDeleteSize.ImageSize = new System.Drawing.Size(23, 23);
             this.btnDeleteSize.Location = new System.Drawing.Point(213, 270);
             this.btnDeleteSize.Name = "btnDeleteSize";
-            this.btnDeleteSize.Size = new System.Drawing.Size(182, 45);
+            this.btnDeleteSize.Size = new System.Drawing.Size(197, 45);
             this.btnDeleteSize.TabIndex = 12;
             this.btnDeleteSize.Text = "Delete size";
             this.btnDeleteSize.TextOffset = new System.Drawing.Point(15, 0);
@@ -254,7 +254,7 @@
             this.btnEditSize.ImageSize = new System.Drawing.Size(23, 23);
             this.btnEditSize.Location = new System.Drawing.Point(214, 332);
             this.btnEditSize.Name = "btnEditSize";
-            this.btnEditSize.Size = new System.Drawing.Size(181, 45);
+            this.btnEditSize.Size = new System.Drawing.Size(196, 45);
             this.btnEditSize.TabIndex = 11;
             this.btnEditSize.Text = "Edit size";
             this.btnEditSize.TextOffset = new System.Drawing.Point(15, 0);
@@ -276,7 +276,7 @@
             this.btnAddSize.ImageSize = new System.Drawing.Size(23, 23);
             this.btnAddSize.Location = new System.Drawing.Point(214, 209);
             this.btnAddSize.Name = "btnAddSize";
-            this.btnAddSize.Size = new System.Drawing.Size(181, 45);
+            this.btnAddSize.Size = new System.Drawing.Size(196, 45);
             this.btnAddSize.TabIndex = 10;
             this.btnAddSize.Text = "Add size";
             this.btnAddSize.TextOffset = new System.Drawing.Point(15, 0);
