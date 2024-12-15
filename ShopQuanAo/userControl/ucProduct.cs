@@ -199,11 +199,18 @@ namespace userControl
             string destinationFolder = Path.Combine(Application.StartupPath, @"..\..\..\WebsiteBanQuanAo\img");
             string destinationFilePath = Path.Combine(destinationFolder, newFileName);
 
-            // Kiểm tra nếu file đã tồn tại
-            if (File.Exists(destinationFilePath))
+            // Tách tên và phần mở rộng
+            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(newFileName);
+            string fileExtension = Path.GetExtension(newFileName);
+
+            // Kiểm tra nếu file đã tồn tại và tạo tên mới nếu cần
+            int fileIndex = 1;
+            while (File.Exists(destinationFilePath))
             {
-                MessageBox.Show("Tên hình ảnh đã tồn tại trong cơ sở dữ liệu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                // Tạo tên mới với số đếm (ví dụ: hinh1.jpg, hinh2.jpg, ...)
+                string newFileNameWithIndex = $"{fileNameWithoutExtension}{fileIndex}{fileExtension}";
+                destinationFilePath = Path.Combine(destinationFolder, newFileNameWithIndex);
+                fileIndex++;
             }
 
             // Kiểm tra thư mục img có tồn tại không, nếu không thì tạo mới
@@ -211,13 +218,13 @@ namespace userControl
             {
                 Directory.CreateDirectory(destinationFolder);
             }
+            string finalFileName = Path.GetFileName(destinationFilePath);
             bool kichHoatDetail = rdbDetailOn.Checked;
             try
             {
                 // Tạo đối tượng ChiTietSanPham
                 ChiTietSanPham chiTietSanPham = new ChiTietSanPham
                 {
-                    //Kich hoat ??
                     SanPhamID = sanPhamIDMax,
                     MauID = mauID,
                     GiaDuocGiam = 0,
@@ -225,7 +232,7 @@ namespace userControl
                     Gia = gia,
                     KichHoat = kichHoatDetail,
                     SoLuongTonKho = soLuongTonKho,
-                    HinhAnhUrl = newFileName
+                    HinhAnhUrl = finalFileName
                 };
 
                 // Thêm vào cơ sở dữ liệu
@@ -267,7 +274,7 @@ namespace userControl
             {
                 int sanPhamID = Convert.ToInt32(dgvSP.SelectedRows[0].Cells["SanPhamID"].Value);
                 sanPhamBLL.DeleteSanPham(sanPhamID);
-                
+
                 MessageBox.Show("Sản phẩm đã được xóa thành công.");
                 loadSanPham();
             }

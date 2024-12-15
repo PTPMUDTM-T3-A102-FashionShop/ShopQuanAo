@@ -127,6 +127,8 @@ namespace FormShopQuanAo
         private void BtnBrand_GotFocus(object sender, EventArgs e)
         {
             btnBrand.Image = Properties.Resources.bbrand;
+            btnBrand.FillColor = Color.SandyBrown;
+            btnBrand.ForeColor = Color.White;
         }
 
         private void BtnHome_Leave(object sender, EventArgs e)
@@ -146,7 +148,7 @@ namespace FormShopQuanAo
         private void Menu_Load(object sender, EventArgs e)
         {
             btnHome.Tag = "MH001";
-            btnCate.Tag = "MH002";
+            dropdownPanel.Tag = "MH002";
             btnSP.Tag = "MH003";
             btnBrand.Tag = "MH004";
             btnOrder.Tag = "MH005";
