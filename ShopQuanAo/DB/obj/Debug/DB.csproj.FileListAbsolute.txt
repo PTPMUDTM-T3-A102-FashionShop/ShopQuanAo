@@ -51,3 +51,10 @@ D:\PMemUDungTMinh\DoAn\DoAn2\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.csproj.Assemb
 D:\PMemUDungTMinh\DoAn\DoAn2\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.csproj.CoreCompileInputs.cache
 D:\PMemUDungTMinh\DoAn\DoAn2\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.dll
 D:\PMemUDungTMinh\DoAn\DoAn2\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.pdb
+C:\Users\admin\Desktop\DoAn_PhatTrienUngDungThongMinh_Finall\ShopQuanAo\ShopQuanAo\DB\bin\Debug\DB.dll.config
+C:\Users\admin\Desktop\DoAn_PhatTrienUngDungThongMinh_Finall\ShopQuanAo\ShopQuanAo\DB\bin\Debug\DB.dll
+C:\Users\admin\Desktop\DoAn_PhatTrienUngDungThongMinh_Finall\ShopQuanAo\ShopQuanAo\DB\bin\Debug\DB.pdb
+C:\Users\admin\Desktop\DoAn_PhatTrienUngDungThongMinh_Finall\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\DoAn_PhatTrienUngDungThongMinh_Finall\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\DoAn_PhatTrienUngDungThongMinh_Finall\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.dll
+C:\Users\admin\Desktop\DoAn_PhatTrienUngDungThongMinh_Finall\ShopQuanAo\ShopQuanAo\DB\obj\Debug\DB.pdb

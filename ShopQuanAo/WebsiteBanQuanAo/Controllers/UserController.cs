@@ -11,7 +11,6 @@ using Microsoft.AspNet.Identity;
 using WebsiteBanQuanAo.Filters;
 using WebsiteBanQuanAo.Models;
 using WebsiteBanQuanAo.KNN;
-
 namespace DoAnChuyenNganh.Controllers
 {
     [UserAuthorization]
@@ -62,10 +61,10 @@ namespace DoAnChuyenNganh.Controllers
                 };
 
                 // Phân loại khách hàng mới
-                PhanLoaiKNN knn = new PhanLoaiKNN();
-                knn.DocDuLieuNhan();
+                KNNClassifier knn = new KNNClassifier();
+                knn.LoadLabelsFromDatabase();
                 double[] duLieuKhachHangMoi = new double[] { (double)myUser.DoTuoi, (double)myUser.MucChiTieu };
-                string nhanDuDoan = knn.DuDoan(duLieuKhachHangMoi);
+                string nhanDuDoan = knn.Predict(duLieuKhachHangMoi);
                 if (nhanDuDoan != null && nhanDuDoan != "Khách hàng mới")
                 {
                     myUser.PhanKhucKH = nhanDuDoan;
@@ -230,10 +229,10 @@ namespace DoAnChuyenNganh.Controllers
                     ndung.GioiTinh = nd.GioiTinh;
                     ndung.MucChiTieu = nd.MucChiTieu;
                     ndung.DoTuoi = nd.DoTuoi;
-                    PhanLoaiKNN knn = new PhanLoaiKNN();
-                    knn.DocDuLieuNhan();
+                    KNNClassifier knn = new KNNClassifier();
+                    knn.LoadLabelsFromDatabase();
                     double[] duLieuKhachHangMoi = new double[] { (double)nd.DoTuoi, (double)nd.MucChiTieu };
-                    string nhanDuDoan = knn.DuDoan(duLieuKhachHangMoi);
+                    string nhanDuDoan = knn.Predict(duLieuKhachHangMoi);
                     ndung.PhanKhucKH = nhanDuDoan;
                     db.SaveChanges();
                     ViewBag.Message = "Cập nhật thông tin cá nhân thành công!";
@@ -409,92 +408,6 @@ namespace DoAnChuyenNganh.Controllers
 
 
 
-
-
-        //Đăng nhập bằng google
-        private IAuthenticationManager AuthenticationManager
-        {
-            get { return HttpContext.GetOwinContext().Authentication; }
-        }
-
-        // Phương thức đăng nhập
-
-        // Phương thức xử lý đăng nhập qua Google
-        public ActionResult ExternalLogin(string provider)
-        {
-            return new ChallengeResult(provider, Url.Action("LoginCallback", "User"));
-        }
-
-        // Phương thức xử lý callback sau khi đăng nhập thành công qua Google
-        public ActionResult LoginCallback()
-        {
-            // Lấy thông tin từ Google sau khi xác thực
-            var loginInfo = AuthenticationManager.GetExternalLoginInfo();
-
-            // Kiểm tra nếu loginInfo là null
-            if (loginInfo == null)
-            {
-                TempData["Error"] = "Quá trình đăng nhập bị hủy hoặc xảy ra lỗi. Vui lòng thử lại.";
-                return RedirectToAction("Login");
-            }
-
-            // Tìm kiếm người dùng dựa trên email
-            var myUser = db.NguoiDungs.FirstOrDefault(u => u.Email == loginInfo.Email);
-
-            if (myUser == null)
-            {
-                // Nếu không tìm thấy người dùng, tạo tài khoản mới
-                myUser = new NguoiDung
-                {
-                    TenDangNhap = loginInfo.DefaultUserName,
-                    Email = loginInfo.Email,
-                    MaNhomNguoiDung = 1,
-                    NgayTao = DateTime.Now,
-                    KichHoat = true
-                };
-                db.NguoiDungs.Add(myUser);
-                db.SaveChanges();
-            }
-
-            // Tạo ClaimsIdentity từ thông tin đăng nhập
-            var identity = new ClaimsIdentity(DefaultAuthenticationTypes.ApplicationCookie);
-
-            // Thêm các claim từ thông tin đăng nhập
-            identity.AddClaim(new Claim(ClaimTypes.Name, myUser.TenDangNhap));
-            identity.AddClaim(new Claim(ClaimTypes.Email, myUser.Email));
-            identity.AddClaim(new Claim(ClaimTypes.Role, myUser.NhomNguoiDung.TenNhomNguoiDung));
-
-            // Đăng nhập và tạo cookie
-            AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = false }, identity);
-
-            // Lưu vào session
-            Session["UserID"] = myUser.NguoiDungID;
-
-            // Thêm cookie cho người dùng đã đăng nhập
-            HttpCookie authCookie = new HttpCookie("auth", myUser.TenDangNhap)
-            {
-                Expires = DateTime.Now.AddDays(1),
-                Path = "/",
-                HttpOnly = true
-            };
-            HttpCookie roleCookie = new HttpCookie("role", myUser.NhomNguoiDung.TenNhomNguoiDung);
-            Response.Cookies.Add(authCookie);
-            Response.Cookies.Add(roleCookie);
-
-            // Chuyển hướng đến trang chính của người dùng
-            if (myUser.NhomNguoiDung.TenNhomNguoiDung == "admin")
-            {
-                return RedirectToAction("Index", "Home", new { area = "admin" });
-            }
-            else if (myUser.NhomNguoiDung.TenNhomNguoiDung == "Khách hàng")
-            {
-                return RedirectToAction("Index", "Home");
-            }
-
-            // Mặc định, chuyển hướng đến trang đăng nhập nếu có lỗi
-            TempData["Error"] = "Có lỗi xảy ra. Vui lòng thử lại.";
-            return RedirectToAction("Login");
-        }
         public ActionResult Quenmatkhau()
         {
             return View();
@@ -510,22 +423,7 @@ namespace DoAnChuyenNganh.Controllers
         }
 
     }
-    public class ChallengeResult : HttpUnauthorizedResult
-    {
-        public ChallengeResult(string provider, string redirectUri)
-        {
-            LoginProvider = provider;
-            RedirectUri = redirectUri;
-        }
-
-        public string LoginProvider { get; set; }
-        public string RedirectUri { get; set; }
-
-        public override void ExecuteResult(ControllerContext context)
-        {
-            var properties = new AuthenticationProperties { RedirectUri = RedirectUri };
-            context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
-        }
-    }
+    
 
 }
+

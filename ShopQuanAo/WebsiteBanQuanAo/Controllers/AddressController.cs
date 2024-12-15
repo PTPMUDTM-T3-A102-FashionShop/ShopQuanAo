@@ -9,62 +9,57 @@ namespace WebsiteBanQuanAo.Controllers
     [UserAuthorization]
     public class AddressController : Controller
     {
-        private readonly ShopQuanAoEntities db = new ShopQuanAoEntities();
+        private readonly ShopQuanAoEntities _dbContext = new ShopQuanAoEntities();
 
         public ActionResult Index()
         {
-            int userId = GetCurrentUserId();
-            var addresses = GetShippingAddresses(userId);
-            return View(addresses);
+            int userId = GetAuthenticatedUserId();
+            var userAddresses = FetchUserAddresses(userId);
+            return View(userAddresses);
         }
 
-        // Lấy danh sách địa chỉ giao hàng của người dùng
-        private List<ThongTinGiaoHang> GetShippingAddresses(int userId)
+        private List<ThongTinGiaoHang> FetchUserAddresses(int userId)
         {
-            return db.ThongTinGiaoHangs.Where(addr => addr.NguoiDungID == userId).ToList();
+            return _dbContext.ThongTinGiaoHangs.Where(addr => addr.NguoiDungID == userId).ToList();
         }
 
         public ActionResult AddShippingAddress()
         {
-            return View(); // Bạn có thể để trang này để thêm địa chỉ
+            return View();
         }
 
-        // Thêm địa chỉ giao hàng
         [HttpPost]
-        public ActionResult AddShippingAddress(ThongTinGiaoHang address)
+        public ActionResult AddShippingAddress(ThongTinGiaoHang newAddress)
         {
             if (!ModelState.IsValid)
             {
-                // Nếu không hợp lệ, trả về danh sách địa chỉ để hiển thị lỗi
-                var addresses = GetShippingAddresses(GetCurrentUserId());
-                return View("Index", addresses); // Trả về view Index với danh sách địa chỉ
+                var currentAddresses = FetchUserAddresses(GetAuthenticatedUserId());
+                return View("Index", currentAddresses);
             }
 
-            int userId = GetCurrentUserId();
-            address.NguoiDungID = userId;
+            int userId = GetAuthenticatedUserId();
+            newAddress.NguoiDungID = userId;
 
-            // Nếu địa chỉ được chọn làm mặc định
-            if (address.DiaChiMacDinh)
+            if (newAddress.DiaChiMacDinh)
             {
-                // Bỏ mặc định tất cả các địa chỉ khác
-                SetDefaultShippingAddress(userId, address.DiaChiID);
+                UnsetDefaultAddress(userId, newAddress.DiaChiID);
             }
 
-            db.ThongTinGiaoHangs.Add(address);
-            db.SaveChanges();
+            _dbContext.ThongTinGiaoHangs.Add(newAddress);
+            _dbContext.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
         public ActionResult EditShippingAddress(int id)
         {
-            var address = db.ThongTinGiaoHangs.Find(id);
+            var address = _dbContext.ThongTinGiaoHangs.Find(id);
             if (address == null)
             {
                 return HttpNotFound();
             }
 
-            // Trả về view với địa chỉ hiện tại
-            return View(address); // Trả về đối tượng address cho view
+            return View(address);
         }
 
         [HttpPost]
@@ -72,102 +67,95 @@ namespace WebsiteBanQuanAo.Controllers
         {
             if (!ModelState.IsValid)
             {
-                // Nếu có lỗi xác thực, trả về form với dữ liệu đã nhập
-                return View(updatedAddress); // Trả về đối tượng updatedAddress cho view
+                return View(updatedAddress);
             }
 
-            var existingAddress = db.ThongTinGiaoHangs.Find(updatedAddress.DiaChiID);
+            var existingAddress = _dbContext.ThongTinGiaoHangs.Find(updatedAddress.DiaChiID);
             if (existingAddress != null)
             {
                 existingAddress.TenNguoiNhan = updatedAddress.TenNguoiNhan;
                 existingAddress.SoDienThoai = updatedAddress.SoDienThoai;
                 existingAddress.DiaChiGiaoHang = updatedAddress.DiaChiGiaoHang;
+
                 if (updatedAddress.DiaChiMacDinh)
                 {
-                    SetDefaultShippingAddress(existingAddress.NguoiDungID, existingAddress.DiaChiID);
+                    UnsetDefaultAddress(existingAddress.NguoiDungID, existingAddress.DiaChiID);
                 }
 
-                existingAddress.DiaChiMacDinh = updatedAddress.DiaChiMacDinh; // Cập nhật cờ mặc định
-                db.SaveChanges();
+                existingAddress.DiaChiMacDinh = updatedAddress.DiaChiMacDinh;
+                _dbContext.SaveChanges();
             }
 
-            // Quay về danh sách địa chỉ
-            var addressesAfterEdit = GetShippingAddresses(existingAddress.NguoiDungID);
-            return View("Index", addressesAfterEdit);
+            var updatedAddressList = FetchUserAddresses(existingAddress.NguoiDungID);
+            return View("Index", updatedAddressList);
         }
 
-
-        // Phương thức thiết lập địa chỉ mặc định
         [HttpPost]
-        public ActionResult SetDefaultShippingAddress(int userId, int diaChiId)
+        public ActionResult UnsetDefaultAddress(int userId, int addressId)
         {
-            // Bỏ thiết lập tất cả địa chỉ khác là mặc định
-            var otherAddresses = db.ThongTinGiaoHangs
-                .Where(addr => addr.NguoiDungID == userId && addr.DiaChiID != diaChiId)
+            var otherAddresses = _dbContext.ThongTinGiaoHangs
+                .Where(addr => addr.NguoiDungID == userId && addr.DiaChiID != addressId)
                 .ToList();
 
             foreach (var addr in otherAddresses)
             {
-                addr.DiaChiMacDinh = false; // Đặt các địa chỉ khác thành không mặc định
+                addr.DiaChiMacDinh = false;
             }
 
-            // Đặt địa chỉ được chọn làm mặc định
-            var addressToSetDefault = db.ThongTinGiaoHangs.Find(diaChiId);
-            if (addressToSetDefault != null)
+            var selectedAddress = _dbContext.ThongTinGiaoHangs.Find(addressId);
+            if (selectedAddress != null)
             {
-                addressToSetDefault.DiaChiMacDinh = true; // Đặt địa chỉ thành mặc định
+                selectedAddress.DiaChiMacDinh = true;
             }
 
-            db.SaveChanges();
+            _dbContext.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        // Phương thức thiết lập địa chỉ mặc định mới
-        private void SetNewDefaultAddress(int userId)
+        private void SetDefaultToFirstAddress(int userId)
         {
-            var remainingAddress = db.ThongTinGiaoHangs
+            var firstAvailableAddress = _dbContext.ThongTinGiaoHangs
                 .Where(addr => addr.NguoiDungID == userId && !addr.DiaChiMacDinh)
                 .FirstOrDefault();
 
-            if (remainingAddress != null)
+            if (firstAvailableAddress != null)
             {
-                remainingAddress.DiaChiMacDinh = true;
-                db.SaveChanges();
+                firstAvailableAddress.DiaChiMacDinh = true;
+                _dbContext.SaveChanges();
             }
         }
 
-        // Xóa địa chỉ giao hàng
         [HttpPost]
         public ActionResult DeleteShippingAddress(int id)
         {
-            var address = db.ThongTinGiaoHangs.Find(id);
-            if (address != null)
+            var addressToDelete = _dbContext.ThongTinGiaoHangs.Find(id);
+            if (addressToDelete != null)
             {
-                db.ThongTinGiaoHangs.Remove(address);
-                db.SaveChanges();
+                _dbContext.ThongTinGiaoHangs.Remove(addressToDelete);
+                _dbContext.SaveChanges();
 
-                // Thiết lập địa chỉ mới mặc định nếu địa chỉ bị xóa là địa chỉ mặc định
-                if (address.DiaChiMacDinh)
+                if (addressToDelete.DiaChiMacDinh)
                 {
-                    SetNewDefaultAddress(address.NguoiDungID);
+                    SetDefaultToFirstAddress(addressToDelete.NguoiDungID);
                 }
             }
+
             return RedirectToAction("Index");
         }
 
-        // Phương thức phụ để lấy ID người dùng hiện tại
-        private int GetCurrentUserId()
+        private int GetAuthenticatedUserId()
         {
             var authCookie = Request.Cookies["auth"];
             if (authCookie != null)
             {
-                string tenDangNhap = authCookie.Value;
-                var user = db.NguoiDungs.FirstOrDefault(u => u.TenDangNhap == tenDangNhap);
+                string username = authCookie.Value;
+                var user = _dbContext.NguoiDungs.FirstOrDefault(u => u.TenDangNhap == username);
                 if (user != null)
                 {
                     return user.NguoiDungID;
                 }
             }
+
             return 0;
         }
     }

@@ -44,7 +44,7 @@ CREATE TABLE ThongTinGiaoHang (
     TenNguoiNhan NVARCHAR(100) NOT NULL,
     SoDienThoai NVARCHAR(15) NOT NULL,
     DiaChiGiaoHang NVARCHAR(255) NOT NULL,
-	DiaChiMacDinh BIT DEFAULT 0, -- Địa chỉ mặc định 1:mặc định/ 0:không phải mặc định
+	DiaChiMacDinh BIT NOT NULL, -- Địa chỉ mặc định 1:mặc định/ 0:không phải mặc định
     FOREIGN KEY (NguoiDungID) REFERENCES NguoiDung(NguoiDungID)
 );
 

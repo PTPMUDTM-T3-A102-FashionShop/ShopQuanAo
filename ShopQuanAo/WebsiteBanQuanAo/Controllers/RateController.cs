@@ -9,103 +9,101 @@ namespace WebsiteBanQuanAo.Controllers
 {
     public class RateController : Controller
     {
-        // GET: Rate
         ShopQuanAoEntities db = new ShopQuanAoEntities();
 
         public ActionResult Index(int id)
         {
-            // Lấy đơn hàng theo ID
-            DonHang dh = db.DonHangs.FirstOrDefault(x => x.DonHangID == id);
-            dh.TinhTrangDonHang = "Hoàn Thành";
-            db.SaveChanges();
+            var order = db.DonHangs.FirstOrDefault(x => x.DonHangID == id);
+            if (order != null)
+            {
+                order.TinhTrangDonHang = "Hoàn Thành";
+                db.SaveChanges();
+            }
+
             ViewBag.iddonhang = id;
-            if (dh == null)
+
+            if (order == null)
             {
                 return HttpNotFound("Không tìm thấy đơn hàng.");
             }
 
-            // Lấy danh sách ChiTietSanPham từ ChiTietDonHang liên quan đến DonHang
-            var ctdhList = db.ChiTietDonHangs.Where(x => x.DonHangID == id).ToList();
-            ctdhList = ctdhList.Where(x => x.TinhTrangDanhGia == null || x.TinhTrangDanhGia == 0).ToList();
+            var orderDetails = db.ChiTietDonHangs
+                                  .Where(x => x.DonHangID == id && (x.TinhTrangDanhGia == null || x.TinhTrangDanhGia == 0))
+                                  .ToList();
 
-
-
-
-
-            return View(ctdhList); // Truyền danh sách ChiTietSanPham ra View
+            return View(orderDetails);
         }
+
         public ActionResult Rate(int id, int iddonhang)
         {
-            // Lấy thông tin sản phẩm dựa trên ID
-            ChiTietSanPham sp = db.ChiTietSanPhams.FirstOrDefault(x => x.ChiTietID == id);
-            if (sp == null)
+            var productDetail = db.ChiTietSanPhams.FirstOrDefault(x => x.ChiTietID == id);
+            if (productDetail == null)
             {
                 return HttpNotFound("Sản phẩm không tồn tại.");
             }
+
             ViewBag.iddonhang = iddonhang;
-            return View(sp); // Truyền sản phẩm vào View
+            return View(productDetail);
         }
 
         [HttpPost]
         public ActionResult Rate(int id, int danhGia, string noiDung, int iddonhang)
         {
-            ChiTietDonHang ctdh = db.ChiTietDonHangs
-    .Where(x => x.SanPhamID == id && x.DonHangID == iddonhang) // Điều kiện thứ hai
-    .FirstOrDefault(); // Lấy phần tử đầu tiên thỏa mãn điều kiện
-            ctdh.TinhTrangDanhGia = 1;
-            db.SaveChanges();
-            // Kiểm tra sản phẩm tồn tại
-            id = ctdh.ChiTietSanPham.SanPham.SanPhamID;
-            SanPham sp = db.SanPhams.Where(x => x.SanPhamID == id).FirstOrDefault();
-            if (sp == null)
+            var orderDetail = db.ChiTietDonHangs
+                                 .Where(x => x.SanPhamID == id && x.DonHangID == iddonhang)
+                                 .FirstOrDefault();
+
+            if (orderDetail != null)
+            {
+                orderDetail.TinhTrangDanhGia = 1;
+                db.SaveChanges();
+            }
+
+            id = orderDetail?.ChiTietSanPham?.SanPham?.SanPhamID ?? 0;
+            var product = db.SanPhams.FirstOrDefault(x => x.SanPhamID == id);
+            if (product == null)
             {
                 return HttpNotFound("Sản phẩm không tồn tại.");
             }
 
-            // Lấy người dùng hiện tại (giả sử đã đăng nhập)
-            int nguoiDungID = GetCurrentUserId(); // Thay bằng logic lấy ID người dùng đăng nhập
+            int userId = GetCurrentUserId();
 
-            // Thêm phản hồi vào cơ sở dữ liệu
-            PhanHoi ph = new PhanHoi
+            var feedback = new PhanHoi
             {
                 SanPhamID = id,
-                NguoiDungID = nguoiDungID,
+                NguoiDungID = userId,
                 NoiDung = noiDung,
                 DanhGia = danhGia,
                 NgayPhanHoi = DateTime.Now
             };
-            db.PhanHois.Add(ph);
 
-            // Lấy số sao trung bình của sản phẩm, nếu không có đánh giá nào thì gán số sao đầu tiên làm số sao trung bình.
-            var danhGiaTB = db.PhanHois
-                               .Where(x => x.SanPhamID == id)
-                               .Average(x => (double?)x.DanhGia);
+            db.PhanHois.Add(feedback);
 
-            // Nếu không có đánh giá nào, gán số sao TB bằng số sao của lượt đánh giá đầu tiên
-            if (sp.SoSaoTB == null || sp.SoSaoTB == 0)
+            var avgRating = db.PhanHois
+                              .Where(x => x.SanPhamID == id)
+                              .Average(x => (double?)x.DanhGia);
+
+            if (product.SoSaoTB == null || product.SoSaoTB == 0)
             {
-                sp.SoSaoTB = danhGia;
+                product.SoSaoTB = danhGia;
             }
             else
             {
-                sp.SoSaoTB = (int)Math.Round(danhGiaTB.Value);
+                product.SoSaoTB = (int)Math.Round(avgRating.Value);
             }
 
-
             db.SaveChanges();
-            return RedirectToAction("index", new { id = iddonhang });
+            return RedirectToAction("Index", new { id = iddonhang });
         }
+
         private int GetCurrentUserId()
         {
             var authCookie = Request.Cookies["auth"];
             if (authCookie != null)
             {
-                string tenDangNhap = authCookie.Value;
-                var user = db.NguoiDungs.FirstOrDefault(u => u.TenDangNhap == tenDangNhap);
-                if (user != null)
-                {
-                    return user.NguoiDungID;
-                }
+                string userName = authCookie.Value;
+                var user = db.NguoiDungs.FirstOrDefault(u => u.TenDangNhap == userName);
+                return user?.NguoiDungID ?? 0;
             }
             return 0;
         }
@@ -118,6 +116,5 @@ namespace WebsiteBanQuanAo.Controllers
             }
             return null;
         }
-
     }
 }
